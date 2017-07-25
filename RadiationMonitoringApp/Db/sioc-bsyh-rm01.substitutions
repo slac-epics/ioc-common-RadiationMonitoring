@@ -12,30 +12,30 @@ file fhtCommon.template {
 
 file fhtChan.template {
     pattern 
-    {             P,         PORT,  N }
-    { RADM:BSYH:843, FHT_BSYH_843, 01 }
-    { RADM:BSYH:843, FHT_BSYH_843, 02 }
-    { RADM:BSYH:843, FHT_BSYH_843, 03 }
-    { RADM:BSYH:843, FHT_BSYH_843, 04 }
-    { RADM:BSYH:843, FHT_BSYH_843, 05 }
-    { RADM:BSYH:843, FHT_BSYH_843, 06 }
-    { RADM:BSYH:843, FHT_BSYH_843, 07 }
-    { RADM:BSYH:843, FHT_BSYH_843, 08 }
-    { RADM:BSYH:843, FHT_BSYH_843, 09 }
-    { RADM:BSYH:843, FHT_BSYH_843, 10 }
-    { RADM:BSYH:843, FHT_BSYH_843, 11 }
-    { RADM:BSYH:843, FHT_BSYH_843, 12 }
-    { RADM:BSYH:843, FHT_BSYH_843, 13 }
-    { RADM:BSYH:843, FHT_BSYH_843, 14 }
-    { RADM:BSYH:843, FHT_BSYH_843, 15 }
-    { RADM:BSYH:843, FHT_BSYH_843, 16 }
+    {             P,         PORT,  N,  M }
+    { RADM:BSYH:843, FHT_BSYH_843, 01,  1 }
+    { RADM:BSYH:843, FHT_BSYH_843, 02,  2 }
+    { RADM:BSYH:843, FHT_BSYH_843, 03,  3 }
+    { RADM:BSYH:843, FHT_BSYH_843, 04,  4 }
+    { RADM:BSYH:843, FHT_BSYH_843, 05,  5 }
+    { RADM:BSYH:843, FHT_BSYH_843, 06,  6 }
+    { RADM:BSYH:843, FHT_BSYH_843, 07,  7 }
+    { RADM:BSYH:843, FHT_BSYH_843, 08,  8 }
+    { RADM:BSYH:843, FHT_BSYH_843, 09,  9 }
+    { RADM:BSYH:843, FHT_BSYH_843, 10, 10 }
+    { RADM:BSYH:843, FHT_BSYH_843, 11, 11 }
+    { RADM:BSYH:843, FHT_BSYH_843, 12, 12 }
+    { RADM:BSYH:843, FHT_BSYH_843, 13, 13 }
+    { RADM:BSYH:843, FHT_BSYH_843, 14, 14 }
+    { RADM:BSYH:843, FHT_BSYH_843, 15, 15 }
+    { RADM:BSYH:843, FHT_BSYH_843, 16, 16 }
 }
 
 file fht40G.template {
     pattern 
-    {             P,         PORT,  N }
-    { RADM:BSYH:843, FHT_BSYH_843, 01 }
-    { RADM:BSYH:843, FHT_BSYH_843, 02 }
+    {             P,         PORT,  N,  M }
+    { RADM:BSYH:843, FHT_BSYH_843, 01,  1 }
+    { RADM:BSYH:843, FHT_BSYH_843, 02,  2 }
 }
 
 file fhtChanDisplay.template {

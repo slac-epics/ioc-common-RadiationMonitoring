@@ -1,8 +1,8 @@
 #--- Chan. $(N) --------------------------------
-record(ai, "$(P):MEAS_CH$(N)") {
+record(ai, "$(P):CH$(N):MEAS") {
     field(DESC, "Meas. value, ch. $(N)")
     field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT), $(N), 0) MEAS")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS")
     field(EGU,  "")
     field(PREC, "3")
     field(LOLO, "")
@@ -18,37 +18,37 @@ record(ai, "$(P):MEAS_CH$(N)") {
     info(autosaveFields, "HIGH HIHI HYST HSV HHSV")
 }
 
-record(longin, "$(P):STATUS_CH$(N)") {
+record(longin, "$(P):CH$(N):STATUS") {
     field(DESC, "Meas. val. status, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) MEAS_STATUS")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS_STATUS")
     field(SCAN, "I/O Intr")
 }
 
-record(bi, "$(P):STATE_CH$(N)") {
+record(bi, "$(P):CH$(N):STATE") {
     field(DESC, "Channel state, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_STATE")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_STATE")
     field(ZNAM, "Not Active")
     field(ONAM, "Active")
     field(ZSV,  "MINOR")
     field(SCAN, "I/O Intr")
 }
 
-record(bo, "$(P):STATE_S_CH$(N)") {
+record(bo, "$(P):CH$(N):STATE_SET") {
     field(DESC, "Set channel state, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(OUT,  "@asyn($(PORT), $(N), 0) CHAN_STATE")
+    field(OUT,  "@asyn($(PORT), $(M), 0) CHAN_STATE")
     field(ZNAM, "Not Active")
     field(ONAM, "Active")
     field(ZSV,  "MINOR")
     info(asyn:READBACK, "1")
 }
 
-record(mbbi, "$(P):UNITS_CH$(N)") {
-    field(DESC, "Channel units, ch. $(N)")
+record(mbbi, "$(P):CH$(N):DISPUNITS") {
+    field(DESC, "Display units, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_UNITS")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_UNITS")
     field(ZRVL, "0")
     field(ZRST, "Invalid")
     field(ONVL, "1")
@@ -78,28 +78,28 @@ record(mbbi, "$(P):UNITS_CH$(N)") {
     field(SCAN, "I/O Intr")
 }
 
-record(ai, "$(P):DFACT_CH$(N)") {
+record(ai, "$(P):CH$(N):DISPFACTOR") {
     field(DESC, "Display factor, ch. $(N)")
     field(DTYP, "asynFloat64")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_DISP_FACT")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_DISP_FACT")
     field(EGU,  "")
     field(PREC, "2")
     field(SCAN, "I/O Intr")
 }
 
-record(bi, "$(P):PREUNIT_CH$(N)") {
+record(bi, "$(P):CH$(N):PREUNIT") {
     field(DESC, "Pre-unit, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_PREUNIT")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_PREUNIT")
     field(ZNAM, "None")
     field(ONAM, "Auto")
     field(SCAN, "I/O Intr")
 }
 
-record(mbbi, "$(P):TYPE_CH$(N)") {
+record(mbbi, "$(P):CH$(N):PROBETYPE") {
     field(DESC, "Channel type, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_TYPE")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_TYPE")
     field(ZRVL, "0")
     field(ZRST, "Unknown")
     field(ONVL, "1")
@@ -135,24 +135,24 @@ record(mbbi, "$(P):TYPE_CH$(N)") {
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P):PORT_CH$(N)") {
+record(longin, "$(P):CH$(N):PORT") {
     field(DESC, "Port, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_PORT")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_PORT")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P):DECODE_CH$(N)") {
+record(longin, "$(P):CH$(N):DECODE") {
     field(DESC, "Decode, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_DECODE")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_DECODE")
     field(SCAN, "I/O Intr")
 }
 
-record(longin, "$(P):ADDR_CH$(N)") {
+record(longin, "$(P):CH$(N):ADDR") {
     field(DESC, "Address, ch. $(N)")
     field(DTYP, "asynInt32")
-    field(INP,  "@asyn($(PORT), $(N), 0) CHAN_ADDR")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_ADDR")
     field(SCAN, "I/O Intr")
 }
 

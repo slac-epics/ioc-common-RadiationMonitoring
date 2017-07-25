@@ -107,7 +107,7 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
     epicsThreadSleep(0.1);
     
     lock();
-    
+ 
     // Serial number
     _readString(sn, "NR");
 
