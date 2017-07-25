@@ -1,0 +1,102 @@
+#--- Device parameters -----------------------------------
+record(stringin, "$(P):DEV_SN") {
+    field(DESC, "Serial number")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT) 0) SN")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P):DEV_FW") {
+    field(DESC, "Firmware")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT) 0) FW")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P):DEV_TYPE") {
+    field(DESC, "Device type")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT) 0) DEV_TYPE")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P):DEV_TIME") {
+    field(DESC, "Date and time from device")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT) 0) DEV_TIME")
+    field(SCAN, "I/O Intr")
+    field(FLNK, "$(P):INT_TIME")
+}
+
+record(longin, "$(P):INT_TIME") {
+    field(DESC, "Integer time")
+    field(INP,  "$(P):DEV_TIME")
+}
+
+record(longin, "$(P):DEV_ADDR") {
+    field(DESC, "Device address")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT) 0) DEV_ADDR")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P):DEV_POLL_INT") {
+    field(DESC, "Data polling interval")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT) 0) POLL_INT")
+    field(EGU,  "s")
+    field(SCAN, "I/O Intr")
+}
+
+record(longout, "$(P):DEV_POLL_I_S") {
+    field(DESC, "Set data polling int.")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT) 0) POLL_INT")
+    field(EGU,  "s")
+    info(asyn:READBACK, "1")
+}
+
+#--- Status -----------------------------------
+record(longin, "$(P):STATUS_SYS") {
+    field(DESC, "System status")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT) 0) STATUS_SYS")
+    field(SCAN, "I/O Intr")
+}
+
+#--- Channel -----------------------------------
+record(bi, "$(P):CH_MODE") {
+    field(DESC, "Channel mode")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT) 0) CHAN_MODE")
+    field(ZNAM, "Multi-channel")
+    field(ONAM, "Single channel")
+    field(SCAN, "I/O Intr")
+}
+
+record(bo, "$(P):CH_READ_ALL") {
+    field(DESC, "Read all channels")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT) 0) CHAN_READALL")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+    field(ZSV,  "MINOR")
+    field(PINI, "1")
+    field(VAL,  "1")
+    info(autosaveFields, "VAL")
+}
+
+record(longin, "$(P):CH_CHAN") {
+    field(DESC, "Single channel mode: channel")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT) 0) CHAN_CHAN")
+    field(SCAN, "I/O Intr")
+}
+
+#--- Misc. -----------------------------------
+record(bo, "$(P):HW_RESET") {
+    field(DESC, "Hardware reset")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT) 0) HW_RESET")
+}
+

@@ -1,0 +1,960 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 691
+y 555
+w 900
+h 496
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+ctlFont "helvetica-medium-r-12.0"
+ctlFontAlign "right"
+btnFont "helvetica-medium-r-12.0"
+btnFontAlign "right"
+fgColor index 13
+bgColor index 4
+textColor index 13
+ctlFgColor1 index 13
+ctlFgColor2 index 13
+ctlBgColor1 index 2
+ctlBgColor2 index 3
+topShadowColor index 1
+botShadowColor index 13
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 168
+y 220
+w 344
+h 256
+lineColor index 13
+fill
+fillColor index 4
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 1008
+h 40
+lineColor index 13
+fill
+fillColor index 63
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 12
+y 8
+w 480
+h 24
+font "helvetica-bold-r-18.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Thermo FHT Radiation Monitor - 40G ports detail"
+}
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 208
+y 264
+w 20
+h 192
+controlPv "$(P):STATUS_40G1"
+lineColor index 13
+onColor index 15
+offColor index 19
+endian "little"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 296
+y 88
+w 80
+h 20
+controlPv "$(P):STATUS_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Byte)
+object ByteClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 236
+y 264
+w 20
+h 192
+controlPv "$(P):STATUS_40G2"
+lineColor index 13
+onColor index 15
+offColor index 19
+endian "little"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 296
+y 112
+w 80
+h 20
+controlPv "$(P):STATUS_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 296
+y 64
+w 68
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Status"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 384
+y 88
+w 80
+h 20
+controlPv "$(P):TYPE_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 472
+y 88
+w 76
+h 20
+controlPv "$(P):CALFACT_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 384
+y 112
+w 80
+h 20
+controlPv "$(P):TYPE_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 472
+y 112
+w 76
+h 20
+controlPv "$(P):CALFACT_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 384
+y 64
+w 68
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Probe type"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 472
+y 64
+w 68
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Cal. factor"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 184
+y 212
+w 168
+h 16
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor index 13
+bgColor index 4
+value {
+  "Channel Value Status Bits"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 268
+y 264
+w 169
+h 192
+font "helvetica-medium-r-10.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Bit0:  Not used"
+  "Bit1:  Not used"
+  "Bit2:  Not used"
+  "Bit3:  Not used"
+  "Bit4:  Not used"
+  "Bit5:  Not used"
+  "Bit6:  Not used"
+  "Bit7:  Not used"
+  "Bit8:  EEPROM Error"
+  "Bit9:  Value < Failure rate"
+  "Bit10: Value < Meas. range"
+  "Bit11: Value > Meas. range"
+  "Bit12: Not used"
+  "Bit13: Not used"
+  "Bit14: Transfer/RAM Error"
+  "Bit15: NBR alarm \"artificial radiation\""
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 208
+y 240
+w 20
+h 20
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "1"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 236
+y 240
+w 20
+h 20
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "2"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 112
+w 76
+h 20
+font "helvetica-bold-r-12.0"
+fontAlign "right"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "40G Port 2"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 88
+w 76
+h 20
+font "helvetica-bold-r-12.0"
+fontAlign "right"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "40G Port 1"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 556
+y 88
+w 76
+h 20
+controlPv "$(P):DTIME_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 556
+y 112
+w 76
+h 20
+controlPv "$(P):DTIME_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 556
+y 64
+w 68
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Dead time"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 640
+y 88
+w 76
+h 20
+controlPv "$(P):DRNG_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 640
+y 112
+w 76
+h 20
+controlPv "$(P):DRNG_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 640
+y 64
+w 68
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Dyn. range**"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 724
+y 88
+w 76
+h 20
+controlPv "$(P):THRESH_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 724
+y 112
+w 76
+h 20
+controlPv "$(P):THRESH_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 724
+y 64
+w 76
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Thresh***"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 808
+y 88
+w 76
+h 20
+controlPv "$(P):CALDATE_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 808
+y 112
+w 76
+h 20
+controlPv "$(P):CALDATE_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 808
+y 64
+w 76
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Cal. date****"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 96
+y 140
+w 255
+h 56
+font "helvetica-medium-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "* Mean value over sample time"
+  "** Ratio of high dose range to low dose range"
+  "*** YYMMDD"
+  "**** Switching threshold"
+}
+autoSize
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 96
+y 88
+w 108
+h 20
+controlPv "$(P):MEAS_40G1"
+format "exponential"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 96
+y 112
+w 108
+h 20
+controlPv "$(P):MEAS_40G2"
+format "exponential"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 212
+y 88
+w 76
+h 20
+controlPv "$(P):TIME_40G1"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 212
+y 112
+w 76
+h 20
+controlPv "$(P):TIME_40G2"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+showUnits
+useAlarmBorder
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 96
+y 64
+w 108
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Mean value*"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 212
+y 64
+w 76
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Sample time"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 692
+y 8
+w 136
+h 24
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "$(P)"
+}
+border
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 836
+y 4
+w 60
+h 32
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 13
+label "EXIT"
+font "helvetica-bold-r-18.0"
+3d
+endObjectProperties
+

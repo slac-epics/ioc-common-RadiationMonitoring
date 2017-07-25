@@ -1,0 +1,53 @@
+#==============================================================
+#
+#  Abs:  Common startup script for soft IOCs
+#
+#  Name: st.cmd.soft
+#
+#  Rem:  Upon entry we expect to be at location TOP
+#        and the following macros must be defined.
+#        Note that all other environment variables
+#        used within this file are defined in envPaths.
+#
+#           IOC_NAME - IOC Device name       (ie. SIOC:BSY0:MG01)
+#
+#        Upon exiting this script the directory
+#        will be set to the TOP of the IOC Application.
+#
+#  Auth: 21-Jul-2017, M. Dunning  (MDUNNING)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        dd-mmm-yyyy, Name (USERNAME)
+#
+#==============================================================
+
+# Set environment variables
+< envPaths
+
+# Enviroment variables for iocAdmin
+epicsEnvSet("IOC_BOOT", "${TOP}/iocBoot/${IOC}")
+epicsEnvSet("ST_CMD",   "startup.cmd")
+
+# Set path for stream device proto files
+epicsEnvSet("STREAM_PROTOCOL_PATH", "${TOP}/db")
+
+# Change to TOP of ioc application
+cd ${TOP}
+
+# Load EPICS Database
+dbLoadDatabase "dbd/RadiationMonitoring.dbd"
+RadiationMonitoring_registerRecordDeviceDriver pdbbase
+
+# Load iocAdmin Databses
+#dbLoadRecords("db/iocAdminSoft.db", "IOC=${IOC_NAME}")
+#dbLoadRecords("db/iocRelease.db", "IOC=${IOC_NAME}")
+
+# Load Channel Access Security if configuration file exists
+#< ${ACF_INIT}
+
+# End of script
+
+
+
+

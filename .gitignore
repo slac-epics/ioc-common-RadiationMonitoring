@@ -1,0 +1,12 @@
+O.*
+autosave
+bin
+db
+dbd
+include
+lib
+envPaths
+*.bak
+*.log
+*~
+

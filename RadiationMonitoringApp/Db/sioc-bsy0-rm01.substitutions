@@ -1,0 +1,48 @@
+file radm_info.template {
+    pattern 
+    {              P,       LOC, TYPE }
+    { RADM:BSY0:RM01, "BSY0 D2",    0 }
+}
+
+file fhtCommon.template {
+    pattern 
+    {              P,        PORT }
+    { RADM:BSY0:RM01, FHT_BSY0_01 }
+}
+
+file fhtChan.template {
+    pattern 
+    {             P,        PORT,   N }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  1 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  2 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  3 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  4 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  5 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  6 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  7 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  8 }
+    { RADM:BSY0:RM01, FHT_BSY0_01,  9 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 10 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 11 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 12 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 13 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 14 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 15 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 16 }
+}
+
+file fht40G.template {
+    pattern 
+    {              P,        PORT, N }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 1 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 2 }
+}
+
+file fhtChanDisplay.template {
+    pattern 
+    {              P,        PORT, N }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 1 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 2 }
+    { RADM:BSY0:RM01, FHT_BSY0_01, 3 }
+}
+

@@ -1,0 +1,451 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 28
+y 795
+w 644
+h 200
+font "helvetica-medium-r-12.0"
+fontAlign "right"
+ctlFont "helvetica-medium-r-12.0"
+ctlFontAlign "right"
+btnFont "helvetica-medium-r-12.0"
+btnFontAlign "right"
+fgColor index 13
+bgColor index 4
+textColor index 13
+ctlFgColor1 index 13
+ctlFgColor2 index 13
+ctlBgColor1 index 2
+ctlBgColor2 index 3
+topShadowColor index 1
+botShadowColor index 13
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 1008
+h 40
+lineColor index 13
+fill
+fillColor index 63
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 12
+y 8
+w 508
+h 24
+font "helvetica-bold-r-18.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Thermo FHT Radiation Monitor - Channel More"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 20
+y 48
+w 136
+h 20
+font "helvetica-bold-r-14.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Channel: $(N)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 160
+y 112
+w 68
+h 24
+controlPv "$(P):UNITS_CH$(N)"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+bgAlarm
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 324
+y 112
+w 80
+h 24
+controlPv "$(P):DFACT_CH$(N)"
+format "exponential"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+bgAlarm
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 412
+y 112
+w 52
+h 24
+controlPv "$(P):PORT_CH$(N)"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+bgAlarm
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 472
+y 112
+w 52
+h 24
+controlPv "$(P):DECODE_CH$(N)"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+bgAlarm
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 532
+y 112
+w 52
+h 24
+controlPv "$(P):ADDR_CH$(N)"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+bgAlarm
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 156
+y 148
+w 422
+h 28
+font "helvetica-medium-r-12.0"
+fontAlign "center"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Displayed_Value = Display_Factor*Measured_Value"
+  "*Display parameters only affect local display unit, not values read remotely."
+}
+autoSize
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 236
+y 112
+w 80
+h 24
+controlPv "$(P):PREUNIT_CH$(N)"
+font "helvetica-medium-r-12.0"
+fgColor index 15
+fgAlarm
+bgColor index 14
+bgAlarm
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 160
+y 88
+w 68
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Disp. units*"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 236
+y 88
+w 80
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Disp. Preunit*"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 324
+y 88
+w 80
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Disp. Factor*"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 412
+y 88
+w 52
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Port"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 472
+y 88
+w 52
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Decode"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 532
+y 88
+w 52
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Address"
+}
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 56
+y 112
+w 100
+h 24
+fgColor index 13
+bgColor index 2
+inconsistentColor index 3
+topShadowColor index 1
+botShadowColor index 13
+controlPv "$(P):STATE_S_CH$(N)"
+font "helvetica-bold-r-12.0"
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 56
+y 112
+w 100
+h 24
+lineColor index 35
+fillColor index 2
+visPv "$(P):STATE_CH1"
+visMin "0"
+visMax "1"
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 580
+y 4
+w 60
+h 32
+fgColor index 14
+bgColor index 4
+topShadowColor index 1
+botShadowColor index 13
+label "EXIT"
+font "helvetica-bold-r-18.0"
+3d
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 440
+y 8
+w 136
+h 24
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "$(P)"
+}
+border
+endObjectProperties
+
