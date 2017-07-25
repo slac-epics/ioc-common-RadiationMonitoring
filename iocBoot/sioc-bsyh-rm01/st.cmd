@@ -19,7 +19,7 @@
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "M. Dunning")
-epicsEnvSet("IOC_NAME", "SIOC:BSY0:RM01")
+epicsEnvSet("IOC_NAME", "SIOC:BSYH:RM01")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
@@ -27,7 +27,7 @@ epicsEnvSet("IOC_NAME", "SIOC:BSY0:RM01")
 epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
 # Configure communication port
-drvAsynIPPortConfigure("RADM_BSY0_01", "ts-bsy0-pp01:2001", 0,0,0)
+drvAsynIPPortConfigure("RADM_BSYH_01", "ts-bsy0-pp01:2001", 0,0,0)
 
 # Initialize asyn driver
 # drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
@@ -38,14 +38,14 @@ drvAsynIPPortConfigure("RADM_BSY0_01", "ts-bsy0-pp01:2001", 0,0,0)
 # *  addr    The hardware address.
 # *  timeout The timeout for I/O (optional, default = 1.0).
 # *----------------------------------------------------------------------------*/
-drvFHTConfigure("FHT_BSY0_01", "RADM_BSY0_01", 1, 1.5)
+drvFHTConfigure("FHT_BSYH_01", "RADM_BSYH_01", 1, 1.5)
 
 # Asyn diagnostics
-#asynSetTraceMask("RADM_BSY0_01", -1, 0x9)
-#asynSetTraceIOMask("RADM_BSY0_01", -1, 0x5)
+#asynSetTraceMask("RADM_BSYH_01", -1, 0x9)
+#asynSetTraceIOMask("RADM_BSYH_01", -1, 0x5)
 
 # Load record instances
-dbLoadRecords("db/sioc-bsy0-rm01.db")
+dbLoadRecords("db/sioc-bsyh-rm01.db")
 
 # Restore PVs
 < iocBoot/common/init_restore.cmd.soft

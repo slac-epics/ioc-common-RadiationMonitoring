@@ -33,7 +33,7 @@ DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 IOCRELEASE_DB += iocRelease.db
 
 # For Thermo FHT Rad. Mons.
-DB += sioc-bsy0-rm01.db
+DB += sioc-bsyh-rm01.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
