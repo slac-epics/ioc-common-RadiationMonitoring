@@ -40,8 +40,8 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 # Load iocAdmin Databses
-#dbLoadRecords("db/iocAdminSoft.db", "IOC=${IOC_NAME}")
-#dbLoadRecords("db/iocRelease.db", "IOC=${IOC_NAME}")
+dbLoadRecords("db/iocAdminSoft.db", "IOC=${IOC_NAME}")
+dbLoadRecords("db/iocRelease.db", "IOC=${IOC_NAME}")
 
 # Load Channel Access Security if configuration file exists
 #< ${ACF_INIT}
