@@ -27,7 +27,7 @@ epicsEnvSet("IOC_NAME", "SIOC:BSY0:RM01")
 epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
 # Configure communication port
-drvAsynIPPortConfigure("RADM_BSY0_01", "ts-esb-12:2001", 0,0,0)
+drvAsynIPPortConfigure("RADM_BSY0_01", "ts-bsy0-pp01:2001", 0,0,0)
 
 # Initialize asyn driver
 # drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
