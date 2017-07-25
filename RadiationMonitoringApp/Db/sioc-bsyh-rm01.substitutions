@@ -1,48 +1,48 @@
 file radm_info.template {
     pattern 
-    {              P,       LOC, TYPE }
-    { RADM:BSYH:RM01, "BSYH D2",    0 }
+    {             P,       LOC, TYPE }
+    { RADM:BSYH:843, "BSYH D2",    0 }
 }
 
 file fhtCommon.template {
     pattern 
-    {              P,        PORT }
-    { RADM:BSYH:RM01, FHT_BSYH_01 }
+    {             P,         PORT }
+    { RADM:BSYH:843, FHT_BSYH_843 }
 }
 
 file fhtChan.template {
     pattern 
-    {             P,        PORT,   N }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  1 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  2 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  3 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  4 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  5 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  6 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  7 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  8 }
-    { RADM:BSYH:RM01, FHT_BSYH_01,  9 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 10 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 11 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 12 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 13 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 14 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 15 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 16 }
+    {             P,         PORT,  N }
+    { RADM:BSYH:843, FHT_BSYH_843, 01 }
+    { RADM:BSYH:843, FHT_BSYH_843, 02 }
+    { RADM:BSYH:843, FHT_BSYH_843, 03 }
+    { RADM:BSYH:843, FHT_BSYH_843, 04 }
+    { RADM:BSYH:843, FHT_BSYH_843, 05 }
+    { RADM:BSYH:843, FHT_BSYH_843, 06 }
+    { RADM:BSYH:843, FHT_BSYH_843, 07 }
+    { RADM:BSYH:843, FHT_BSYH_843, 08 }
+    { RADM:BSYH:843, FHT_BSYH_843, 09 }
+    { RADM:BSYH:843, FHT_BSYH_843, 10 }
+    { RADM:BSYH:843, FHT_BSYH_843, 11 }
+    { RADM:BSYH:843, FHT_BSYH_843, 12 }
+    { RADM:BSYH:843, FHT_BSYH_843, 13 }
+    { RADM:BSYH:843, FHT_BSYH_843, 14 }
+    { RADM:BSYH:843, FHT_BSYH_843, 15 }
+    { RADM:BSYH:843, FHT_BSYH_843, 16 }
 }
 
 file fht40G.template {
     pattern 
-    {              P,        PORT, N }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 1 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 2 }
+    {             P,         PORT,  N }
+    { RADM:BSYH:843, FHT_BSYH_843, 01 }
+    { RADM:BSYH:843, FHT_BSYH_843, 02 }
 }
 
 file fhtChanDisplay.template {
     pattern 
-    {              P,        PORT, N }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 1 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 2 }
-    { RADM:BSYH:RM01, FHT_BSYH_01, 3 }
+    {             P,         PORT,  N }
+    { RADM:BSYH:843, FHT_BSYH_843, 01 }
+    { RADM:BSYH:843, FHT_BSYH_843, 02 }
+    { RADM:BSYH:843, FHT_BSYH_843, 03 }
 }
 

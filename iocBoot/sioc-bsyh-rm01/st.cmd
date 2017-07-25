@@ -27,7 +27,7 @@ epicsEnvSet("IOC_NAME", "SIOC:BSYH:RM01")
 epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
 # Configure communication port
-drvAsynIPPortConfigure("RADM_BSYH_01", "ts-bsy0-pp01:2001", 0,0,0)
+drvAsynIPPortConfigure("RADM_BSYH_843", "ts-bsy0-pp01:2001", 0,0,0)
 
 # Initialize asyn driver
 # drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
@@ -38,11 +38,11 @@ drvAsynIPPortConfigure("RADM_BSYH_01", "ts-bsy0-pp01:2001", 0,0,0)
 # *  addr    The hardware address.
 # *  timeout The timeout for I/O (optional, default = 1.0).
 # *----------------------------------------------------------------------------*/
-drvFHTConfigure("FHT_BSYH_01", "RADM_BSYH_01", 1, 1.5)
+drvFHTConfigure("FHT_BSYH_843", "RADM_BSYH_843", 1, 1.5)
 
 # Asyn diagnostics
-#asynSetTraceMask("RADM_BSYH_01", -1, 0x9)
-#asynSetTraceIOMask("RADM_BSYH_01", -1, 0x5)
+#asynSetTraceMask("RADM_BSYH_843", -1, 0x9)
+#asynSetTraceIOMask("RADM_BSYH_843", -1, 0x5)
 
 # Load record instances
 dbLoadRecords("db/sioc-bsyh-rm01.db")

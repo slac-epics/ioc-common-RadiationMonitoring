@@ -9,4 +9,5 @@ envPaths
 *.bak
 *.log
 *~
+pvlist.txt
 
