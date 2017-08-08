@@ -90,7 +90,7 @@ x 160
 y 112
 w 68
 h 24
-controlPv "$(P):UNITS_CH$(N)"
+controlPv "$(P):CH$(N):DISPUNITS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -116,7 +116,7 @@ x 324
 y 112
 w 80
 h 24
-controlPv "$(P):DFACT_CH$(N)"
+controlPv "$(P):CH$(N):DISPFACTOR"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -143,7 +143,7 @@ x 412
 y 112
 w 52
 h 24
-controlPv "$(P):PORT_CH$(N)"
+controlPv "$(P):CH$(N):PORT"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -169,7 +169,7 @@ x 472
 y 112
 w 52
 h 24
-controlPv "$(P):DECODE_CH$(N)"
+controlPv "$(P):CH$(N):DECODE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -195,7 +195,7 @@ x 532
 y 112
 w 52
 h 24
-controlPv "$(P):ADDR_CH$(N)"
+controlPv "$(P):CH$(N):ADDR"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -243,7 +243,7 @@ x 236
 y 112
 w 80
 h 24
-controlPv "$(P):PREUNIT_CH$(N)"
+controlPv "$(P):CH$(N):PREUNIT"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -388,7 +388,7 @@ bgColor index 2
 inconsistentColor index 3
 topShadowColor index 1
 botShadowColor index 13
-controlPv "$(P):STATE_S_CH$(N)"
+controlPv "$(P):CH$(N):STATE_SET"
 font "helvetica-bold-r-12.0"
 endObjectProperties
 
@@ -404,7 +404,7 @@ w 100
 h 24
 lineColor index 35
 fillColor index 2
-visPv "$(P):STATE_CH1"
+visPv "$(P):CH$(N):STATE"
 visMin "0"
 visMax "1"
 endObjectProperties

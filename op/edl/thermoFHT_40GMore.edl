@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 691
-y 555
+x 21
+y 734
 w 900
 h 496
 font "helvetica-medium-r-12.0"
@@ -86,7 +86,7 @@ x 208
 y 264
 w 20
 h 192
-controlPv "$(P):STATUS_40G1"
+controlPv "$(P):40G01:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -103,7 +103,7 @@ x 296
 y 88
 w 80
 h 20
-controlPv "$(P):STATUS_40G1"
+controlPv "$(P):40G01:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -129,7 +129,7 @@ x 236
 y 264
 w 20
 h 192
-controlPv "$(P):STATUS_40G2"
+controlPv "$(P):40G02:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -146,7 +146,7 @@ x 296
 y 112
 w 80
 h 20
-controlPv "$(P):STATUS_40G2"
+controlPv "$(P):40G02:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -191,7 +191,7 @@ x 384
 y 88
 w 80
 h 20
-controlPv "$(P):TYPE_40G1"
+controlPv "$(P):40G01:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -217,7 +217,7 @@ x 472
 y 88
 w 76
 h 20
-controlPv "$(P):CALFACT_40G1"
+controlPv "$(P):40G01:CALFACT"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -244,7 +244,7 @@ x 384
 y 112
 w 80
 h 20
-controlPv "$(P):TYPE_40G2"
+controlPv "$(P):40G02:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -270,7 +270,7 @@ x 472
 y 112
 w 76
 h 20
-controlPv "$(P):CALFACT_40G2"
+controlPv "$(P):40G02:CALFACT"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -469,7 +469,7 @@ x 556
 y 88
 w 76
 h 20
-controlPv "$(P):DTIME_40G1"
+controlPv "$(P):40G01:DEADTIME"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -496,7 +496,7 @@ x 556
 y 112
 w 76
 h 20
-controlPv "$(P):DTIME_40G2"
+controlPv "$(P):40G02:DEADTIME"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -542,7 +542,7 @@ x 640
 y 88
 w 76
 h 20
-controlPv "$(P):DRNG_40G1"
+controlPv "$(P):40G01:DYNRNG"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -569,7 +569,7 @@ x 640
 y 112
 w 76
 h 20
-controlPv "$(P):DRNG_40G2"
+controlPv "$(P):40G02:DYNRNG"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -615,7 +615,7 @@ x 724
 y 88
 w 76
 h 20
-controlPv "$(P):THRESH_40G1"
+controlPv "$(P):40G01:THRESH"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -642,7 +642,7 @@ x 724
 y 112
 w 76
 h 20
-controlPv "$(P):THRESH_40G2"
+controlPv "$(P):40G02:THRESH"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -688,7 +688,7 @@ x 808
 y 88
 w 76
 h 20
-controlPv "$(P):CALDATE_40G1"
+controlPv "$(P):40G01:CALDATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -714,7 +714,7 @@ x 808
 y 112
 w 76
 h 20
-controlPv "$(P):CALDATE_40G2"
+controlPv "$(P):40G02:CALDATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -782,7 +782,7 @@ x 96
 y 88
 w 108
 h 20
-controlPv "$(P):MEAS_40G1"
+controlPv "$(P):40G01:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -809,7 +809,7 @@ x 96
 y 112
 w 108
 h 20
-controlPv "$(P):MEAS_40G2"
+controlPv "$(P):40G02:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -836,7 +836,7 @@ x 212
 y 88
 w 76
 h 20
-controlPv "$(P):TIME_40G1"
+controlPv "$(P):40G01:SAMPLETIME"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -863,7 +863,7 @@ x 212
 y 112
 w 76
 h 20
-controlPv "$(P):TIME_40G2"
+controlPv "$(P):40G02:SAMPLETIME"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm

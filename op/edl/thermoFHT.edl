@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 18
-y 78
+x 20
+y 105
 w 680
 h 548
 font "helvetica-medium-r-12.0"
@@ -269,7 +269,7 @@ buttonLabel "All Channels..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chan.edl"
+  0 "../lcls2/rm/thermoFHT_chan.edl"
 }
 endObjectProperties
 
@@ -380,7 +380,7 @@ bgColor index 2
 inconsistentColor index 3
 topShadowColor index 1
 botShadowColor index 13
-controlPv "$(P):CH_DISP1"
+controlPv "$(P):CH_DISP01"
 font "helvetica-medium-r-12.0"
 endObjectProperties
 
@@ -399,26 +399,26 @@ bgColor index 1
 topShadowColor index 1
 botShadowColor index 13
 displaySource "menu"
-filePv "$(P):CH_DISP1"
+filePv "$(P):CH_DISP01"
 sizeOfs 5
 numDsps 16
 displayFileName {
-  0 "thermoFHT_chanSingle.edl"
-  1 "thermoFHT_chanSingle.edl"
-  2 "thermoFHT_chanSingle.edl"
-  3 "thermoFHT_chanSingle.edl"
-  4 "thermoFHT_chanSingle.edl"
-  5 "thermoFHT_chanSingle.edl"
-  6 "thermoFHT_chanSingle.edl"
-  7 "thermoFHT_chanSingle.edl"
-  8 "thermoFHT_chanSingle.edl"
-  9 "thermoFHT_chanSingle.edl"
-  10 "thermoFHT_chanSingle.edl"
-  11 "thermoFHT_chanSingle.edl"
-  12 "thermoFHT_chanSingle.edl"
-  13 "thermoFHT_chanSingle.edl"
-  14 "thermoFHT_chanSingle.edl"
-  15 "thermoFHT_chanSingle.edl"
+  0 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  1 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  2 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  3 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  4 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  5 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  6 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  7 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  8 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  9 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  10 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  11 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  12 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  13 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  14 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  15 "../lcls2/rm/thermoFHT_chanSingle.edl"
 }
 menuLabel {
   0 "1"
@@ -439,15 +439,15 @@ menuLabel {
   15 "16"
 }
 symbols {
-  0 "N=1"
-  1 "N=2"
-  2 "N=3"
-  3 "N=4"
-  4 "N=5"
-  5 "N=6"
-  6 "N=7"
-  7 "N=8"
-  8 "N=9"
+  0 "N=01"
+  1 "N=02"
+  2 "N=03"
+  3 "N=04"
+  4 "N=05"
+  5 "N=06"
+  6 "N=07"
+  7 "N=08"
+  8 "N=09"
   9 "N=10"
   10 "N=11"
   11 "N=12"
@@ -497,7 +497,7 @@ buttonLabel "40G Ports..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_40GMore.edl"
+  0 "../lcls2/rm/thermoFHT_40GMore.edl"
 }
 endObjectProperties
 
@@ -516,7 +516,7 @@ bgColor index 2
 inconsistentColor index 3
 topShadowColor index 1
 botShadowColor index 13
-controlPv "$(P):CH_DISP2"
+controlPv "$(P):CH_DISP02"
 font "helvetica-medium-r-12.0"
 endObjectProperties
 
@@ -704,26 +704,26 @@ bgColor index 1
 topShadowColor index 1
 botShadowColor index 13
 displaySource "menu"
-filePv "$(P):CH_DISP2"
+filePv "$(P):CH_DISP02"
 sizeOfs 5
 numDsps 16
 displayFileName {
-  0 "thermoFHT_chanSingle.edl"
-  1 "thermoFHT_chanSingle.edl"
-  2 "thermoFHT_chanSingle.edl"
-  3 "thermoFHT_chanSingle.edl"
-  4 "thermoFHT_chanSingle.edl"
-  5 "thermoFHT_chanSingle.edl"
-  6 "thermoFHT_chanSingle.edl"
-  7 "thermoFHT_chanSingle.edl"
-  8 "thermoFHT_chanSingle.edl"
-  9 "thermoFHT_chanSingle.edl"
-  10 "thermoFHT_chanSingle.edl"
-  11 "thermoFHT_chanSingle.edl"
-  12 "thermoFHT_chanSingle.edl"
-  13 "thermoFHT_chanSingle.edl"
-  14 "thermoFHT_chanSingle.edl"
-  15 "thermoFHT_chanSingle.edl"
+  0 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  1 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  2 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  3 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  4 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  5 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  6 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  7 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  8 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  9 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  10 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  11 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  12 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  13 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  14 "../lcls2/rm/thermoFHT_chanSingle.edl"
+  15 "../lcls2/rm/thermoFHT_chanSingle.edl"
 }
 menuLabel {
   0 "1"
@@ -744,15 +744,15 @@ menuLabel {
   15 "16"
 }
 symbols {
-  0 "N=1"
-  1 "N=2"
-  2 "N=3"
-  3 "N=4"
-  4 "N=5"
-  5 "N=6"
-  6 "N=7"
-  7 "N=8"
-  8 "N=9"
+  0 "N=01"
+  1 "N=02"
+  2 "N=03"
+  3 "N=04"
+  4 "N=05"
+  5 "N=06"
+  6 "N=07"
+  7 "N=08"
+  8 "N=09"
   9 "N=10"
   10 "N=11"
   11 "N=12"

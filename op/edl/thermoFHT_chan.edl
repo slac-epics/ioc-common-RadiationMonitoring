@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 313
-y 159
+x 86
+y 665
 w 720
 h 800
 font "helvetica-medium-r-12.0"
@@ -86,7 +86,7 @@ x 84
 y 80
 w 92
 h 20
-controlPv "$(P):MEAS_CH1"
+controlPv "$(P):CH01:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -113,7 +113,7 @@ x 84
 y 104
 w 92
 h 20
-controlPv "$(P):MEAS_CH2"
+controlPv "$(P):CH02:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -180,7 +180,7 @@ x 56
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH1"
+controlPv "$(P):CH01:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -197,7 +197,7 @@ x 184
 y 80
 w 68
 h 20
-controlPv "$(P):STATUS_CH1"
+controlPv "$(P):CH01:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -223,7 +223,7 @@ x 84
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH2"
+controlPv "$(P):CH02:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -240,7 +240,7 @@ x 184
 y 104
 w 68
 h 20
-controlPv "$(P):STATUS_CH2"
+controlPv "$(P):CH02:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -266,7 +266,7 @@ x 260
 y 80
 w 88
 h 20
-controlPv "$(P):STATE_CH1"
+controlPv "$(P):CH01:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -291,7 +291,7 @@ x 260
 y 104
 w 88
 h 20
-controlPv "$(P):STATE_CH2"
+controlPv "$(P):CH02:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -316,7 +316,7 @@ x 260
 y 172
 w 88
 h 20
-controlPv "$(P):STATE_CH3"
+controlPv "$(P):CH03:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -341,7 +341,7 @@ x 260
 y 196
 w 88
 h 20
-controlPv "$(P):STATE_CH4"
+controlPv "$(P):CH04:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -366,7 +366,7 @@ x 84
 y 172
 w 92
 h 20
-controlPv "$(P):MEAS_CH3"
+controlPv "$(P):CH03:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -393,7 +393,7 @@ x 84
 y 196
 w 92
 h 20
-controlPv "$(P):MEAS_CH4"
+controlPv "$(P):CH04:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -460,7 +460,7 @@ x 112
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH3"
+controlPv "$(P):CH03:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -477,7 +477,7 @@ x 184
 y 172
 w 68
 h 20
-controlPv "$(P):STATUS_CH3"
+controlPv "$(P):CH03:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -503,7 +503,7 @@ x 140
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH4"
+controlPv "$(P):CH04:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -520,7 +520,7 @@ x 184
 y 196
 w 68
 h 20
-controlPv "$(P):STATUS_CH4"
+controlPv "$(P):CH04:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -546,7 +546,7 @@ x 356
 y 80
 w 88
 h 20
-controlPv "$(P):TYPE_CH1"
+controlPv "$(P):CH01:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -572,7 +572,7 @@ x 356
 y 104
 w 88
 h 20
-controlPv "$(P):TYPE_CH2"
+controlPv "$(P):CH02:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -598,7 +598,7 @@ x 356
 y 172
 w 88
 h 20
-controlPv "$(P):TYPE_CH3"
+controlPv "$(P):CH03:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -624,7 +624,7 @@ x 356
 y 196
 w 88
 h 20
-controlPv "$(P):TYPE_CH4"
+controlPv "$(P):CH04:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -877,7 +877,7 @@ x 168
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH5"
+controlPv "$(P):CH05:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -894,7 +894,7 @@ x 196
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH6"
+controlPv "$(P):CH06:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -911,7 +911,7 @@ x 224
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH7"
+controlPv "$(P):CH07:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -928,7 +928,7 @@ x 252
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH8"
+controlPv "$(P):CH08:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -945,7 +945,7 @@ x 280
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH9"
+controlPv "$(P):CH09:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -962,7 +962,7 @@ x 308
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH10"
+controlPv "$(P):CH10:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -979,7 +979,7 @@ x 336
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH11"
+controlPv "$(P):CH11:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -996,7 +996,7 @@ x 364
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH12"
+controlPv "$(P):CH12:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -1013,7 +1013,7 @@ x 392
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH13"
+controlPv "$(P):CH13:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -1250,7 +1250,7 @@ x 420
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH14"
+controlPv "$(P):CH14:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -1287,7 +1287,7 @@ x 448
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH15"
+controlPv "$(P):CH15:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -1324,7 +1324,7 @@ x 476
 y 572
 w 20
 h 192
-controlPv "$(P):STATUS_CH16"
+controlPv "$(P):CH16:STATUS"
 lineColor index 13
 onColor index 15
 offColor index 19
@@ -1361,7 +1361,7 @@ x 260
 y 220
 w 88
 h 20
-controlPv "$(P):STATE_CH5"
+controlPv "$(P):CH05:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1386,7 +1386,7 @@ x 84
 y 220
 w 92
 h 20
-controlPv "$(P):MEAS_CH5"
+controlPv "$(P):CH05:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -1433,7 +1433,7 @@ x 184
 y 220
 w 68
 h 20
-controlPv "$(P):STATUS_CH5"
+controlPv "$(P):CH05:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1459,7 +1459,7 @@ x 356
 y 220
 w 88
 h 20
-controlPv "$(P):TYPE_CH5"
+controlPv "$(P):CH05:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1485,7 +1485,7 @@ x 260
 y 244
 w 88
 h 20
-controlPv "$(P):STATE_CH6"
+controlPv "$(P):CH06:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1510,7 +1510,7 @@ x 84
 y 244
 w 92
 h 20
-controlPv "$(P):MEAS_CH6"
+controlPv "$(P):CH06:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -1557,7 +1557,7 @@ x 184
 y 244
 w 68
 h 20
-controlPv "$(P):STATUS_CH6"
+controlPv "$(P):CH06:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1583,7 +1583,7 @@ x 356
 y 244
 w 88
 h 20
-controlPv "$(P):TYPE_CH6"
+controlPv "$(P):CH06:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1609,7 +1609,7 @@ x 260
 y 268
 w 88
 h 20
-controlPv "$(P):STATE_CH7"
+controlPv "$(P):CH07:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1634,7 +1634,7 @@ x 84
 y 268
 w 92
 h 20
-controlPv "$(P):MEAS_CH7"
+controlPv "$(P):CH07:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -1681,7 +1681,7 @@ x 184
 y 268
 w 68
 h 20
-controlPv "$(P):STATUS_CH7"
+controlPv "$(P):CH07:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1707,7 +1707,7 @@ x 356
 y 268
 w 88
 h 20
-controlPv "$(P):TYPE_CH7"
+controlPv "$(P):CH07:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1733,7 +1733,7 @@ x 260
 y 292
 w 88
 h 20
-controlPv "$(P):STATE_CH8"
+controlPv "$(P):CH08:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1758,7 +1758,7 @@ x 84
 y 292
 w 92
 h 20
-controlPv "$(P):MEAS_CH8"
+controlPv "$(P):CH08:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -1805,7 +1805,7 @@ x 184
 y 292
 w 68
 h 20
-controlPv "$(P):STATUS_CH8"
+controlPv "$(P):CH08:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1831,7 +1831,7 @@ x 356
 y 292
 w 88
 h 20
-controlPv "$(P):TYPE_CH8"
+controlPv "$(P):CH08:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1857,7 +1857,7 @@ x 260
 y 316
 w 88
 h 20
-controlPv "$(P):STATE_CH9"
+controlPv "$(P):CH09:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1882,7 +1882,7 @@ x 84
 y 316
 w 92
 h 20
-controlPv "$(P):MEAS_CH9"
+controlPv "$(P):CH09:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -1929,7 +1929,7 @@ x 184
 y 316
 w 68
 h 20
-controlPv "$(P):STATUS_CH9"
+controlPv "$(P):CH09:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1955,7 +1955,7 @@ x 356
 y 316
 w 88
 h 20
-controlPv "$(P):TYPE_CH9"
+controlPv "$(P):CH09:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -1981,7 +1981,7 @@ x 260
 y 340
 w 88
 h 20
-controlPv "$(P):STATE_CH10"
+controlPv "$(P):CH10:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2006,7 +2006,7 @@ x 84
 y 340
 w 92
 h 20
-controlPv "$(P):MEAS_CH10"
+controlPv "$(P):CH10:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2053,7 +2053,7 @@ x 184
 y 340
 w 68
 h 20
-controlPv "$(P):STATUS_CH10"
+controlPv "$(P):CH10:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2079,7 +2079,7 @@ x 356
 y 340
 w 88
 h 20
-controlPv "$(P):TYPE_CH10"
+controlPv "$(P):CH10:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2105,7 +2105,7 @@ x 260
 y 364
 w 88
 h 20
-controlPv "$(P):STATE_CH11"
+controlPv "$(P):CH11:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2130,7 +2130,7 @@ x 84
 y 364
 w 92
 h 20
-controlPv "$(P):MEAS_CH11"
+controlPv "$(P):CH11:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2177,7 +2177,7 @@ x 184
 y 364
 w 68
 h 20
-controlPv "$(P):STATUS_CH11"
+controlPv "$(P):CH11:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2203,7 +2203,7 @@ x 356
 y 364
 w 88
 h 20
-controlPv "$(P):TYPE_CH11"
+controlPv "$(P):CH11:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2229,7 +2229,7 @@ x 260
 y 388
 w 88
 h 20
-controlPv "$(P):STATE_CH12"
+controlPv "$(P):CH12:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2254,7 +2254,7 @@ x 84
 y 388
 w 92
 h 20
-controlPv "$(P):MEAS_CH12"
+controlPv "$(P):CH12:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2301,7 +2301,7 @@ x 184
 y 388
 w 68
 h 20
-controlPv "$(P):STATUS_CH12"
+controlPv "$(P):CH12:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2327,7 +2327,7 @@ x 356
 y 388
 w 88
 h 20
-controlPv "$(P):TYPE_CH12"
+controlPv "$(P):CH12:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2353,7 +2353,7 @@ x 260
 y 412
 w 88
 h 20
-controlPv "$(P):STATE_CH13"
+controlPv "$(P):CH13:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2378,7 +2378,7 @@ x 84
 y 412
 w 92
 h 20
-controlPv "$(P):MEAS_CH13"
+controlPv "$(P):CH13:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2425,7 +2425,7 @@ x 184
 y 412
 w 68
 h 20
-controlPv "$(P):STATUS_CH13"
+controlPv "$(P):CH13:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2451,7 +2451,7 @@ x 356
 y 412
 w 88
 h 20
-controlPv "$(P):TYPE_CH13"
+controlPv "$(P):CH13:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2477,7 +2477,7 @@ x 260
 y 436
 w 88
 h 20
-controlPv "$(P):STATE_CH14"
+controlPv "$(P):CH14:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2502,7 +2502,7 @@ x 84
 y 436
 w 92
 h 20
-controlPv "$(P):MEAS_CH14"
+controlPv "$(P):CH14:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2549,7 +2549,7 @@ x 184
 y 436
 w 68
 h 20
-controlPv "$(P):STATUS_CH14"
+controlPv "$(P):CH14:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2575,7 +2575,7 @@ x 356
 y 436
 w 88
 h 20
-controlPv "$(P):TYPE_CH14"
+controlPv "$(P):CH14:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2601,7 +2601,7 @@ x 260
 y 460
 w 88
 h 20
-controlPv "$(P):STATE_CH15"
+controlPv "$(P):CH15:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2626,7 +2626,7 @@ x 84
 y 460
 w 92
 h 20
-controlPv "$(P):MEAS_CH15"
+controlPv "$(P):CH15:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2673,7 +2673,7 @@ x 184
 y 460
 w 68
 h 20
-controlPv "$(P):STATUS_CH15"
+controlPv "$(P):CH15:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2699,7 +2699,7 @@ x 356
 y 460
 w 88
 h 20
-controlPv "$(P):TYPE_CH15"
+controlPv "$(P):CH15:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2725,7 +2725,7 @@ x 260
 y 484
 w 88
 h 20
-controlPv "$(P):STATE_CH16"
+controlPv "$(P):CH16:STATE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2750,7 +2750,7 @@ x 84
 y 484
 w 92
 h 20
-controlPv "$(P):MEAS_CH16"
+controlPv "$(P):CH16:MEAS"
 format "exponential"
 font "helvetica-medium-r-12.0"
 fgColor index 15
@@ -2797,7 +2797,7 @@ x 184
 y 484
 w 68
 h 20
-controlPv "$(P):STATUS_CH16"
+controlPv "$(P):CH16:STATUS"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2823,7 +2823,7 @@ x 356
 y 484
 w 88
 h 20
-controlPv "$(P):TYPE_CH16"
+controlPv "$(P):CH16:PROBETYPE"
 font "helvetica-medium-r-12.0"
 fgColor index 15
 fgAlarm
@@ -2858,10 +2858,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=1"
+  0 "N=01"
 }
 endObjectProperties
 
@@ -2884,10 +2884,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=2"
+  0 "N=02"
 }
 endObjectProperties
 
@@ -2910,10 +2910,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=3"
+  0 "N=03"
 }
 endObjectProperties
 
@@ -2936,10 +2936,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=4"
+  0 "N=04"
 }
 endObjectProperties
 
@@ -2962,10 +2962,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=5"
+  0 "N=05"
 }
 endObjectProperties
 
@@ -2988,10 +2988,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=6"
+  0 "N=06"
 }
 endObjectProperties
 
@@ -3014,10 +3014,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=7"
+  0 "N=07"
 }
 endObjectProperties
 
@@ -3040,10 +3040,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=8"
+  0 "N=08"
 }
 endObjectProperties
 
@@ -3066,10 +3066,10 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
-  0 "N=9"
+  0 "N=09"
 }
 endObjectProperties
 
@@ -3092,7 +3092,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=10"
@@ -3118,7 +3118,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=11"
@@ -3144,7 +3144,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=12"
@@ -3170,7 +3170,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=13"
@@ -3196,7 +3196,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=14"
@@ -3222,7 +3222,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=15"
@@ -3248,7 +3248,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "thermoFHT_chanMore.edl"
+  0 "../lcls2/rm/thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=16"
