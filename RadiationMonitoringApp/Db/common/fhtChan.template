@@ -1,0 +1,159 @@
+#--- Chan. $(N) --------------------------------
+record(ai, "$(P):CH$(N):MEAS") {
+    field(DESC, "Meas. value, ch. $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS")
+    field(EGU,  "")
+    field(PREC, "3")
+    field(LOLO, "")
+    field(LOW,  "")
+    field(HIGH, "1e-2")
+    field(HIHI, "1e-1")
+    field(HYST, "0.5")
+    field(LSV,  "NO_ALARM")
+    field(LLSV, "NO_ALARM")
+    field(HSV,  "MINOR")
+    field(HHSV, "MAJOR")
+    field(SCAN, "I/O Intr")
+    info(autosaveFields, "HIGH HIHI HYST HSV HHSV")
+}
+
+record(longin, "$(P):CH$(N):STATUS") {
+    field(DESC, "Meas. val. status, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS_STATUS")
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P):CH$(N):STATE") {
+    field(DESC, "Channel state, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_STATE")
+    field(ZNAM, "Not Active")
+    field(ONAM, "Active")
+    field(ZSV,  "MINOR")
+    field(SCAN, "I/O Intr")
+}
+
+record(bo, "$(P):CH$(N):STATE_SET") {
+    field(DESC, "Set channel state, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(OUT,  "@asyn($(PORT), $(M), 0) CHAN_STATE")
+    field(ZNAM, "Not Active")
+    field(ONAM, "Active")
+    field(ZSV,  "MINOR")
+    info(asyn:READBACK, "1")
+}
+
+record(mbbi, "$(P):CH$(N):DISPUNITS") {
+    field(DESC, "Display units, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_UNITS")
+    field(ZRVL, "0")
+    field(ZRST, "Invalid")
+    field(ONVL, "1")
+    field(ONST, "Gy")
+    field(TWVL, "2")
+    field(TWST, "Gy/h")
+    field(THVL, "3")
+    field(THST, "Sv")
+    field(FRVL, "4")
+    field(FRST, "Sv/h")
+    field(FVVL, "5")
+    field(FVST, "IPS")
+    field(SXVL, "6")
+    field(SXST, "Bq")
+    field(SVVL, "7")
+    field(SVST, "Bq/cm2")
+    field(EIVL, "8")
+    field(EIST, "Bq/l")
+    field(NIVL, "9")
+    field(NIST, "R")
+    field(TEVL, "10")
+    field(TEST, "R/h")
+    field(ELVL, "11")
+    field(ELST, "User 1")
+    field(TVVL, "12")
+    field(TVST, "User 2")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P):CH$(N):DISPFACTOR") {
+    field(DESC, "Display factor, ch. $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_DISP_FACT")
+    field(EGU,  "")
+    field(PREC, "2")
+    field(SCAN, "I/O Intr")
+}
+
+record(bi, "$(P):CH$(N):PREUNIT") {
+    field(DESC, "Pre-unit, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_PREUNIT")
+    field(ZNAM, "None")
+    field(ONAM, "Auto")
+    field(SCAN, "I/O Intr")
+}
+
+record(mbbi, "$(P):CH$(N):PROBETYPE") {
+    field(DESC, "Channel type, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_TYPE")
+    field(ZRVL, "0")
+    field(ZRST, "Unknown")
+    field(ONVL, "1")
+    field(ONST, "FHT 191N")
+    field(TWVL, "2")
+    field(TWST, "FHT 191T")
+    field(THVL, "3")
+    field(THST, "FHT 641D")
+    field(FRVL, "4")
+    field(FRST, "FHT 641P")
+    field(FVVL, "5")
+    field(FVST, "FHT 671 Y")
+    field(SXVL, "6")
+    field(SXST, "FHT 751")
+    field(SVVL, "7")
+    field(SVST, "FHZ 621 G-L")
+    field(EIVL, "8")
+    field(EIST, "FHZ 691")
+    field(NIVL, "9")
+    field(NIST, "SRD 2000")
+    field(TEVL, "10")
+    field(TEST, "FH 40G 1")
+    field(ELVL, "11")
+    field(ELST, "FH 40G 2")
+    field(TVVL, "12")
+    field(TVST, "Analog 1")
+    field(TTVL, "13")
+    field(TTST, "Analog 1")
+    field(FTVL, "14")
+    field(FTST, "Digital 1")
+    field(FFVL, "15")
+    field(FFST, "Digital 2")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P):CH$(N):PORT") {
+    field(DESC, "Port, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_PORT")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P):CH$(N):DECODE") {
+    field(DESC, "Decode, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_DECODE")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P):CH$(N):ADDR") {
+    field(DESC, "Address, ch. $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) CHAN_ADDR")
+    field(SCAN, "I/O Intr")
+}
+
+

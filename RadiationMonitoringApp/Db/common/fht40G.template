@@ -1,0 +1,77 @@
+#--- 40G port $(N) --------------------------------------
+record(ai, "$(P):40G$(N):MEAS") {
+    field(DESC, "Meas. value, 40G port $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS_40G")
+#    field(EGU,  "uSv/h")
+    field(PREC, "3")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P):40G$(N):STATUS") {
+    field(DESC, "Meas. val. status, 40G port $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS_STATUS_40G")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P):40G$(N):SAMPLETIME") {
+    field(DESC, "Meas. time, 40G port $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) MEAS_TIME_40G")
+    field(EGU,  "s")
+    field(PREC, "0")
+    field(SCAN, "I/O Intr")
+}
+
+record(longin, "$(P):40G$(N):PROBETYPE") {
+    field(DESC, "Probe type, 40G port $(N)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT), $(M), 0) TYPE_40G")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P):40G$(N):CALFACT") {
+    field(DESC, "Probe cal. factor, 40G port $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) CAL_FACT_40G")
+    field(EGU,  "")
+    field(PREC, "2")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P):40G$(N):DEADTIME") {
+    field(DESC, "Probe dead time, 40G port $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) DEAD_TIME_40G")
+    field(EGU,  "")
+    field(PREC, "2")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P):40G$(N):DYNRNG") {
+    field(DESC, "Probe dyn. range, 40G port $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) DYN_RNG_40G")
+    field(EGU,  "")
+    field(PREC, "2")
+    field(SCAN, "I/O Intr")
+}
+
+record(ai, "$(P):40G$(N):THRESH") {
+    field(DESC, "Probe sw. thresh., 40G port $(N)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT), $(M), 0) SW_THR_40G")
+    field(EGU,  "")
+    field(PREC, "2")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(P):40G$(N):CALDATE") {
+    field(DESC, "Probe cal. date, 40G port $(N)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT), $(M), 0) CAL_DATE_40G")
+    field(SCAN, "I/O Intr")
+}
+
+

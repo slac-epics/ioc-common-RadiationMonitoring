@@ -1,0 +1,350 @@
+record (ai, "GAMMA:$(STATION):PMS:DOSE")
+{
+  field (DESC, "Filtered Dose Rate")
+  field (EGU, "mrem/h")
+  field (INP, "@EcoGamma.proto Filtered $(PORT)")
+  field (DTYP, "stream")
+  field (PINI, "YES")
+  field (SCAN, "5 second")
+}
+
+record (ai, "GAMMA:$(STATION):PMS:TEMP")
+{
+  field (DESC, "Device temperature in Celcius")
+  field (EGU, "Deg C")
+  field (INP, "@EcoGamma.proto Temperature $(PORT)")
+  field (DTYP, "stream")
+  field (PINI, "YES")
+  field (SCAN, "5 second")
+}
+
+record (longin, "GAMMA:$(STATION):PMS:STATUS")
+{
+  field (DESC, "Bitfield for Alarm Statuses")
+  field (DTYP, "stream")
+  field (INP, "@EcoGamma.proto Status $(PORT)")
+  field (PINI, "YES")
+  field (FLNK, "GAMMA:$(STATION):PMS:alarmstat")
+  field (SCAN, "5 second")
+}
+
+#record (mbbi, "GAMMA:$(STATION):PMS:EGU")
+#{
+#  field (DESC, "Units used in acquisition")
+#  field (DTYP, "stream")
+#  field (INP, "@EcoGamma.proto Units $(PORT)")
+#  field (PINI, "YES")
+#  field (FLNK, "GAMMA:$(STATION):PMS:egustring1")
+#  field (ZRST, "uSv/hr")
+#  field (ONST, "mrem/hr")
+#  field (TWST, "uR/hr")
+#  field (THST, "R/hr")
+#  field (FRST, "mSv/hr")
+#  field (FVST, "Sv/hr")
+#}
+
+record (stringout, "GAMMA:$(STATION):PMS:egustring1")
+{
+  field (DOL, "GAMMA:$(STATION):PMS:EGU")
+  field (OMSL, "closed_loop")
+  field (FLNK, "GAMMA:$(STATION):PMS:egustring2")
+  field (OUT, "GAMMA:$(STATION):PMS:FILT.EGU")
+}
+
+record (stringout, "GAMMA:$(STATION):PMS:egustring2")
+{
+  field (DOL, "GAMMA:$(STATION):PMS:EGU")
+  field (OMSL, "closed_loop")
+  field (OUT, "GAMMA:$(STATION):PMS:UNFILTER.EGU")
+}
+
+record (longin, "GAMMA:$(STATION):PMS:DEVSTATUS")
+{
+  field (DESC, "Bitfield for device status bits")
+  field (DTYP, "stream")
+  field (INP, "@EcoGamma.proto DevStatus $(PORT)")
+  field (PINI, "YES")
+  field (FLNK, "GAMMA:$(STATION):PMS:devstat1")
+  field (SCAN, "5 second")
+}
+
+#Status of device
+
+record (mbbiDirect, "GAMMA:$(STATION):PMS:devstat1")
+{
+  field (DESC, "First 16 status bits")
+  field (INP, "GAMMA:$(STATION):PMS:DEVSTATUS")
+  field (FLNK, "GAMMA:$(STATION):PMS:devstat2")
+}
+
+record (mbbiDirect, "GAMMA:$(STATION):PMS:devstat2")
+{
+  field (DESC, "First 16 status bits")
+  field (INP, "GAMMA:$(STATION):PMS:DEVSTATUS")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:PI")
+  field (SHFT, "16")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:PI")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Parameter Initialization Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B0")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:HI")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:HI")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Hardware Initialization Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B1")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:LS")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:LS")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Log System Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B2")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:LT")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:LT")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Log Time Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B3")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:LI")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:LI")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Log Initialization Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B4")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:CAL")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:CAL")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Calibration or Linearity Check Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B5")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:SYS")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:SYS")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "System Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B6")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:BAT")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:BAT")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Battery Low Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B7")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:GMV")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:GMV")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "GM Voltage Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B8")
+  field (FLNK, "GAMMA:$(STATION):PMS:FAULT:LVPS")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:FAULT:LVPS")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "LVPS Voltage Fault")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.B9")
+  field (FLNK, "GAMMA:$(STATION):PMS:INIT")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:INIT")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Device Initialized or Reset")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.BA")
+  field (FLNK, "GAMMA:$(STATION):PMS:HIGM")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:HIGM")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "High GM Tube Active")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat1.BB")
+  field (FLNK, "GAMMA:$(STATION):PMS:SYSFAULT")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (mbbi, "GAMMA:$(STATION):PMS:SYSFAULT")
+{
+  field (DESC, "System Fault Description")
+  field (INP, "GAMMA:$(STATION):PMS:DEVSTATUS")
+  field (SHFT, "12")
+  field (FLNK, "GAMMA:$(STATION):PMS:ACTIVECAL")
+  field (ZRST, "K_RET_INVALIDPROGRAMSTATE")
+  field (ONST, "K_RETM_RESOURCE_FAULT")
+  field (TWST, "K_RETM_INVALIDTABLE")
+  field (THST, "K_RETM_BUFFNALLOC")
+  field (FRST, "K_RETM_BUFFPALLOC")
+  field (FVST, "K_RETM_MSTORE_FULL")
+  field (SXST, "K_RETM_FILE_READ_ERROR")
+  field (SVST, "K_RETM_BAD_CRC")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:ACTIVECAL")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Calibration and Linearity Check Active")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B0")
+  field (FLNK, "GAMMA:$(STATION):PMS:NOLOG")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:NOLOG")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Logging Disabled")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B2")
+  field (FLNK, "GAMMA:$(STATION):PMS:DATATRANS")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:DATATRANS")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Data is being uploaded or downloaded")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B3")
+  field (FLNK, "GAMMA:$(STATION):PMS:REBOOT")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:REBOOT")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Device is rbooting")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B4")
+  field (FLNK, "GAMMA:$(STATION):PMS:BUSY")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:BUSY")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Device is busy")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B5")
+  field (FLNK, "GAMMA:$(STATION):PMS:TRANSBUSY")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:TRANSBUSY")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "A file transfer is in progress")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B6")
+  field (FLNK, "GAMMA:$(STATION):PMS:DIAGMODE")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:DIAGMODE")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Diagnostic features enabled")
+  field (DOL, "GAMMA:$(STATION):PMS:devstat2.B7")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (mbbiDirect, "GAMMA:$(STATION):PMS:alarmstat")
+{
+  field (DESC, "First 16 status bits")
+  field (INP, "GAMMA:$(STATION):PMS:STATUS")
+  field (FLNK, "GAMMA:$(STATION):PMS:WARN:GMT")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:WARN:GMT")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "GM Tube Failure")
+  field (DOL, "GAMMA:$(STATION):PMS:alarmstat.B4")
+  field (FLNK, "GAMMA:$(STATION):PMS:WARN:OVR")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:WARN:OVR")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "Instrument Over-Range")
+  field (DOL, "GAMMA:$(STATION):PMS:alarmstat.B5")
+  field (FLNK, "GAMMA:$(STATION):PMS:WARN:RAM")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:WARN:RAM")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "NV RAM Failure")
+  field (DOL, "GAMMA:$(STATION):PMS:alarmstat.BA")
+  field (FLNK, "GAMMA:$(STATION):PMS:WARN:CMOS")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record (bo, "GAMMA:$(STATION):PMS:WARN:CMOS")
+{
+  field(OMSL,"closed_loop")
+  field (DESC, "CMOS Battery Low")
+  field (DOL, "GAMMA:$(STATION):PMS:alarmstat.BC")
+  field( ZNAM, "OK")
+  field( ONAM, "Not OK")
+}
+
+record(longout, "GAMMA:$(STATION):PMS:PORTOUT"){
+  field( DESC, "Configures TCP port")
+  field (DTYP, "stream")
+  field (OUT, "@EcoGamma.proto PortOut $(PORT)")
+}
+
+record(longin, "GAMMA:$(STATION):PMS:PORTIN"){
+  field( DESC, "Readback TCP port")
+  field (DTYP, "stream")
+  field( PINI, "YES")
+  field (INP, "@EcoGamma.proto PortIn $(PORT)")
+}

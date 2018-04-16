@@ -1,0 +1,64 @@
+#The Pushlist is a port on the device which continuouslly outputs data
+#The following protocol parses unnecessary data and records the
+#time, filtered dose rate, unfiltered dose rate, and temperature
+#PL { 
+#    #initializes by setting the device push rate to 30 seconds
+#    #@init { out "\r\nP0000 69 30 %0<xor>}"; }
+#    Terminator = CR LF;
+#    in "%*s %*17c %e %*s %(\$1)e %*s %(\$2)#+f ";
+#}
+
+#Queries device for Filtered Rate
+Filtered {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nG0000 1 %0<xor>";
+    in "\r\n%*cG0000 1 %e %0<xor>";
+}
+
+#Queries device for Temperature
+Temperature {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nG0000 63 %0<xor>";
+    in "\r\n%*cG0000 63 %#+f %0<xor>";
+}
+
+#Queries device for Alarm Status
+Status {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nG0000 0 %0<xor>";
+    in "\r\n%*cG0000 0 %X %0<xor>";
+}
+
+#Queries device for Hardware Status
+DevStatus {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nG0000 55 %0<xor>";
+    #in "%#s";
+    in "\r\n%*cG0000 55 %i %0<xor>";
+}
+
+#Queries device for Engineering Units (done at init)
+Units {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nG0000 43 %0<xor>";
+    in "\r\n%*cG0000 43 %u %0<xor>";
+}
+
+#Changes port number for driver
+PortOut {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nP0000 50 %i %0<xor>";
+}
+
+PortIn {
+    ReadTimeout = 2000;
+    Terminator = "}";
+    out "\r\nG0000 50 %0<xor>";
+    in "\r\n%*cG0000 50 %i %0<xor>";
+}

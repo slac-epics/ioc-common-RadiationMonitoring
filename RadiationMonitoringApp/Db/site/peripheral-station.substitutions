@@ -1,0 +1,9 @@
+file ecogamma.template{
+     pattern {LOCA,UNIT,PORT }
+             {SITE,$(UNIT),$(PORT)}
+}
+
+file fht40G.template{
+     pattern {P,PORT }
+             {RADM:SITE:$(UNIT),$(PORT)}
+}
