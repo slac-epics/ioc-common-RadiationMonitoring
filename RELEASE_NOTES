@@ -20,5 +20,9 @@ Notes:
 - This application uses git.
 ***************************************************************
 
+RadiationMonitoring-R1-0-1  16-April-2018 J. DeFilippis (jpdef):
+    Added databases for peripheral monitoring system. Changed 
+    Db structure
+
 RadiationMonitoring-R1-0-0  21-Jul-2017 M. Dunning (mdunning):
     Initial release

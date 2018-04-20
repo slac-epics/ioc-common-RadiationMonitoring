@@ -42,9 +42,6 @@ drvAsynIPPortConfigure("PM8-GAMMA","wb-site-rm01:5001")
 #General
 dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SYS8:RM01")
 
-#Station B24 Test Stand
-dbLoadRecords("db/periphal-station.db","UNIT=B24,GPORT,GAMMA24,NPORT=FHT24,")
-
 #Stations PM01-PM8
 #dbLoadRecords("db/periphal-station.db","UNIT=01,GPORT,PM1-GAMMA,NPORT=PM1-FHT,")
 #dbLoadRecords("db/periphal-station.db","UNIT=02,GPORT,PM2-GAMMA,NPORT=PM2-FHT,")

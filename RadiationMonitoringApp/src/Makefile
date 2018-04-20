@@ -31,6 +31,7 @@ PROD_IOC = RadiationMonitoring
 DBD += RadiationMonitoring.dbd
 RadiationMonitoring_DBD += base.dbd
 RadiationMonitoring_DBD += asyn.dbd
+RadiationMonitoring_DBD += stream.dbd
 RadiationMonitoring_DBD += drvAsynIPPort.dbd
 RadiationMonitoring_DBD += asSupport.dbd
 RadiationMonitoring_DBD += drvFHT.dbd
@@ -44,10 +45,13 @@ RadiationMonitoring_DBD += iocAdmin.dbd
 RadiationMonitoring_LIBS += devIocStats
 RadiationMonitoring_LIBS += autosave
 RadiationMonitoring_LIBS += asyn
+RadiationMonitoring_LIBS += stream
 
 RadiationMonitoring_SRCS += RadiationMonitoring_registerRecordDeviceDriver.cpp
 RadiationMonitoring_SRCS += drvFHT.cpp
 RadiationMonitoring_SRCS_DEFAULT += RadiationMonitoringMain.cpp
+
+USR_SYS_LIBS += pcre
 
 RadiationMonitoring_LIBS += $(EPICS_BASE_IOC_LIBS)
 
