@@ -1,0 +1,6 @@
+record (stringin, "$(P):DEBUG")
+{
+  field (DESC, "Debug")
+  field (DTYP, "stream")
+  field (INP, "@ThermoAM4.proto debug $(PORT)")
+}
