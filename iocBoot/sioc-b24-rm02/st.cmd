@@ -20,7 +20,6 @@ drvAsynIPPortConfigure("TS-B024","ts-b024-pp01:2101")
 #General
 
 #Station B24 Test Stand
-dbLoadRecords("db/asynRecord.db","P=RADM:AMS:B24,PORT=TS-B024")
 dbLoadRecords("db/ams.template","P=RADM:AMS:B24,PORT=TS-B024")
 
 cd ${TOP}/iocBoot/${IOC}

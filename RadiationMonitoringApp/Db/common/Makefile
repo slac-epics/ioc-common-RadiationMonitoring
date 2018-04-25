@@ -34,7 +34,7 @@ DB += fhtChanDisplay.template
 DB += fhtCommon.template
 DB += ecogamma.template
 DB += radm_info.template
-
+DB += ams.template
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
