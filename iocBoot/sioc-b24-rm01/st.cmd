@@ -24,7 +24,7 @@ drvAsynIPPortConfigure("B24-TS","wb-site-rm01:5001")
 # *  addr    The hardware address.
 # *  timeout The timeout for I/O (optional, default = 1.0).
 # *----------------------------------------------------------------------------*/
-drvFHTConfigure("B24_FHT", "B24_TS", 1, 1.5)
+drvFHTConfigure("B24_FHT", "B24-TS", 1, 1.5)
 
 
 ## Load record instances
