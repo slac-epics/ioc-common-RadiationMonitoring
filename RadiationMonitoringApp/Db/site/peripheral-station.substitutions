@@ -3,7 +3,12 @@ file ecogamma.template{
              {  SITE,  $(UNIT),  $(GPORT) }
 }
 
-file fht40G.template{
+file fhtChan.template{
      pattern {  P                ,  PORT    ,  N,  M }
-             {  RADM:SITE:$(UNIT),  $(NPORT),  0,  0 }
+             {  RADM:SITE:$(UNIT),  $(NPORT),  1,  1 }
+}
+
+file fhtCommon.template{
+     pattern {  P                ,  PORT     }
+             {  RADM:SITE:$(UNIT),  $(NPORT) }
 }

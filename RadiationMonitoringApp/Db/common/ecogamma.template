@@ -1,4 +1,4 @@
-record (ai, "RADM:$(LOCA):$(UNIT):GAMMA_DOSE")
+record (ai, "RADM:$(LOCA):$(UNIT):GAMMA_DOSE_RATE")
 {
   field (DESC, "Filtered Dose Rate")
   field (EGU, "mrem/h")
