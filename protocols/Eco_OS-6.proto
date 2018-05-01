@@ -1,0 +1,14 @@
+#
+# Eco sensors OS-6 Protocol
+# 
+#
+Terminator = 0x20 0x0D 0x00 0x20 0x0A;
+Read_ozone{
+    in "\_%f\_,\_%*f\_,\_%*f";
+}
+Read_temp{
+    in "\_%*f\_,\_%f\_,\_%*f";
+}
+Read_humidity{
+    in "\_%*f\_,\_%*f\_,\_%f";
+}

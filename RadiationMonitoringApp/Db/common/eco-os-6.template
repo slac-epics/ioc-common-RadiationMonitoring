@@ -1,0 +1,37 @@
+record (ai, "$(P):OZONE")
+{
+  field (DESC, "Ozone reading")
+  field (PINI, "YES")
+  field (EGU, "ppb")
+  field (DTYP, "stream")
+  field (INP, "@Eco_OS-6.proto Read_ozone $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+record (ai, "$(P):TEMP")
+{
+  field (DESC, "Temperature reading")
+  field (PINI, "YES")
+  field (EGU, "C")
+  field (DTYP, "stream")
+  field (INP, "@Eco_OS-6.proto Read_temp $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+record (ai, "$(P):HUMIDITY")
+{
+  field (DESC, "Humidity reading")
+  field (PINI, "YES")
+  field (EGU, "%")
+  field (DTYP, "stream")
+  field (INP, "@Eco_OS-6.proto Read_humidity $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+#record (waveform, "$(P):ARRAY")
+#{
+#  field (DESC, "Ozone reading")
+#  field (PINI, "YES")
+#  field (NELM, 3)
+#  field (FTVL, "FLOAT")
+#  field (DTYP, "stream")
+#  field (INP, "@Eco_OS-6.proto Read_array $(PORT)")
+#  field (SCAN, "I/O Intr")
+#}

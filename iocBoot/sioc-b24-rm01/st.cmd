@@ -14,8 +14,8 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM01-PM08
-drvAsynIPPortConfigure("B24-GAMMA","wb-site-rm01:5000")
-drvAsynIPPortConfigure("B24-TS","wb-site-rm01:5001")
+drvAsynIPPortConfigure("B24-GAMMA","wb-site-rm08:5000")
+drvAsynIPPortConfigure("B24-TS","wb-site-rm08:5001")
 # drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
 #/*------------------------------------------------------------------------------
 # * EPICS iocsh callable function to call constructor for the drvFHT class.

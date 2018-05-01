@@ -1,0 +1,57 @@
+#
+# ThermoAMS4 Printer Protocol
+# 
+# This protocol file is specific for the printer serial port
+# on the AM4 air beta radiation monitoring instrument. 
+#
+# Reads in the formatted string from the printer output of the AMS-4
+#  Example string format below:
+#
+#  04/27/18 02:39:42
+#  0.0021 Bq/CM3
+#  0.0 CM3
+#  NO STATUS CHANGE
+# 
+#  In a single line, this looks like:
+#
+#  \r\n  04/27/18 02:39:42\r\n  0.0021 Bq/CM3\r\n  0.0 CM3\r\n  NO STATUS CHANGE\r\n  \r\n
+#
+
+Terminator = "\r\n";
+
+Read_Date{
+    in  "";
+    in  "\_%s\_%*s";
+    in  "\_%*f\_Bq/CM3";
+    in  "\_%*f\_CM3";
+    in  "\_%*[a-z A-Z]";
+}
+
+Read_Time{
+    in  "";
+    in  "\_%*s\_%s";
+    in  "\_%*f\_Bq/CM3";
+    in  "\_%*f\_CM3";
+    in  "\_%*[a-z A-Z]";
+}
+Read_Rad{
+    in  "";
+    in  "\_%*s\_%*s";
+    in  "\_%f\_Bq/CM3";
+    in  "\_%*f\_CM3";
+    in  "\_%*[a-z A-Z]";
+}
+Read_Flow{
+    in  "";
+    in  "\_%*s\_%*s";
+    in  "\_%*f\_Bq/CM3";
+    in  "\_%f\_CM3";
+    in  "\_%*[a-z A-Z]";
+}
+Read_Status{
+    in  "";
+    in  "\_%*s\_%*s";
+    in  "\_%*f\_Bq/CM3";
+    in  "\_%*f\_CM3";
+    in  "\_%[a-z A-Z]";
+}
