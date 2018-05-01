@@ -43,14 +43,14 @@ drvAsynIPPortConfigure("PM8-FHT6020","wb-site-rm08:5001")
 dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SYS8:RM01")
 
 #Stations PM01-PM8
-dbLoadRecords("db/periphal-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=02,GPORT=PM2-GAMMA,NPORT=PM2-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=03,GPORT=PM3-GAMMA,NPORT=PM3-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=04,GPORT=PM4-GAMMA,NPORT=PM4-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=05,GPORT=PM5-GAMMA,NPORT=PM5-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=06,GPORT=PM6-GAMMA,NPORT=PM6-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=07,GPORT=PM7-GAMMA,NPORT=PM7-FHT6020")
-dbLoadRecords("db/periphal-station.db","UNIT=08,GPORT=PM8-GAMMA,NPORT=PM8-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=02,GPORT=PM2-GAMMA,NPORT=PM2-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=03,GPORT=PM3-GAMMA,NPORT=PM3-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=04,GPORT=PM4-GAMMA,NPORT=PM4-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=05,GPORT=PM5-GAMMA,NPORT=PM5-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=06,GPORT=PM6-GAMMA,NPORT=PM6-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=07,GPORT=PM7-GAMMA,NPORT=PM7-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=08,GPORT=PM8-GAMMA,NPORT=PM8-FHT6020")
 
 
 cd ${TOP}/iocBoot/${IOC}
