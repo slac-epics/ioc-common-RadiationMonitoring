@@ -34,8 +34,9 @@ DB += fhtChanDisplay.template
 DB += fhtCommon.template
 DB += ecogamma.template
 DB += radm_info.template
-DB += ams.template
-
+DB += ams-printer.template
+DB += eco-os-6.template
+DB_INSTALLS += $(ASYN)/db/asynRecord.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

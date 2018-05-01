@@ -14,13 +14,17 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections 
-drvAsynIPPortConfigure("TS-B024","ts-b024-pp01:2101")
+drvAsynIPPortConfigure("TS-B024","ts-b024-pp01:2001")
 
 ## Load record instances
 #General
 
 #Station B24 Test Stand
-dbLoadRecords("db/ams.template","P=RADM:AMS:B24,PORT=TS-B024")
+#dbLoadRecords("db/ams-printer.template","P=RADM:AMS:B24,PORT=TS-B024")
+#dbLoadRecords("db/asynRecord.db","P=RADM:AMS:B24:,R=ASYN,PORT=TS-B024,ADDR=1,IMAX=100,OMAX=100")
+
+dbLoadRecords("db/eco-os-6.template","P=RADM:AMS:B24,PORT=TS-B024")
+dbLoadRecords("db/asynRecord.db","P=RADM:AMS:B24:,R=ASYN,PORT=TS-B024,ADDR=1,IMAX=100,OMAX=100")
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit
