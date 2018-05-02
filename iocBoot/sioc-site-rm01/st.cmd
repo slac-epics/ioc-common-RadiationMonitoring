@@ -38,7 +38,7 @@ drvAsynIPPortConfigure("PM7-TS","ts-pm7-pp01:5001")
 drvFHTConfigure("PM7-FHT6020", "PM7-TS", 1, 1.5)
 
 drvAsynIPPortConfigure("PM8-GAMMA","wb-site-rm08:5000")
-drvAsynIPPortConfigure("PM8-FHT6020","wb-site-rm08:5001")
+drvAsynIPPortConfigure("PM8-TS","wb-site-rm08:5001")
 drvFHTConfigure("PM8-FHT6020", "PM8-TS", 1, 1.5)
 
 #Prototype mobile station
