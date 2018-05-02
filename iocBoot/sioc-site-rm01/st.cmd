@@ -37,8 +37,9 @@ drvAsynIPPortConfigure("PM7-GAMMA","gamma-pm7-pp01:5000")
 drvAsynIPPortConfigure("PM7-TS","ts-pm7-pp01:5001")
 drvFHTConfigure("PM7-FHT6020", "PM7-TS", 1, 1.5)
 
-#drvAsynIPPortConfigure("PM8-GAMMA","wb-site-rm08:5000")
-#drvAsynIPPortConfigure("PM8-FHT6020","wb-site-rm08:5001")
+drvAsynIPPortConfigure("PM8-GAMMA","wb-site-rm08:5000")
+drvAsynIPPortConfigure("PM8-FHT6020","wb-site-rm08:5001")
+drvFHTConfigure("PM8-FHT6020", "PM8-TS", 1, 1.5)
 
 #Prototype mobile station
 drvAsynIPPortConfigure("PM9-GAMMA","moxa-test:5004")
@@ -58,7 +59,7 @@ dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SYS8:RM01")
 #dbLoadRecords("db/peripheral-station.db","UNIT=05,GPORT=PM5-GAMMA,NPORT=PM5-FHT6020")
 #dbLoadRecords("db/peripheral-station.db","UNIT=06,GPORT=PM6-GAMMA,NPORT=PM6-FHT6020")
 dbLoadRecords("db/peripheral-station.db","UNIT=07,GPORT=PM7-GAMMA,NPORT=PM7-FHT6020")
-#dbLoadRecords("db/peripheral-station.db","UNIT=08,GPORT=PM8-GAMMA,NPORT=PM8-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=08,GPORT=PM8-GAMMA,NPORT=PM8-FHT6020")
 dbLoadRecords("db/peripheral-station.db","UNIT=09,GPORT=PM9-GAMMA,NPORT=PM9-FHT6020")
 
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:07,LOC=07")
