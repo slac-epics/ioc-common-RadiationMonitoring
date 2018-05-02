@@ -32,6 +32,7 @@ DB += fht40G.template
 DB += fhtChan.template
 DB += fhtChanDisplay.template
 DB += fhtCommon.template
+DB += station.template
 DB += ecogamma.template
 DB += radm_info.template
 DB += ams-printer.template

@@ -64,6 +64,9 @@ dbLoadRecords("db/peripheral-station.db","UNIT=09,GPORT=PM9-GAMMA,NPORT=PM9-FHT6
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:07,LOC=07")
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:09,LOC=09")
 
+dbLoadRecords("db/station.template","STATION=07")
+dbLoadRecords("db/station.template","STATION=09")
+
 cd ${TOP}/iocBoot/${IOC}
 iocInit
 
