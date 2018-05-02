@@ -17,8 +17,4 @@ file fhtChanDisplay.template{
      pattern {  P                ,  PORT    ,   N,  M }
              {  RADM:SITE:$(UNIT),  $(NPORT),  01,  1 }
 }
-file radm_info.template{
-     pattern {  P                 }
-             {  RADM:SITE:$(UNIT) }
-}
 
