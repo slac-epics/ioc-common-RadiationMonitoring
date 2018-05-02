@@ -31,7 +31,7 @@ record(calcout, "STAT:$(STATION):PMS:CALC_SUM") {
   field(DESC, "Calc's overall station status")
   field(SCAN, "1 second")
   field(CALC, "A ||  B  || C")
-  field(INPA, "RADM:SITE:$(STATION):CH01:STATUS.RVAL MS")
+  field(INPA, "RADM:SITE:$(STATION):CH01:STATUS MS")
   field(INPB, "RADM:SITE:$(STATION):GAMMA_FAULT_SYS.RVAL  MS")
   #field(INPC, "PDU:$(STATION):PMS:GETSTATUS.STAT  MS")
   field(INPC, "RADM:SITE:$(STATION):STATUS_SYS.RVAL MS")
