@@ -14,8 +14,8 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM01-PM08
-#drvAsynIPPortConfigure("PM1-GAMMA","wb-site-rm01:5000")
-#drvAsynIPPortConfigure("PM1-FHT6020","wb-site-rm01:5001")
+drvAsynIPPortConfigure("PM1-GAMMA","wb-site-rm01:5000")
+drvAsynIPPortConfigure("PM1-FHT6020","wb-site-rm01:5001")
 #
 #drvAsynIPPortConfigure("PM2-GAMMA","wb-site-rm02:5000")
 #drvAsynIPPortConfigure("PM2-FHT6020","wb-site-rm02:5001")
@@ -51,7 +51,7 @@ drvFHTConfigure("PM9-FHT6020", "PM9-TS", 1, 1.5)
 dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SYS8:RM01")
 
 #Stations PM01-PM8
-#dbLoadRecords("db/peripheral-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
+dbLoadRecords("db/peripheral-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
 #dbLoadRecords("db/peripheral-station.db","UNIT=02,GPORT=PM2-GAMMA,NPORT=PM2-FHT6020")
 #dbLoadRecords("db/peripheral-station.db","UNIT=03,GPORT=PM3-GAMMA,NPORT=PM3-FHT6020")
 #dbLoadRecords("db/peripheral-station.db","UNIT=04,GPORT=PM4-GAMMA,NPORT=PM4-FHT6020")
