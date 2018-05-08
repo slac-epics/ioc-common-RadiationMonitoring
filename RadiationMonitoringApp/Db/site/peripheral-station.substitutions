@@ -4,11 +4,17 @@ file ecogamma.template{
 }
 
 file fhtChan.template{
-     pattern {  P                ,  PORT    ,  N,  M }
-             {  RADM:SITE:$(UNIT),  $(NPORT),  1,  1 }
+     pattern {  P                ,  PORT    ,   N,  M }
+             {  RADM:SITE:$(UNIT),  $(NPORT),  01,  1 }
 }
 
 file fhtCommon.template{
      pattern {  P                ,  PORT     }
              {  RADM:SITE:$(UNIT),  $(NPORT) }
 }
+
+file fhtChanDisplay.template{
+     pattern {  P                ,  PORT    ,   N,  M }
+             {  RADM:SITE:$(UNIT),  $(NPORT),  01,  1 }
+}
+
