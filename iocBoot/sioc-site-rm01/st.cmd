@@ -52,8 +52,11 @@ drvFHTConfigure("PM9-FHT6020", "PM9-TS", 1, 1.5)
 
 
 ## Load record instances
-#General
-dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SYS8:RM01")
+# =====================================================================
+# Load iocAdmin
+# =====================================================================
+dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SITE:RM01")
+dbLoadRecords("db/iocRelease.db","IOC=SIOC:SITE:RM01")
 
 #Stations PM01-PM8
 dbLoadRecords("db/peripheral-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
@@ -66,11 +69,15 @@ dbLoadRecords("db/peripheral-station.db","UNIT=07,GPORT=PM7-GAMMA,NPORT=PM7-FHT6
 dbLoadRecords("db/peripheral-station.db","UNIT=08,GPORT=PM8-GAMMA,NPORT=PM8-FHT6020")
 dbLoadRecords("db/peripheral-station.db","UNIT=09,GPORT=PM9-GAMMA,NPORT=PM9-FHT6020")
 
+#Asyn Debugging Records
+dbLoadRecords("db/asynRecord.db","P=RADM:SITE:08:,R=NASYN,PORT=PM8-TS,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("db/asynRecord.db","P=RADM:SITE:08:,R=GASYN,PORT=PM8-GAMMA,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("db/asynRecord.db","P=RADM:SITE:09:,R=NASYN,PORT=PM9-TS,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("db/asynRecord.db","P=RADM:SITE:09:,R=GASYN,PORT=PM9-GAMMA,ADDR=0,IMAX=100,OMAX=100")
+
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:07,LOC=07")
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:09,LOC=09")
 
-dbLoadRecords("db/station.template","STATION=07")
-dbLoadRecords("db/station.template","STATION=09")
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit
