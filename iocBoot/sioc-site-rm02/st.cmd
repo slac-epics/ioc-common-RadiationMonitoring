@@ -14,8 +14,8 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM2
-drvAsynIPPortConfigure("PM2-GAMMA","wb-site-rm01:5000")
-drvAsynIPPortConfigure("PM2-TS","wb-site-rm01:5001")
+drvAsynIPPortConfigure("PM2-GAMMA","wb-site-rm02:5000")
+drvAsynIPPortConfigure("PM2-TS","wb-site-rm02:5001")
 drvFHTConfigure("PM2-FHT6020", "PM2-TS", 1, 1.5)
 
 ## Load record instances

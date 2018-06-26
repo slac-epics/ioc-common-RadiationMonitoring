@@ -14,8 +14,8 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM4
-drvAsynIPPortConfigure("PM4-GAMMA","wb-site-rm01:5000")
-drvAsynIPPortConfigure("PM4-TS","wb-site-rm01:5001")
+drvAsynIPPortConfigure("PM4-GAMMA","wb-site-rm04:5000")
+drvAsynIPPortConfigure("PM4-TS","wb-site-rm04:5001")
 drvFHTConfigure("PM4-FHT6020", "PM4-TS", 1, 1.5)
 
 ## Load record instances

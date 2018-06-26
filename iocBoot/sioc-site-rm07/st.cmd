@@ -13,9 +13,9 @@ cd ${TOP}
 dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
-## Setup asyn connections PM7
-drvAsynIPPortConfigure("PM7-GAMMA","wb-site-rm01:5000")
-drvAsynIPPortConfigure("PM7-TS","wb-site-rm01:5001")
+## Setup asyn connections PM7, uses cable so non-standard config
+drvAsynIPPortConfigure("PM7-GAMMA","gamma-pm7-pp01:5000")
+drvAsynIPPortConfigure("PM7-TS","ts-pm7-pp01:5001")
 drvFHTConfigure("PM7-FHT6020", "PM7-TS", 1, 1.5)
 
 ## Load record instances

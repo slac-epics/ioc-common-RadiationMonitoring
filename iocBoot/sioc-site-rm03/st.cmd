@@ -14,8 +14,8 @@ dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM3
-drvAsynIPPortConfigure("PM3-GAMMA","wb-site-rm01:5000")
-drvAsynIPPortConfigure("PM3-TS","wb-site-rm01:5001")
+drvAsynIPPortConfigure("PM3-GAMMA","wb-site-rm03:5000")
+drvAsynIPPortConfigure("PM3-TS","wb-site-rm03:5001")
 drvFHTConfigure("PM3-FHT6020", "PM3-TS", 1, 1.5)
 
 ## Load record instances
