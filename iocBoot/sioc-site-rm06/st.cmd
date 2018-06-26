@@ -13,24 +13,24 @@ cd ${TOP}
 dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
-## Setup asyn connections PM1
-drvAsynIPPortConfigure("PM1-GAMMA","wb-site-rm01:5000")
-drvAsynIPPortConfigure("PM1-TS","wb-site-rm01:5001")
-drvFHTConfigure("PM1-FHT6020", "PM1-TS", 1, 1.5)
+## Setup asyn connections PM6
+drvAsynIPPortConfigure("PM6-GAMMA","wb-site-rm01:5000")
+drvAsynIPPortConfigure("PM6-TS","wb-site-rm01:5001")
+drvFHTConfigure("PM6-FHT6020", "PM6-TS", 1, 1.5)
 
 ## Load record instances
 # =====================================================================
 # Load iocAdmin
 # =====================================================================
-dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SITE:RM01")
-dbLoadRecords("db/iocRelease.db","IOC=SIOC:SITE:RM01")
+dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SITE:RM06")
+dbLoadRecords("db/iocRelease.db","IOC=SIOC:SITE:RM06")
 
-#Stations PM1
-dbLoadRecords("db/peripheral-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
+#Stations PM6
+dbLoadRecords("db/peripheral-station.db","UNIT=06,GPORT=PM6-GAMMA,NPORT=PM6-FHT6020")
 
 #Asyn Debugging Records
-dbLoadRecords("db/asynRecord.db","P=RADM:SITE:01:,R=NASYN,PORT=PM1-TS,ADDR=0,IMAX=100,OMAX=100")
-dbLoadRecords("db/asynRecord.db","P=RADM:SITE:01:,R=GASYN,PORT=PM1-GAMMA,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("db/asynRecord.db","P=RADM:SITE:06:,R=NASYN,PORT=PM6-TS,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("db/asynRecord.db","P=RADM:SITE:06:,R=GASYN,PORT=PM6-GAMMA,ADDR=0,IMAX=100,OMAX=100")
 
 
 cd ${TOP}/iocBoot/${IOC}
