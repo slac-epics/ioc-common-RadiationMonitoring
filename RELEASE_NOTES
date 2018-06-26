@@ -19,6 +19,9 @@ Notes:
     on a 64-bit machine such as LCLS-DEV3.
 - This application uses git.
 ***************************************************************
+RadiationMonitoring-R1-0-2  26-June-2018 J. DeFilippis (jpdef):
+    Made an IOC for each periphal moniotoring station. This way if one 
+    station goes down the user does not affect other stations on reboot.
 
 RadiationMonitoring-R1-0-1  16-April-2018 J. DeFilippis (jpdef):
     Added databases for peripheral monitoring system. Changed 
