@@ -1,0 +1,48 @@
+file radm_info.template {
+    pattern 
+    {           P,                LOC, TYPE }
+    { RADM:GUNB:1, "GUNB PPS Chicane",    0 }
+}
+
+file fhtCommon.template {
+    pattern 
+    {           P,       PORT }
+    { RADM:GUNB:1, FHT_GUNB_1 }
+}
+
+file fhtChan.template {
+    pattern 
+    {           P,       PORT,  N,  M }
+    { RADM:GUNB:1, FHT_GUNB_1, 01,  1 }
+    { RADM:GUNB:1, FHT_GUNB_1, 02,  2 }
+    { RADM:GUNB:1, FHT_GUNB_1, 03,  3 }
+    { RADM:GUNB:1, FHT_GUNB_1, 04,  4 }
+    { RADM:GUNB:1, FHT_GUNB_1, 05,  5 }
+    { RADM:GUNB:1, FHT_GUNB_1, 06,  6 }
+    { RADM:GUNB:1, FHT_GUNB_1, 07,  7 }
+    { RADM:GUNB:1, FHT_GUNB_1, 08,  8 }
+    { RADM:GUNB:1, FHT_GUNB_1, 09,  9 }
+    { RADM:GUNB:1, FHT_GUNB_1, 10, 10 }
+    { RADM:GUNB:1, FHT_GUNB_1, 11, 11 }
+    { RADM:GUNB:1, FHT_GUNB_1, 12, 12 }
+    { RADM:GUNB:1, FHT_GUNB_1, 13, 13 }
+    { RADM:GUNB:1, FHT_GUNB_1, 14, 14 }
+    { RADM:GUNB:1, FHT_GUNB_1, 15, 15 }
+    { RADM:GUNB:1, FHT_GUNB_1, 16, 16 }
+}
+
+file fht40G.template {
+    pattern 
+    {           P,       PORT,  N,  M }
+    { RADM:GUNB:1, FHT_GUNB_1, 01,  1 }
+    { RADM:GUNB:1, FHT_GUNB_1, 02,  2 }
+}
+
+file fhtChanDisplay.template {
+    pattern 
+    {           P,       PORT,  N }
+    { RADM:GUNB:1, FHT_GUNB_1, 01 }
+    { RADM:GUNB:1, FHT_GUNB_1, 02 }
+    { RADM:GUNB:1, FHT_GUNB_1, 03 }
+}
+

@@ -20,6 +20,11 @@ Notes:
 - This application uses git.
 ***************************************************************
 
+RadiationMonitoring-R1-0-3  23-Jul-2018 M. Dunning (mdunning):
+    Add new LCLS2 IOC sioc-gunb-rm01
+
+RadiationMonitoring-R1-0-2 There is an existing tag, but no comments here...
+
 RadiationMonitoring-R1-0-1  16-April-2018 J. DeFilippis (jpdef):
     Added databases for peripheral monitoring system. Changed 
     Db structure
