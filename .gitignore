@@ -10,4 +10,5 @@ envPaths
 *.log
 *~
 pvlist.txt
+*.swp
 
