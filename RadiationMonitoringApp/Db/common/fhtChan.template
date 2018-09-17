@@ -1,21 +1,23 @@
 #--- Chan. $(N) --------------------------------
+# This record is the Nth channel's measured value.  Units depend on the particular
+# probe and are set in the USERUNITS record below
 record(ai, "$(P):CH$(N):MEAS") {
     field(DESC, "Meas. value, ch. $(N)")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT), $(M), 0) MEAS")
     field(EGU,  "")
-    field(PREC, "3")
-    field(LOLO, "")
-    field(LOW,  "")
-    field(HIGH, "1e-2")
-    field(HIHI, "1e-1")
-    field(HYST, "0.5")
-    field(LSV,  "NO_ALARM")
-    field(LLSV, "NO_ALARM")
-    field(HSV,  "MINOR")
-    field(HHSV, "MAJOR")
+    field(PREC, "$(PREC=3)")
+    field(LOLO, "$(LOLO="")")
+    field(LOW,  "$(LOW="")")
+    field(HIGH, "$(HIGH="")")
+    field(HIHI, "$(HIHI="")")
+    field(HYST, "$(HYST=0.5)")
+    field(LLSV, "$(LLSV=NO_ALARM)")
+    field(LSV,  "$(LSV=NO_ALARM)")
+    field(HSV,  "$(HSV=MINOR)")
+    field(HHSV, "$(HHSV=MAJOR)")
     field(SCAN, "I/O Intr")
-    info(autosaveFields, "HIGH HIHI HYST HSV HHSV")
+    info(autosaveFields, "LOLO LOW HIGH HIHI HYST LLSV LSV HSV HHSV")
 }
 
 record(longin, "$(P):CH$(N):STATUS") {
@@ -75,7 +77,22 @@ record(mbbi, "$(P):CH$(N):DISPUNITS") {
     field(ELST, "User 1")
     field(TVVL, "12")
     field(TVST, "User 2")
+    field(TTVL, "13")
+    field(TTST, "User 3")
+    field(FTVL, "14")
+    field(FTST, "User 4")
+    field(FFVL, "15")
+    field(FFST, "User 5")
     field(SCAN, "I/O Intr")
+}
+
+# This record sets the display units
+record(stringout, "$(P):CH$(N):USERUNITS") {
+    field(DESC, "User units, ch. $(N)")
+    field(OUT,  "$(P):CH$(N):MEAS.EGU PP")
+    field(VAL,  "$(EGU)")
+    field(PINI, "1")
+    info(autosaveFields, "VAL")
 }
 
 record(ai, "$(P):CH$(N):DISPFACTOR") {

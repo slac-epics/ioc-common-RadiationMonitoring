@@ -12,23 +12,23 @@ file fhtCommon.template {
 
 file fhtChan.template {
     pattern 
-    {           P,       PORT,  N,  M }
-    { RADM:GUNB:1, FHT_GUNB_1, 01,  1 }
-    { RADM:GUNB:1, FHT_GUNB_1, 02,  2 }
-    { RADM:GUNB:1, FHT_GUNB_1, 03,  3 }
-    { RADM:GUNB:1, FHT_GUNB_1, 04,  4 }
-    { RADM:GUNB:1, FHT_GUNB_1, 05,  5 }
-    { RADM:GUNB:1, FHT_GUNB_1, 06,  6 }
-    { RADM:GUNB:1, FHT_GUNB_1, 07,  7 }
-    { RADM:GUNB:1, FHT_GUNB_1, 08,  8 }
-    { RADM:GUNB:1, FHT_GUNB_1, 09,  9 }
-    { RADM:GUNB:1, FHT_GUNB_1, 10, 10 }
-    { RADM:GUNB:1, FHT_GUNB_1, 11, 11 }
-    { RADM:GUNB:1, FHT_GUNB_1, 12, 12 }
-    { RADM:GUNB:1, FHT_GUNB_1, 13, 13 }
-    { RADM:GUNB:1, FHT_GUNB_1, 14, 14 }
-    { RADM:GUNB:1, FHT_GUNB_1, 15, 15 }
-    { RADM:GUNB:1, FHT_GUNB_1, 16, 16 }
+    {           P,       PORT,  N,  M,       EGU, LOLO,  LOW, HIGH, HIHI,     LLSV,      LSV,      HSV,     HHSV }
+    { RADM:GUNB:1, FHT_GUNB_1, 01,  1, "mrem/hr",   "",   "",  1.0,  5.0, NO_ALARM, NO_ALARM,    MINOR,    MAJOR }
+    { RADM:GUNB:1, FHT_GUNB_1, 02,  2,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 03,  3,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 04,  4,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 05,  5,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 06,  6,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 07,  7,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 08,  8,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 09,  9,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 10, 10,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 11, 11,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 12, 12,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 13, 13,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 14, 14,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 15, 15,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
+    { RADM:GUNB:1, FHT_GUNB_1, 16, 16,        "",   "",   "",   "",   "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM }
 }
 
 file fht40G.template {
