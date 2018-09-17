@@ -5,7 +5,6 @@ file radm_info.template {
 }
 
 file fhtCommon.template {
-    pattern 
     {None}
 }
 
