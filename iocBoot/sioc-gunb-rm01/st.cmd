@@ -45,7 +45,7 @@ drvFHTConfigure("FHT_GUNB_1", "RADM_GUNB_1", 1, 1.5)
 #asynSetTraceIOMask("RADM_GUNB_1", -1, 0x5)
 
 # Load record instances
-dbLoadRecords("db/sioc-gunb-rm01.db", "P=RADM:GUNB:1, PORT=RADM_GUNB_1")
+dbLoadRecords("db/sioc-gunb-rm01.db", "P=RADM:GUNB:1, PORT=FHT_GUNB_1")
 
 # Configure autosave
 < iocBoot/common/init_restore.cmd.soft
