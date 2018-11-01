@@ -34,6 +34,7 @@ IOCRELEASE_DB += iocRelease.db
 
 # For Thermo FHT Rad. Mons.
 DB += sioc-gunb-rm01.db
+DB += sioc-ltu1-rm01.db
 
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
