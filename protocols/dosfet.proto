@@ -1,0 +1,38 @@
+
+InTerminator  = CR LF;
+OutTerminator = CR;
+ReplyTimeout  =  2000;
+ReadTimeout   =  10000;
+WriteTimeout  =  10000;
+ExtraInput    = Ignore;
+
+#read_wm_debug    { out "0";				in "%(\$1:STRVAL.VAL)s";}
+#read_wm           { out "0";				in "%(\$1:STRVAL.VAL)s";}
+
+# Firmware version
+get_version 	{	out "GETVERSION";	in "%39c";	}
+get_serial	{	out "GetSerialNumber"; in "%d";	}
+
+get_all_temps	{	out "GetTemperatures";
+			in 	"%(\$1:BOARD_TEMP)f " 176 "C\tinternal";
+			in	"%(\$1:A_TEMP)f " 176 "C\tA";
+			in	"%(\$1:B_TEMP)f " 176 "C\tB";
+			in	"%(\$1:C_TEMP)f " 176 "C\tC";
+			in	"%(\$1:D_TEMP)f " 176 "C\tD"	}
+# $1 can be A, B, C, D, internal
+#get_temp	{	in  "%f " 176 "C\t\$1";		}
+
+# Call SaveSettings after setting somethign you want to persist
+save_settings { out "SaveSettings";	in "OK" ;	}
+
+# Delay between turning on and reading FET in ms. See pdf before using.
+get_delay	{	out "GETDELAY";		in "%d"	;			}
+set_delay	{	out "SETDELAY %d";	in "OK" ; @init{get_delay;}	}
+
+# 0 - 30 V
+get_bias	{	out "GetBias";		in "%f"	; in "%*s"; in "%*s"; in "%*s";			}
+set_bias	{	out "SetBias %f"; in "%*s"; in "%*s"; in "%*s"; in "%*s";	@init{get_bias;}	}
+
+read		{	out "Read \$1";
+				in	"%(\$2:\$1" "1_RAW)f V\t%(\$2:\$1" "1_RAW_STATUS){OK|ERANGE|ERROR}\tD1";
+				in	"%(\$2:\$1" "2_RAW)f V\t%(\$2:\$1" "2_RAW_STATUS){OK|ERANGE|ERROR}\tD2";	}

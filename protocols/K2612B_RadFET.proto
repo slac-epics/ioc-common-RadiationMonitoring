@@ -1,0 +1,32 @@
+#Protocol file for Keithley 2612 SMU
+
+Terminator  = LF;
+ReadTimeout = 10000;
+extrainput = Ignore;
+
+get_serial {
+	out "print(localnode.serialno)";
+	in "%s";
+}
+
+tsp_sno {
+        out "print(node[3].serialno)";
+        in "%s";
+}
+
+reinit		{ out "RadFETinit()";	}
+
+StartRead	{ out "ReadAll()";	}
+ReadCh		{ in "Sensor \$1 %f";}
+
+# Sampling current setting
+GetSampleI	{ out "GetSampleI()"; in "Sampling Current: %f";}
+SetSampleI	{ out "SetSampleI(%f)"; }
+
+# Bias during dose accumulation
+get_bias		{ out "GetBias()"; in "Bias: %f";}
+set_bias		{ out "SetBias(%f)"; }
+
+# Hold time from switch to CCS until reading volts
+get_delay	{ out "GetDelay()"; in "Delay: %f"; }
+set_delay	{ out "SetDelay(%f)"; }

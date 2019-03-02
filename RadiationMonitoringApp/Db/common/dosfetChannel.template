@@ -1,0 +1,26 @@
+#
+# DOSFET serial device database template file
+#
+# Required Macros:
+#   P
+#       EPICS prefix.
+#       Every PV for this device starts with this prefix
+#	PORT
+#		asyn port
+#	SENSOR
+#		Sensor channel, A-D
+
+record( bo, "$(P):$(SENSOR)_READ" )
+{
+	field( DTYP, "stream" )
+	field( OUT, "@dosfet.proto read($(SENSOR),$(P)) $(PORT)" )
+}
+
+record( ai, "$(P):$(SENSOR)_TEMP" )
+{
+#	field( DTYP, "stream" )
+#	field( INP, "@dosfet.proto get_temp($(SENSOR)) $(PORT)" )
+	field( EGU, "C" )
+	field( PREC, 4 )
+#	field( SCAN, "I/O Intr")
+}

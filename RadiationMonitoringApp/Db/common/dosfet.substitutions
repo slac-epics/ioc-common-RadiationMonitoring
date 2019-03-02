@@ -1,0 +1,82 @@
+#
+# DOSFET serial device database template file
+#
+# Required Macros:
+#   P
+#       EPICS prefix.
+#       Every PV for this device starts with this prefix
+#	PORT
+#		asyn port
+#	CH
+#		The name of the 8 RadFET channels. Internally known as A1-D2
+#	SENSOR
+#		Must map to the hardware connections A-D
+#	DRAIN
+#		Must map to hardware connections for each sensor, 1 or 2
+#
+# Optional Macro:
+#	CAL
+#		Calibration factor. The manufacturer may provide a voltage scaling
+#		factor for each DOSFET-L01. Default is 1, no scaling.
+#
+#
+
+# Macros:
+#  P    - device name
+#  PORT - Asyn port
+file dosfetCommon.template
+{
+pattern {  P     , PORT      }
+	{ '$(P)' , '$(PORT)' }
+}
+
+# Macros:
+#  P      - device name
+#  SENSOR - Must map to the hardware connections A-D
+#  PORT   - Asyn port
+file dosfetChannel.template
+{
+pattern { P      , SENSOR , PORT       }
+	{ '$(P)' ,   A    , '$(PORT)'  }
+	{ '$(P)' ,   B    , '$(PORT)'  }
+        { '$(P)' ,   C    , '$(PORT)'  }
+	{ '$(P)' ,   D    , '$(PORT)'  }
+}
+
+# Macros:
+#  P      - device name
+#  SENSOR - Must map to the hardware connections A-D
+#  DRAIN  - Must map to hardware connections for each sensor, 1 or 2
+#  PORT - Asyn port
+file dosfetDrain.template
+{
+pattern {  P      ,  SENSOR,  DRAIN,	PORT	   }
+	{  '$(P)' ,	A ,	1  ,	'$(PORT)'  }
+	{  '$(P)' ,	B ,	1  ,	'$(PORT)'  }
+	{  '$(P)' ,	C ,	1  ,	'$(PORT)'  }
+	{  '$(P)' ,	D ,	1  ,	'$(PORT)'  }
+	{  '$(P)' ,	A ,	2  ,	'$(PORT)'  }
+	{  '$(P)' ,	B ,	2  ,	'$(PORT)'  }
+	{  '$(P)' ,	C ,	2  ,	'$(PORT)'  }
+	{  '$(P)' ,	D ,	2  ,	'$(PORT)'  }
+}
+# Macros:
+#  P = device
+#  SENSOR - Must map to the hardware connections A-D
+#  PORT   - Asyn port
+file history_ch.db
+{
+pattern {  P                         ,	SENSOR,	DRAIN }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  A   ,	 1    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  B   ,	 1    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  C   ,	 1    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  D   ,  1    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  A   ,  2    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  B   ,	 2    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,    C   ,	 2    }
+	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  D   ,	 2    }
+}
+
+
+
+
