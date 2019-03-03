@@ -28,6 +28,8 @@ include $(TOP)/configure/CONFIG
 # Create and install (or just install)
 # databases, templates, substitutions like this
 #
+DB += history_ch.db
+DB += dosfet.db
 DB += fht40G.template
 DB += fhtChan.template
 DB += fhtChanDisplay.template

@@ -38,7 +38,7 @@
 epicsEnvSet("PORT","10001")
 < iocBoot/common/init_asyn.cmd
 
-Load the application databases
+#Load the application databases
 dbLoadRecords("db/dosfet.db"    ,"P=$(DEV) ,PORT=$(DEV):PORT")
 dbLoadRecords("db/asynRecord.db","P=$(DEV):,R=ASYN,PORT=$(DEV):PORT,ADDR=0,OMAX=0,IMAX=108")
 

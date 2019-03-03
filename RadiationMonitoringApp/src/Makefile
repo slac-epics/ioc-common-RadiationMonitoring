@@ -35,6 +35,8 @@ RadiationMonitoring_DBD += stream.dbd
 RadiationMonitoring_DBD += drvAsynIPPort.dbd
 RadiationMonitoring_DBD += asSupport.dbd
 RadiationMonitoring_DBD += drvFHT.dbd
+RadiationMonitoring_DBD += calcSupport.dbd
+RadiationMonitoring_DBD += history.dbd
 
 # Needed for iocAdmin
 RadiationMonitoring_DBD += iocAdmin.dbd
@@ -46,6 +48,8 @@ RadiationMonitoring_LIBS += devIocStats
 RadiationMonitoring_LIBS += autosave
 RadiationMonitoring_LIBS += asyn
 RadiationMonitoring_LIBS += stream
+RadiationMonitoring_LIBS += calc
+RadiationMonitoring_LIBS += history
 
 RadiationMonitoring_SRCS += RadiationMonitoring_registerRecordDeviceDriver.cpp
 RadiationMonitoring_SRCS += drvFHT.cpp

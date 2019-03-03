@@ -28,3 +28,4 @@ epicsEnvSet("NODE"     ,"radf-dmp1-rm02")
 < iocBoot/common/init_dosfet.cmd
 
 # End of file
+< start_restore.cmd

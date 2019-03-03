@@ -27,5 +27,13 @@ epicsEnvSet("NODE"     ,"radf-dmp1-rm01")
 < ../iocBoot/common/st.cmd.soft
 < iocBoot/common/init_dosfet.cmd
 
-# End of file
+# Restore PVs
+< iocBoot/common/init_restore.cmd.soft
 
+cd ${TOP}/iocBoot/${IOC}
+iocInit()
+
+# Start autosave
+< ../common/start_restore.cmd.soft
+
+# End of file
