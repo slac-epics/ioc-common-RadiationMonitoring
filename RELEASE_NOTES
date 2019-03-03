@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+RadiationMonitoring-R1-0-6 2-Mar-2019 G. Brown (gwbrown):
+    Integrate dosfet support from LCLS I RadFET app, for LCLS II IOC sioc-gunb-
+
 RadiationMonitoring-R1-0-5  01-Nov-2018 M. Dunning (mdunning):
     Add new LCLS2 IOC sioc-ltu1-rm01 (CATER 140285)
 
