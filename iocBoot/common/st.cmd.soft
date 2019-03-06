@@ -30,7 +30,7 @@ epicsEnvSet("IOC_BOOT", "${TOP}/iocBoot/${IOC}")
 epicsEnvSet("ST_CMD",   "startup.cmd")
 
 # Set path for stream device proto files
-epicsEnvSet("STREAM_PROTOCOL_PATH", "${TOP}/db")
+epicsEnvSet("STREAM_PROTOCOL_PATH",".:${TOP}/protocols:${TOP}/db")
 
 # Change to TOP of ioc application
 cd ${TOP}
