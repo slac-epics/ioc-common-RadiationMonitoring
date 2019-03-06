@@ -19,9 +19,9 @@
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "M. Dunning")
-epicsEnvSet("IOC_NAME", "SIOC:GUNB:RM02")
+epicsEnvSet("IOC_NAME", "SIOC:GUNB:RM01")
 epicsEnvSet("LOCATION" ,"lcls-daemon1")
-epicsEnvSet("DEV"      ,"RADF:DMP1:BC01" )
+epicsEnvSet("DEV"      ,"RADF:GUNB:BC01" )
 epicsEnvSet("NODE"     ,"radf-gunb-bc01")
 
 # Load common piece of startup script
