@@ -47,6 +47,11 @@ drvFHTConfigure("FHT_GUNB_1", "RADM_GUNB_1", 1, 1.5)
 # Load record instances
 dbLoadRecords("db/sioc-gunb-rm01.db", "P=RADM:GUNB:1, PORT=FHT_GUNB_1")
 
+epicsEnvSet("LOCATION" ,"GUNB")
+epicsEnvSet("DEV"      ,"RADF:GUNB:201" )
+epicsEnvSet("NODE"     ,"radf-gunb-rm01")
+< iocBoot/common/init_dosfet.cmd
+
 # Configure autosave
 < iocBoot/common/init_restore.cmd.soft
 

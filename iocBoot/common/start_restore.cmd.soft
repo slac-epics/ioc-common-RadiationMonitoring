@@ -6,14 +6,14 @@
 #
 #  Side: load this script after iocInit
 #
-#       "In the lore that has built up around autosave, 
+#       "In the lore that has built up around autosave,
 #        PV's that should be restored only before record
 #        initialization have been termed "positions".
 #        All other PV's have been termed "settings".
 #
 #        Thus, you might run across a file called
-#        'auto_positions.req', and now you'll know that 
-#        the parameters in this file are intended to be 
+#        'auto_positions.req', and now you'll know that
+#        the parameters in this file are intended to be
 #        restored only during autosave's pass-0."
 #           - from autosave documentation
 #
@@ -28,17 +28,23 @@
 #
 #==============================================================
 #
+
+# Turn on caPutLogging:
+# Log values only on change to the iocLogServer:
+caPutLogInit($(EPICS_CA_PUT_LOG_ADDR))
+caPutLogShow(2)
+
 # Wait before building autosave files
 epicsThreadSleep(1)
 
 # Generate the autosave PV list
-# Note we need change directory to 
-# where we are saving the restore 
+# Note we need change directory to
+# where we are saving the restore
 # request file.
 cd("${IOC_DATA}/${IOC}/autosave-req")
 makeAutosaveFiles()
 
-# Start the save_restore task 
+# Start the save_restore task
 # save changes on change, but no faster
 # than every 5 seconds.
 # Note: the last arg cannot be set to 0
@@ -49,7 +55,7 @@ create_monitor_set("info_settings.req" , 5 )
 cd("${TOP}")
 pwd()
 
-# Turn off save_restore messages 
+# Turn off save_restore messages
 #save_restoreSet_Debug(0)
 
 # End of script

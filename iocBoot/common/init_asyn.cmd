@@ -7,11 +7,11 @@
 #  Macros:
 #       DEV  - Device name
 #       NODE - Serial device name
-#       PORT - Serial port nubmer       
+#       PORT - Serial port nubmer
 #
-#  Facility:  Radiation Monitoring Motion Controls 
+#  Facility:  Radiation Monitoring Motion Controls
 #
-#  Auth: 07-May-2014, Garth Brown         (GWBROWN) 
+#  Auth: 07-May-2014, Garth Brown         (GWBROWN)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name     (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
@@ -32,13 +32,13 @@ drvAsynIPPortConfigure( "$(DEV):PORT", "$(NODE):$(PORT) TCP", 0, 0, 0 )
 #define ASYN_TRACEIO_FILTER  0x0004
 #define ASYN_TRACEIO_DRIVER  0x0008
 #define ASYN_TRACE_FLOW      0x0010
-asynSetTraceMask( "$(DEV):PORT", 0, 0x1f) # log everything
+asynSetTraceMask( "$(DEV):PORT", 0, 0x1f) # log everything intially
 
 #/* traceIO mask definitions*/
 #define ASYN_TRACEIO_NODATA 0x0000
 #define ASYN_TRACEIO_ASCII  0x0001
 #define ASYN_TRACEIO_ESCAPE 0x0002
 #define ASYN_TRACEIO_HEX    0x0004
-asynSetTraceIOMask( "$(DEV):PORT", 0, 0x1)
+asynSetTraceIOMask( "$(DEV):PORT", 0, 0x2)
 
 # End of file

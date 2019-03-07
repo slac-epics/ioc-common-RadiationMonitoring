@@ -23,9 +23,9 @@
 #          PORT - asyn port name
 #          EPICS_CA_PUT_LOG_ADDR - channel access caput log address
 #
-#  Facility:  LCLS Radiation Monitoring Motion Controls 
+#  Facility:  LCLS Radiation Monitoring Motion Controls
 #
-#  Auth: 07-May-2014, Garth Brown         (GWBROWN) 
+#  Auth: 07-May-2014, Garth Brown         (GWBROWN)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name     (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
@@ -42,22 +42,10 @@ epicsEnvSet("PORT","10001")
 dbLoadRecords("db/dosfet.db"    ,"P=$(DEV) ,PORT=$(DEV):PORT")
 dbLoadRecords("db/asynRecord.db","P=$(DEV):,R=ASYN,PORT=$(DEV):PORT,ADDR=0,OMAX=0,IMAX=108")
 
-# Setup autosave-restore
-< iocBoot/common/init_restore.cmd.soft
-
-# Start EPICS
-iocInit()
-
-# Turn on caPutLogging:
-# Log values only on change to the iocLogServer:
-caPutLogInit($(EPICS_CA_PUT_LOG_ADDR))
-caPutLogShow(2)
-
-# Start autosave process
-< iocBoot/common/restore.cmd.soft
-
+# Wait before turning the logging down
+epicsThreadSleep(5)
 # Tone down the asyn logging for normal operation
-asynSetTraceMask("$(DEV):PORT", 0, 0x5)
+asynSetTraceMask("$(DEV):PORT", 0, 0x1)
 
 # End of file
 
