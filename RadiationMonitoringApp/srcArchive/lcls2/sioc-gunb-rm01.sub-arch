@@ -1,0 +1,25 @@
+# LCLS-II Injector Beam Containment (BCS) Archive List
+
+file  dosfet.tpl-arch
+{
+pattern { PVNAME            , RATE  }
+		{ RADF:GUNB:201:    , 600   }
+}
+
+file  dosfet-chan.tpl-arch
+{
+pattern { PVNAME            , RATE  }
+		{ RADF:GUNB:201:    , 600   }
+		{ RADF:GUNB:621:    , 600   }
+		{ RADF:GUNB:201:C    , 600   }
+		{ RADF:GUNB:201:D    , 600   }
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:GUNB:RM01 }
+}
+
+# End of file
+

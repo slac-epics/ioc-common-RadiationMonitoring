@@ -1,0 +1,19 @@
+# Abs: Archive list for one dosfet chassis, common to 4 channels
+#
+# File: dosfet.tpl-arch
+#
+# Format:  PVNAME     INTERVAL     [ monitor | scan ]
+# The interval is in seconds
+#
+# Name					Interval	Mode
+#---------------------------------------------------
+$(DEV):SET_PERIOD		600			scan
+$(DEV):GET_DELAY		600			scan
+$(DEV):GET_BIAS			600			scan
+$(DEV)1_RAW				600			scan
+$(DEV)1_DOSE			600			scan
+$(DEV)1_ZERO_VOLTS		600			scan
+
+$(DEV)2_RAW				600			scan
+$(DEV)2_DOSE			600			scan
+$(DEV)2_ZERO_VOLTS		600			scan
