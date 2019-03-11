@@ -2,31 +2,34 @@
 #
 #  Name: RELEASE_NOTES
 #
-#  Rem:  Release notes for 
-#        the LCLS RadiationMonitoring Application.        
+#  Rem:  Release notes for
+#        the LCLS RadiationMonitoring Application.
 #
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+RadiationMonitoring-R1-0-7 10-Mar-2019 G. Brown (gwbrown):
+	Add archive files. Add mechanism to alias a dosfet channel from internal name to user oriented name
+
 RadiationMonitoring-R1-0-6 2-Mar-2019 G. Brown (gwbrown):
-    Integrate dosfet support from LCLS I RadFET app, for LCLS II IOC sioc-gunb-
+	Integrate dosfet support from LCLS I RadFET app, for LCLS II IOC sioc-gunb-
 
 RadiationMonitoring-R1-0-5  01-Nov-2018 M. Dunning (mdunning):
-    Add new LCLS2 IOC sioc-ltu1-rm01 (CATER 140285)
+	Add new LCLS2 IOC sioc-ltu1-rm01 (CATER 140285)
 
 RadiationMonitoring-R1-0-4  17-Sep-2018 M. Dunning (mdunning):
-    Add new PV to allow users to set arbitrary units (CATER 140141)
-    fhtChan.template: Add alarm field macros for MEAS record
-    sioc-gunb-rm01.substitutions: move P and PORT macros to dbLoadRecords() in st.cmd file, add alarm field macros
+	Add new PV to allow users to set arbitrary units (CATER 140141)
+	fhtChan.template: Add alarm field macros for MEAS record
+	sioc-gunb-rm01.substitutions: move P and PORT macros to dbLoadRecords() in st.cmd file, add alarm field macros
 
 RadiationMonitoring-R1-0-3  23-Jul-2018 M. Dunning (mdunning):
-    Add new LCLS2 IOC sioc-gunb-rm01
+	Add new LCLS2 IOC sioc-gunb-rm01
 
 RadiationMonitoring-R1-0-2 There is an existing tag, but no comments here...
 
 RadiationMonitoring-R1-0-1  16-April-2018 J. DeFilippis (jpdef):
-    Added databases for peripheral monitoring system. Changed 
-    Db structure
+	Added databases for peripheral monitoring system. Changed
+	Db structure
 
 RadiationMonitoring-R1-0-0  21-Jul-2017 M. Dunning (mdunning):
-    Initial release
+	Initial release
