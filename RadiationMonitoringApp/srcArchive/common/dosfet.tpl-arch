@@ -10,10 +10,3 @@
 $(DEV)SET_PERIOD		600			scan
 $(DEV)GET_DELAY		600			scan
 $(DEV)GET_BIAS			600			scan
-$(DEV)1_RAW				600			scan
-$(DEV)1_DOSE			600			scan
-$(DEV)1_ZERO_VOLTS		600			scan
-
-$(DEV)2_RAW				600			scan
-$(DEV)2_DOSE			600			scan
-$(DEV)2_ZERO_VOLTS		600			scan
