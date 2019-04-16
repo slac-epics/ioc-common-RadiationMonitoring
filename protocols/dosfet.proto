@@ -18,7 +18,10 @@ get_all_temps	{	out "GetTemperatures";
 			in	"%(\$1:A_TEMP)f " 176 "C\tA";
 			in	"%(\$1:B_TEMP)f " 176 "C\tB";
 			in	"%(\$1:C_TEMP)f " 176 "C\tC";
-			in	"%(\$1:D_TEMP)f " 176 "C\tD"	}
+			in	"%(\$1:D_TEMP)f " 176 "C\tD";
+# Not all sensors support temperature readback. For those, ignore the response and
+# let the PV status be set to INVALID. Quash the error message.
+			@mismatch( )	}
 # $1 can be A, B, C, D, internal
 #get_temp	{	in  "%f " 176 "C\t\$1";		}
 
