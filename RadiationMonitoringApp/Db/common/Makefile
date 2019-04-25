@@ -30,7 +30,7 @@ include $(TOP)/configure/CONFIG
 #
 DB += history_ch.db
 DB += dosfet.db
-DB += dosfetChannelAlias.db
+DB += dostfetChannelWrapper.db
 DB += fht40G.template
 DB += fhtChan.template
 DB += fhtChanDisplay.template
