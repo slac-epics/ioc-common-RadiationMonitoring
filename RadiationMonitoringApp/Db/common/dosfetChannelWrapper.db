@@ -1,0 +1,1405 @@
+# Dosfet internal PV names relate to the channels on the box.
+# In order to maintain the relationship between internal PVs while giving
+# dose values names related to accelerator location, create a set of
+# aliases mapping user/accelerator PV names to internal ones.
+
+record( ai, "$(USER_P)1_RAW")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW")
+}
+
+record( ai, "$(USER_P)1_ZERO_VOLTS")
+{
+	field( INP, "$(P):$(SENSOR)1_ZERO_VOLTS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS")
+}
+
+record( ai, "$(USER_P)1_DOSE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE")
+}
+
+record( mbbi, "$(USER_P)1_RAW_STATUS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_STATUS")
+}
+
+record( ai, "$(USER_P)2_RAW")
+{
+	field( INP, "$(P):$(SENSOR)2_RAW")
+}
+
+record( ai, "$(USER_P)2_ZERO_VOLTS")
+{
+	field( INP, "$(P):$(SENSOR)2_ZERO_VOLTS")
+}
+
+record( ai, "$(USER_P)2_DELTA_VOLTS")
+{
+	field( INP, "$(P):$(SENSOR)2_DELTA_VOLTS")
+}
+
+record( ai, "$(USER_P)2_DOSE")
+{
+	field( INP, "$(P):$(SENSOR)2_DOSE")
+}
+
+record( mbbi, "$(USER_P)2_RAW_STATUS")
+{
+	field( INP, "$(P):$(SENSOR)2_RAW_STATUS")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK:CALCX")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_LAST_N_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_LAST_N_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_1MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_6MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_30MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_30MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_1HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_1HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_6HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_6HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_24HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_24HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_3DAY_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_3DAY_OFFSET")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_MAX")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_AVG")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_MIN")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_RMS")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_STD")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_SLOPE")
+}
+
+record( ai, "$(USER_P)1_RAW_WEEK_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_RAW_WEEK_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK:CALCX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_LAST_N_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_LAST_N_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_30MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_30MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_1HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_1HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_6HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_6HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_24HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_24HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_3DAY_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_3DAY_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_MAX")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_AVG")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_MIN")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_RMS")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_STD")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DELTA_VOLTS_WEEK_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DELTA_VOLTS_WEEK_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK:CALCX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK:CALCX")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK:X-AXIS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK:X-AXIS")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_LAST_N_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_LAST_N_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_1MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_6MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_30MIN_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_30MIN_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_1HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_1HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_6HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_6HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_24HR_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_24HR_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_3DAY_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_3DAY_OFFSET")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_MAX")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_MAX")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_AVG")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_AVG")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_MIN")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_MIN")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_RMS")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_RMS")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_STD")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_STD")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_SLOPE")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_SLOPE")
+}
+
+record( ai, "$(USER_P)1_DOSE_WEEK_OFFSET")
+{
+	field( INP, "$(P):$(SENSOR)1_DOSE_WEEK_OFFSET")
+}
+
