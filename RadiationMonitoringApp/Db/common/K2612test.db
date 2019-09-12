@@ -1,0 +1,86 @@
+#record(stringin, "K2612B:ID")
+#{
+#  field(DESC, "Serial No of SMU")
+#  field(DTYP, "stream")
+#  field(INP,  "@K2612B_RadFET.proto sno $(PORT)")
+#  field(SCAN, "1 second")
+#}
+#
+#record(stringin, "K2612B_tsp:ID")
+#{
+#  field(DESC, "Serial No of SMU")
+#  field(DTYP, "stream")
+#  field(INP,  "@K2612B_RadFET.proto tsp_sno $(PORT)")
+#  field(SCAN, "10 second")
+#}
+
+record(bo, "K2612B:StartRead")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(OUT,  "@K2612B_RadFET.proto StartRead $(PORT)")
+  field(SCAN, "10 second")
+}
+
+record(ai, "K2612B:Ch1")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(1) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
+
+record(ai, "K2612B:Ch1")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(1) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
+
+record(ai, "K2612B:Ch7")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(7) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
+
+record(ai, "K2612B:Ch13")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(13) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
+
+record(ai, "K2612B:Ch15")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(15) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
+
+record(ai, "K2612B:Ch24")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(24) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
+
+record(ai, "K2612B:Ch28")
+{
+  field(DESC, "Serial No of SMU")
+  field(DTYP, "stream")
+  field(INP,  "@K2612B_RadFET.proto ReadCh(28) $(PORT)")
+  field(PREC, 5)
+  field(SCAN, "I/O Intr")
+}
