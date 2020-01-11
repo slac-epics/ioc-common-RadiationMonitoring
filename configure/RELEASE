@@ -11,12 +11,12 @@
 # Don't set your version to anything such as "test" that
 # could match a directory name.
 # ==========================================================
-ASYN_MODULE_VERSION=R4.31-0.1.0
+ASYN_MODULE_VERSION         = R4.31-0.1.0
 AUTOSAVE_MODULE_VERSION     = R5.8-2.1.0
-CALC_MODULE_VERSION=R3.6.1-0.1.0
+CALC_MODULE_VERSION         = R3.7-1.0.1
 CAPUTLOG_MODULE_VERSION     = R3.5-1.0.0
-HISTORY_MODULE_VERSION=R2.6.4
-IOCADMIN_MODULE_VERSION     = R3.1.15-1.7.0
+HISTORY_MODULE_VERSION      = R2.7.0
+IOCADMIN_MODULE_VERSION     = R3.1.16-1.1.0
 MISCUTILS_MODULE_VERSION=R2.2.5
 STREAMDEVICE_MODULE_VERSION=R2.7.7-0.2
 
