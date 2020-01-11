@@ -30,6 +30,12 @@ pattern {  P     , PORT      }
 	{ '$(P)' , '$(PORT)' }
 }
 
+file radm_info.template {
+    pattern
+    {    P,      LOC, TYPE }
+    { '$(P)', '$(LOC)', 1  }
+}
+
 # Macros:
 #  P      - device name
 #  SENSOR - Must map to the hardware connections A-D
@@ -39,7 +45,7 @@ file dosfetChannel.template
 pattern { P      , SENSOR , PORT       }
 	{ '$(P)' ,   A    , '$(PORT)'  }
 	{ '$(P)' ,   B    , '$(PORT)'  }
-        { '$(P)' ,   C    , '$(PORT)'  }
+	{ '$(P)' ,   C    , '$(PORT)'  }
 	{ '$(P)' ,   D    , '$(PORT)'  }
 }
 
@@ -67,14 +73,14 @@ pattern {  P      ,  SENSOR,  DRAIN,	PORT	   }
 file history_ch.db
 {
 pattern {  P                         ,	SENSOR,	DRAIN }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  A   ,	 1    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  B   ,	 1    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  C   ,	 1    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  D   ,  1    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  A   ,  2    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  B   ,	 2    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,    C   ,	 2    }
-	{  '$(P)':$(SENSOR)$(DRAIN)_ ,	  D   ,	 2    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  A   ,	 1    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  B   ,	 1    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  C   ,	 1    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  D   ,  1    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  A   ,  2    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  B   ,	 2    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,    C   ,	 2    }
+	{  '$(P)':$(SENSOR)$(DRAIN): ,	  D   ,	 2    }
 }
 
 

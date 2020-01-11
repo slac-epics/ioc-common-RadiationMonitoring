@@ -14,61 +14,61 @@
 #		Calibration factor. See Voltage Calibraion, p. 12 of pdf
 
 
-record( ai, "$(P):$(SENSOR)$(DRAIN)_RAW" )
+record( ai, "$(P):$(SENSOR):$(DRAIN):RAW" )
 {
 	field( EGU, "V" )
 	field( PREC, 7 )
 	field( SCAN, "Passive" )
-    field( FLNK, "$(P):$(SENSOR)$(DRAIN)_DOSE PP" )
+    field( FLNK, "$(P):$(SENSOR):$(DRAIN):DOSE PP" )
 }
 
-record( dfanout, "$(P):$(SENSOR)$(DRAIN)_SET_ZERO_VOLTS" )
+record( dfanout, "$(P):$(SENSOR):$(DRAIN):SET_ZERO_VOLTS" )
 {
-	field( DOL,  "$(P):$(SENSOR)$(DRAIN)_RAW NPP" )
-	field( OUTA, "$(P):$(SENSOR)$(DRAIN)_ZERO_VOLTS PP" )
-	field( OUTB, "$(P):$(SENSOR)$(DRAIN)_ZERO_TOD PP" )
+	field( DOL,  "$(P):$(SENSOR):$(DRAIN):RAW NPP" )
+	field( OUTA, "$(P):$(SENSOR):$(DRAIN):ZERO_VOLTS PP" )
+	field( OUTB, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD PP" )
 	field( OMSL, "closed_loop")
 }
 
 # note: time stamps done this way because "Soft Timestamp" can't be autosaved.
-record(stringin, "$(P):$(SENSOR)$(DRAIN)_ZERO_TOD")
+record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
 {
     field(DESC, "Time and date of zero dose")
 	info(autosaveFields,"VAL")
 }
 
-record(stringout, "$(P):$(SENSOR)$(DRAIN)_ZERO_TOD_UPDATER")
+record(stringout, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_UPDATER")
 {
     field(DESC, "Copy time and date of zero dose")
     field(OMSL, "closed_loop")
-    field(DOL, "$(P):$(SENSOR)$(DRAIN)_ZERO_TOD_AUTO PP")
-    field(OUT, "$(P):$(SENSOR)$(DRAIN)_ZERO_TOD PP")
+    field(DOL, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CPP")
+    field(OUT, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD PP")
 }
 
-record(stringin, "$(P):$(SENSOR)$(DRAIN)_ZERO_TOD_AUTO")
+record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO")
 {
     field(DESC, "Make time and date of zero dose")
     field(DTYP, "Soft Timestamp")
     field(INP, "@%m/%d/%Y %H:%M:%S")
 }
 
-record( ai, "$(P):$(SENSOR)$(DRAIN)_ZERO_VOLTS" )
+record( ai, "$(P):$(SENSOR):$(DRAIN):ZERO_VOLTS" )
 {
 	field( EGU, "V" )
 	field( PREC, 7 )
 	field( INP,  0 )
 	field( PINI, "YES" )
-    field( FLNK, "$(P):$(SENSOR)$(DRAIN)_DOSE PP" )
+    field( FLNK, "$(P):$(SENSOR):$(DRAIN):DOSE PP" )
 	info(autosaveFields,"VAL")
 }
 
-record( calc, "$(P):$(SENSOR)$(DRAIN)_DELTA_VOLTS" )
+record( calc, "$(P):$(SENSOR):$(DRAIN):DELTA_VOLTS" )
 {
 	field( CALC, "C*(A-B)" )
 	field( EGU, "V" )
 	field( PREC, 7 )
-	field( INPA, "$(P):$(SENSOR)$(DRAIN)_RAW NPP MS" )	# current raw wattmeter reading
-	field( INPB, "$(P):$(SENSOR)$(DRAIN)_ZERO_VOLTS NPP MS" )	# dark (background) wm reading
+	field( INPA, "$(P):$(SENSOR):$(DRAIN):RAW NPP MS" )	# current raw wattmeter reading
+	field( INPB, "$(P):$(SENSOR):$(DRAIN):ZERO_VOLTS NPP MS" )	# dark (background) wm reading
 	field( INPC, "$(CAL=1)" ) # calibration factor
 	info(autosaveFields,"INPC")
 }
@@ -77,7 +77,7 @@ record( calc, "$(P):$(SENSOR)$(DRAIN)_DELTA_VOLTS" )
 # sensors from REM Oxford Ltd. irradiated under zero bias:
 # exp(-b/2c-sqr(b^2/4*c^2+(loge(dV)-a)/c))
 # where a = -4.33139, b = 1.05947, c = -0.04047
-record( calc, "$(P):$(SENSOR)$(DRAIN)_DOSE" )
+record( calc, "$(P):$(SENSOR):$(DRAIN):DOSE" )
 {
 	field( CALC, "EXP(E-SQR(F+(LOGE(D)-A)/C))" )
 	field( EGU, "" )
@@ -85,13 +85,13 @@ record( calc, "$(P):$(SENSOR)$(DRAIN)_DOSE" )
 	field( INPA, "-4.33139" )	# coefficient a according to pdf
 	field( INPB, "1.05947" )	# coefficient b according to pdf
 	field( INPC, "-0.04047" )	# coefficient c according to pdf
-	field( INPD, "$(P):$(SENSOR)$(DRAIN)_DELTA_VOLTS PP MS" )	# Voltage change since zeroing
+	field( INPD, "$(P):$(SENSOR):$(DRAIN):DELTA_VOLTS PP MS" )	# Voltage change since zeroing
 	field( INPE, "1.308957252e+1") # -B/2C
 	field( INPF, "1.713369088e+2") # -B^2/4C^2
 	info(autosaveFields,"CALC DESC INPA INPB INPC INPE INPF INPG INPH INPI INPJ INPK INPL")
 }
 
-record( mbbi,	"$(P):$(SENSOR)$(DRAIN)_RAW_STATUS" )
+record( mbbi,	"$(P):$(SENSOR):$(DRAIN):RAW_STATUS" )
 {
 	field( ZRVL, "0" )
 	field( ONVL, "1" )
@@ -102,5 +102,5 @@ record( mbbi,	"$(P):$(SENSOR)$(DRAIN)_RAW_STATUS" )
 	field( ZRSV, "NO_ALARM" )
 	field( ONSV, "MINOR" )
 	field( TWSV, "INVALID" )
-    field( FLNK, "$(P):$(SENSOR)$(DRAIN)_RAW NPP MS" )
+    field( FLNK, "$(P):$(SENSOR):$(DRAIN):RAW NPP MS" )
 }

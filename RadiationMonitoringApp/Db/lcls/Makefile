@@ -35,6 +35,8 @@ IOCRELEASE_DB += iocRelease.db
 # For Thermo FHT Rad. Mons.
 DB += sioc-bsyh-rm01.db
 
+# RadFETs
+DB += sioc-undh-rm01.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

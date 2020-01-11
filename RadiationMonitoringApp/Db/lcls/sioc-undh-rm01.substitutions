@@ -1,0 +1,39 @@
+file dosfetChannelWrapper.db
+{
+    pattern
+    { P,              SENSOR, USER_P          }
+    { RADM:UNDH:RM01, A,      RADM:UNDH:1377: }
+    { RADM:UNDH:RM01, B,      RADM:UNDH:1477: }
+    { RADM:UNDH:RM01, C,      RADM:UNDH:1577: }
+    { RADM:UNDH:RM01, D,      RADM:UNDH:1677: }
+    { RADM:UNDH:RM02, A,      RADM:UNDH:1777: }
+    { RADM:UNDH:RM02, B,      RADM:UNDH:1877: }
+    { RADM:UNDH:RM02, C,      RADM:UNDH:1977: }
+    { RADM:UNDH:RM02, D,      RADM:UNDH:2077: }
+    { RADM:UNDH:RM03, A,      RADM:UNDH:2177: }
+    { RADM:UNDH:RM03, B,      RADM:UNDH:2277: }
+    { RADM:UNDH:RM03, C,      RADM:UNDH:2377: }
+    { RADM:UNDH:RM03, D,      RADM:UNDH:2477: }
+    { RADM:UNDH:RM04, A,      RADM:UNDH:2577: }
+    { RADM:UNDH:RM04, B,      RADM:UNDH:2677: }
+    { RADM:UNDH:RM04, C,      RADM:UNDH:2777: }
+    { RADM:UNDH:RM04, D,      RADM:UNDH:2877: }
+    { RADM:UNDH:RM05, A,      RADM:UNDH:2977: }
+    { RADM:UNDH:RM05, B,      RADM:UNDH:3077: }
+    { RADM:UNDH:RM05, C,      RADM:UNDH:3177: }
+    { RADM:UNDH:RM05, D,      RADM:UNDH:3277: }
+    { RADM:UNDH:RM06, A,      RADM:UNDH:3377: }
+    { RADM:UNDH:RM06, B,      RADM:UNDH:3477: }
+    { RADM:UNDH:RM06, C,      RADM:UNDH:3577: }
+    { RADM:UNDH:RM06, D,      RADM:UNDH:3677: }
+    { RADM:UNDH:RM07, A,      RADM:UNDH:3777: }
+    { RADM:UNDH:RM07, B,      RADM:UNDH:3877: }
+    { RADM:UNDH:RM07, C,      RADM:UNDH:3977: }
+    { RADM:UNDH:RM07, D,      RADM:UNDH:4077: }
+    { RADM:UNDH:RM08, A,      RADM:UNDH:4177: }
+    { RADM:UNDH:RM08, B,      RADM:UNDH:4277: }
+    { RADM:UNDH:RM08, C,      RADM:UNDH:4377: }
+    { RADM:UNDH:RM08, D,      RADM:UNDH:4477: }
+    { RADM:UNDH:RM09, A,      RADM:UNDH:4577: }
+    { RADM:UNDH:RM09, B,      RADM:UNDH:4677: }
+}
