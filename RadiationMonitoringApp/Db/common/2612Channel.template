@@ -25,7 +25,7 @@ record(ai, "$(P):RAW") {
   field(FLNK, "$(P):DOSE PP")
 }
 
-record(dfanout, "$(P):SET_ZERO_VOLTS") {
+record(dfanout, "$(P):ZERO") {
   field(DOL, "$(P):RAW NPP")
   field(OUTA, "$(P):ZERO_VOLTS PP")
   field(OUTB, "$(P):ZERO_TOD_AUTO PP")
@@ -161,13 +161,13 @@ record(ao, "$(P):DOSE_EQN_L") {
 #! Field("$(P):RAW.FLNK",16777215,1,"$(P):RAW.FLNK")
 #! Link("$(P):RAW.FLNK","$(P):DOSE")
 #! Field("$(P):RAW.VAL",16777215,1,"$(P):RAW.VAL")
-#! Record("$(P):SET_ZERO_VOLTS",60,188,0,0,"$(P):SET_ZERO_VOLTS")
-#! Field("$(P):SET_ZERO_VOLTS.DOL",16777215,0,"$(P):SET_ZERO_VOLTS.DOL")
-#! Link("$(P):SET_ZERO_VOLTS.DOL","$(P):RAW.VAL")
-#! Field("$(P):SET_ZERO_VOLTS.OUTA",16777215,1,"$(P):SET_ZERO_VOLTS.OUTA")
-#! Link("$(P):SET_ZERO_VOLTS.OUTA","$(P):ZERO_VOLTS.VAL")
-#! Field("$(P):SET_ZERO_VOLTS.OUTB",16777215,1,"$(P):SET_ZERO_VOLTS.OUTB")
-#! Link("$(P):SET_ZERO_VOLTS.OUTB","$(P):ZERO_TOD_AUTO.VAL")
+#! Record("$(P):ZERO",60,188,0,0,"$(P):ZERO")
+#! Field("$(P):ZERO.DOL",16777215,0,"$(P):ZERO.DOL")
+#! Link("$(P):ZERO.DOL","$(P):RAW.VAL")
+#! Field("$(P):ZERO.OUTA",16777215,1,"$(P):ZERO.OUTA")
+#! Link("$(P):ZERO.OUTA","$(P):ZERO_VOLTS.VAL")
+#! Field("$(P):ZERO.OUTB",16777215,1,"$(P):ZERO.OUTB")
+#! Link("$(P):ZERO.OUTB","$(P):ZERO_TOD_AUTO.VAL")
 #! Record("$(P):ZERO_TOD",320,210,0,0,"$(P):ZERO_TOD")
 #! Field("$(P):ZERO_TOD.VAL",16777215,0,"$(P):ZERO_TOD.VAL")
 #! Record("$(P):ZERO_TOD_UPDATER",560,168,0,0,"$(P):ZERO_TOD_UPDATER")

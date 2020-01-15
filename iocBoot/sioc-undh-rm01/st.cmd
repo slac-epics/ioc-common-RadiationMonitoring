@@ -27,7 +27,7 @@ epicsEnvSet("IOC_NAME", "SIOC:UNDH:RM01")
 epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
 # Load record instances
-dbLoadRecords("db/sioc-undh-rm01.db", "P=RADM:UNDH:1, PORT=FHT_UNDH_1")
+dbLoadRecords("db/sioc-undh-rm01.db")
 
 epicsEnvSet("LOCATION" ,"UNDH")
 

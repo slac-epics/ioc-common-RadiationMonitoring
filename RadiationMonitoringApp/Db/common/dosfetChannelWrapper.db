@@ -13,9 +13,9 @@ record( ai, "$(USER_P)1:ZERO_VOLTS")
 	field( INP, "$(P):$(SENSOR):1:ZERO_VOLTS")
 }
 
-record( bo, "$(USER_P)1:SET_ZERO_VOLTS")
+record( bo, "$(USER_P)1:ZERO")
 {
-	field( INP, "$(P):$(SENSOR):1:SET_ZERO_VOLTS")
+	field( OUT, "$(P):$(SENSOR):1:ZERO")
 }
 
 record( stringin, "$(USER_P)1:ZERO_TOD")
@@ -33,9 +33,18 @@ record( ai, "$(USER_P)1:DOSE")
 	field( INP, "$(P):$(SENSOR):1:DOSE")
 }
 
-record( mbbi, "$(USER_P)1:RAW_STATUS")
+record( mbbi, "$(USER_P)1:STATUS")
 {
 	field( INP, "$(P):$(SENSOR):1:RAW_STATUS")
+	field( ZRVL, "0" )
+	field( ONVL, "1" )
+	field( TWVL, "2" )
+	field( ZRST, "Ok" )
+	field( ONST, "Over Linear Range" )
+	field( TWST, "Error")
+	field( ZRSV, "NO_ALARM" )
+	field( ONSV, "MINOR" )
+	field( TWSV, "INVALID" )
 }
 
 record( ai, "$(USER_P)2:RAW")
@@ -48,9 +57,9 @@ record( ai, "$(USER_P)2:ZERO_VOLTS")
 	field( INP, "$(P):$(SENSOR):2:ZERO_VOLTS")
 }
 
-record( bo, "$(USER_P)2:SET_ZERO_VOLTS")
+record( bo, "$(USER_P)2:ZERO")
 {
-	field( INP, "$(P):$(SENSOR):2:SET_ZERO_VOLTS")
+	field( OUT, "$(P):$(SENSOR):2:ZERO")
 }
 
 record( stringin, "$(USER_P)2:ZERO_TOD")
@@ -68,9 +77,18 @@ record( ai, "$(USER_P)2:DOSE")
 	field( INP, "$(P):$(SENSOR):2:DOSE")
 }
 
-record( mbbi, "$(USER_P)2:RAW_STATUS")
+record( mbbi, "$(USER_P)2:STATUS")
 {
 	field( INP, "$(P):$(SENSOR):2:RAW_STATUS")
+	field( ZRVL, "0" )
+	field( ONVL, "1" )
+	field( TWVL, "2" )
+	field( ZRST, "Ok" )
+	field( ONST, "Over Linear Range" )
+	field( TWST, "Error")
+	field( ZRSV, "NO_ALARM" )
+	field( ONSV, "MINOR" )
+	field( TWSV, "INVALID" )
 }
 
 record( ai, "$(USER_P)TEMP")

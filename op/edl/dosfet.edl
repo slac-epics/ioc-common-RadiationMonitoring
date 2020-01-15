@@ -204,7 +204,7 @@ x 152
 y 160
 w 136
 h 24
-controlPv "$(device):A1_DELTA_VOLTS"
+controlPv "$(device):A1:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -348,7 +348,7 @@ x 440
 y 160
 w 136
 h 24
-controlPv "$(device):C1_DELTA_VOLTS"
+controlPv "$(device):C1:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -414,7 +414,7 @@ x 584
 y 160
 w 136
 h 24
-controlPv "$(device):D1_DELTA_VOLTS"
+controlPv "$(device):D1:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -639,7 +639,7 @@ x 152
 y 400
 w 136
 h 24
-controlPv "$(device):A2_DELTA_VOLTS"
+controlPv "$(device):A2:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -702,7 +702,7 @@ x 296
 y 400
 w 136
 h 24
-controlPv "$(device):B2_DELTA_VOLTS"
+controlPv "$(device):B2:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -790,7 +790,7 @@ x 440
 y 400
 w 136
 h 24
-controlPv "$(device):C2_DELTA_VOLTS"
+controlPv "$(device):C2:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -878,7 +878,7 @@ x 584
 y 400
 w 136
 h 24
-controlPv "$(device):D2_DELTA_VOLTS"
+controlPv "$(device):D2:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -1046,7 +1046,7 @@ x 296
 y 160
 w 136
 h 24
-controlPv "$(device):B1_DELTA_VOLTS"
+controlPv "$(device):B1:DELTA_VOLTS"
 precision 1
 fgColor index 16
 fgAlarm
@@ -1370,7 +1370,7 @@ x 432
 y 600
 w 112
 h 24
-controlPv "$(device):POLL_DELAY.B"
+controlPv "$(device):POLL_TIMER.B"
 format "decimal"
 font "helvetica-medium-r-12.0"
 fontAlign "center"

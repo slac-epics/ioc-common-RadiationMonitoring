@@ -488,7 +488,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):A1_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):A1_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -534,7 +534,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):B1_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):B1_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -580,7 +580,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):C1_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):C1_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -626,7 +626,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):D1_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):D1_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -1027,7 +1027,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):B2_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):B2_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -1073,7 +1073,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):C2_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):C2_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -1119,7 +1119,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):D2_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):D2_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -1142,7 +1142,7 @@ onColor index 3
 offColor index 3
 topShadowColor index 1
 botShadowColor index 11
-controlPv "$(device):A2_SET_ZERO_VOLTS.PROC"
+controlPv "$(device):A2_ZERO.PROC"
 pressValue "1"
 onLabel "Rezero"
 offLabel "Rezero"
@@ -1203,7 +1203,7 @@ x 96
 y 664
 w 72
 h 24
-controlPv "$(device):SET_PERIOD"
+controlPv "$(device):SET_POLL_INT"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 25
@@ -1235,7 +1235,7 @@ inconsistentColor index 5
 topShadowColor index 1
 botShadowColor index 11
 controlPv "$(device):POLL_ENABLE"
-indicatorPv "$(device):POLL_DELAY.DOPT"
+indicatorPv "$(device):POLL_TIMER.DOPT"
 font "helvetica-medium-r-12.0"
 orientation "horizontal"
 endObjectProperties
@@ -1250,7 +1250,7 @@ x 16
 y 664
 w 72
 h 24
-controlPv "$(device):POLL_DELAY.A"
+controlPv "$(device):POLL_TIMER.A"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 15
@@ -1376,7 +1376,7 @@ x 280
 y 688
 w 72
 h 24
-controlPv "$(device):GET_DELAY"
+controlPv "$(device):DELAY"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 15
@@ -1424,7 +1424,7 @@ x 568
 y 688
 w 72
 h 24
-controlPv "$(device):GET_BIAS"
+controlPv "$(device):BIAS"
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 15

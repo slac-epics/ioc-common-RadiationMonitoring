@@ -73,7 +73,7 @@ record(bo, "$(P):SAVE_SETTINGS")
 }
 
 # Delay between turning on and reading FET in ms. See pdf before using.
-record(longin, "$(P):GET_DELAY") {
+record(longin, "$(P):DELAY") {
   field(DESC, "See documentation")
   field(EGU, "ms")
   field(DTYP, "stream")
@@ -90,13 +90,13 @@ record(longout, "$(P):SET_DELAY") {
   field(DTYP, "stream")
   field(OUT, "@dosfet.proto set_delay $(PORT)")
   field(SDIS, "$(P):COMM:NOT_READY")
-  field(FLNK, "$(P):GET_DELAY PP")
+  field(FLNK, "$(P):DELAY PP")
   field(LOPR, "1")
   field(HOPR, "5000")
 }
 
 # Bias applied between reads
-record(ai, "$(P):GET_BIAS") {
+record(ai, "$(P):BIAS") {
   field(DESC, "See documentation")
   field(EGU, "V")
   field(DTYP, "stream")
@@ -113,7 +113,7 @@ record(ao, "$(P):SET_BIAS") {
   field(DTYP, "stream")
   field(OUT, "@dosfet.proto set_bias $(PORT)")
   field(SDIS, "$(P):COMM:NOT_READY")
-  field(FLNK, "$(P):GET_BIAS PP")
+  field(FLNK, "$(P):BIAS PP")
   field(LOPR, "1")
   field(HOPR, "30")
 }
@@ -143,25 +143,25 @@ record(bo, "$(P):POLL_ENABLE")
 {
   field(ZNAM, "Enabled")
   field(ONAM, "Disabled")
-  field(OUT, "$(P):POLL_DELAY.DOPT PP")
+  field(OUT, "$(P):POLL_TIMER.DOPT PP")
   field(PINI, "YES")
   info(autosaveFields, "VAL")
 }
 
-record(longout, "$(P):SET_PERIOD") {
+record(longout, "$(P):SET_POLL_INT") {
   field(DESC, "Sampling period, 0 to disable")
   field(EGU, "s")
-  field(OUT, "$(P):POLL_DELAY")
-  field(FLNK, "$(P):POLL_DELAY")
+  field(OUT, "$(P):POLL_TIMER")
+  field(FLNK, "$(P):POLL_TIMER")
   field(PINI, "YES")
   info(autosaveFields, "VAL")
 }
 
-record(calcout, "$(P):POLL_DELAY") {
+record(calcout, "$(P):POLL_TIMER") {
   field(DESC, "Loop, trigger dose polling")
   field(SCAN, "1 second")
   field(EGU, "s")
-  field(INPA,  "$(P):SET_PERIOD PP")
+  field(INPA,  "$(P):SET_POLL_INT PP")
   field(INPB,  "$(P):GATE_POLLING PP")
   field(CALC, "(B+1)%A")
   field(OCAL, "B+1")
@@ -230,23 +230,23 @@ record(bo, "$(P):PROC_TEMPS")
 #! Link("$(P):VERSION.SDIS","$(P):COMM:NOT_READY.VAL")
 #! Record("$(P):ID",380,222,0,0,"$(P):ID")
 #! Record("$(P):SEQ",340,442,0,0,"$(P):SEQ")
-#! Record("$(P):GET_PERIOD",600,399,0,0,"$(P):GET_PERIOD")
-#! Field("$(P):GET_PERIOD.SDIS",16777215,0,"$(P):GET_PERIOD.SDIS")
-#! Link("$(P):GET_PERIOD.SDIS","$(P):COMM:NOT_READY.VAL")
-#! Field("$(P):GET_PERIOD.VAL",16777215,0,"$(P):GET_PERIOD.VAL")
-#! Record("$(P):SET_PERIOD",620,19,0,0,"$(P):SET_PERIOD")
-#! Field("$(P):SET_PERIOD.SDIS",16777215,0,"$(P):SET_PERIOD.SDIS")
-#! Link("$(P):SET_PERIOD.SDIS","$(P):COMM:NOT_READY.VAL")
-#! Field("$(P):SET_PERIOD.FLNK",16777215,0,"$(P):SET_PERIOD.FLNK")
-#! Link("$(P):SET_PERIOD.FLNK","$(P):POLL_DELAY")
-#! Record("$(P):GET_DELAY",880,259,0,0,"$(P):GET_DELAY")
-#! Field("$(P):GET_DELAY.SDIS",16777215,0,"$(P):GET_DELAY.SDIS")
-#! Link("$(P):GET_DELAY.SDIS","$(P):COMM:NOT_READY.VAL")
+#! Record("$(P):PERIOD",600,399,0,0,"$(P):PERIOD")
+#! Field("$(P):PERIOD.SDIS",16777215,0,"$(P):PERIOD.SDIS")
+#! Link("$(P):PERIOD.SDIS","$(P):COMM:NOT_READY.VAL")
+#! Field("$(P):PERIOD.VAL",16777215,0,"$(P):PERIOD.VAL")
+#! Record("$(P):SET_POLL_INT",620,19,0,0,"$(P):SET_POLL_INT")
+#! Field("$(P):SET_POLL_INT.SDIS",16777215,0,"$(P):SET_POLL_INT.SDIS")
+#! Link("$(P):SET_POLL_INT.SDIS","$(P):COMM:NOT_READY.VAL")
+#! Field("$(P):SET_POLL_INT.FLNK",16777215,0,"$(P):SET_POLL_INT.FLNK")
+#! Link("$(P):SET_POLL_INT.FLNK","$(P):POLL_TIMER")
+#! Record("$(P):DELAY",880,259,0,0,"$(P):DELAY")
+#! Field("$(P):DELAY.SDIS",16777215,0,"$(P):DELAY.SDIS")
+#! Link("$(P):DELAY.SDIS","$(P):COMM:NOT_READY.VAL")
 #! Record("$(P):SET_DELAY",920,30,0,0,"$(P):SET_DELAY")
 #! Field("$(P):SET_DELAY.SDIS",16777215,0,"$(P):SET_DELAY.SDIS")
 #! Link("$(P):SET_DELAY.SDIS","$(P):COMM:NOT_READY.VAL")
 #! Field("$(P):SET_DELAY.FLNK",16777215,0,"$(P):SET_DELAY.FLNK")
-#! Link("$(P):SET_DELAY.FLNK","$(P):GET_DELAY")
-#! Record("$(P):POLL_DELAY",600,242,0,0,"$(P):POLL_DELAY")
-#! Field("$(P):POLL_DELAY.LNK1",16777215,0,"$(P):POLL_DELAY.LNK1")
-#! Link("$(P):POLL_DELAY.LNK1","$(P):GET_PERIOD.VAL")
+#! Link("$(P):SET_DELAY.FLNK","$(P):DELAY")
+#! Record("$(P):POLL_TIMER",600,242,0,0,"$(P):POLL_TIMER")
+#! Field("$(P):POLL_TIMER.LNK1",16777215,0,"$(P):POLL_TIMER.LNK1")
+#! Link("$(P):POLL_TIMER.LNK1","$(P):PERIOD.VAL")

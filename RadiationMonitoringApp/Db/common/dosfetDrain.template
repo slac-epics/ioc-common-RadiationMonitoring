@@ -22,11 +22,11 @@ record( ai, "$(P):$(SENSOR):$(DRAIN):RAW" )
     field( FLNK, "$(P):$(SENSOR):$(DRAIN):DOSE PP" )
 }
 
-record( dfanout, "$(P):$(SENSOR):$(DRAIN):SET_ZERO_VOLTS" )
+record( dfanout, "$(P):$(SENSOR):$(DRAIN):ZERO" )
 {
 	field( DOL,  "$(P):$(SENSOR):$(DRAIN):RAW NPP" )
 	field( OUTA, "$(P):$(SENSOR):$(DRAIN):ZERO_VOLTS PP" )
-	field( OUTB, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD PP" )
+	field( OUTB, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO.PROC PP" )
 	field( OMSL, "closed_loop")
 }
 
@@ -34,15 +34,8 @@ record( dfanout, "$(P):$(SENSOR):$(DRAIN):SET_ZERO_VOLTS" )
 record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
 {
     field(DESC, "Time and date of zero dose")
+    field(INP, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CPP")
 	info(autosaveFields,"VAL")
-}
-
-record(stringout, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_UPDATER")
-{
-    field(DESC, "Copy time and date of zero dose")
-    field(OMSL, "closed_loop")
-    field(DOL, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CPP")
-    field(OUT, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD PP")
 }
 
 record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO")
@@ -50,6 +43,7 @@ record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO")
     field(DESC, "Make time and date of zero dose")
     field(DTYP, "Soft Timestamp")
     field(INP, "@%m/%d/%Y %H:%M:%S")
+    field(PINI, "NO")
 }
 
 record( ai, "$(P):$(SENSOR):$(DRAIN):ZERO_VOLTS" )
@@ -95,7 +89,7 @@ record( mbbi,	"$(P):$(SENSOR):$(DRAIN):RAW_STATUS" )
 {
 	field( ZRVL, "0" )
 	field( ONVL, "1" )
-	field( TWVL, "1" )
+	field( TWVL, "2" )
 	field( ZRST, "Ok" )
 	field( ONST, "Over Linear Range" )
 	field( TWST, "Error")
