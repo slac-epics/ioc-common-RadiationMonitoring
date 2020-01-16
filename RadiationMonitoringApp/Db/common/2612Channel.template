@@ -20,7 +20,7 @@ record(ai, "$(P):RAW") {
   field(DTYP, "stream")
   field(INP, "@K2612B_RadFET.proto ReadCh($(CH)) $(PORT)")
   field(EGU, "V")
-  field(PREC, "5")
+  field(PREC, "7")
   field(SCAN, "I/O Intr")
   field(FLNK, "$(P):DOSE PP")
 }
@@ -28,27 +28,22 @@ record(ai, "$(P):RAW") {
 record(dfanout, "$(P):ZERO") {
   field(DOL, "$(P):RAW NPP")
   field(OUTA, "$(P):ZERO_VOLTS PP")
-  field(OUTB, "$(P):ZERO_TOD_AUTO PP")
+  field(OUTB, "$(P):ZERO_TOD_AUTO.PROC PP")
   field(OMSL, "closed_loop")
 }
 
 # note: time stamps done this way because "Soft Timestamp" can't be autosaved.
 record(stringin, "$(P):ZERO_TOD") {
   field(DESC, "Time and date of zero dose")
+    field(INP, "$(P):ZERO_TOD_AUTO CPP")
   info(autosaveFields, "VAL")
-}
-
-record(stringout, "$(P):ZERO_TOD_UPDATER") {
-  field(DESC, "Copy time and date of zero dose")
-  field(OMSL, "closed_loop")
-  field(DOL, "$(P):ZERO_TOD_AUTO CPP")
-  field(OUT, "$(P):ZERO_TOD PP")
 }
 
 record(stringin, "$(P):ZERO_TOD_AUTO") {
   field(DESC, "Make time and date of zero dose")
   field(DTYP, "Soft Timestamp")
   field(INP, "@%m/%d/%Y %H:%M:%S")
+  field(PINI, "NO")
 }
 
 record(ai, "$(P):ZERO_VOLTS") {

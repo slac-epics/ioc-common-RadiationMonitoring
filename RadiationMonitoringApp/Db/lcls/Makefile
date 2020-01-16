@@ -37,6 +37,7 @@ DB += sioc-bsyh-rm01.db
 
 # RadFETs
 DB += sioc-undh-rm01.db
+DB += sioc-unds-rm01.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

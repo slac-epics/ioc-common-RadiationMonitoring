@@ -70,7 +70,7 @@ pattern {  P      ,  SENSOR,  DRAIN,	PORT	   }
 #  P = device
 #  SENSOR - Must map to the hardware connections A-D
 #  PORT   - Asyn port
-file history_ch.db
+file radfet_history_ch.db
 {
 pattern {  P                         ,	SENSOR,	DRAIN }
 	{  '$(P)':$(SENSOR)$(DRAIN): ,	  A   ,	 1    }
