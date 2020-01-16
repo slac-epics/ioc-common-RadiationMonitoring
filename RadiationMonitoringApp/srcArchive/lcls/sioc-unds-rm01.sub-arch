@@ -1,0 +1,44 @@
+# LCLS-II Injector Beam Containment (BCS) Archive List
+
+file  dosfet.tpl-arch
+{
+pattern { DEV                , RATE  }
+		{ RADM:UNDS:RM01:    , 600   }
+}
+
+file  dosfet-chan.tpl-arch
+{
+pattern	{ DEV           , RATE }
+# card 1
+		{	RADM:UNDS:2677:, 600	}
+		{	RADM:UNDS:2777:, 600	}
+		{	RADM:UNDS:2877:, 600	}
+		{	RADM:UNDS:2977:, 600	}
+		{	RADM:UNDS:3077:, 600	}
+		{	RADM:UNDS:3177:, 600	}
+		{	RADM:UNDS:3277:, 600	}
+		{	RADM:UNDS:3377:, 600	}
+		{	RADM:UNDS:3477:, 600	}
+		{	RADM:UNDS:3577:, 600	}
+		{	RADM:UNDS:3677:, 600	}
+		{	RADM:UNDS:3777:, 600	}
+		{	RADM:UNDS:3877:, 600	}
+		{	RADM:UNDS:3977:, 600	}
+		{	RADM:UNDS:4077:, 600	}
+		{	RADM:UNDS:4177:, 600	}
+		{	RADM:UNDS:4277:, 600	}
+		{	RADM:UNDS:4377:, 600	}
+		{	RADM:UNDS:4477:, 600	}
+		{	RADM:UNDS:4577:, 600	}
+		{	RADM:UNDS:4677:, 600	}
+		{	RADM:UNDS:4777:, 600	}
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:UNDS:RM01 }
+}
+
+# End of file
+

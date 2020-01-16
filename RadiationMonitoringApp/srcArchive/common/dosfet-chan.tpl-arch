@@ -7,10 +7,6 @@
 #
 # Name					Interval	Mode
 #---------------------------------------------------
-$(DEV)1_RAW				600			scan
-$(DEV)1_DOSE			600			scan
-$(DEV)1_ZERO_VOLTS		600			scan
-
-$(DEV)2_RAW				600			scan
-$(DEV)2_DOSE			600			scan
-$(DEV)2_ZERO_VOLTS		600			scan
+$(DEV)RAW				600			scan
+$(DEV)DOSE			600			scan
+$(DEV)ZERO_VOLTS		600			scan

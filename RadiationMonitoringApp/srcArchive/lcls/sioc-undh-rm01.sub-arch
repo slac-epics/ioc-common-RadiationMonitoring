@@ -1,0 +1,63 @@
+# LCLS-II Injector Beam Containment (BCS) Archive List
+
+file  dosfet.tpl-arch
+{
+pattern { DEV                , RATE  }
+		{ RADM:UNDH:RM01:    , 600   }
+		{ RADM:UNDH:RM02:    , 600   }
+		{ RADM:UNDH:RM03:    , 600   }
+		{ RADM:UNDH:RM04:    , 600   }
+		{ RADM:UNDH:RM05:    , 600   }
+		{ RADM:UNDH:RM06:    , 600   }
+		{ RADM:UNDH:RM07:    , 600   }
+		{ RADM:UNDH:RM08:    , 600   }
+		{ RADM:UNDH:RM09:    , 600   }
+}
+
+file  dosfet-chan.tpl-arch
+{
+pattern	{ DEV           , RATE }
+		{ RADM:UNDH:1377:,  600 }
+		{ RADM:UNDH:1477:,  600 }
+		{ RADM:UNDH:1577:,  600 }
+		{ RADM:UNDH:1677:,  600 }
+		{ RADM:UNDH:1777:,  600 }
+		{ RADM:UNDH:1877:,  600 }
+		{ RADM:UNDH:1977:,  600 }
+		{ RADM:UNDH:2077:,  600 }
+		{ RADM:UNDH:2177:,  600 }
+		{ RADM:UNDH:2277:,  600 }
+		{ RADM:UNDH:2377:,  600 }
+		{ RADM:UNDH:2477:,  600 }
+		{ RADM:UNDH:2577:,  600 }
+		{ RADM:UNDH:2677:,  600 }
+		{ RADM:UNDH:2777:,  600 }
+		{ RADM:UNDH:2877:,  600 }
+		{ RADM:UNDH:2977:,  600 }
+		{ RADM:UNDH:3077:,  600 }
+		{ RADM:UNDH:3177:,  600 }
+		{ RADM:UNDH:3277:,  600 }
+		{ RADM:UNDH:3377:,  600 }
+		{ RADM:UNDH:3477:,  600 }
+		{ RADM:UNDH:3577:,  600 }
+		{ RADM:UNDH:3677:,  600 }
+		{ RADM:UNDH:3777:,  600 }
+		{ RADM:UNDH:3877:,  600 }
+		{ RADM:UNDH:3977:,  600 }
+		{ RADM:UNDH:4077:,  600 }
+		{ RADM:UNDH:4177:,  600 }
+		{ RADM:UNDH:4277:,  600 }
+		{ RADM:UNDH:4377:,  600 }
+		{ RADM:UNDH:4477:,  600 }
+		{ RADM:UNDH:4577:,  600 }
+		{ RADM:UNDH:4677:,  600 }
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:UNDH:RM01 }
+}
+
+# End of file
+

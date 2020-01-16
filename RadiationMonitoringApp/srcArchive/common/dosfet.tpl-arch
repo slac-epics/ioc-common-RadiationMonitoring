@@ -7,6 +7,7 @@
 #
 # Name					Interval	Mode
 #---------------------------------------------------
-$(DEV)SET_POLL_INT		600			scan
-$(DEV)DELAY		600			scan
-$(DEV)BIAS			600			scan
+$(DEV)SET_POLL_INT		600			monitor
+$(DEV)DELAY		600			monitor
+$(DEV)BIAS			600			monitor
+$(DEV)ID			600			monitor
