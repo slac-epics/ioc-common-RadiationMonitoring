@@ -15,6 +15,14 @@ pattern { DEV            , RATE  }
 		{ RADF:GUNB:201:D    , 600   }
 }
 
+file fht_6020.tpl-arch
+{
+pattern
+    {          P,  N}
+    {RADM:GUNB:1, 01}
+    {RADM:GUNB:1, 02}
+}
+
 file archive_iocAdmin.archive
 {
 pattern { IOC            }

@@ -22,6 +22,7 @@ include $(TOP)/configure/CONFIG
 # Install archive list into $TOP/archive
 ARCHIVE += sioc-undh-rm01.archive
 ARCHIVE += sioc-unds-rm01.archive
+ARCHIVE += sioc-bsyh-rm01.archive
 
 include $(TOP)/configure/RULES
 #----------------------------------------
