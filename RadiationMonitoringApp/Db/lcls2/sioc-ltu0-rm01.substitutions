@@ -1,7 +1,7 @@
 file radm_info.template {
     pattern 
-    {               LOC, TYPE}
-    {"LTU1 near TDUND",     0}
+    {             LOC,  TYPE}
+    {"LTU near TDUND",     0}
 }
 
 file fhtCommon.template {
