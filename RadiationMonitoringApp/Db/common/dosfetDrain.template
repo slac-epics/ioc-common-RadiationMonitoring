@@ -35,6 +35,7 @@ record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
 {
     field(DESC, "Time and date of zero dose")
     field(INP, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CPP")
+    field(PINI, "YES")
 	info(autosaveFields,"VAL")
 }
 
