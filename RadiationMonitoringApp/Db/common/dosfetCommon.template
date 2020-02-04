@@ -184,28 +184,28 @@ record(bo, "$(P):PROC_A")
 record(bo, "$(P):PROC_B")
 {
   field(OMSL, closed_loop)
-  field(DOL, "$(P):A2_RAW CPP" )
+  field(DOL, "$(P):A:2:RAW CPP" )
   field(DESC, "Trigger Ch.B readback")
   field(OUT, "$(P):B_READ PP")
 }
 record(bo, "$(P):PROC_C")
 {
   field(OMSL, closed_loop)
-  field(DOL, "$(P):B2_RAW CPP" )
+  field(DOL, "$(P):B:2:RAW CPP" )
   field(DESC, "Trigger Ch.C readback")
   field(OUT, "$(P):C_READ PP")
 }
 record(bo, "$(P):PROC_D")
 {
   field(OMSL, closed_loop)
-  field(DOL, "$(P):C2_RAW CPP" )
+  field(DOL, "$(P):C:2:RAW CPP" )
   field(DESC, "Trigger Ch.D readback")
   field(OUT, "$(P):D_READ PP")
 }
 record(bo, "$(P):PROC_TEMPS")
 {
   field(OMSL, closed_loop)
-  field(DOL, "$(P):D1_RAW CPP" )
+  field(DOL, "$(P):D:1:RAW CPP" )
   field(DESC, "Trigger temp readback")
   field(OUT, "$(P):POLL_TEMPS PP")
 }

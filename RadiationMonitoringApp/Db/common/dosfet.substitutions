@@ -72,15 +72,15 @@ pattern {  P      ,  SENSOR,  DRAIN,	PORT	   }
 #  PORT   - Asyn port
 file radfet_history_ch.db
 {
-pattern {  P                         ,	SENSOR,	DRAIN }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  A   ,	 1    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  B   ,	 1    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  C   ,	 1    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  D   ,  1    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  A   ,  2    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  B   ,	 2    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,    C   ,	 2    }
-	{  '$(P)':$(SENSOR)$(DRAIN): ,	  D   ,	 2    }
+pattern	{  P                          ,	SENSOR,	DRAIN }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  A   ,	 1    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  B   ,	 1    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  C   ,	 1    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  D   ,  1    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  A   ,  2    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  B   ,	 2    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  C   ,	 2    }
+		{  '$(P)':$(SENSOR):$(DRAIN): ,	  D   ,	 2    }
 }
 
 
