@@ -37,5 +37,5 @@ get_bias	{	out "GetBias";		in "%f"	; in "%*s"; in "%*s"; in "%*s";			}
 set_bias	{	out "SetBias %f"; in "%*s"; in "%*s"; in "%*s"; in "%*s";	@init{get_bias;}	}
 
 read		{	out "Read \$1";
-				in	"%(\$2:\$1:" ":1:RAW)f V\t%(\$2:\$1:" "1:RAW_STATUS){OK|ERANGE|ERROR}\tD1";
-				in	"%(\$2:\$1:" ":2:RAW)f V\t%(\$2:\$1:" "2:RAW_STATUS){OK|ERANGE|ERROR}\tD2";	}
+				in	"%(\$2:\$1:" "1:RAW)f V\t%(\$2:\$1:" "1:RAW_STATUS){OK|ERANGE|ERROR}\tD1";
+				in	"%(\$2:\$1:" "2:RAW)f V\t%(\$2:\$1:" "2:RAW_STATUS){OK|ERANGE|ERROR}\tD2";	}
