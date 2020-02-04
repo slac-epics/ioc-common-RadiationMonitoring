@@ -103,9 +103,8 @@ record( mbbi, "$(USER_P)2:STATUS")
 	field( TWSV, "INVALID" )
 }
 
-record( ai, "$(USER_P)TEMP")
+record( stringin, "$(USER_P)TEMP")
 {
-	field( PREC, 3)
 	field( INP, "$(P):$(SENSOR)_TEMP CP")
 }
 

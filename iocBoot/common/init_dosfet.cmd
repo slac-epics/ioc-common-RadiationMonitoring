@@ -42,8 +42,8 @@ epicsEnvSet("PORT","10001")
 dbLoadRecords("db/dosfet.db"    ,"P=$(DEV) ,PORT=$(DEV):PORT, LOC=$(LOC)")
 dbLoadRecords("db/asynRecord.db","P=$(DEV):,R=ASYN,PORT=$(DEV):PORT,ADDR=0,OMAX=0,IMAX=108")
 
-# Wait before turning the logging down
-epicsThreadSleep(5)
+# Wait before turning the logging down when troubleshooting
+#epicsThreadSleep(5)
 # Tone down the asyn logging for normal operation
 asynSetTraceMask("$(DEV):PORT", 0, 0x1)
 

@@ -129,11 +129,6 @@ record(bo, "$(P):POLL_TEMPS")
 
 record( stringin, "$(P):BOARD_TEMP" )
 {
-#	field( DTYP, "stream" )
-#	field( INP, "@dosfet.proto get_temp(internal) $(PORT)" )
-#	field( EGU, "C" )
-#	field( PREC, 4 )
-#	field( SCAN, "I/O Intr")
 }
 
 # Each channel needs to take its turn updating to avoid reading each other's data.
