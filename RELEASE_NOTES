@@ -8,6 +8,10 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+RadiationMonitoring-R1-0-9  22-Jan-2020 M. Dunning (mdunning):
+	Rename sioc-ltu1-rm01 -> sioc-ltu0-rm01
+    Add archiving for bsyh, gunb, and ltu0 FHT rad mons
+
 RadiationMonitoring-R1-0-8 15-Jan-2020 G. Brown (gwbrown):
 	New RadFET IOCs for the undulator, sioc-undh-rm01 and sioc-unds-rm01
 

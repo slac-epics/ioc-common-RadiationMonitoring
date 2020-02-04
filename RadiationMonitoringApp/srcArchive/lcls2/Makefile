@@ -21,6 +21,7 @@ include $(TOP)/configure/CONFIG
 
 # Install archive list into $TOP/archive
 ARCHIVE += sioc-gunb-rm01.archive
+ARCHIVE += sioc-ltu0-rm01.archive
 
 include $(TOP)/configure/RULES
 #----------------------------------------
