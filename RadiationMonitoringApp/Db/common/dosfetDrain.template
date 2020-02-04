@@ -34,9 +34,16 @@ record( dfanout, "$(P):$(SENSOR):$(DRAIN):ZERO" )
 record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
 {
     field(DESC, "Time and date of zero dose")
-    field(INP, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CPP")
     field(PINI, "YES")
 	info(autosaveFields,"VAL")
+}
+
+record(stringout, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_RELAY")
+{
+    field(DESC, "Time and date of zero dose")
+    field(DOL, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CP")
+    field(OUT, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
+    field(PINI, "NO")
 }
 
 record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO")
