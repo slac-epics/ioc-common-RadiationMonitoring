@@ -39,13 +39,15 @@ cd ${TOP}
 dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
+callbackSetQueueSize(20000)
+
 # Load iocAdmin Databses
 dbLoadRecords("db/iocAdminSoft.db", "IOC=${IOC_NAME}")
 dbLoadRecords("db/iocRelease.db", "IOC=${IOC_NAME}")
 
 # Load Channel Access Security if configuration file exists
 < ${ACF_INIT}
-
+epicsEnvSet("SUBSYS", "RADM")
 < ${LOG_INIT}
 
 # End of script
