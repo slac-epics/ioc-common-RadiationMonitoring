@@ -14,11 +14,11 @@ get_version 	{	out "GETVERSION";	in "%39c";	}
 get_serial	{	out "GetSerialNumber"; in "%d";	}
 
 get_all_temps	{	out "GetTemperatures";
-			in 	"%(\$1:BOARD_TEMP)s\tinternal";
-			in	"%(\$1:A_TEMP)s\tA";
-			in	"%(\$1:B_TEMP)s\tB";
-			in	"%(\$1:C_TEMP)s\tC";
-			in	"%(\$1:D_TEMP)s\tD";
+			in 	"%(\$1:BOARD_TEMP)[^\t]\tinternal";
+			in	"%(\$1:A_TEMP)[^\t]\tA";
+			in	"%(\$1:B_TEMP)[^\t]\tB";
+			in	"%(\$1:C_TEMP)[^\t]\tC";
+			in	"%(\$1:D_TEMP)[^\t]\tD";
 # Not all sensors support temperature readback. For those, ignore the response and
 # let the PV status be set to INVALID. Quash the error message.
 			@mismatch {}	}
