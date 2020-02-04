@@ -41,8 +41,9 @@ record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
 record(stringout, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_RELAY")
 {
     field(DESC, "Time and date of zero dose")
+    field(OMSL, "closed_loop")
     field(DOL, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CP")
-    field(OUT, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD")
+    field(OUT, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD PP")
     field(PINI, "NO")
 }
 
