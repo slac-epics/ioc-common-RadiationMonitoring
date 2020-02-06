@@ -39,7 +39,7 @@ cd ${TOP}
 dbLoadDatabase "dbd/RadiationMonitoring.dbd"
 RadiationMonitoring_registerRecordDeviceDriver pdbbase
 
-callbackSetQueueSize(0x8000000)
+scanOnceSetQueueSize(0x100000)
 
 # Load iocAdmin Databses
 dbLoadRecords("db/iocAdminSoft.db", "IOC=${IOC_NAME}")
