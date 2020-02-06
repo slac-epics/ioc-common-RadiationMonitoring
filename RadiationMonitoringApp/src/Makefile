@@ -30,6 +30,7 @@ PROD_IOC = RadiationMonitoring
 
 DBD += RadiationMonitoring.dbd
 RadiationMonitoring_DBD += base.dbd
+RadiationMonitoring_DBD += system.dbd
 RadiationMonitoring_DBD += asyn.dbd
 RadiationMonitoring_DBD += stream.dbd
 RadiationMonitoring_DBD += drvAsynIPPort.dbd
