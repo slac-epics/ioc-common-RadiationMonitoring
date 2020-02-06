@@ -42,7 +42,7 @@ record(stringout, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_RELAY")
 {
     field(DESC, "Time and date of zero dose")
     field(OMSL, "closed_loop")
-    field(DOL, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO CP")
+    field(DOL, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO")
     field(OUT, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD PP")
     field(PINI, "NO")
 }
@@ -53,6 +53,7 @@ record(stringin, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_AUTO")
     field(DTYP, "Soft Timestamp")
     field(INP, "@%m/%d/%Y %H:%M:%S")
     field(PINI, "NO")
+    field( FLNK, "$(P):$(SENSOR):$(DRAIN):ZERO_TOD_RELAY PP")
 }
 
 record( ai, "$(P):$(SENSOR):$(DRAIN):ZERO_VOLTS" )
