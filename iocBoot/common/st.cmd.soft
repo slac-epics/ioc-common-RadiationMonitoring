@@ -50,6 +50,9 @@ dbLoadRecords("db/iocRelease.db", "IOC=${IOC_NAME}")
 epicsEnvSet("SUBSYS", "RADM")
 < ${LOG_INIT}
 
+# Update archive pv list in the data area
+system("cp archive/${IOC}.archive  ${IOC_DATA}/${IOC}/archive/.")
+
 # End of script
 
 
