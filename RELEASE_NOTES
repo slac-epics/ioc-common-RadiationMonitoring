@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.0.11   26-Feb-2020   G. Brown (gwbrown):
+	Update host names to current standard radm instead of radf.
+
 R1.0.10   4-Feb-2020   G. Brown (gwbrown):
 	Switch to current release naming style. Fixed small problems found in DOSFET support.
 
