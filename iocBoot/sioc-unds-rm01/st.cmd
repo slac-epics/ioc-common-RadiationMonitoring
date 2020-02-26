@@ -19,7 +19,7 @@
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "G. Brown")
-epicsEnvSet("IOC_NAME", "SIOC:UNDH:RM01")
+epicsEnvSet("IOC_NAME", "SIOC:UNDS:RM01")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
@@ -47,7 +47,7 @@ asynSetTraceMask( "$(DEV1)", 0, 0x1f) # log everything
 #define ASYN_TRACEIO_ASCII  0x0001
 #define ASYN_TRACEIO_ESCAPE 0x0002
 #define ASYN_TRACEIO_HEX    0x0004
-asynSetTraceIOMask( "$(DEV1)", 0, 0x1)
+asynSetTraceIOMask( "$(DEV1)", 0, 0x2)
 
 ########################################################################
 # BEGIN: Load the record databases
@@ -65,6 +65,8 @@ iocInit()
 
 # Start autosave
 < ../common/start_restore.cmd.soft
+
+asynSetTraceMask( "$(DEV1)", 0, 0x1) # log errors
 
 # End of file
 

@@ -49,7 +49,7 @@ dbLoadRecords("db/sioc-gunb-rm01.db", "P=RADM:GUNB:1, PORT=FHT_GUNB_1")
 
 epicsEnvSet("LOCATION" ,"GUNB")
 epicsEnvSet("DEV"      ,"RADF:GUNB:201" )
-epicsEnvSet("NODE"     ,"radf-gunb-rm01")
+epicsEnvSet("NODE"     ,"radm-gunb-rm01")
 < iocBoot/common/init_dosfet.cmd
 dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:GUNB:201,SENSOR=A,USER_P=RADF:GUNB:201:")
 dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:GUNB:201,SENSOR=B,USER_P=RADF:GUNB:621:")
