@@ -1,0 +1,18 @@
+# Archive template file for sioc-clts-rm01
+
+file fht_6020.tpl-arch
+{
+pattern
+    {            P,  N}
+    {RADM:CLTS:585, 01}
+    {RADM:CLTS:585, 02}
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:CLTS:RM01 }
+}
+
+# End of file
+

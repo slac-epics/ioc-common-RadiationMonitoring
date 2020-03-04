@@ -34,6 +34,9 @@ IOCRELEASE_DB += iocRelease.db
 
 # For Thermo FHT Rad. Mons.
 DB += sioc-bsyh-rm01.db
+DB += sioc-gunb-rm01.db
+DB += sioc-ltu0-rm01.db
+DB += sioc-clts-rm01.db
 
 # RadFETs
 DB += sioc-undh-rm01.db

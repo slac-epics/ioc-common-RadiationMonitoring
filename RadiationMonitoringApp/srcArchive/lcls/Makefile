@@ -23,6 +23,9 @@ include $(TOP)/configure/CONFIG
 ARCHIVE += sioc-undh-rm01.archive
 ARCHIVE += sioc-unds-rm01.archive
 ARCHIVE += sioc-bsyh-rm01.archive
+ARCHIVE += sioc-gunb-rm01.archive
+ARCHIVE += sioc-ltu0-rm01.archive
+ARCHIVE += sioc-clts-rm01.archive
 
 include $(TOP)/configure/RULES
 #----------------------------------------
