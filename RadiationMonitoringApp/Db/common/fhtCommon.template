@@ -25,12 +25,7 @@ record(stringin, "$(P):DEV_TIME") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT) 0) DEV_TIME")
     field(SCAN, "I/O Intr")
-    field(FLNK, "$(P):INT_TIME")
-}
-
-record(longin, "$(P):INT_TIME") {
-    field(DESC, "Integer time")
-    field(INP,  "$(P):DEV_TIME")
+    field(FLNK, "$(P):Heartbeat")
 }
 
 record(longin, "$(P):DEV_ADDR") {
@@ -99,4 +94,34 @@ record(bo, "$(P):HW_RESET") {
     field(DTYP, "asynInt32")
     field(OUT,  "@asyn($(PORT) 0) HW_RESET")
 }
+
+#--- Heartbeat, ... -------------------------------
+record(calcout, "$(P):Heartbeat"){
+  field(DESC, "Heartbeat")
+  field(CALC, "VAL>=100?0:(VAL+1)")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "0")
+  field(OVAL, "0")
+  field(OUT,  "$(P):ErrorCount PP")
+}
+
+record(calcout, "$(P):ErrorCount"){
+  field(DESC, "Errors since last read")
+  field(INPA, "$(P):ErrorCount")
+  field(CALC, "(VAL+5)")
+  field(SCAN, "5 second")
+  field(HIHI, "7")
+  field(HHSV, "MAJOR")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "(A>10)?1:0")
+  field(OUT,  "$(P):ReadStatus PP")
+}
+
+record(bi, "$(P):ReadStatus"){
+  field(DESC, "Read status")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  field(OSV,  "MAJOR")
+}
+
 
