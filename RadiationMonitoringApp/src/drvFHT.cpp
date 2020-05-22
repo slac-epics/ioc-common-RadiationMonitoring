@@ -48,7 +48,7 @@ static void exitHandler(void *drvPvt);
 
 /* Constructor for the drvFHT class */
 drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout) 
-   : asynPortDriver(port, MAX_CHAN+1, N_PARAMS,
+   : asynPortDriver(port, MAX_CHAN+1,
                     asynInt32Mask | asynFloat64Mask | asynOctetMask | asynDrvUserMask, /* Interface mask */
                     asynInt32Mask | asynFloat64Mask | asynOctetMask,  /* Interrupt mask */
                     ASYN_CANBLOCK | ASYN_MULTIDEVICE, /* asynFlags  */
