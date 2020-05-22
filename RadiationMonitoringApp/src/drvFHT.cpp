@@ -59,7 +59,8 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
                     timeout_(timeout),
                     pollTime_(DEFAULT_POLL_TIME),
                     forceCallback_(1),
-                    running_(true)
+                    running_(true),
+                    exited_(false)
 {
     const char *functionName = "drvFHT";
     asynStatus status;
@@ -123,12 +124,16 @@ drvFHT::~drvFHT() {
 /*-----------------------------------------------------------
     Destructor.
 --------------------------------------------------------------- */
-  static const char *functionName = "~drvFHT";
+    static const char *functionName = "~drvFHT";
 
-  lock();
-  running_ = false;
-  epicsPrintf("%s::%s Exiting...\n", driverName, functionName);
-  unlock();
+    lock();
+    running_ = false;
+    unlock();
+
+    while (!exited_) {
+        epicsThreadSleep(0.2);
+    }
+    epicsPrintf("%s::%s Exiting...\n", driverName, functionName);
 }
 
 void drvFHT::pollerThread() {
@@ -248,7 +253,8 @@ void drvFHT::pollerThread() {
     } // End of while loop
 
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
-            "%s::%s: Poller thread exiting ...\n", driverName, functionName);    
+            "%s::%s: Poller thread exiting ...\n", driverName, functionName);
+    exited_= true;
 }
 
 unsigned char drvFHT::_checksumCalc(const char* str) {

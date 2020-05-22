@@ -113,6 +113,7 @@ private:
     double pollTime_;
     int forceCallback_;
     bool running_;
+    bool exited_;
     unsigned char _checksumCalc(const char* str);
 };
 
