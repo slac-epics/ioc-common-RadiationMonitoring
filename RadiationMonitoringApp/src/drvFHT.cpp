@@ -26,6 +26,7 @@
 #include <asynOctetSyncIO.h>
 #include <iocsh.h>
 #include <errlog.h>
+#include <dbAccessDefs.h>
 
 #include "drvFHT.h"
 
@@ -107,24 +108,6 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
     createParam(calDate40GString,             asynParamOctet,          &calDate40G);
     createParam(hwResetString,                asynParamInt32,          &hwReset);
 
-    epicsThreadSleep(0.1);
-    
-    lock();
- 
-    // Serial number
-    _readString(sn, "NR");
-
-    // Firmware
-    _readString(fw, "VR");
-
-    // Device type
-    _readString(devType, "DP");
-    
-    // Set device address
-    setIntegerParam(devAddr, deviceAddr_);
-    callParamCallbacks();
-    
-    unlock();
 
     /* Start the thread to poll inputs and do callbacks to device support */
     epicsThreadCreate("drvFHTPoller",
@@ -159,7 +142,26 @@ void drvFHT::pollerThread() {
     int i;
     int pollInt;
     int readAll = 1;
-    
+
+    // Wait until iocInit is finished
+    while (!interruptAccept) {
+        epicsThreadSleep(0.2);
+    }
+
+    // Do these once    
+    lock();
+    // Serial number
+    _readString(sn, "NR");
+    // Firmware
+    _readString(fw, "VR");
+    // Device type
+    _readString(devType, "DP");
+    // Set device address
+    setIntegerParam(devAddr, deviceAddr_);
+    callParamCallbacks();
+    unlock();
+
+    // Poller loop
     while(running_) {
         lock();
         
