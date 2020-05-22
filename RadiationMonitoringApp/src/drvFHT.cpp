@@ -25,6 +25,7 @@
 #include <epicsExit.h>
 #include <asynOctetSyncIO.h>
 #include <iocsh.h>
+#include <errlog.h>
 
 #include "drvFHT.h"
 
@@ -67,10 +68,12 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
     status = pasynOctetSyncIO->connect(IOport, 0, &pasynUser, 0);
     
     if (status != asynSuccess) {
-        printf("%s::%s:connect: failed to connect to port %s\n", driverName, functionName, IOport);
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                "%s::%s: Failed to connect to I/O port %s\n", driverName, functionName, IOport);
     }
     else {
-        printf("%s::%s:connect: connected to port %s\n", driverName, functionName, IOport);
+        asynPrint(pasynUser, ASYN_TRACE_FLOW,
+                "%s::%s: Connected to I/O port %s\n", driverName, functionName, IOport);
     }
 
     createParam(snString,                     asynParamOctet,          &sn);
@@ -141,7 +144,7 @@ drvFHT::~drvFHT() {
 
   lock();
   running_ = false;
-  printf("%s::%s Exiting...\n", driverName, functionName);
+  epicsPrintf("%s::%s Exiting...\n", driverName, functionName);
   unlock();
 }
 
@@ -202,7 +205,8 @@ void drvFHT::pollerThread() {
         getIntegerParam(chanReadall, &readAll);
 
         if (readAll) {
-            if (DEBUG) printf("Reading chans 3-16.\n");
+            asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                    "Reading chans 3-16.\n");
             // Channel config
             for(i=3; i<MAX_CHAN+1; i++) {
                 sprintf(cmdStr, "cR%d", i);
@@ -240,21 +244,25 @@ void drvFHT::pollerThread() {
         // Poll at the same rate as the device if possible; otherwise use default
         epicsThreadSleep((pollInt >= 0)?pollInt:pollTime_);
     } // End of while loop
-    
-    printf("%s::%s: Poller thread exiting ...\n", driverName, functionName);
+
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
+            "%s::%s: Poller thread exiting ...\n", driverName, functionName);    
 }
 
 unsigned char drvFHT::_checksumCalc(const char* str) {
 /*-----------------------------------------------------------------------------
  * 8-bit checksum
  *---------------------------------------------------------------------------*/
+    static const char *functionName = "_checksumCalc";
     unsigned char sum = 0;
     while (*str) {
-        if (DEBUG) printf("*str=%d\n", *str);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: *str=%d\n", driverName, functionName, *str);
         sum += *str++;
     }
     sum %= 256;
-    if (DEBUG) printf("checksum=%d\n", sum);
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: checksum=%d\n", driverName, functionName, sum);
     return sum;
 }
 
@@ -273,7 +281,8 @@ void drvFHT::_readString(int function, const char *cmd) {
             driverName, functionName, function, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, function=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, function=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, function, cmd, replyBuffer_);
 
     if (forceCallback_) setStringParam(function, replyBuffer_);
@@ -344,7 +353,8 @@ void drvFHT::_readChan(const char *cmd, int addr) {
             driverName, functionName, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, cmd, replyBuffer_);
    
     if (strchr(replyBuffer_, ' ')) {
@@ -355,7 +365,8 @@ void drvFHT::_readChan(const char *cmd, int addr) {
         if (pch) valStatus = strtol(pch, NULL, 16);
         if (forceCallback_) setIntegerParam(addr, measStatus, valStatus);
     } else {
-        printf("%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
     callParamCallbacks(addr);
@@ -382,7 +393,8 @@ void drvFHT::_readChan40G(const char *cmd, int addr) {
             driverName, functionName, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, cmd, replyBuffer_);
    
     if (strchr(replyBuffer_, ' ')) {
@@ -396,7 +408,8 @@ void drvFHT::_readChan40G(const char *cmd, int addr) {
         if (pch) sampleTime = atof(pch);
         if (forceCallback_) setDoubleParam(addr, measTime40G, sampleTime);
     } else {
-        printf("%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
     callParamCallbacks(addr);
@@ -422,7 +435,8 @@ void drvFHT::_readChanMode(const char *cmd) {
             driverName, functionName, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, cmd, replyBuffer_);
    
     if (strchr(replyBuffer_, ' ')) {
@@ -433,7 +447,8 @@ void drvFHT::_readChanMode(const char *cmd) {
         if (pch) chan = strtol(pch, NULL, 10);
         if (forceCallback_) setIntegerParam(chanChan, chan);
     } else {
-        printf("%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
     callParamCallbacks();
@@ -461,7 +476,8 @@ void drvFHT::_readUnits(const char *cmd, int addr) {
             driverName, functionName, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, cmd, replyBuffer_);
    
     if (strchr(replyBuffer_, ' ')) {
@@ -475,7 +491,8 @@ void drvFHT::_readUnits(const char *cmd, int addr) {
         if (pch) preunit = strtol(pch, NULL, 10);
         if (forceCallback_) setIntegerParam(addr, chanPreunit, preunit);
     } else {
-        printf("%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
     callParamCallbacks(addr);
@@ -505,7 +522,8 @@ void drvFHT::_readChanConfig(const char *cmd, int addr) {
             driverName, functionName, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, cmd, replyBuffer_);
    
     if (strchr(replyBuffer_, ' ')) {
@@ -522,7 +540,8 @@ void drvFHT::_readChanConfig(const char *cmd, int addr) {
         if (pch) address = strtol(pch, NULL, 10);
         if (forceCallback_) setIntegerParam(addr, chanAddress, address);
     } else {
-        printf("%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
     callParamCallbacks(addr);
@@ -556,7 +575,8 @@ void drvFHT::_readCal(const char *cmd, int addr) {
             driverName, functionName, status);
     }
     
-    if (DEBUG) printf("%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, cmd, replyBuffer_);
    
     if (strchr(replyBuffer_, ' ')) {
@@ -579,7 +599,8 @@ void drvFHT::_readCal(const char *cmd, int addr) {
         if (pch) strcpy(date, pch);
         if (forceCallback_) setStringParam(addr, calDate40G, date);
     } else {
-        printf("%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
     callParamCallbacks(addr);
@@ -614,7 +635,8 @@ asynStatus drvFHT::_write(const char *buffer) {
     status = pasynOctetSyncIO->flush(pasynUser);
     status = pasynOctetSyncIO->write(pasynUser, cmdBuffer, strlen(cmdBuffer), timeout_, &nbytesTransfered);
 
-    if (DEBUG) printf("%s::%s: status=%d, buffer=%s, nbytesTrans=%d\n", driverName, 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: status=%d, buffer=%s, nbytesTrans=%d\n", driverName, 
             functionName, status, cmdBuffer, (int)nbytesTransfered);
 
     if (status) {
@@ -665,7 +687,8 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
     status = pasynOctetSyncIO->writeRead(pasynUser, cmdBuffer, strlen(cmdBuffer),
     replyBuffer_, sizeof(replyBuffer_), timeout_, &nbytesOut, &nbytesIn, &eomReason);
     
-    if (DEBUG) printf("%s::%s: buffer=%s, status=%d, nbytesOut=%d, replyBuffer_=%s, nbytesIn=%d\n",
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: buffer=%s, status=%d, nbytesOut=%d, replyBuffer_=%s, nbytesIn=%d\n",
             driverName, functionName, buffer, status, (int)nbytesOut, replyBuffer_, (int)nbytesIn);
   
     if((status != asynSuccess) || !nbytesIn || ((int)nbytesIn > REPLY_BUF_LEN)) {
@@ -675,9 +698,11 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
     }
     
     if (strcmp(replyBuffer_, "\x15") == 0) {
-        printf("%s::%s: Got NAK: parity or checksum error.\n", driverName, functionName);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Got NAK: parity or checksum error.\n", driverName, functionName);
     } else if (strcmp(replyBuffer_, "\x06") == 0) {
-        printf("%s::%s: Got ACK: command OK, no data returned.\n", driverName, functionName);
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+                "%s::%s: Got ACK: command OK, no data returned.\n", driverName, functionName);
     }
     
 
@@ -702,7 +727,8 @@ asynStatus drvFHT::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     
     getParamName(function, &paramName);
     
-    if (DEBUG) printf("%s::%s: function=%d (%s), addr=%d, value=%d\n", 
+    asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
+            "%s::%s: function=%d (%s), addr=%d, value=%d\n", 
             driverName, functionName, function, paramName, addr, value);
     
     // Hardware reset
