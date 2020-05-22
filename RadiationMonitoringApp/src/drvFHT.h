@@ -114,6 +114,7 @@ private:
     int forceCallback_;
     bool running_;
     bool exited_;
+    int err_count_;
     unsigned char _checksumCalc(const char* str);
 };
 

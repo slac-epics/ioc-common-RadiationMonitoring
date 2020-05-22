@@ -60,7 +60,8 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
                     pollTime_(DEFAULT_POLL_TIME),
                     forceCallback_(1),
                     running_(true),
-                    exited_(false)
+                    exited_(false),
+                    err_count_(0)
 {
     const char *functionName = "drvFHT";
     asynStatus status;
@@ -284,7 +285,7 @@ void drvFHT::_readString(int function, const char *cmd) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
     }
@@ -308,7 +309,7 @@ void drvFHT::_readInt(int function, const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
     }
@@ -330,7 +331,7 @@ void drvFHT::_readStatus(int function, const char *cmd) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
     }
@@ -356,7 +357,7 @@ void drvFHT::_readChan(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
     }
@@ -396,7 +397,7 @@ void drvFHT::_readChan40G(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
     }
@@ -438,7 +439,7 @@ void drvFHT::_readChanMode(const char *cmd) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
     }
@@ -479,7 +480,7 @@ void drvFHT::_readUnits(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
     }
@@ -525,7 +526,7 @@ void drvFHT::_readChanConfig(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
     }
@@ -578,7 +579,7 @@ void drvFHT::_readCal(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
     }
@@ -648,9 +649,12 @@ asynStatus drvFHT::_write(const char *buffer) {
             functionName, status, cmdBuffer, (int)nbytesTransfered);
 
     if (status) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
-          "%s::%s: Error: buffer=%s, status=%d, nbytesTransfered=%d\n",
-          driverName, functionName, cmdBuffer, status, (int)nbytesTransfered);
+        // Print an error message if this is the first error        
+        if (!err_count_) {
+            asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
+              "%s::%s: Error: buffer=%s, status=%d, nbytesTransfered=%d\n",
+              driverName, functionName, cmdBuffer, status, (int)nbytesTransfered);
+        }
     }
   
     return(status);
@@ -700,9 +704,14 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
             driverName, functionName, buffer, status, (int)nbytesOut, replyBuffer_, (int)nbytesIn);
   
     if((status != asynSuccess) || !nbytesIn || ((int)nbytesIn > REPLY_BUF_LEN)) {
-        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
-                "%s::%s: Error: cmdBuffer=%s, status=%d, nbytesOut=%d, replyBuffer_=%s, nbytesIn=%d\n",
-                driverName, functionName, cmdBuffer, status, (int)nbytesOut, replyBuffer_, (int)nbytesIn);
+        // Print an error message if this is the first error        
+        if (!err_count_) {
+            asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+                    "%s::%s: Error: cmdBuffer=%s, status=%d, nbytesOut=%d, replyBuffer_=%s, nbytesIn=%d\n",
+                    driverName, functionName, cmdBuffer, status, (int)nbytesOut, replyBuffer_, (int)nbytesIn);
+        }
+        err_count_++;
+        return asynError;
     }
     
     if (strcmp(replyBuffer_, "\x15") == 0) {
@@ -719,7 +728,14 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
     
     // Remove the checksum (last two bytes of reply)
     replyBuffer_[strlen(replyBuffer_) - 2] = '\0';
-    
+   
+    if (err_count_) {
+        asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
+                "%s::%s: Status OK after %d error(s)\n",
+                driverName, functionName, err_count_);
+        err_count_ = 0;
+    }
+ 
     return(status);
 }
 
@@ -760,7 +776,7 @@ asynStatus drvFHT::writeInt32(asynUser *pasynUser, epicsInt32 value) {
     status = (asynStatus)callParamCallbacks(addr);
     
     if (status) { 
-        asynPrint(pasynUser, ASYN_TRACE_ERROR, 
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
                  "%s:%s, port %s, ERROR writing %d to address %d, status=%d\n",
                  driverName, functionName, portName, value, addr, status);
     } else {        
