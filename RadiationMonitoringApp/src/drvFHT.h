@@ -61,15 +61,15 @@ public:
 protected:
     asynStatus _write(const char *buffer);
     asynStatus _writeRead(const char *buffer);
-    void _readString(int function, const char *cmd);
-    void _readInt(int function, const char *cmd, int addr);
-    void _readStatus(int function, const char *cmd);
-    void _readChan(const char *cmd, int addr);
-    void _readChan40G(const char *cmd, int addr);
-    void _readChanConfig(const char *cmd, int addr);
-    void _readChanMode(const char *cmd);
-    void _readUnits(const char *cmd, int addr);
-    void _readCal(const char *cmd, int addr);
+    asynStatus _readString(int function, const char *cmd);
+    asynStatus _readInt(int function, const char *cmd, int addr);
+    asynStatus _readStatus(int function, const char *cmd);
+    asynStatus _readChan(const char *cmd, int addr);
+    asynStatus _readChan40G(const char *cmd, int addr);
+    asynStatus _readChanConfig(const char *cmd, int addr);
+    asynStatus _readChanMode(const char *cmd);
+    asynStatus _readUnits(const char *cmd, int addr);
+    asynStatus _readCal(const char *cmd, int addr);
 
     int sn;
     int fw;

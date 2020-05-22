@@ -26,6 +26,7 @@
 #include <asynOctetSyncIO.h>
 #include <iocsh.h>
 #include <errlog.h>
+#include <alarm.h>
 #include <dbAccessDefs.h>
 
 #include "drvFHT.h"
@@ -275,7 +276,7 @@ unsigned char drvFHT::_checksumCalc(const char* str) {
     return sum;
 }
 
-void drvFHT::_readString(int function, const char *cmd) {
+asynStatus drvFHT::_readString(int function, const char *cmd) {
 /*-----------------------------------------------------------------------------
  * Write a command string to device, read response,
  * set value in parameter library, do callback.
@@ -284,21 +285,34 @@ void drvFHT::_readString(int function, const char *cmd) {
     asynStatus status = asynSuccess; 
     
     status = _writeRead(cmd);
+
     if (status) {
+        // Got no response or got garbage; set alarm status to invalid
+        setParamAlarmStatus(function, COMM_ALARM);
+        setParamAlarmSeverity(function, INVALID_ALARM);
+        callParamCallbacks();
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
             "%s::%s: status=%d, function=%d, cmd=%s, replyBuffer_=%s\n", 
             driverName, functionName, status, function, cmd, replyBuffer_);
 
+    // Set alarm status to normal 
+    setParamAlarmStatus(function, NO_ALARM);
+    setParamAlarmSeverity(function, NO_ALARM);
+
     if (forceCallback_) setStringParam(function, replyBuffer_);
     callParamCallbacks();
+
+    return status;
 }
     
-void drvFHT::_readInt(int function, const char *cmd, int addr) {
+asynStatus drvFHT::_readInt(int function, const char *cmd, int addr) {
 /*-----------------------------------------------------------------------------
  * Write a command string to device, read response,
  * set value in parameter library, do callback.
@@ -309,6 +323,10 @@ void drvFHT::_readInt(int function, const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(addr, function, COMM_ALARM);
+        setParamAlarmSeverity(addr, function, INVALID_ALARM);
+        callParamCallbacks(addr);
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
@@ -316,11 +334,17 @@ void drvFHT::_readInt(int function, const char *cmd, int addr) {
     
     stat = strtol(replyBuffer_, NULL, 10);
 
+    // Set alarm status to normal 
+    setParamAlarmStatus(addr, function, NO_ALARM);
+    setParamAlarmSeverity(addr, function, NO_ALARM);
+
     if (forceCallback_) setIntegerParam(addr, function, stat);
     callParamCallbacks(addr);
+
+    return status;
 }
     
-void drvFHT::_readStatus(int function, const char *cmd) {
+asynStatus drvFHT::_readStatus(int function, const char *cmd) {
 /*-----------------------------------------------------------------------------
  * Get system status from device; response is a 4 digit hex number.
  * Convert the value to decimal and then set value in parameter library.
@@ -331,18 +355,29 @@ void drvFHT::_readStatus(int function, const char *cmd) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(function, COMM_ALARM);
+        setParamAlarmSeverity(function, INVALID_ALARM);
+        callParamCallbacks();
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
+        return status;
     }
     
     stat = strtol(replyBuffer_, NULL, 16);
 
+    // Set alarm status to normal 
+    setParamAlarmStatus(function, NO_ALARM);
+    setParamAlarmSeverity(function, NO_ALARM);
+
     if (forceCallback_) setIntegerParam(function, stat);
     callParamCallbacks();
+
+    return status;
 }
     
-void drvFHT::_readChan(const char *cmd, int addr) {
+asynStatus drvFHT::_readChan(const char *cmd, int addr) {
 /*-----------------------------------------------------------------------------
  * Read value from a channel; response is of the form xxx hhhh gggg; 
  * where xxx = measured value, hhhh is a 4-digit hex status word, gggg is the 
@@ -357,9 +392,16 @@ void drvFHT::_readChan(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(addr, meas, COMM_ALARM);
+        setParamAlarmSeverity(addr, meas, INVALID_ALARM);
+        setParamAlarmStatus(addr, measStatus, COMM_ALARM);
+        setParamAlarmSeverity(addr, measStatus, INVALID_ALARM);
+        callParamCallbacks(addr);
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
@@ -378,10 +420,18 @@ void drvFHT::_readChan(const char *cmd, int addr) {
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
+    // Set alarm status to normal 
+    setParamAlarmStatus(addr, meas, NO_ALARM);
+    setParamAlarmSeverity(addr, meas, NO_ALARM);
+    setParamAlarmStatus(addr, measStatus, NO_ALARM);
+    setParamAlarmSeverity(addr, measStatus, NO_ALARM);
+
     callParamCallbacks(addr);
+
+    return status;
 }
 
-void drvFHT::_readChan40G(const char *cmd, int addr) {
+asynStatus drvFHT::_readChan40G(const char *cmd, int addr) {
 /*-----------------------------------------------------------------------------
  * Read value from a channel; response is of the form xxx hhhh yyy;
  * where xxx = mean value, hhhh is a 4-digit hex status word, 
@@ -397,9 +447,16 @@ void drvFHT::_readChan40G(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(addr, meas40G, COMM_ALARM);
+        setParamAlarmSeverity(addr, meas40G, INVALID_ALARM);
+        setParamAlarmStatus(addr, measStatus40G, COMM_ALARM);
+        setParamAlarmSeverity(addr, measStatus40G, INVALID_ALARM);
+        callParamCallbacks(addr);
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
@@ -421,10 +478,18 @@ void drvFHT::_readChan40G(const char *cmd, int addr) {
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
+    // Set alarm status to normal 
+    setParamAlarmStatus(addr, meas40G, NO_ALARM);
+    setParamAlarmSeverity(addr, meas40G, NO_ALARM);
+    setParamAlarmStatus(addr, measStatus40G, NO_ALARM);
+    setParamAlarmSeverity(addr, measStatus40G, NO_ALARM);
+
     callParamCallbacks(addr);
+
+    return status;
 }
 
-void drvFHT::_readChanMode(const char *cmd) {
+asynStatus drvFHT::_readChanMode(const char *cmd) {
 /*-----------------------------------------------------------------------------
  * Read value from a channel; response is of the form n mm;
  * where n is the channel mode (0 or 1), 
@@ -439,9 +504,16 @@ void drvFHT::_readChanMode(const char *cmd) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(chanMode, COMM_ALARM);
+        setParamAlarmSeverity(chanMode, INVALID_ALARM);
+        setParamAlarmStatus(chanChan, COMM_ALARM);
+        setParamAlarmSeverity(chanChan, INVALID_ALARM);
+        callParamCallbacks();
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
@@ -460,10 +532,18 @@ void drvFHT::_readChanMode(const char *cmd) {
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
+    // Set alarm status to normal 
+    setParamAlarmStatus(chanMode, NO_ALARM);
+    setParamAlarmSeverity(chanMode, NO_ALARM);
+    setParamAlarmStatus(chanChan, NO_ALARM);
+    setParamAlarmSeverity(chanChan, NO_ALARM);
+
     callParamCallbacks();
+
+    return status;
 }
 
-void drvFHT::_readUnits(const char *cmd, int addr) {
+asynStatus drvFHT::_readUnits(const char *cmd, int addr) {
 /*-----------------------------------------------------------------------------
  * Read value from a channel; response is of the form nn xxx o;
  * where n is the unit number (integer), 
@@ -480,9 +560,14 @@ void drvFHT::_readUnits(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(addr, chanUnits, COMM_ALARM);
+        setParamAlarmSeverity(addr, chanUnits, INVALID_ALARM);
+        callParamCallbacks(addr);
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
@@ -504,10 +589,16 @@ void drvFHT::_readUnits(const char *cmd, int addr) {
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
+    // Set alarm status to normal 
+    setParamAlarmStatus(addr, chanUnits, NO_ALARM);
+    setParamAlarmSeverity(addr, chanUnits, NO_ALARM);
+
     callParamCallbacks(addr);
+
+    return status;
 }
 
-void drvFHT::_readChanConfig(const char *cmd, int addr) {
+asynStatus drvFHT::_readChanConfig(const char *cmd, int addr) {
 /*-----------------------------------------------------------------------------
  * Read value from a channel; response is of the form nn mm oo pp; where:
  * nn is the probe type (integer), 
@@ -526,9 +617,14 @@ void drvFHT::_readChanConfig(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(addr, chanType, COMM_ALARM);
+        setParamAlarmSeverity(addr, chanType, INVALID_ALARM);
+        callParamCallbacks(addr);
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
@@ -553,10 +649,16 @@ void drvFHT::_readChanConfig(const char *cmd, int addr) {
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
+    // Set alarm status to normal 
+    setParamAlarmStatus(addr, chanType, NO_ALARM);
+    setParamAlarmSeverity(addr, chanType, NO_ALARM);
+
     callParamCallbacks(addr);
+
+    return status;
 }
 
-void drvFHT::_readCal(const char *cmd, int addr) {
+asynStatus drvFHT::_readCal(const char *cmd, int addr) {
 /*-----------------------------------------------------------------------------
  * Read value from a channel; response is of the form nn xx yy zz aa ss; where:
  * nn is the probe type ? (integer), 
@@ -579,9 +681,14 @@ void drvFHT::_readCal(const char *cmd, int addr) {
     
     status = _writeRead(cmd);
     if (status) {
+        setParamAlarmStatus(addr, type40G, COMM_ALARM);
+        setParamAlarmSeverity(addr, type40G, INVALID_ALARM);
+        callParamCallbacks(addr);
+
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: status=%d\n", 
             driverName, functionName, status);
+        return status;
     }
     
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
@@ -612,7 +719,13 @@ void drvFHT::_readCal(const char *cmd, int addr) {
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
     }
  
+    // Set alarm status to normal 
+    setParamAlarmStatus(addr, type40G, NO_ALARM);
+    setParamAlarmSeverity(addr, type40G, NO_ALARM);
+
     callParamCallbacks(addr);
+
+    return status;
 }
 
 asynStatus drvFHT::_write(const char *buffer) {
@@ -657,7 +770,7 @@ asynStatus drvFHT::_write(const char *buffer) {
         }
     }
   
-    return(status);
+    return status;
 }
 
 asynStatus drvFHT::_writeRead(const char *buffer) {
@@ -728,7 +841,8 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
     
     // Remove the checksum (last two bytes of reply)
     replyBuffer_[strlen(replyBuffer_) - 2] = '\0';
-   
+  
+    // Reset error message counter
     if (err_count_) {
         asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
                 "%s::%s: Status OK after %d error(s)\n",
@@ -736,7 +850,7 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
         err_count_ = 0;
     }
  
-    return(status);
+    return status;
 }
 
 asynStatus drvFHT::writeInt32(asynUser *pasynUser, epicsInt32 value) {
@@ -807,7 +921,7 @@ int drvFHTConfigure(const char* port, const char* IOPort, int addr, double timeo
  *  timeout The timeout for I/O.
  *----------------------------------------------------------------------------*/
     new drvFHT(port, IOPort, addr, timeout);
-    return(asynSuccess);
+    return asynSuccess;
 }
 
 static const iocshArg initArg0 = {"port", iocshArgString};

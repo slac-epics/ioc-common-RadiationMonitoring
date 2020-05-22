@@ -10,7 +10,7 @@
 
 R1.1.0  22-May-2020 M. Dunning (mdunning):
     Upgrade epics base, asyn, stream
-    thermoFHT: Use asynPrint everywhere; improve exit behavior; reduce error message printing
+    thermoFHT driver: Use asynPrint everywhere; improve exit behavior; reduce error message printing; add alarms
 
 R1.0.12  4-Mar-2020 M. Dunning (mdunning):
     Add new IOC sioc-clts-rm01 for STP-CLTS RDM
