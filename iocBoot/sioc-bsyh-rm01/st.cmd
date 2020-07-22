@@ -46,6 +46,7 @@ drvFHTConfigure("FHT_BSYH_843", "RADM_BSYH_843", 1, 1.5)
 
 # Load record instances
 dbLoadRecords("db/sioc-bsyh-rm01.db")
+dbLoadRecords("db/asynRecord.db","P=$(IOC_NAME):,R=Asyn, PORT=RADM_BSYH_843, ADDR=0, IMAX=0, OMAX=0")
 
 # Restore PVs
 < iocBoot/common/init_restore.cmd.soft

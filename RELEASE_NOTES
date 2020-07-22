@@ -8,9 +8,15 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
-R1.1.0  22-May-2020 M. Dunning (mdunning):
+R1.1.0  22-Jul-2020 M. Dunning (mdunning):
     Upgrade epics base, asyn, stream
-    thermoFHT driver: Use asynPrint everywhere; improve exit behavior; reduce error message printing; add alarms
+    thermoFHT driver: 
+        Add Heartbeat and ReadStatus PVs
+        Use asynPrint everywhere
+        Improve exit behavior
+        Reduce error message printing
+        Set alarms on read errors
+        Other minor cleanup
 
 R1.0.12  4-Mar-2020 M. Dunning (mdunning):
     Add new IOC sioc-clts-rm01 for STP-CLTS RDM
