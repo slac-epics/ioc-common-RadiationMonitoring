@@ -906,7 +906,7 @@ static void exitHandler(void *drvPvt) {
     Exit handler, delete the drvFHT object.
 -----------------------------------------------------------*/
   drvFHT *pdrvFHT = (drvFHT *)drvPvt;
-  delete pdrvFHT;
+  if (pdrvFHT) delete pdrvFHT;
 }
 
 // Configuration routine.  Called directly, or from the iocsh function below
