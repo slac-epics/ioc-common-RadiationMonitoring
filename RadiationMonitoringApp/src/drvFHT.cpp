@@ -267,11 +267,9 @@ unsigned char drvFHT::_checksumCalc(const char* str) {
                 "%s::%s: *str=%d\n", driverName, functionName, *str);
         sum += *str++;
     }
-
     sum %= 256;
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
             "%s::%s: checksum=%d\n", driverName, functionName, sum);
-
     return sum;
 }
 
@@ -318,9 +316,11 @@ asynStatus drvFHT::_readInt(int function, const char *cmd, int addr) {
  *---------------------------------------------------------------------------*/
     const char *functionName = "_readInt";
     asynStatus status = asynSuccess; 
-    int stat = -1;
+    long value;
+    char *endPtr;
     
     status = _writeRead(cmd);
+
     if (status) {
         setParamAlarmStatus(addr, function, COMM_ALARM);
         setParamAlarmSeverity(addr, function, INVALID_ALARM);
@@ -329,15 +329,27 @@ asynStatus drvFHT::_readInt(int function, const char *cmd, int addr) {
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
             "%s:%s: ERROR: function=%d, status=%d\n", 
             driverName, functionName, function, status);
+        return status;
     }
     
-    stat = strtol(replyBuffer_, NULL, 10);
+    value = strtol(replyBuffer_, &endPtr, 10);
 
+    if (endPtr == replyBuffer_) {
+        setParamAlarmStatus(addr, function, COMM_ALARM);
+        setParamAlarmSeverity(addr, function, INVALID_ALARM);
+        callParamCallbacks(addr);
+
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
+            "%s:%s: ERROR: strtol conversion: function=%d, value=%ld\n", 
+            driverName, functionName, function, value);
+        return asynError;
+    }
+    
     // Set alarm status to normal 
     setParamAlarmStatus(addr, function, NO_ALARM);
     setParamAlarmSeverity(addr, function, NO_ALARM);
 
-    if (forceCallback_) setIntegerParam(addr, function, stat);
+    if (forceCallback_) setIntegerParam(addr, function, value);
     callParamCallbacks(addr);
 
     return status;
@@ -350,7 +362,8 @@ asynStatus drvFHT::_readStatus(int function, const char *cmd) {
  *---------------------------------------------------------------------------*/
     const char *functionName = "_readStatus";
     asynStatus status = asynSuccess; 
-    int stat = -1;
+    long value = -1;
+    char *endPtr;
     
     status = _writeRead(cmd);
     if (status) {
@@ -364,13 +377,24 @@ asynStatus drvFHT::_readStatus(int function, const char *cmd) {
         return status;
     }
     
-    stat = strtol(replyBuffer_, NULL, 16);
+    value = strtol(replyBuffer_, &endPtr, 16);
 
+    if (endPtr == replyBuffer_) {
+        setParamAlarmStatus(function, COMM_ALARM);
+        setParamAlarmSeverity(function, INVALID_ALARM);
+        callParamCallbacks();
+
+        asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
+            "%s:%s: ERROR: strtol conversion: function=%d, value=%ld\n", 
+            driverName, functionName, function, value);
+        return asynError;
+    }
+    
     // Set alarm status to normal 
     setParamAlarmStatus(function, NO_ALARM);
     setParamAlarmSeverity(function, NO_ALARM);
 
-    if (forceCallback_) setIntegerParam(function, stat);
+    if (forceCallback_) setIntegerParam(function, value);
     callParamCallbacks();
 
     return status;
@@ -385,9 +409,9 @@ asynStatus drvFHT::_readChan(const char *cmd, int addr) {
  *---------------------------------------------------------------------------*/
     const char *functionName = "_readChan";
     asynStatus status = asynSuccess; 
-    double value = -1.0;
-    int valStatus = -1;
-    char *pch;
+    double fValue = -1.0;
+    long lValue = -1;
+    char *pch, *endPtr;
     
     status = _writeRead(cmd);
     if (status) {
@@ -409,11 +433,20 @@ asynStatus drvFHT::_readChan(const char *cmd, int addr) {
    
     if (strchr(replyBuffer_, ' ')) {
         pch = strtok(replyBuffer_, " ");
-        if (pch) value = atof(pch);
-        if (forceCallback_) setDoubleParam(addr, meas, value);
+        if (pch) fValue = atof(pch);
+        if (forceCallback_) setDoubleParam(addr, meas, fValue);
+        
         pch = strtok(NULL, " ");
-        if (pch) valStatus = strtol(pch, NULL, 16);
-        if (forceCallback_) setIntegerParam(addr, measStatus, valStatus);
+        if (pch) lValue = strtol(pch, &endPtr, 16);
+        if (endPtr == pch) {
+            setParamAlarmStatus(addr, measStatus, COMM_ALARM);
+            setParamAlarmSeverity(addr, measStatus, INVALID_ALARM);
+            callParamCallbacks(addr);
+            asynPrint(pasynUserSelf, ASYN_TRACE_FLOW, 
+                "%s:%s: ERROR: strtol conversion: function=%d, lValue=%ld\n", 
+                driverName, functionName, measStatus, lValue);
+        }
+        if (forceCallback_) setIntegerParam(addr, measStatus, lValue);
     } else {
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
                 "%s::%s: Unrecognized command %s\n", driverName, functionName, cmd);
