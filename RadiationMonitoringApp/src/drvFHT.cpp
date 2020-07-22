@@ -143,11 +143,8 @@ void drvFHT::pollerThread() {
     Poll parameter values from device; pause for poll time. 
 ----------------------------------------------------------------------*/
     const char *functionName = "pollerThread";
-    //asynStatus status;
     char cmdStr[128];
-    int i;
-    int pollInt;
-    int readAll = 1;
+    int i, pollInt, readAll = 1;
 
     // Wait until iocInit is finished
     while (!interruptAccept) {
@@ -264,14 +261,17 @@ unsigned char drvFHT::_checksumCalc(const char* str) {
  *---------------------------------------------------------------------------*/
     static const char *functionName = "_checksumCalc";
     unsigned char sum = 0;
+
     while (*str) {
         asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
                 "%s::%s: *str=%d\n", driverName, functionName, *str);
         sum += *str++;
     }
+
     sum %= 256;
     asynPrint(pasynUserSelf, ASYN_TRACE_FLOW,
             "%s::%s: checksum=%d\n", driverName, functionName, sum);
+
     return sum;
 }
 
@@ -764,8 +764,8 @@ asynStatus drvFHT::_write(const char *buffer) {
         // Print an error message if this is the first error        
         if (!err_count_) {
             asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
-              "%s::%s: Error: buffer=%s, status=%d, nbytesTransfered=%d\n",
-              driverName, functionName, cmdBuffer, status, (int)nbytesTransfered);
+              "%s::%s: Error: buffer=%s, status=%d, nbytesTransfered=%zu\n",
+              driverName, functionName, cmdBuffer, status, nbytesTransfered);
         }
     }
   
