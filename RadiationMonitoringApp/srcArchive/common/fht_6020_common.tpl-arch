@@ -1,0 +1,9 @@
+
+# PPS Archive List for FHT 6020 Rad Mon
+#
+# Signal Name                Period (sec)    Type
+$(P):ReadStatus              1               monitor
+$(P):ErrorCount              1               monitor
+$(P):CH_READ_ALL             1               monitor
+$(P):STATUS_SYS              1               monitor
+

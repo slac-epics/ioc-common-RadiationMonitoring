@@ -1,6 +1,13 @@
 # Archive template file for sioc-clts-rm01
 
-file fht_6020.tpl-arch
+file fht_6020_common.tpl-arch
+{
+pattern
+    {            P}
+    {RADM:CLTS:585}
+}
+
+file fht_6020_chan.tpl-arch
 {
 pattern
     {            P,  N}

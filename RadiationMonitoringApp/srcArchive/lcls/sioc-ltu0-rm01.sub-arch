@@ -1,6 +1,13 @@
 # LCLS-II Injector Beam Containment (BCS) Archive List
 
-file fht_6020.tpl-arch
+file fht_6020_common.tpl-arch
+{
+pattern
+    {            P}
+    {RADM:LTU0:998}
+}
+
+file fht_6020_chan.tpl-arch
 {
 pattern
     {            P,  N}

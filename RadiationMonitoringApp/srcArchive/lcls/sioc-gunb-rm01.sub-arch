@@ -15,7 +15,15 @@ pattern { DEV            , RATE  }
 		{ RADF:GUNB:201:D    , 600   }
 }
 
-file fht_6020.tpl-arch
+file fht_6020_common.tpl-arch
+{
+pattern
+    {          P}
+    {RADM:GUNB:1}
+
+}
+
+file fht_6020_chan.tpl-arch
 {
 pattern
     {          P,  N}

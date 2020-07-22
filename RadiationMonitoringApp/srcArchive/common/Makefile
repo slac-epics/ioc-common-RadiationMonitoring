@@ -23,7 +23,8 @@ ARCHIVE += $(IOCADMIN)/archive/archive_iocAdmin.archive
 # Install archive list into $TOP/archive
 ARCHIVE += dosfet.tpl-arch
 ARCHIVE += dosfet-chan.tpl-arch
-ARCHIVE += fht_6020.tpl-arch
+ARCHIVE += fht_6020_common.tpl-arch
+ARCHIVE += fht_6020_chan.tpl-arch
 ARCHIVE += monitor.tpl-arch
 ARCHIVE += scan.tpl-arch
 
