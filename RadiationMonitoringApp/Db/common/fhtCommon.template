@@ -77,7 +77,7 @@ record(bo, "$(P):CH_READ_ALL") {
     field(ONAM, "Yes")
     field(ZSV,  "MINOR")
     field(PINI, "1")
-    field(VAL,  "1")
+    field(VAL,  "0")
     info(autosaveFields, "VAL")
 }
 
