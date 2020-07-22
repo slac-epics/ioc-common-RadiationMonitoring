@@ -36,7 +36,6 @@ const double DEFAULT_TIMEOUT = 1.0;
 const double DEFAULT_POLL_TIME = 2.0;
 const int POLL_INT_MIN = 1;
 const int POLL_INT_MAX = 60;
-const int DEBUG = 0;
 
 static const char *driverName = "drvFHT";
 
