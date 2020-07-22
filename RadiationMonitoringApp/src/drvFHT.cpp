@@ -71,12 +71,7 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
     status = pasynOctetSyncIO->connect(IOport, 0, &pasynUser, 0);
     
     if (status != asynSuccess) {
-        asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                "%s::%s: Failed to connect to I/O port %s\n", driverName, functionName, IOport);
-    }
-    else {
-        asynPrint(pasynUser, ASYN_TRACE_FLOW,
-                "%s::%s: Connected to I/O port %s\n", driverName, functionName, IOport);
+        epicsPrintf("%s::%s: Failed to connect to I/O port %s\n", driverName, functionName, IOport);
     }
 
     createParam(snString,                     asynParamOctet,          &sn);
@@ -112,10 +107,15 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
 
 
     /* Start the thread to poll inputs and do callbacks to device support */
-    epicsThreadCreate("drvFHTPoller",
+    epicsThreadId tid = epicsThreadCreate("drvFHTPoller",
                     epicsThreadPriorityMedium,
                     epicsThreadGetStackSize(epicsThreadStackMedium),
                     (EPICSTHREADFUNC)pollerThreadC, this);
+
+    if (!tid) {
+        epicsPrintf("%s:%s: epicsThreadCreate failure\n", driverName, functionName);
+        return;
+    }
 
     /* Create an EPICS exit handler */ 
     epicsAtExit(exitHandler, this);
