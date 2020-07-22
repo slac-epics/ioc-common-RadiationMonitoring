@@ -20,4 +20,5 @@ include $(TOP)/configure/CONFIG
 DIRS += common
 DIRS += lcls
 DIRS += site
+DIRS += dev
 include $(TOP)/configure/RULES_DIRS
