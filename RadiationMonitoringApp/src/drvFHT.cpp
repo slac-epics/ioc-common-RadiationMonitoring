@@ -74,6 +74,14 @@ drvFHT::drvFHT(const char *port, const char* IOport, int addr, double timeout)
         epicsPrintf("%s::%s: Failed to connect to I/O port %s\n", driverName, functionName, IOport);
     }
 
+    // Set input/output terminators
+    status = pasynOctetSyncIO->setInputEos(pasynUser, "\x03", 1); 
+    status = pasynOctetSyncIO->setOutputEos(pasynUser, "\x03", 1); 
+    
+    if (status != asynSuccess) {
+        epicsPrintf("%s::%s: Could not set EOS\n", driverName, functionName);
+    }
+
     createParam(snString,                     asynParamOctet,          &sn);
     createParam(fwString,                     asynParamOctet,          &fw);
     createParam(devTypeString,                asynParamOctet,          &devType);
@@ -783,9 +791,6 @@ asynStatus drvFHT::_write(const char *buffer) {
     checksum = _checksumCalc(tmpStr);
     sprintf(cmdBuffer, "%s%02X", tmpStr, checksum);
 
-    // Set output terminator
-    status = pasynOctetSyncIO->setOutputEos(pasynUser, "\x03", 1); 
-
     status = pasynOctetSyncIO->flush(pasynUser);
     status = pasynOctetSyncIO->write(pasynUser, cmdBuffer, strlen(cmdBuffer), timeout_, &nbytesTransfered);
 
@@ -835,10 +840,6 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
     sprintf(tmpStr, "%s%02d%s", "\x07", deviceAddr_, buffer);
     checksum = _checksumCalc(tmpStr);
     sprintf(cmdBuffer, "%s%02X", tmpStr, checksum);
-
-    // Set input/output terminators
-    status = pasynOctetSyncIO->setInputEos(pasynUser, "\x03", 1); 
-    status = pasynOctetSyncIO->setOutputEos(pasynUser, "\x03", 1); 
 
     // pasynOctetSyncIO->writeRead calls flush, write, and read
     status = pasynOctetSyncIO->writeRead(pasynUser, cmdBuffer, strlen(cmdBuffer),
