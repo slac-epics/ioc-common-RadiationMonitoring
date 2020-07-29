@@ -5,6 +5,7 @@ record(ai, "$(P):CH$(N):MEAS") {
     field(DESC, "Meas. value, ch. $(N)")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT), $(M), 0) MEAS")
+# Units are set in the USERUNITS record below
     field(EGU,  "")
     field(PREC, "$(PREC=3)")
     field(LOLO, "$(LOLO="")")
@@ -90,7 +91,7 @@ record(mbbi, "$(P):CH$(N):DISPUNITS") {
 record(stringout, "$(P):CH$(N):USERUNITS") {
     field(DESC, "User units, ch. $(N)")
     field(OUT,  "$(P):CH$(N):MEAS.EGU PP")
-    field(VAL,  "$(EGU)")
+    field(VAL,  "$(EGU="mrem/hr")")
     field(PINI, "1")
     info(autosaveFields, "VAL")
 }
