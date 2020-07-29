@@ -12,12 +12,6 @@ epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 # Configure communication port
 drvAsynIPPortConfigure("RADM_LTU0_998", "ts-b913-nw02:2010", 0,0,0)
 
-asynSetTraceMask("RADM_LTU0_998", -1, 0x11)
-asynSetTraceIOMask("RADM_LTU0_998", -1, 0x1)
-
-asynOctetSetInputEos("RADM_LTU0_998", 0, "\x03")
-asynOctetSetOutputEos("RADM_LTU0_998", 0, "\x03")
-
 # Initialize asyn driver
 # drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
 #/*------------------------------------------------------------------------------
@@ -30,7 +24,7 @@ asynOctetSetOutputEos("RADM_LTU0_998", 0, "\x03")
 drvFHTConfigure("FHT_LTU0_998", "RADM_LTU0_998", 1, 1.5)
 
 # Asyn diagnostics
-asynSetTraceMask("FHT_LTU0_998", -1, 0x11)
+#asynSetTraceMask("FHT_LTU0_998", -1, 0x11)
 asynSetTraceIOMask("FHT_LTU0_998", -1, 0x1)
 
 # Load record instances
