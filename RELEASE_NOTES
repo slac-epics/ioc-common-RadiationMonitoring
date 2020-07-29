@@ -10,6 +10,7 @@
 
 R1.1.0  22-Jul-2020 M. Dunning (mdunning):
     Upgrade epics base, asyn, stream
+    Use external pcre, not system
     thermoFHT driver: 
         Add Heartbeat and ReadStatus PVs
         Use asynPrint everywhere
