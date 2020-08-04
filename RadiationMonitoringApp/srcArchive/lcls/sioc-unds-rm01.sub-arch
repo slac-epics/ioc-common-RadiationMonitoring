@@ -19,7 +19,9 @@ pattern	{ DEV           , RATE }
 		{	RADM:UNDS:3277:, 600	}
 		{	RADM:UNDS:3377:, 600	}
 		{	RADM:UNDS:3477:, 600	}
-		{	RADM:UNDS:3577:, 600	}
+		{	RADM:UNDS:3505:, 600	}
+		{	RADM:UNDS:3550:, 600	}
+		{	RADM:UNDS:3595:, 600	}
 		{	RADM:UNDS:3677:, 600	}
 		{	RADM:UNDS:3777:, 600	}
 		{	RADM:UNDS:3877:, 600	}
@@ -32,6 +34,10 @@ pattern	{ DEV           , RATE }
 		{	RADM:UNDS:4577:, 600	}
 		{	RADM:UNDS:4677:, 600	}
 		{	RADM:UNDS:4777:, 600	}
+		{	RADM:DMPS:00, 600	}
+		{	RADM:DMPS:01, 600	}
+		{	RADM:DMPS:02, 600	}
+		{	RADM:UNDS:5077, 600	}
 }
 
 file archive_iocAdmin.archive

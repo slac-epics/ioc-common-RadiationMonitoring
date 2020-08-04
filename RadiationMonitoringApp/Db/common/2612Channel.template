@@ -74,6 +74,7 @@ record(calc, "$(P):DOSE") {
   field(INPD, "$(P):DELTA_VOLTS PP MS")
 # Voltage change since zeroing
   field(PINI, "YES")
+  field(EGU, "Rad")
   info(autosaveFields, "CALC DESC INPA INPB INPC INPE INPF INPG INPH INPI INPJ INPK INPL")
 }
 

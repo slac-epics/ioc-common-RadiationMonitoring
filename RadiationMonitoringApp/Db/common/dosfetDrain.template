@@ -84,7 +84,7 @@ record( calc, "$(P):$(SENSOR):$(DRAIN):DELTA_VOLTS" )
 record( calc, "$(P):$(SENSOR):$(DRAIN):DOSE" )
 {
 	field( CALC, "EXP(E-SQR(F+(LOGE(D)-A)/C))" )
-	field( EGU, "" )
+	field( EGU, "Rad" )
 	field( PREC, 7 )
 	field( INPA, "-4.33139" )	# coefficient a according to pdf
 	field( INPB, "1.05947" )	# coefficient b according to pdf

@@ -14,3 +14,6 @@ pvlist.txt
 RELEASE_SITE
 archive
 
+.cproject
+.project
+.settings
