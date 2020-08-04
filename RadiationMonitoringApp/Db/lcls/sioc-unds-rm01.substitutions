@@ -170,7 +170,9 @@ pattern {	P				}
 		{	RADM:UNDS:3277:	}
 		{	RADM:UNDS:3377:	}
 		{	RADM:UNDS:3477:	}
-		{	RADM:UNDS:3577:	}
+		{	RADM:UNDS:3505:	}
+		{	RADM:UNDS:3550:	}
+		{	RADM:UNDS:3595:	}
 		{	RADM:UNDS:3677:	}
 		{	RADM:UNDS:3777:	}
 		{	RADM:UNDS:3877:	}
@@ -183,4 +185,8 @@ pattern {	P				}
 		{	RADM:UNDS:4577:	}
 		{	RADM:UNDS:4677:	}
 		{	RADM:UNDS:4777:	}
+		{	RADM:DMPS:00:	}
+		{	RADM:DMPS:01:	}
+		{	RADM:DMPS:02:	}
+		{	RADM:UNDS:5077:	}
 }
