@@ -28,6 +28,7 @@ include $(TOP)/configure/CONFIG
 # Create and install (or just install)
 # databases, templates, substitutions like this
 #
+DB += slow_hist_pattern.db
 DB += radfet_history_ch.db
 DB += dosfet.db
 DB += dosfetChannelWrapper.db

@@ -16,7 +16,7 @@
 #	RMS_HIHI - High alarm   limit for $(PV)_RMS, default 0
 
 # Example
-file ai_hist_pattern.db
+file slow_hist_pattern.db
 {
 pattern { PV                , EGU  }
         { "$(P)RAW"         , "V"  }

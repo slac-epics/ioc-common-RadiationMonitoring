@@ -1,0 +1,71 @@
+# slow_hist_pattern.substitutions
+# Based on ai_hist_pattern.substitutions, but leaving out shorter time periods
+# This sample substitutions file sets the pattern for keeping
+# history waveforms for the specified analog input PV,
+# along with wave processing to create the MAX, MIN,
+# RMS, and STD for each.
+#
+# Required Macro Names
+#	PV			- PV name for the ai record to capture
+# Optional Macro Names
+#	N_SAMPLES	- Number of samples in buffers, defaults at db load to 300
+#	EGU			- EGU for sample data, defaults at db load to "" 
+#
+# The history module generates ai_hist_pattern.db from
+# this sample substitutions file.
+#
+# For casual usage, use this in your st.cmd file:
+# dbLoadRecord( "db/ai_hist_pattern.db", "PV=<your_pv>" )
+# or you can also specify N_SAMPLES or EGU
+# dbLoadRecord( "db/ai_hist_pattern.db", "PV=TST:AIN:01,N_SAMPLES=100,EGU=ps" )
+#
+# If you have many pv's to take history for,
+# use ai_hist_pattern.db as the template in your substitutions file
+#
+
+# Create history PV's
+# pv_history.template creates two PV's per instance
+#   $(PV)_$(NAME)_SUB	- aSub record to do processing
+#	$(PV)_$(NAME)		- waveform record for the history data
+#
+# Customize as desired with different time periods, however
+# custom time period's will require custom screens as well.
+file pv_history.template
+{
+	pattern
+	{	NAME,		PERIOD,		X_EGU,	S_PER_X_EGU,	N_SAMPLES,			EGU		}
+	{	"LAST_N",	0,			N,		0,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"3DAY",		259200,		hr,		3600,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"WEEK",		604800,		days,	86400,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
+}
+
+
+# Create waveform processing records
+# wave_proc.template creates two PV's per instance
+#   $(WAVE)_RMS_SUB	- aSub record to do processing
+#	$(WAVE)_AVG		- ai record for waveform avg value
+#	$(WAVE)_MAX		- ai record for waveform max value
+#	$(WAVE)_MIN		- ai record for waveform min value
+#	$(WAVE)_STD		- ai record for waveform std deviation
+#	$(WAVE)_SLOPE	- ai record for waveform least squares slope
+#	$(WAVE)_OFFSET	- ai record for waveform least squares offset
+#
+# Generally you'll want one instance here for each
+# period you include above
+#
+file wave_proc.template
+{
+	pattern
+	{	WAVE,			NELM,					EGU			}
+	{	"$(PV)_LAST_N",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_3DAY", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_WEEK", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+}
+
+# This template provides aliases for easy access to the LAST_N stats
+# Ex:  alias( '$(PV)_LAST_N_MAX', '$(PV)_MAX' )
+file stats_aliases.template
+{
+	{	PV	= '$(PV)'	}
+}
+
