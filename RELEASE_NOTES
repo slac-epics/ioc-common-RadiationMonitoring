@@ -8,13 +8,17 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.2   11-Sep-2020   G. Brown (gwbrown):
+    CATER 146396, history module eating CPU time
+    Drop history module buffers intended for much faster data.
+
 R1.1.1   3-Aug-2020   G. Brown (gwbrown):
     Adding the RadFETs that Clive recently installed for UNDS
 
 R1.1.0  22-Jul-2020 M. Dunning (mdunning):
     Upgrade epics base, asyn, stream
     Use external pcre, not system
-    thermoFHT driver: 
+    thermoFHT driver:
         Add Heartbeat and ReadStatus PVs
         Use asynPrint everywhere
         Improve exit behavior
