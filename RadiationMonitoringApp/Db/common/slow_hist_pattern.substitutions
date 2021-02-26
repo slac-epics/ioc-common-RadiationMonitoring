@@ -1,3 +1,4 @@
+
 # slow_hist_pattern.substitutions
 # Based on ai_hist_pattern.substitutions, but leaving out shorter time periods
 # This sample substitutions file sets the pattern for keeping
@@ -9,7 +10,7 @@
 #	PV			- PV name for the ai record to capture
 # Optional Macro Names
 #	N_SAMPLES	- Number of samples in buffers, defaults at db load to 300
-#	EGU			- EGU for sample data, defaults at db load to "" 
+#	EGU			- EGU for sample data, defaults at db load to ""
 #
 # The history module generates ai_hist_pattern.db from
 # this sample substitutions file.
@@ -35,6 +36,9 @@ file pv_history.template
 	pattern
 	{	NAME,		PERIOD,		X_EGU,	S_PER_X_EGU,	N_SAMPLES,			EGU		}
 	{	"LAST_N",	0,			N,		0,			'$(N_SAMPLES=300)',	'$(EGU=)'	}
+	{	"3HR",	    10800,		hr,		3600,		'$(N_SAMPLES=18)',	'$(EGU=)'	}
+	{	"8HR",	    28800,		hr,		3600,		'$(N_SAMPLES=48)',	'$(EGU=)'	}
+	{	"24HR",	    86400,		hr,		3600,		'$(N_SAMPLES=144)',	'$(EGU=)'	}
 	{	"3DAY",		259200,		hr,		3600,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
 	{	"WEEK",		604800,		days,	86400,		'$(N_SAMPLES=300)',	'$(EGU=)'	}
 }
@@ -58,6 +62,9 @@ file wave_proc.template
 	pattern
 	{	WAVE,			NELM,					EGU			}
 	{	"$(PV)_LAST_N",	'$(N_SAMPLES=300)',		'$(EGU=)'	}
+	{	"$(PV)_3HR",	'$(N_SAMPLES=18)',		'$(EGU=)'	}
+	{	"$(PV)_8HR", 	'$(N_SAMPLES=48)',		'$(EGU=)'	}
+	{	"$(PV)_24HR",  	'$(N_SAMPLES=144)',		'$(EGU=)'	}
 	{	"$(PV)_3DAY", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
 	{	"$(PV)_WEEK", 	'$(N_SAMPLES=300)',		'$(EGU=)'	}
 }
