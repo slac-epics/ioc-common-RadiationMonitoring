@@ -2858,7 +2858,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=01"
@@ -2884,7 +2884,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=02"
@@ -2910,7 +2910,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=03"
@@ -2936,7 +2936,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=04"
@@ -2962,7 +2962,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=05"
@@ -2988,7 +2988,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=06"
@@ -3014,7 +3014,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=07"
@@ -3040,7 +3040,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=08"
@@ -3066,7 +3066,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=09"
@@ -3092,7 +3092,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=10"
@@ -3118,7 +3118,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=11"
@@ -3144,7 +3144,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=12"
@@ -3170,7 +3170,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=13"
@@ -3196,7 +3196,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=14"
@@ -3222,7 +3222,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=15"
@@ -3248,7 +3248,7 @@ buttonLabel "More..."
 numPvs 4
 numDsps 1
 displayFileName {
-  0 "../lcls2/rm/thermoFHT_chanMore.edl"
+  0 "thermoFHT_chanMore.edl"
 }
 symbols {
   0 "N=16"

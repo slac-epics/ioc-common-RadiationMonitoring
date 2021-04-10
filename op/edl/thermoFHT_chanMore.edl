@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 28
-y 795
-w 644
-h 200
+x 367
+y 703
+w 700
+h 260
 font "helvetica-medium-r-12.0"
 fontAlign "right"
 ctlFont "helvetica-medium-r-12.0"
@@ -86,7 +86,7 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 160
+x 128
 y 112
 w 68
 h 24
@@ -112,9 +112,9 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 324
+x 396
 y 112
-w 80
+w 96
 h 24
 controlPv "$(P):CH$(N):DISPFACTOR"
 format "exponential"
@@ -139,7 +139,7 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 412
+x 500
 y 112
 w 52
 h 24
@@ -165,7 +165,7 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 472
+x 560
 y 112
 w 52
 h 24
@@ -191,7 +191,7 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 532
+x 620
 y 112
 w 52
 h 24
@@ -217,18 +217,20 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 156
-y 148
-w 422
-h 28
+x 144
+y 152
+w 380
+h 56
 font "helvetica-medium-r-12.0"
 fontAlign "center"
 fgColor index 13
 bgColor index 2
 useDisplayBg
 value {
+  "*Parameter affects only local display unit, not values read remotely."
+  "**Parameter affects remote display only."
+  "*** Parameter affects local AND remote display in the following way:"
   "Displayed_Value = Display_Factor*Measured_Value"
-  "*Display parameters only affect local display unit, not values read remotely."
 }
 autoSize
 endObjectProperties
@@ -239,7 +241,7 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 236
+x 308
 y 112
 w 80
 h 24
@@ -265,7 +267,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 160
+x 128
 y 88
 w 68
 h 20
@@ -284,7 +286,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 236
+x 308
 y 88
 w 80
 h 20
@@ -303,16 +305,16 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 324
+x 396
 y 88
-w 80
+w 92
 h 20
 font "helvetica-bold-r-12.0"
 fgColor index 13
 bgColor index 2
 useDisplayBg
 value {
-  "Disp. Factor*"
+  "Disp. Factor***"
 }
 endObjectProperties
 
@@ -322,7 +324,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 412
+x 500
 y 88
 w 52
 h 20
@@ -341,7 +343,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 472
+x 560
 y 88
 w 52
 h 20
@@ -360,7 +362,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 532
+x 620
 y 88
 w 52
 h 20
@@ -379,7 +381,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 56
+x 24
 y 112
 w 100
 h 24
@@ -398,7 +400,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 56
+x 24
 y 112
 w 100
 h 24
@@ -447,5 +449,50 @@ value {
   "$(P)"
 }
 border
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 204
+y 112
+w 96
+h 24
+controlPv "$(P):CH$(N):USERUNITS"
+font "helvetica-medium-r-12.0"
+fgColor index 14
+fgAlarm
+bgColor index 2
+editable
+limitsFromDb
+nullColor index 13
+smartRefresh
+fastUpdate
+useHexPrefix
+newPos
+objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 204
+y 88
+w 96
+h 20
+font "helvetica-bold-r-12.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Remote units**"
+}
 endObjectProperties
 
