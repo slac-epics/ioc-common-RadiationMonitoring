@@ -23,4 +23,8 @@ Thermo FHT Radiation Monitor info
 - This is a serial device that will connect to the network via a terminal server
     - Serial settings: 9600/7/Even/2/None
     - DB9 to RJ45 pinout:
+        DB9 pin  ------- RJ45 pin ----- L-com adapter color
+          2                  5                  Grn
+          3                  4                  Red
+          5                  6                  Ylw
 
