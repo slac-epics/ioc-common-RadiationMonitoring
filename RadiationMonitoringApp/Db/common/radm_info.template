@@ -3,6 +3,7 @@ record(stringout, "$(P):LOCATION") {
     field(DESC, "Device location")
     field(VAL,  "$(LOC)")
     field(PINI, "1")
+    info(autosaveFields, "VAL")
 }
 
 record(mbbo, "$(P):TYPE") {
@@ -15,7 +16,8 @@ record(mbbo, "$(P):TYPE") {
     field(TWST, "Air Mon Sys")
     field(THVL, "3")
     field(THST, "Periphal Mon Sys")
-    field(VAL,  "$(TYPE)")
+    field(VAL,  "$(TYPE=0)")
     field(PINI, "1")
+    info(autosaveFields, "VAL")
 }
 
