@@ -1,0 +1,32 @@
+# IOC shell script for Thermo FHT Radmon configuration
+# 20210707 mdunning
+#
+# Required macros:
+#  PORT - Asyn port name
+#  TS - Terminal server IP name or address
+#  TSPORT - Terminal server port 
+#
+# This file should be executed from the ioc shell like so:
+#  iocshLoad(filename, macros)
+#  For example:
+#  iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=FHT1,TS=ts-ltu0-nw09,TSPORT=2112")
+
+# Configure communication port
+drvAsynIPPortConfigure("$(PORT)_IP", "$(TS):$(TSPORT)", 0,0,0)
+
+# Initialize asyn driver
+# drvFHTConfigure(port, octetPort, addr, timeout) {
+#/*------------------------------------------------------------------------------
+# *  port       The name of the asyn port driver to be created.
+# *  octetPort  The communication port name, created with drvAsynIPPortConfigure()
+# *  addr       The hardware address.
+# *  timeout    The timeout for I/O (optional, default = 1.0 seconds).
+# *----------------------------------------------------------------------------*/
+drvFHTConfigure("$(PORT)", "$(PORT)_IP", 1, 1.5)
+
+# Asyn diagnostics
+#asynSetTraceMask("$(PORT)", -1, 0x11)
+asynSetTraceIOMask("$(PORT)", -1, 0x1)
+
+# End of file
+
