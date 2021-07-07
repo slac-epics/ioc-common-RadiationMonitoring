@@ -15,8 +15,8 @@ record(ai, "$(P):CH$(N):MEAS") {
     field(HYST, "$(HYST=0.5)")
     field(LLSV, "$(LLSV=NO_ALARM)")
     field(LSV,  "$(LSV=NO_ALARM)")
-    field(HSV,  "$(HSV=MINOR)")
-    field(HHSV, "$(HHSV=MAJOR)")
+    field(HSV,  "$(HSV=NO_ALARM)")
+    field(HHSV, "$(HHSV=NO_ALARM)")
     field(SCAN, "I/O Intr")
     info(autosaveFields, "LOLO LOW HIGH HIHI HYST LLSV LSV HSV HHSV")
 }
