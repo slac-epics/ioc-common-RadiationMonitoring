@@ -44,6 +44,7 @@ DB += ecogamma.template
 DB += radm_info.template
 DB += ams-printer.template
 DB += eco-os-6.template
+DB += hpi_6012.template
 DB_INSTALLS += $(ASYN)/db/asynRecord.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

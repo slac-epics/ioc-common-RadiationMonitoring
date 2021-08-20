@@ -1,0 +1,25 @@
+# Stream device protocol file for HPI 6012 Rad Detector Display
+# M. Dunning 2019-05-13
+# For documentation, see manual in 'documentation' directory.
+#
+# This device sends unsolicited data at 1 Hz.
+
+Terminator = CR LF;
+ReplyTimeout = 1500;
+
+read {
+    in "%x %(\$1:StatusRaw)d %(\$1:\$2DoseRate)f %(\$1:\$2DoseRate.EGU)s";
+}
+
+debug {
+    in "%39c";
+}
+
+# Scan this record at 1 Hz so that a read error is triggered when the device is offline.
+#   When a read error is triggered, we can get asyn to reconnect the port automatically
+#   using the asyn "disconnectOnReadTimeout" option.
+readCheck {
+    out "dummy";
+    in "%39c";
+}
+
