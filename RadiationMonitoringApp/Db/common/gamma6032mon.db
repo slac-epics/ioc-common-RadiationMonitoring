@@ -1,0 +1,48 @@
+
+record(asyn,"$(BL)GAMMAASYNCONTROL") {
+    field(DTYP, "asynRecordDevice")
+    field(PORT, "$(PORT)")
+}
+
+record(calcout, "$(BL)GAMMAACT") {
+  field(DESC, "gamma dose rate")
+  field(DTYP, "stream")
+# SDIS is for alarm propogation only
+  #field(SDIS, "$(BL)GammaCheckIO CP MS")
+  field(OUT,  "@gamma6032.proto read($(BL)) $(PORT)")
+  field(SCAN, "I/O Intr")
+# .A is filled in by gamma6032.proto
+  #field(INPB, "$(BL)GammaDoseStatus NPP MS")
+  field(CALC, "A<8388608 ? 0.01*A : 0.01*(8388608-A)")
+  field(EGU,  "mR/hr")
+  field(PREC, "2")
+  field(FLNK, "$(BL)GAMMAFANOUT")
+}
+
+record(fanout, "$(BL)GAMMAFANOUT") {
+  field(DESC, "gamma fanout")
+  field(SCAN, "Passive")
+  field(LNK1, "$(BL)GAMMATOTALDOSE")
+  field(LNK2, "$(BL)GAMMADAILYDOSE")
+}
+
+record(calc, "$(BL)GAMMATOTALDOSE") {
+  field(DESC, "gamma total dose")
+  field(INPA, "$(BL)GAMMATOTALDOSE NPP MS")
+  field(INPB, "$(BL)GAMMAACT NPP MS")
+  field(CALC, "(B<(-.09))||(B>1001)?A:A+(B/3600.)")
+  field(EGU,  "mR")
+  field(PREC, "2")
+  info(autosaveFields_pass0, "VAL")
+}
+
+record(calc, "$(BL)GAMMADAILYDOSE") {
+  field(DESC, "gamma daily dose")
+  field(INPA, "$(BL)GAMMADAILYDOSE NPP MS")
+  field(INPB, "$(BL)GAMMAACT NPP MS")
+  field(INPC, "$(IOC):SUBRESETCOUNT NPP")
+  field(CALC, "(C!=0)?0:((B<(-.09))||(B>1001)?A:A+(B/3600.))")
+  field(EGU,  "mR")
+  field(PREC, "2")
+  info(autosaveFields_pass0, "VAL")
+}

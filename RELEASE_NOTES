@@ -8,6 +8,10 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.5 20-Aug-2021 M. Dunning (mdunning):
+    Add sioc-b24-rm03 for dev FHT and BSOIC testing
+    Add support for HPI 6012 and 6032 BSOICs
+
 R1.1.4  7-Jul-2021 M. Dunning (mdunning):
     thermoFHT support: add generic subs file, add iocsh script
     Add sioc-li20-rm01 for FACET FHT

@@ -1,0 +1,24 @@
+# Stream device protocol file for HPI 6032 Ion Chamber Display
+#       modified by HPI ala Patrick Bong
+
+  # Harvey Rarback
+  # May 27, 2010
+  # updated for new firmware February 8, 2011
+
+Terminator  = CR;
+ReadTimeout = 60000;
+
+read {
+  in                           # only 1-way communication
+  "%(A)x"                      # gamma dose rate
+  "%*x"    # high trip level
+  "%*x" # low trip level
+  "%*x"                        # fail count down
+  "%*x"   # status byte
+  "%*x";    # second status byte
+}
+
+debug {
+  ExtraInput = Ignore;
+  in "%27c";
+}
