@@ -22,7 +22,7 @@ drvAsynIPPortConfigure("$(PORT)_IP", "$(TS):$(TSPORT)", 0,0,0)
 # *  addr       The hardware address.
 # *  timeout    The timeout for I/O (optional, default = 1.0 seconds).
 # *----------------------------------------------------------------------------*/
-drvFHTConfigure("$(PORT)", "$(PORT)_IP", 1, 1.5)
+drvFHTConfigure("$(PORT)", "$(PORT)_IP", $(ADDR=1), 1.5)
 
 # Asyn diagnostics
 #asynSetTraceMask("$(PORT)", -1, 0x11)
