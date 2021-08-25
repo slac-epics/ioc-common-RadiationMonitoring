@@ -47,6 +47,7 @@ DB += eco-os-6.template
 DB += hpi_6012.template
 DB += gamma6032mon.db
 DB += alarmClock.db
+DB += dbSubTime.db
 DB_INSTALLS += $(ASYN)/db/asynRecord.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
