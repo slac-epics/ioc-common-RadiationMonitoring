@@ -18,7 +18,7 @@ epicsEnvSet("NBSOIC_PORT",   "NB1")
 #
 epicsEnvSet("BSOIC2_P",      "BSOIC:NEH1:121:")
 epicsEnvSet("BSOIC2_TS",     "ts-lclsdev01")
-epicsEnvSet("BSOIC2_TSPORT", "2016")
+epicsEnvSet("BSOIC2_TSPORT", "4016")
 epicsEnvSet("BSOIC2_PORT",   "B2")
 
 # Load common piece of startup script
