@@ -42,7 +42,7 @@ dbLoadRecords("db/asynRecord.db", "P=$(NBSOIC_P):,R=Asyn,PORT=$(NBSOIC_PORT),ADD
 ###--- 6032 BSOIC ---------------------------------------------------------
 drvAsynIPPortConfigure ("$(BSOIC2_PORT)","$(BSOIC2_TS):$(BSOIC2_TSPORT)",0,0,0)
 asynSetOption("$(BSOIC2_PORT)", 0, "disconnectOnReadTimeout", "Y")
-dbLoadRecords("db/gamma6032mon.db", "BL=$(BSOIC2_P),PORT=$(NBSOIC_PORT),IOC=$(IOC)")
+dbLoadRecords("db/gamma6032mon.db", "BL=$(BSOIC2_P),PORT=$(BSOIC2_PORT),IOC=$(IOC)")
 dbLoadRecords("db/alarmClock.db", "sys=BSOIC:B34:ALL")
 ###-------------------------------------------------------------------------
 

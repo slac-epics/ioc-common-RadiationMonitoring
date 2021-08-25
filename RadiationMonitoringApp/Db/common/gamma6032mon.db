@@ -4,16 +4,18 @@ record(asyn,"$(BL)GAMMAASYNCONTROL") {
     field(PORT, "$(PORT)")
 }
 
+record(longin, "$(BL)GAMMAACT_RAW") {
+  field(DESC, "gamma dose rate raw")
+  field(DTYP, "stream")
+  field(INP,  "@gamma6032.proto read($(BL)) $(PORT)")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(BL)GAMMAACT")
+}
+
 record(calcout, "$(BL)GAMMAACT") {
   field(DESC, "gamma dose rate")
-  field(DTYP, "stream")
-# SDIS is for alarm propogation only
-  #field(SDIS, "$(BL)GammaCheckIO CP MS")
-  field(OUT,  "@gamma6032.proto read($(BL)) $(PORT)")
-  field(SCAN, "I/O Intr")
-# .A is filled in by gamma6032.proto
-  #field(INPB, "$(BL)GammaDoseStatus NPP MS")
-  field(CALC, "A<8388608 ? 0.01*A : 0.01*(8388608-A)")
+  field(INPA, "$(BL)GAMMAACT_RAW NPP MS")
+  field(CALC, "A<8388608 ? 0.01*A : 0.01*(A-8388608)")
   field(EGU,  "mR/hr")
   field(PREC, "2")
   field(FLNK, "$(BL)GAMMAFANOUT")
