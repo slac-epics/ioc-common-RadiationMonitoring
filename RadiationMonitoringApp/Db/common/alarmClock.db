@@ -1,0 +1,103 @@
+# Set an alarm clock to go off at a specified time of day.
+record(bo, "$(sys):Debug") {
+  field(DESC, "Debug flag")
+  field(PINI, "YES")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+# 24-hour reset time in hours, minutes and seconds.
+# The default is midnight.
+# Event number used for alarm clock
+record(longout, "$(sys):AlarmClockEvent") {
+   field(DESC, "Reset event number")
+   field(VAL,  "41")
+   field(PINI, "YES")
+   field(ASG,  "Internal")
+}
+record(longout, "$(sys):AlarmClockHour") {
+   field(DESC, "24-hour Reset time hour")
+   field(DRVL, "0")
+   field(DRVH, "23")
+   field(VAL,  "0")
+   field(PINI, "YES")
+   info(autosaveFields, "VAL")
+}
+record(longout, "$(sys):AlarmClockMinute"){
+   field(DESC, "24-hour Reset time minute")
+   field(DRVL, "0")
+   field(DRVH, "59")
+   field(VAL,  "0")
+   field(PINI, "YES")
+   info(autosaveFields, "VAL")
+}
+record(longout, "$(sys):AlarmClockSecond"){
+   field(DESC, "24-hour Reset time second")
+   field(DRVL, "0")
+   field(DRVH, "59")
+   field(VAL,  "0")
+   field(PINI, "YES")
+   info(autosaveFields, "VAL")
+}
+
+# Generate a soft event (INPD) at a programmable time of day,
+# specified in hours (INPA) and minutes (INPB) and seconds (INPC). 
+# The default time is midnight (INPA=0,INPB=0,INPC=0).
+record(aSub,"$(sys):AlarmClockCheck") {
+  field(DESC, "Reset 24-hour clock")
+  field(ASG,  "Internal")
+  field(SCAN, "1 second")
+  field(INAM, "alarmClockInit")
+  field(SNAM, "alarmClock")
+  field(BRSV, "INVALID")
+#
+# Inputs:
+#  INPA - Reset time hours (24-hour time)
+#  INPB - Reset time minutes
+#  INPC - Reset time seconds
+#  INPD - Reset event number (if SCAN=Event then Event=d)
+#  INPE - Debug flag (0=Off, 1=On)
+  field(INPA, "$(sys):AlarmClockHour")
+  field(INPB, "$(sys):AlarmClockMinute")
+  field(INPC, "$(sys):AlarmClockSecond")
+  field(INPD, "$(sys):AlarmClockEvent")
+  field(INPE, "$(sys):Debug.RVAL")
+  field(FTA,   "ULONG")
+  field(FTB,   "ULONG")
+  field(FTC,   "ULONG")
+  field(FTD,   "LONG")
+  field(FTE,   "LONG")
+#
+# Outputs:
+#  VALA -  time alarm clock sounded (string)
+#  VALB -  last time alarm clock sounded    (string)
+#  VALC -  alarm clock status (0=no alarm, 1=alarm sounding
+# 
+#  VALD -  time alarm sounded in seconds
+#  VALE -  last time alarm clock sounded in seconds
+#  VALF -  next 24-hour time alarm clock will sound (string)
+#  VALG -  next 24-nour time alarm clock will sound in seconds
+  field(FTVA,  "STRING")
+  field(FTVB,  "STRING")
+  field(FTVC,  "USHORT")
+  field(FTVD,  "ULONG")
+  field(FTVE,  "ULONG")
+  field(FTVF,  "STRING")
+  field(FTVG,  "ULONG")
+  field(NOVD,  "2")
+  field(NOVE,  "2")
+  field(NOVG,  "2")
+  field(OUTC,  "$(sys):AlarmClock PP")
+  info(autosaveFields, "VALA VALB VALD VALE VALF VALG")
+}
+
+record(bo, "$(sys):AlarmClock") {
+  field(DESC, "Alarm clock status")
+  field(ZNAM, "Sleep")
+  field(ONAM, "RingRingRing")
+  field(PINI, "YES")
+}
+
+# setup a sequence pv to process when the alarm goes off 
+# on the event number specified in the pv <sys>:AlarmClockEvent. 
+# For an example sequence, reference ppsApp/Db/pps_b44_reset.db

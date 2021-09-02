@@ -1,0 +1,44 @@
+file radm_info.template {
+    {None}
+}
+
+file fhtCommon.template {
+    {None}
+}
+
+file fhtChan.template {
+    pattern 
+    { N,  M,       EGU, LOLO,  LOW,  HIGH,  HIHI,     LLSV,      LSV,      HSV,     HHSV}
+    {01,  1,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {02,  2,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {03,  3,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {04,  4,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {05,  5,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {06,  6,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {07,  7,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {08,  8,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {09,  9,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {10, 10,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {11, 11,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {12, 12,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {13, 13,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {14, 14,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {15, 15,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+    {16, 16,        "",   "",   "",    "",    "", NO_ALARM, NO_ALARM, NO_ALARM, NO_ALARM}
+}
+
+file fht40G.template {
+    pattern 
+    { N, M}
+    {01, 1}
+    {02, 2}
+}
+
+file fhtChanDisplay.template {
+    pattern 
+    { N}
+    {01}
+    {02}
+    {03}
+}
+

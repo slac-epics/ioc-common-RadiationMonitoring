@@ -1,0 +1,6 @@
+record(sub,"$(IOC):SUBRESETCOUNT")
+{
+    field(INAM,"mySubInit")
+    field(SNAM,"mySubProcess")
+    field(SCAN, "2 second")
+}

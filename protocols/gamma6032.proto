@@ -1,0 +1,19 @@
+# Stream device protocol file for HPI 6032 Ion Chamber Display
+
+Terminator = CR LF;
+ReadTimeout = 2500;
+
+read {
+  in                           # only 1-way communication
+  "%x"                      # gamma dose rate
+  "%*x"    # high trip level
+  "%*x" # low trip level
+  "%*x"                        # fail count down
+  "%*x"   # status byte
+  "%*x";    # second status byte
+}
+
+debug {
+  ExtraInput = Ignore;
+  in "%27c";
+}

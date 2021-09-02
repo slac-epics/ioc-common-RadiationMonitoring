@@ -1,0 +1,131 @@
+# Template file for HPI 6012 Rad detector display
+# Use with hpi_6012.proto
+# 20190613 mdunning
+
+record(stringin, "$(P):LOCATION"){
+  field(DESC, "$(DESC="")")
+  field(VAL,  "$(LOC="")")
+  field(PINI, "1")
+}
+
+record(stringin, "$(P):IOCNAME"){
+  field(DESC, "IOC name")
+  field(VAL,  "$(IOC="")")
+  field(PINI, "1")
+}
+
+# Using streamdevice, this record pushes values to StatusRaw, 
+#   DoseRate, and DoseRate.EGU.
+# Instead of using "I/O Intr" scanning, we scan at 1 Hz so that a read error 
+#   is triggered when the device is offline.  When a read error is triggered, 
+#   we can get stream/asyn to reconnect the port automatically.
+record(longin, "$(P):$(R=Neutron)DoseRateRaw"){
+  field(DESC, "Raw dose rate")
+  field(DTYP, "stream")
+  field(INP,  "@$(PROTOFILE) read($(P),$(R=Neutron)) $(PORT)")
+  field(EGU,  "Cts/sec")
+  field(HIHI, "$(HIHI_RAW="")")
+  field(HIGH, "$(HIGH_RAW="")")
+  field(HSV,  "$(HSV_RAW=NO_ALARM)")
+  field(HHSV, "$(HHSV_RAW=NO_ALARM)")
+  field(HYST, "$(HYST_RAW="")")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(P):$(R=Neutron)DoseRate")
+  info(autosaveFields, "LOLO LOW HIGH HIHI HYST LLSV LSV HSV HHSV")
+}
+
+record(ai, "$(P):$(R=Neutron)DoseRate"){
+  field(DESC, "Dose rate")
+  field(PREC, "$(PREC=2)")
+  field(HIHI, "$(HIHI="")")
+  field(HIGH, "$(HIGH="")")
+  field(HSV,  "$(HSV=NO_ALARM)")
+  field(HHSV, "$(HHSV=NO_ALARM)")
+  field(HYST, "$(HYST="")")
+  field(FLNK, "$(P):StatusRaw")
+  info(autosaveFields, "LOLO LOW HIGH HIHI HYST LLSV LSV HSV HHSV")
+}
+
+record(mbbiDirect, "$(P):StatusRaw"){
+  field(DESC, "Status Byte")
+  field(FLNK, "$(P):Alarm1")
+}
+
+record(bi, "$(P):Alarm1"){
+  field(DESC, "Alarm 1 (Trip high)")
+  field(INP,  "$(P):StatusRaw.B0")
+  field(ZNAM, "OK")
+  field(ONAM, "FAULT")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):Alarm2")
+}
+
+record(bi, "$(P):Alarm2"){
+  field(DESC, "Alarm 2 (Trip low)")
+  field(INP,  "$(P):StatusRaw.B1")
+  field(ZNAM, "OK")
+  field(ONAM, "FAULT")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):DetectorStatus")
+}
+
+record(bi, "$(P):DetectorStatus"){
+  field(DESC, "Detector status")
+  field(INP,  "$(P):StatusRaw.B2")
+  field(ZNAM, "OK")
+  field(ONAM, "FAIL")
+  field(OSV,  "MAJOR")
+}
+
+record(stringin, "$(P):Debug"){
+  field(DESC, "Raw device output")
+  field(DTYP, "stream")
+  field(SCAN, "I/O Intr")
+  field(INP,  "@$(PROTOFILE) debug $(PORT)")
+  field(FLNK, "$(P):Heartbeat")
+}
+
+record(calcout, "$(P):Heartbeat"){
+  field(DESC, "Heartbeat")
+  field(CALC, "VAL>=100?0:(VAL+1)")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "0")
+  field(OVAL, "0")
+  field(OUT,  "$(P):ErrorCount PP")
+}
+
+record(calcout, "$(P):ErrorCount"){
+  field(DESC, "Errors since last read")
+  field(INPA, "$(P):ErrorCount")
+  field(CALC, "(VAL+2)")
+  field(SCAN, "2 second")
+  field(HIHI, "4")
+  field(HHSV, "MAJOR")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "(A>10)?1:0")
+  field(OUT,  "$(P):ReadStatus PP")
+}
+
+record(bi, "$(P):ReadStatus"){
+  field(DESC, "Read status")
+  field(ZNAM, "OK")
+  field(ONAM, "ERROR")
+  field(OSV,  "MAJOR")
+}
+
+record(bo, "$(P):LatchReset"){
+    field(DESC, "Reset latches")
+    field(ZNAM, "Standby")
+    field(ONAM, "Reset")
+}
+
+# Scan this record at 1 Hz so that a read error is triggered when the device is offline.
+#   When a read error is triggered, we can get asyn to reconnect the port automatically
+#   using the asyn "disconnectOnReadTimeout" option.
+record(stringin, "$(P):ReadCheck"){
+  field(DESC, "Trigger asyn disconnect on read error")
+  field(DTYP, "stream")
+  field(SCAN, "1 second")
+  field(INP,  "@$(PROTOFILE) readCheck $(PORT)")
+}
+

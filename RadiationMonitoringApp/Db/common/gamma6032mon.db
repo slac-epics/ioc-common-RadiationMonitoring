@@ -1,0 +1,50 @@
+
+record(asyn,"$(BL)GAMMAASYNCONTROL") {
+    field(DTYP, "asynRecordDevice")
+    field(PORT, "$(PORT)")
+}
+
+record(longin, "$(BL)GAMMAACT_RAW") {
+  field(DESC, "gamma dose rate raw")
+  field(DTYP, "stream")
+  field(INP,  "@gamma6032.proto read($(BL)) $(PORT)")
+  field(SCAN, "I/O Intr")
+  field(FLNK, "$(BL)GAMMAACT")
+}
+
+record(calcout, "$(BL)GAMMAACT") {
+  field(DESC, "gamma dose rate")
+  field(INPA, "$(BL)GAMMAACT_RAW NPP MS")
+  field(CALC, "A<8388608 ? 0.01*A : 0.01*(A-8388608)")
+  field(EGU,  "mR/hr")
+  field(PREC, "2")
+  field(FLNK, "$(BL)GAMMAFANOUT")
+}
+
+record(fanout, "$(BL)GAMMAFANOUT") {
+  field(DESC, "gamma fanout")
+  field(SCAN, "Passive")
+  field(LNK1, "$(BL)GAMMATOTALDOSE")
+  field(LNK2, "$(BL)GAMMADAILYDOSE")
+}
+
+record(calc, "$(BL)GAMMATOTALDOSE") {
+  field(DESC, "gamma total dose")
+  field(INPA, "$(BL)GAMMATOTALDOSE NPP MS")
+  field(INPB, "$(BL)GAMMAACT NPP MS")
+  field(CALC, "(B<(-.09))||(B>1001)?A:A+(B/3600.)")
+  field(EGU,  "mR")
+  field(PREC, "2")
+  info(autosaveFields_pass0, "VAL")
+}
+
+record(calc, "$(BL)GAMMADAILYDOSE") {
+  field(DESC, "gamma daily dose")
+  field(INPA, "$(BL)GAMMADAILYDOSE NPP MS")
+  field(INPB, "$(BL)GAMMAACT NPP MS")
+  field(INPC, "$(IOC):SUBRESETCOUNT NPP")
+  field(CALC, "(C!=0)?0:((B<(-.09))||(B>1001)?A:A+(B/3600.))")
+  field(EGU,  "mR")
+  field(PREC, "2")
+  info(autosaveFields_pass0, "VAL")
+}

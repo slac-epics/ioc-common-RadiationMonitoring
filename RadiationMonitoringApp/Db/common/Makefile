@@ -4,15 +4,9 @@
 #
 #  Name: Makefile
 #
-#  Facility: LCLS2
+#  Facility: LCLS
 #
 #  Auth: 21-Jul-2017, M. Dunning (MDUNNING)
-#  Rev:  dd-mmm-yyyy, Reviewer's Name (USERNAME)
-#--------------------------------------------------------------
-#  Mod:
-#       dd-mmm-yyyy, First Lastname    (USERNAME):
-#         comment
-#
 #==============================================================
 
 TOP=../../..
@@ -38,6 +32,7 @@ DB += fht40G.template
 DB += fhtChan.template
 DB += fhtChanDisplay.template
 DB += fhtCommon.template
+DB += fht.db
 DB += station.template
 DB += ecogamma.template
 DB += radm_info.template
@@ -45,7 +40,10 @@ DB += ams-printer.template
 DB += eco-os-6.template
 DB += agilent_3458a.db
 DB += agilent_34970a.db
-
+DB += hpi_6012.template
+DB += gamma6032mon.db
+DB += alarmClock.db
+DB += dbSubTime.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>
