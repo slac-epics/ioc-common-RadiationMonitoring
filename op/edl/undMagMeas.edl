@@ -1,0 +1,138 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 95
+y 147
+w 460
+h 200
+font "helvetica-medium-r-12.0"
+ctlFont "helvetica-medium-r-12.0"
+btnFont "helvetica-medium-r-12.0"
+fgColor index 13
+bgColor index 3
+textColor index 13
+ctlFgColor1 index 13
+ctlFgColor2 index 13
+ctlBgColor1 index 2
+ctlBgColor2 index 3
+topShadowColor index 1
+botShadowColor index 13
+title "Undulator Mag Meas"
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 56
+y 72
+w 140
+h 24
+fgColor index 13
+bgColor index 2
+topShadowColor index 1
+botShadowColor index 13
+font "helvetica-bold-r-12.0"
+buttonLabel "3458A..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "agilent_3458a.edl"
+}
+symbols {
+  0 "P=RADM:B34:273:1"
+}
+replaceSymbols {
+  0 1
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 1188
+h 44
+lineColor index 13
+fill
+fillColor index 63
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 388
+y 4
+w 68
+h 36
+fgColor index 14
+bgColor index 2
+topShadowColor index 1
+botShadowColor index 13
+label "EXIT"
+font "helvetica-bold-r-18.0"
+3d
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 8
+y 8
+w 396
+h 24
+font "helvetica-bold-r-18.0"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Undulator Magnetic Measurements"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 4
+release 0
+x 252
+y 72
+w 140
+h 24
+fgColor index 13
+bgColor index 2
+topShadowColor index 1
+botShadowColor index 13
+font "helvetica-bold-r-12.0"
+buttonLabel "34970A..."
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "agilent_34970a.edl"
+}
+symbols {
+  0 "P=RADM:B34:273:2"
+}
+replaceSymbols {
+  0 1
+}
+endObjectProperties
+
