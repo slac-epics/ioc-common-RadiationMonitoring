@@ -1,0 +1,19 @@
+# Archive List: sioc-und0-rm01
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:UND0:RM01 }
+}
+
+file monitor.tpl-arch
+{
+pattern
+    {                 PVNAME}
+    { RADM:UND0:1350:1:Error}
+    {RADM:UND0:1350:1:Status}
+    {RADM:UND0:1350:2:Status}
+}
+
+# End of file
+

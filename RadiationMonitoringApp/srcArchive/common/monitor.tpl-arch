@@ -1,2 +1,3 @@
-$(PVNAME)  	1.0	monitor
+
+$(PVNAME)  	$(PER=1.0)	$(MODE=monitor)
 

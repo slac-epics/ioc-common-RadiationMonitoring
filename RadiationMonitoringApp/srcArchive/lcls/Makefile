@@ -26,6 +26,8 @@ ARCHIVE += sioc-bsyh-rm01.archive
 ARCHIVE += sioc-gunb-rm01.archive
 ARCHIVE += sioc-ltu0-rm01.archive
 ARCHIVE += sioc-clts-rm01.archive
+ARCHIVE += sioc-und0-rm01.archive
+ARCHIVE += sioc-und0-rm02.archive
 
 include $(TOP)/configure/RULES
 #----------------------------------------
