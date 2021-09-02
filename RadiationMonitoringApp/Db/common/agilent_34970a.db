@@ -1,0 +1,1071 @@
+# agilent_34970a.db
+# 20210527 mdunning
+
+#----- System/Misc. --------------------------------------------------------
+record(stringin, "$(P):ID") {
+    field(DESC, "Device ID")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(*IDN?) $(PORT) $(ADDR)")
+}
+
+record(waveform, "$(P):Error") {
+    field(DESC, "Error queue [0]")
+    field(DTYP, "stream")
+    field(FTVL, "CHAR")
+    field(NELM, "64")
+    field(INP,  "@$(PROTOFILE) getString(SYST:ERR?) $(PORT) $(ADDR)")
+}
+
+record(mbbiDirect, "$(P):Status") {
+    field(DESC, "Status byte")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(*STB?) $(PORT) $(ADDR)")
+}
+
+record(stringin, "$(P):DeviceTime") {
+    field(DESC, "Device time")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(SYST:TIME?) $(PORT) $(ADDR)")
+}
+
+record(bo, "$(P):Reset") {
+    field(DESC, "Reset device")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) sendCmd(*RST) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Reset")
+}
+
+record(bo, "$(P):Preset") {
+    field(DESC, "Set to preset state")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) sendCmd(SYST:PRES) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Preset")
+}
+
+record(bo, "$(P):Clear") {
+    field(DESC, "Clear event registers")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) sendCmd(*CLS) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Clear")
+}
+
+
+record(bo, "$(P):Autozero") {
+    field(DESC, "Auto zero")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(ZERO:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):Autozero_RBV")
+}
+
+record(stringin, "$(P):Autozero_RBV") {
+    field(DESC, "Auto zero")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(ZERO:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):Scaling") {
+    field(DESC, "Linear scaling")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(CALC:SCAL:STAT) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):Scaling_RBV")
+}
+
+record(stringin, "$(P):Scaling_RBV") {
+    field(DESC, "Linear scaling")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(CALC:SCAL:STAT?) $(PORT) $(ADDR)")
+}
+
+
+#----- Channels --------------------------------------------------------
+record(stringout, "$(P):ChanList") {
+    field(DESC, "Chanel scan list")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setString(ROUT:SCAN) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ChanList_RBV")
+}
+
+record(stringin, "$(P):ChanList_RBV") {
+    field(DESC, "Chanel scan list")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getChanList(ROUT:SCAN?) $(PORT) $(ADDR)")
+}
+
+
+record(stringout, "$(P):ChanOpen") {
+    field(DESC, "Channel open")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setChanState(ROUT:OPEN) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ChanOpen_RBV")
+}
+
+record(stringin, "$(P):ChanOpen_RBV") {
+    field(DESC, "Channel open")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getChanState(ROUT:OPEN?, $(P):ChanOpen) $(PORT) $(ADDR)")
+}
+
+
+record(stringout, "$(P):ChanClose") {
+    field(DESC, "Channel close")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setChanState(ROUT:CLOS) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ChanClose_RBV")
+}
+
+record(stringin, "$(P):ChanClose_RBV") {
+    field(DESC, "Channel close")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getChanState(ROUT:CLOS?, $(P):ChanClose) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):AutoChanDelay") {
+    field(DESC, "Auto channel delay")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(ROUT:CHAN:DEL:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):AutoChanDelay_RBV")
+}
+
+record(stringin, "$(P):AutoChanDelay_RBV") {
+    field(DESC, "Auto channel delay")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(ROUT:CHAN:DEL:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(ao, "$(P):ChanDelay") {
+    field(DESC, "Channel delay")
+    field(DTYP, "stream")
+    field(LOPR, "0")
+    field(HOPR, "60")
+    field(DRVL, "0")
+    field(DRVH, "60")
+    field(EGU,  "s")
+    field(PREC, "4")
+    field(OUT,  "@$(PROTOFILE) setFloat(ROUT:CHAN:DEL) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ChanDelay_RBV")
+}
+
+record(stringin, "$(P):ChanDelay_RBV") {
+    field(DESC, "Channel delay")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(ROUT:CHAN:DEL?) $(PORT) $(ADDR)")
+}
+
+
+record(bi, "$(P):ChanOpsDone_RBV") {
+    field(DESC, "Ops done for all chans")
+    field(DTYP, "stream")
+    field(ZNAM, "NO")
+    field(ONAM, "YES")
+    field(INP,  "@$(PROTOFILE) getInt(ROUT:DONE?) $(PORT) $(ADDR)")
+}
+
+
+#----- Measurement --------------------------------------------------------
+record(mbbo, "$(P):MeasFunc") {
+    field(DESC, "Measurement func")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "\"TEMP\"")
+    field(ONVL, "1")
+    field(ONST, "\"VOLT:DC\"")
+    field(TWVL, "2")
+    field(TWST, "\"VOLT:AC\"")
+    field(THVL, "3")
+    field(THST, "\"RES\"")
+    field(FRVL, "4")
+    field(FRST, "\"FRES\"")
+    field(FVVL, "5")
+    field(FVST, "\"CURR:DC\"")
+    field(SXVL, "6")
+    field(SXST, "\"CURR:AC\"")
+    field(SVVL, "7")
+    field(SVST, "\"FREQ\"")
+    field(EIVL, "7")
+    field(EIST, "\"PER\"")
+    field(OUT,  "@$(PROTOFILE) setString(SENS:FUNC) $(PORT) $(ADDR)")
+    field(PINI, "1")
+    field(FLNK, "$(P):MeasFunc_RBV")
+    info(autosaveFields, "VAL")
+}
+
+record(stringin, "$(P):MeasFunc_RBV") {
+    field(DESC, "Measurement func")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(SENS:FUNC?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):MeasData") {
+    field(DESC, "Get measurement data")
+    field(DTYP, "stream")
+    field(ZNAM, "Standby")
+    field(ONAM, "Get data")
+    field(OUT,  "@$(PROTOFILE) getData(READ?, $(P):MeasData_RBV) $(PORT) $(ADDR)")
+}
+
+record(waveform, "$(P):MeasData_RBV") {
+    field(DESC, "Measurement data")
+    field(FTVL, "CHAR")
+    field(NELM, "1024")
+}
+
+
+#----- Trig --------------------------------------------------------
+record(mbbo, "$(P):TrigSource") {
+    field(DESC, "TrigSource")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "BUS")
+    field(ONVL, "1")
+    field(ONST, "IMM")
+    field(TWVL, "2")
+    field(TWST, "EXT")
+    field(THVL, "3")
+    field(THST, "ALAR1")
+    field(FRVL, "4")
+    field(FRST, "ALAR2")
+    field(FVVL, "5")
+    field(FVST, "ALAR3")
+    field(SXVL, "6")
+    field(SXST, "ALAR4")
+    field(SVVL, "7")
+    field(SVST, "TIM")
+    field(OUT,  "@$(PROTOFILE) setString(TRIG:SOUR) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TrigSource_RBV")
+}
+
+record(mbbi, "$(P):TrigSource_RBV") {
+    field(DESC, "TrigSource")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "BUS")
+    field(ONVL, "1")
+    field(ONST, "IMM")
+    field(TWVL, "2")
+    field(TWST, "EXT")
+    field(THVL, "3")
+    field(THST, "ALAR1")
+    field(FRVL, "4")
+    field(FRST, "ALAR2")
+    field(FVVL, "5")
+    field(FVST, "ALAR3")
+    field(SXVL, "6")
+    field(SXST, "ALAR4")
+    field(SVVL, "7")
+    field(SVST, "TIM")
+    field(INP,  "@$(PROTOFILE) getString(TRIG:SOUR?) $(PORT) $(ADDR)")
+}
+
+
+record(longout, "$(P):TrigCount") {
+    field(DESC, "Trigger count")
+    field(DTYP, "stream")
+    field(LOPR, "1")
+    field(HOPR, "50000")
+    field(DRVL, "1")
+    field(DRVH, "50000")
+    field(OUT,  "@$(PROTOFILE) setInt(TRIG:COUN) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TrigCount_RBV")
+}
+
+record(ai, "$(P):TrigCount_RBV") {
+    field(DESC, "Trigger count")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getFloat(TRIG:COUN?) $(PORT) $(ADDR)")
+}
+
+
+#----- Output formatting --------------------------------------------------------
+record(bo, "$(P):ReadFmtAlm") {
+    field(DESC, "Read format: alarm info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FORM:READ:ALAR) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ReadFmtAlm_RBV")
+}
+
+record(bi, "$(P):ReadFmtAlm_RBV") {
+    field(DESC, "Read format: alarm info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(INP,  "@$(PROTOFILE) getInt(FORM:READ:ALAR?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):ReadFmtChan") {
+    field(DESC, "Read format: chan info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FORM:READ:CHAN) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ReadFmtChan_RBV")
+}
+
+record(bi, "$(P):ReadFmtChan_RBV") {
+    field(DESC, "Read format: chan info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(INP,  "@$(PROTOFILE) getInt(FORM:READ:CHAN?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):ReadFmtTime") {
+    field(DESC, "Read format: time info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FORM:READ:TIME) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ReadFmtTime_RBV")
+}
+
+record(bi, "$(P):ReadFmtTime_RBV") {
+    field(DESC, "Read format: time info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(INP,  "@$(PROTOFILE) getInt(FORM:READ:TIME?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):ReadFmtUnit") {
+    field(DESC, "Read format: unit info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FORM:READ:UNIT) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ReadFmtUnit_RBV")
+}
+
+record(bi, "$(P):ReadFmtUnit_RBV") {
+    field(DESC, "Read format: unit info")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(INP,  "@$(PROTOFILE) getInt(FORM:READ:UNIT?) $(PORT) $(ADDR)")
+}
+
+
+#----- Temp --------------------------------------------------------
+record(mbbo, "$(P):TempUnits") {
+    field(DESC, "Temperature units")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "C")
+    field(ONVL, "1")
+    field(ONST, "F")
+    field(TWVL, "2")
+    field(TWST, "K")
+    field(OUT,  "@$(PROTOFILE) setString(UNIT:TEMP) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempUnits_RBV")
+}
+
+record(stringin, "$(P):TempUnits_RBV") {
+    field(DESC, "Temperature units")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(UNIT:TEMP?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):TempTrType") {
+    field(DESC, "Temp transducer type")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "TC")
+    field(ONVL, "1")
+    field(ONST, "RTD")
+    field(TWVL, "2")
+    field(TWST, "FRTD")
+    field(THVL, "3")
+    field(THST, "THER")
+    field(FRVL, "4")
+    field(FRST, "DEF")
+    field(OUT,  "@$(PROTOFILE) setString(TEMP:TRAN:TYPE) $(PORT) $(ADDR)")
+    field(PINI, "1")
+    field(FLNK, "$(P):TempTrType_RBV")
+    info(autosaveFields, "VAL")
+}
+
+record(stringin, "$(P):TempTrType_RBV") {
+    field(DESC, "Temp transducer type")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:TYPE?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):TempTherType") {
+    field(DESC, "Thermistor type")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "2252")
+    field(ONVL, "1")
+    field(ONST, "5000")
+    field(TWVL, "2")
+    field(TWST, "10000")
+    field(OUT,  "@$(PROTOFILE) setString(TEMP:TRAN:THER:TYPE) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempTherType_RBV")
+}
+
+record(stringin, "$(P):TempTherType_RBV") {
+    field(DESC, "Thermistor type")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:THER:TYPE?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):TempRTDType") {
+    field(DESC, "RTD type")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "85")
+    field(ONVL, "1")
+    field(ONST, "91")
+    field(OUT,  "@$(PROTOFILE) setString(TEMP:TRAN:RTD:TYPE) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempRTDType_RBV")
+}
+
+record(stringin, "$(P):TempRTDType_RBV") {
+    field(DESC, "RTD type")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:RTD:TYPE?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):TempFRTDType") {
+    field(DESC, "FRTD type")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "85")
+    field(ONVL, "1")
+    field(ONST, "91")
+    field(OUT,  "@$(PROTOFILE) setString(TEMP:TRAN:FRTD:TYPE) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempFRTDType_RBV")
+}
+
+record(stringin, "$(P):TempFRTDType_RBV") {
+    field(DESC, "FRTD type")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:FRTD:TYPE?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):TempTCType") {
+    field(DESC, "TC type")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "B")
+    field(ONVL, "1")
+    field(ONST, "E")
+    field(TWVL, "2")
+    field(TWST, "J")
+    field(THVL, "3")
+    field(THST, "K")
+    field(FRVL, "4")
+    field(FRST, "N")
+    field(FVVL, "5")
+    field(FVST, "R")
+    field(SXVL, "6")
+    field(SXST, "S")
+    field(SVVL, "7")
+    field(SVST, "T")
+    field(OUT,  "@$(PROTOFILE) setString(TEMP:TRAN:TC:TYPE) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempTCType_RBV")
+}
+
+record(stringin, "$(P):TempTCType_RBV") {
+    field(DESC, "TC type")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:TC:TYPE?) $(PORT) $(ADDR)")
+}
+
+
+record(ao, "$(P):TempFRTDRes") {
+    field(DESC, "FRTD nom. resistance")
+    field(DTYP, "stream")
+    field(LOPR, "0.02")
+    field(HOPR, "200")
+    field(DRVL, "0.02")
+    field(DRVH, "200")
+    field(EGU,  "Ohms")
+    field(PREC, "3")
+    field(OUT,  "@$(PROTOFILE) setFloat(TEMP:TRAN:FRTD:RES) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempFRTDRes_RBV")
+}
+
+record(stringin, "$(P):TempFRTDRes_RBV") {
+    field(DESC, "FRTD nom. resistance")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:FRTD:RES?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):TempTCRJType") {
+    field(DESC, "TC ref. junc. type")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "INT")
+    field(ONVL, "1")
+    field(ONST, "EXT")
+    field(TWVL, "2")
+    field(TWST, "FIX")
+    field(OUT,  "@$(PROTOFILE) setString(TEMP:TRAN:TC:RJUN:TYPE) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempTCRJType_RBV")
+}
+
+record(stringin, "$(P):TempTCRJType_RBV") {
+    field(DESC, "TC ref. junc. type")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:TC:RJUN:TYPE?) $(PORT) $(ADDR)")
+}
+
+
+record(ao, "$(P):TempTCRJTemp") {
+    field(DESC, "TC ref. junc. temp")
+    field(DTYP, "stream")
+    field(LOPR, "-20")
+    field(HOPR, "80")
+    field(DRVL, "-20")
+    field(DRVH, "80")
+    field(EGU,  "degC")
+    field(PREC, "2")
+    field(OUT,  "@$(PROTOFILE) setFloat(TEMP:TRAN:TC:RJUN) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempTCRJTemp_RBV")
+}
+
+record(stringin, "$(P):TempTCRJTemp_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:TRAN:TC:RJUN?) $(PORT) $(ADDR)")
+}
+
+
+record(ao, "$(P):TempIntTime") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(LOPR, "0.02")
+    field(HOPR, "200")
+    field(DRVL, "0.02")
+    field(DRVH, "200")
+    field(EGU,  "NPLC")
+    field(PREC, "3")
+    field(OUT,  "@$(PROTOFILE) setFloat(TEMP:NPLC) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):TempIntTime_RBV")
+}
+
+record(stringin, "$(P):TempIntTime_RBV") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(TEMP:NPLC?) $(PORT) $(ADDR)")
+}
+
+
+#----- Voltage --------------------------------------------------------
+record(ao, "$(P):VoltIntTime") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(LOPR, "0.02")
+    field(HOPR, "200")
+    field(DRVL, "0.02")
+    field(DRVH, "200")
+    field(EGU,  "NPLC")
+    field(PREC, "3")
+    field(OUT,  "$(P):VoltIntTime_write PP")
+    field(OUT,  "@$(PROTOFILE) setFloat(VOLT:DC:NPLC) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):VoltIntTime_RBV")
+}
+
+record(stringin, "$(P):VoltIntTime_RBV") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(VOLT:DC:NPLC?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):VoltAutorange") {
+    field(DESC, "Voltage autorange")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(VOLT:DC:RANG:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):VoltAutorange_RBV")
+}
+
+record(stringin, "$(P):VoltAutorange_RBV") {
+    field(DESC, "Voltage autorange")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(VOLT:DC:RANG:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):VoltRange") {
+    field(DESC, "Voltage range")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "100 mV")
+    field(ONVL, "1")
+    field(ONST, "1 V")
+    field(TWVL, "2")
+    field(TWST, "10 V")
+    field(THVL, "3")
+    field(THST, "100 V")
+    field(FRVL, "4")
+    field(FRST, "300 V")
+    field(OUT,  "@$(PROTOFILE) setString(VOLT:DC:RANG) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):VoltRange_RBV")
+}
+
+record(stringin, "$(P):VoltRange_RBV") {
+    field(DESC, "Voltage range")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(VOLT:DC:RANG?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):VoltAutoInZ") {
+    field(DESC, "Voltage auto input impedance")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(INP:IMP:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):VoltAutoInZ_RBV")
+}
+
+record(stringin, "$(P):VoltAutoInZ_RBV") {
+    field(DESC, "Voltage auto input impedance")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(INP:IMP:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+#----- Resistance --------------------------------------------------------
+record(bo, "$(P):ResAutorange") {
+    field(DESC, "Resistance autorange")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(RES:RANG:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ResAutorange_RBV")
+}
+
+record(stringin, "$(P):ResAutorange_RBV") {
+    field(DESC, "Resistance autorange")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(RES:RANG:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(ao, "$(P):ResIntTime") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(LOPR, "0.02")
+    field(HOPR, "200")
+    field(DRVL, "0.02")
+    field(DRVH, "200")
+    field(EGU,  "NPLC")
+    field(PREC, "3")
+    field(OUT,  "@$(PROTOFILE) setFloat(RES:NPLC) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ResIntTime_RBV")
+}
+
+record(stringin, "$(P):ResIntTime_RBV") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(RES:NPLC?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):ResOffsetComp") {
+    field(DESC, "Resistance offset comp")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(RES:OCOM) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):ResOffsetComp_RBV")
+}
+
+record(stringin, "$(P):ResOffsetComp_RBV") {
+    field(DESC, "Resistance offset comp")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(RES:OCOM?) $(PORT) $(ADDR)")
+}
+
+
+#----- Four-wire resistance (FRES) --------------------------------------------------------
+record(bo, "$(P):FResAutorange") {
+    field(DESC, "FResistance autorange")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FRES:RANG:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):FResAutorange_RBV")
+}
+
+record(stringin, "$(P):FResAutorange_RBV") {
+    field(DESC, "FResistance autorange")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(FRES:RANG:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(ao, "$(P):FResIntTime") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(LOPR, "0.02")
+    field(HOPR, "200")
+    field(DRVL, "0.02")
+    field(DRVH, "200")
+    field(EGU,  "NPLC")
+    field(PREC, "3")
+    field(OUT,  "@$(PROTOFILE) setFloat(FRES:NPLC) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):FResIntTime_RBV")
+}
+
+record(stringin, "$(P):FResIntTime_RBV") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(FRES:NPLC?) $(PORT) $(ADDR)")
+}
+
+
+record(bo, "$(P):FResOffsetComp") {
+    field(DESC, "FResistance offset comp")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FRES:OCOM) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):FResOffsetComp_RBV")
+}
+
+record(stringin, "$(P):FResOffsetComp_RBV") {
+    field(DESC, "FResistance offset comp")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(FRES:OCOM?) $(PORT) $(ADDR)")
+}
+
+
+#----- Frequency --------------------------------------------------------
+record(bo, "$(P):FreqAutorange") {
+    field(DESC, "Freq volt autorange")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(FREQ:VOLT:RANG:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):FreqAutorange_RBV")
+}
+
+record(stringin, "$(P):FreqAutorange_RBV") {
+    field(DESC, "Freq volt autorange")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(FREQ:VOLT:RANG:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):FreqAperture") {
+    field(DESC, "Frequency aperture")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "10 ms")
+    field(ONVL, "1")
+    field(ONST, "100 ms")
+    field(TWVL, "2")
+    field(TWST, "1 s")
+    field(OUT,  "@$(PROTOFILE) setString(FREQ:APER) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):FreqAperture_RBV")
+}
+
+record(stringin, "$(P):FreqAperture_RBV") {
+    field(DESC, "Frequency aperture")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(FREQ:APER?) $(PORT) $(ADDR)")
+}
+
+
+record(longout, "$(P):FreqTimeout") {
+    field(DESC, "Frequency timeout")
+    field(DTYP, "stream")
+    field(LOPR, "3")
+    field(HOPR, "300000")
+    field(DRVL, "3")
+    field(DRVH, "300000")
+    field(EGU,  "Hz")
+    field(OUT,  "@$(PROTOFILE) setInt(FREQ:RANG:LOW) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):FreqTimeout_RBV")
+}
+
+record(stringin, "$(P):FreqTimeout_RBV") {
+    field(DESC, "Frequency timeout")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(FREQ:RANG:LOW?) $(PORT) $(ADDR)")
+}
+
+
+#----- Period --------------------------------------------------------
+record(bo, "$(P):PeriodAutorange") {
+    field(DESC, "Period volt autorange")
+    field(DTYP, "stream")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+    field(OUT,  "@$(PROTOFILE) setInt(PER:VOLT:RANG:AUTO) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):PeriodAutorange_RBV")
+}
+
+record(stringin, "$(P):PeriodAutorange_RBV") {
+    field(DESC, "Period volt autorange")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(PER:VOLT:RANG:AUTO?) $(PORT) $(ADDR)")
+}
+
+
+record(mbbo, "$(P):PeriodAperture") {
+    field(DESC, "Period aperture")
+    field(DTYP, "stream")
+    field(ZRVL, "0")
+    field(ZRST, "10 ms")
+    field(ONVL, "1")
+    field(ONST, "100 ms")
+    field(TWVL, "2")
+    field(TWST, "1 s")
+    field(OUT,  "@$(PROTOFILE) setString(PER:APER) $(PORT) $(ADDR)")
+    field(FLNK, "$(P):PeriodAperture_RBV")
+}
+
+record(stringin, "$(P):PeriodAperture_RBV") {
+    field(DESC, "Period aperture")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(PER:APER?) $(PORT) $(ADDR)")
+}
+
+
+
+#--- Record processing sequences -------------------------
+# These special record processing sequences are needed because this device will 
+# complain if values are read while not in a certain mode.
+record(seq, "$(P):SeqProcCommon1") {
+    field(DESC, "Common proc sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):ID.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):Error.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):Status.PROC")
+    field(DLY4, "$(DLY1=0.1)")
+    field(LNK4, "$(P):ChanList_RBV.PROC")
+    field(DLY5, "$(DLY1=0.1)")
+    field(LNK5, "$(P):MeasFunc_RBV.PROC")
+    field(DLY6, "$(DLY1=0.1)")
+    field(LNK6, "$(P):Autozero_RBV.PROC")
+    field(DLY7, "$(DLY1=0.1)")
+    field(LNK7, "$(P):Scaling_RBV.PROC")
+    field(DLY8, "$(DLY1=0.1)")
+    field(LNK8, "$(P):TrigSource_RBV.PROC")
+    field(DLY9, "$(DLY1=0.1)")
+    field(LNK9, "$(P):TrigCount_RBV.PROC")
+    field(DLYA, "$(DLY1=0.1)")
+    field(LNKA, "$(P):ChanDelay_RBV.PROC")
+    field(PINI, "1")
+    field(FLNK, "$(P):SeqProcCommon2")
+}
+
+record(seq, "$(P):SeqProcCommon2") {
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):AutoChanDelay_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):ReadFmtAlm_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):ReadFmtChan_RBV.PROC")
+    field(DLY4, "$(DLY1=0.1)")
+    field(LNK4, "$(P):ReadFmtTime_RBV.PROC")
+    field(DLY5, "$(DLY1=0.1)")
+    field(LNK5, "$(P):ReadFmtUnit_RBV.PROC")
+    field(DLY6, "$(DLY1=0.1)")
+    field(LNK6, "$(P):DeviceTime.PROC")
+    field(DLY7, "$(DLY1=0.1)")
+    field(LNK7, "$(P):ChanStatus_RBV.PROC")
+    field(DLY8, "$(DLY1=0.1)")
+    field(LNK8, "$(P):ChanOpsDone_RBV.PROC")
+    field(FLNK, "$(P):SeqProcVars")
+}
+
+record(seq, "$(P):SeqProcVars") {
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):ProcTempCalc.PROC")
+    field(DLY2, "$(DLY2=0.5)")
+    field(LNK2, "$(P):ProcVoltCalc.PROC")
+    field(DLY3, "$(DLY2=0.5)")
+    field(LNK3, "$(P):ProcResCalc.PROC")
+    field(DLY4, "$(DLY2=0.5)")
+    field(LNK4, "$(P):ProcFResCalc.PROC")
+    field(DLY5, "$(DLY2=0.5)")
+    field(LNK5, "$(P):ProcFreqCalc.PROC")
+    field(DLY6, "$(DLY2=0.5)")
+    field(LNK6, "$(P):ProcPerCalc.PROC")
+    field(DLY7, "$(DLY2=0.5)")
+    field(LNK7, "$(P):ProcTemp2Calc.PROC")
+}
+
+record(calcout, "$(P):ProcTempCalc") {
+    field(DESC, "Temp proc sequence?")
+    field(INPA, "$(P):MeasFunc")
+    field(CALC, "A=0")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "$(P):SeqProcTemp1.PROC")
+}
+
+record(seq, "$(P):SeqProcTemp1") {
+    field(DESC, "Temp proc sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):TempUnits_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):TempTrType_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):TempIntTime_RBV.PROC")
+}
+
+record(calcout, "$(P):ProcTemp2Calc") {
+    field(DESC, "Process temp seq?")
+    field(INPA, "$(P):TempTrType")
+    field(CALC, "(A=0||A=4)?112:(A=3)?1:(A=1||A=2)?14:0")
+    field(OUT,  "$(P):SeqProcTemp2.SELN PP")
+}
+
+record(seq, "$(P):SeqProcTemp2") {
+    field(DESC, "Temp therm proc sequence")
+    field(SELM, "Mask")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):TempTherType_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):TempRTDType_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):TempFRTDType_RBV.PROC")
+    field(DLY4, "$(DLY1=0.1)")
+    field(LNK4, "$(P):TempFRTDRes_RBV.PROC")
+    field(DLY5, "$(DLY1=0.1)")
+    field(LNK5, "$(P):TempTCType_RBV.PROC")
+    field(DLY6, "$(DLY1=0.1)")
+    field(LNK6, "$(P):TempTCRJType_RBV.PROC")
+    field(DLY7, "$(DLY1=0.1)")
+    field(LNK7, "$(P):TempTCRJTemp_RBV.PROC")
+}
+
+record(calcout, "$(P):ProcVoltCalc") {
+    field(DESC, "Volt proc sequence?")
+    field(INPA, "$(P):MeasFunc")
+    field(CALC, "A=1||A=2")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "$(P):SeqProcVolt1.PROC")
+}
+
+record(seq, "$(P):SeqProcVolt1") {
+    field(DESC, "Volt proc sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):VoltAutorange_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):VoltRange_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):VoltIntTime_RBV.PROC")
+    field(DLY4, "$(DLY1=0.1)")
+    field(LNK4, "$(P):VoltAutoInZ_RBV.PROC")
+}
+
+record(calcout, "$(P):ProcResCalc") {
+    field(DESC, "Res proc sequence?")
+    field(INPA, "$(P):MeasFunc")
+    field(CALC, "A=3")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "$(P):SeqProcRes1.PROC")
+}
+
+record(seq, "$(P):SeqProcRes1") {
+    field(DESC, "Res proc sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):ResAutorange_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):ResIntTime_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):ResOffsetComp_RBV.PROC")
+}
+
+record(calcout, "$(P):ProcFResCalc") {
+    field(DESC, "FRes proc sequence?")
+    field(INPA, "$(P):MeasFunc")
+    field(CALC, "A=4")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "$(P):SeqProcFRes1.PROC")
+}
+
+record(seq, "$(P):SeqProcFRes1") {
+    field(DESC, "Init sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):FResAutorange_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):FResIntTime_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):FResOffsetComp_RBV.PROC")
+}
+
+record(calcout, "$(P):ProcFreqCalc") {
+    field(DESC, "Freq proc sequence?")
+    field(INPA, "$(P):MeasFunc")
+    field(CALC, "A=7")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "$(P):SeqProcFreq1.PROC")
+}
+
+record(seq, "$(P):SeqProcFreq1") {
+    field(DESC, "Freq proc sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):FreqAutorange_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):FreqAperture_RBV.PROC")
+    field(DLY3, "$(DLY1=0.1)")
+    field(LNK3, "$(P):FreqTimeout_RBV.PROC")
+}
+
+record(calcout, "$(P):ProcPerCalc") {
+    field(DESC, "Per proc sequence?")
+    field(INPA, "$(P):MeasFunc")
+    field(CALC, "A=3")
+    field(OOPT, "When Non-zero")
+    field(OUT,  "$(P):SeqProcPer1.PROC")
+}
+
+record(seq, "$(P):SeqProcPer1") {
+    field(DESC, "Period proc sequence")
+    field(DLY1, "$(DLY1=0.1)")
+    field(LNK1, "$(P):PeriodAutorange_RBV.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):PeriodAperture_RBV.PROC")
+}
+
+record(seq, "$(P):SeqSlow1") {
+    field(DESC, "Slow sequence")
+    field(DLY1, "0.0")
+    field(LNK1, "$(P):SeqInit1.PROC")
+#    field(SCAN, "10 second")
+}
+
+record(seq, "$(P):SeqFast1") {
+    field(DESC, "Fast sequence")
+    field(DLY1, "0.0")
+    field(LNK1, "$(P):Error.PROC")
+    field(DLY2, "$(DLY1=0.1)")
+    field(LNK2, "$(P):Status.PROC")
+    field(SCAN, "5 second")
+}
+#--- End Record processing sequences -------------------------
+
+

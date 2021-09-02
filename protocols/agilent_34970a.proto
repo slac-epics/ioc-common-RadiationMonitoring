@@ -1,0 +1,75 @@
+# agilent_34970a.proto
+# 20210527 mdunning
+
+InTerminator = LF;
+OutTerminator = LF;
+
+sendCmd {
+    out "\$1";
+}
+
+getString {
+    out "\$1";
+    in "%*[+]%#s";
+    @mismatch {
+        in "";
+    }
+}
+
+setString {
+    out "\$1 %s";
+}
+
+getInt {
+    out "\$1";
+    in "%*[+]%d";
+    @mismatch {
+        in "";
+    }
+}
+
+setInt {
+    out "\$1 %d";
+}
+
+getFloat {
+    out "\$1";
+    in "%?f";
+    @mismatch {
+        in "";
+    }
+}
+
+setFloat {
+    out "\$1 %f";
+}
+
+getChanList {
+    out "\$1";
+    in "%/\(@.*\)/";
+}
+
+setChanList {
+    out "\$1 %(\$2)s";
+}
+
+getChanState {
+    out "\$1 %(\$2)s";
+    in "%*[+]%#s";
+    @mismatch {
+        in "";
+    }
+}
+
+setChanState {
+    out "\$1 %s";
+}
+
+getData {
+    out "\$1";
+    in "%(\$2)#s";
+    @mismatch {
+        in "";
+    }
+}
+

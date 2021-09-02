@@ -46,39 +46,41 @@ USR_LIBS_Linux += pcre
 # =======================================================
 
 # Build the ioc application
-PROD_IOC = RadiationMonitoring
+PROD_NAME = RadiationMonitoring
+PROD_IOC = $(PROD_NAME)
 
-DBD += RadiationMonitoring.dbd
-RadiationMonitoring_DBD += base.dbd
-RadiationMonitoring_DBD += system.dbd
-RadiationMonitoring_DBD += asyn.dbd
-RadiationMonitoring_DBD += stream.dbd
-RadiationMonitoring_DBD += drvAsynIPPort.dbd
-RadiationMonitoring_DBD += asSupport.dbd
-RadiationMonitoring_DBD += drvFHT.dbd
-RadiationMonitoring_DBD += calcSupport.dbd
-RadiationMonitoring_DBD += history.dbd
-RadiationMonitoring_DBD += caPutLog.dbd
+DBD += $(PROD_NAME).dbd
+$(PROD_NAME)_DBD += base.dbd
+$(PROD_NAME)_DBD += system.dbd
+$(PROD_NAME)_DBD += asyn.dbd
+$(PROD_NAME)_DBD += stream.dbd
+$(PROD_NAME)_DBD += drvAsynIPPort.dbd
+$(PROD_NAME)_DBD += drvVxi11.dbd
+$(PROD_NAME)_DBD += asSupport.dbd
+$(PROD_NAME)_DBD += drvFHT.dbd
+$(PROD_NAME)_DBD += calcSupport.dbd
+$(PROD_NAME)_DBD += history.dbd
+$(PROD_NAME)_DBD += caPutLog.dbd
 
 # Needed for iocAdmin
-RadiationMonitoring_DBD += iocAdmin.dbd
+$(PROD_NAME)_DBD += iocAdmin.dbd
 
-#RadiationMonitoring_DBD += dbRestore.dbd
+#$(PROD_NAME)_DBD += dbRestore.dbd
 
 # Add libraries
-RadiationMonitoring_LIBS += devIocStats
-RadiationMonitoring_LIBS += autosave
-RadiationMonitoring_LIBS += asyn
-RadiationMonitoring_LIBS += stream
-RadiationMonitoring_LIBS += calc
-RadiationMonitoring_LIBS += history
-RadiationMonitoring_LIBS += caPutLog
+$(PROD_NAME)_LIBS += devIocStats
+$(PROD_NAME)_LIBS += autosave
+$(PROD_NAME)_LIBS += asyn
+$(PROD_NAME)_LIBS += stream
+$(PROD_NAME)_LIBS += calc
+$(PROD_NAME)_LIBS += history
+$(PROD_NAME)_LIBS += caPutLog
 
-RadiationMonitoring_SRCS += RadiationMonitoring_registerRecordDeviceDriver.cpp
-RadiationMonitoring_SRCS += drvFHT.cpp
-RadiationMonitoring_SRCS_DEFAULT += RadiationMonitoringMain.cpp
+$(PROD_NAME)_SRCS += $(PROD_NAME)_registerRecordDeviceDriver.cpp
+$(PROD_NAME)_SRCS += drvFHT.cpp
+$(PROD_NAME)_SRCS_DEFAULT += $(PROD_NAME)Main.cpp
 
-RadiationMonitoring_LIBS += $(EPICS_BASE_IOC_LIBS)
+$(PROD_NAME)_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 

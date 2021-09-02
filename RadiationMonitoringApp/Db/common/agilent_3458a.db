@@ -1,0 +1,997 @@
+# agilent_3458a.db
+# 20210527 md
+#
+# Since this device is so slow, "automatic" readbacks (FLNKs to RBV records) are disabled.
+# Periodic scanning of records is also disabled.
+
+record(stringin, "$(P):ID") {
+    field(DESC, "Device ID")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getString(ID?) $(PORT) $(ADDR)")
+}
+
+record(longin, "$(P):Error") {
+    field(DESC, "Error status")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(ERR?) $(PORT) $(ADDR)")
+    field(HIHI, "1")
+    field(HHSV, "MAJOR")
+}
+
+record(mbbiDirect, "$(P):Status") {
+    field(DESC, "Status byte")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(STB?) $(PORT) $(ADDR)")
+}
+
+record(bo, "$(P):Reset") {
+    field(DESC, "Reset device")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setString(RESET) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Reset")
+}
+
+record(bo, "$(P):Preset") {
+    field(DESC, "Set to preset state")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setString(PRESET) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Preset")
+}
+
+record(ai, "$(P):MeasValue") {
+    field(DESC, "Measurement value")
+    field(PREC, "6")
+}
+
+record(stringin, "$(P):ValStr") {
+    field(DESC, "Value string")
+}
+
+
+record(bo, "$(P):LineFreq") {
+    field(DESC, "Line freq")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setString(LFREQ LINE) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Set")
+#    field(FLNK, "$(P):LineFreq_RBV")
+}
+
+record(ai, "$(P):LineFreq_RBV") {
+    field(DESC, "Line freq")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getFloat(LFREQ?) $(PORT) $(ADDR)")
+    field(PREC, "6")
+    field(EGU,  "Hz")
+}
+
+
+record(ao, "$(P):IntTime") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(LOPR, "0")
+    field(HOPR, "1000")
+    field(DRVL, "0")
+    field(DRVH, "1000")
+    field(EGU,  "NPLC")
+    field(PREC, "6")
+    field(OUT,  "@$(PROTOFILE) setFloat(NPLC, $(P)) $(PORT) $(ADDR)")
+#    field(FLNK, "$(P):IntTime_RBV")
+}
+
+record(ai, "$(P):IntTime_RBV") {
+    field(DESC, "Int time: num pwr line cyc")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getFloat(NPLC?) $(PORT) $(ADDR)")
+    field(EGU,  "NPLC")
+    field(PREC, "6")
+}
+
+
+record(mbbo, "$(P):OutFormat") {
+    field(DESC, "Outset format")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(OFORMAT, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "")
+    field(ONVL, "1")
+    field(ONST, "ASCII")
+    field(TWVL, "2")
+    field(TWST, "SINT")
+    field(THVL, "3")
+    field(THST, "DINT")
+    field(FRVL, "4")
+    field(FRST, "SREAL")
+    field(FVVL, "5")
+    field(FVST, "DREAL")
+#    field(FLNK, "$(P):OutFormat_RBV")
+}
+
+record(mbbi, "$(P):OutFormat_RBV") {
+    field(DESC, "Outset format")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(OFORMAT?) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "")
+    field(ONVL, "1")
+    field(ONST, "ASCII")
+    field(TWVL, "2")
+    field(TWST, "SINT")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FRST, "SREAL")
+    field(FVVL, "5")
+    field(FVST, "DREAL")
+    field(THST, "DINT")
+}
+
+
+record(mbbo, "$(P):TrigMode") {
+    field(DESC, "Trigger mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setTrig(TRIG, $(P)) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "Auto")
+    field(TWVL, "2")
+    field(TWST, "Ext")
+    field(THVL, "3")
+    field(THST, "SGL")
+    field(FRVL, "4")
+    field(FRST, "HOLD")
+    field(FVVL, "5")
+    field(FVST, "SYN")
+    field(SVVL, "7")
+    field(SVST, "Level")
+    field(EIVL, "8")
+    field(EIST, "Line")
+#    field(FLNK, "$(P):TrigMode_RBV")
+}
+
+record(mbbi, "$(P):TrigMode_RBV") {
+    field(DESC, "Outset format")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(TRIG?) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "Auto")
+    field(TWVL, "2")
+    field(TWST, "Ext")
+    field(THVL, "3")
+    field(THST, "SGL")
+    field(FRVL, "4")
+    field(FRST, "HOLD")
+    field(FVVL, "5")
+    field(FVST, "SYN")
+    field(SVVL, "7")
+    field(SVST, "Level")
+    field(EIVL, "8")
+    field(EIST, "Line")
+}
+
+record(mbbo, "$(P):TrigData") {
+    field(DESC, "Trigger and get data")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setTrigGetData(TRIG, $(P)) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "Auto")
+    field(TWVL, "2")
+    field(TWST, "Ext")
+    field(THVL, "3")
+    field(THST, "SGL")
+    field(FRVL, "4")
+    field(FRST, "HOLD")
+    field(FVVL, "5")
+    field(FVST, "SYN")
+    field(SVVL, "7")
+    field(SVST, "Level")
+    field(EIVL, "8")
+    field(EIST, "Line")
+}
+
+
+record(ai, "$(P):IntegerScale_RBV") {
+    field(DESC, "Integer scale")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getFloat(ISCALE?) $(PORT) $(ADDR)")
+    field(PREC, "6")
+    field(EGU,  "")
+}
+
+#--- Measurement mode --------
+record(mbbo, "$(P):MeasMode") {
+    field(DESC, "Measurement mode")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "DCV")
+    field(TWVL, "2")
+    field(TWST, "ACV")
+    field(THVL, "3")
+    field(THST, "ACDCV")
+    field(FRVL, "4")
+    field(FRST, "OHM")
+    field(FVVL, "5")
+    field(FVST, "OHMF")
+    # Six state does not exist
+    field(SVVL, "7")
+    field(SVST, "ACI")
+    field(EIVL, "8")
+    field(EIST, "ACDCI")
+    field(NIVL, "9")
+    field(NIST, "FREQ")
+    field(TEVL, "10")
+    field(TEST, "PER")
+    field(ELVL, "11")
+    field(ELST, "DSAC")
+    field(TVVL, "12")
+    field(TVST, "DSDC")
+    field(TTVL, "13")
+    field(TTST, "SSAC")
+    field(FTVL, "14")
+    field(FTST, "SSDC")
+    field(PINI, "1")
+    info(autosaveFields, "VAL")
+}
+
+record(mbbi, "$(P):MeasMode_RBV") {
+    field(DESC, "Measurement mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getMeasMode(FUNC?, $(P)) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "DCV")
+    field(TWVL, "2")
+    field(TWST, "ACV")
+    field(THVL, "3")
+    field(THST, "ACDCV")
+    field(FRVL, "4")
+    field(FRST, "OHM")
+    field(FVVL, "5")
+    field(FVST, "OHMF")
+    # Six state does not exist
+    field(SVVL, "7")
+    field(SVST, "ACI")
+    field(EIVL, "8")
+    field(EIST, "ACDCI")
+    field(NIVL, "9")
+    field(NIST, "FREQ")
+    field(TEVL, "10")
+    field(TEST, "PER")
+    field(ELVL, "11")
+    field(ELST, "DSAC")
+    field(TVVL, "12")
+    field(TVST, "DSDC")
+    field(TTVL, "13")
+    field(TTST, "SSAC")
+    field(FTVL, "14")
+    field(FTST, "SSDC")
+}
+
+record(ao, "$(P):MeasRange") {
+    field(DESC, "Measurement range")
+    field(PREC, "6")
+    field(EGU,  "")
+    field(PINI, "1")
+    info(autosaveFields, "VAL PREC")
+}
+
+record(ai, "$(P):MeasRange_RBV") {
+    field(DESC, "Measurement range")
+    field(PREC, "2")
+    field(EGU,  "")
+}
+
+record(ao, "$(P):MeasRes") {
+    field(DESC, "Measurement resolution")
+    field(PREC, "6")
+    field(EGU,  "%")
+    field(PINI, "1")
+    info(autosaveFields, "VAL PREC")
+}
+
+# This record writes the mode, range, and resolution to the device.
+# The user should set the MeasMode, MeasRange, and MeasRes PVs first, then 
+#   process this record.
+record(bo, "$(P):MeasSet") {
+    field(DESC, "Measurement set")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setMeasMode(FUNC, $(P)) $(PORT) $(ADDR)")
+    field(ZNAM, "Standby")
+    field(ONAM, "Set")
+#    field(FLNK, "$(P):MeasMode_RBV")
+}
+#--- End Measurement mode --------
+
+record(mbbo, "$(P):AutorangeMode") {
+    field(DESC, "Autorange mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(ARANGE, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(TWVL, "2")
+    field(TWST, "ONCE")
+#    field(FLNK, "$(P):AutorangeMode_RBV")
+}
+
+record(mbbi, "$(P):AutorangeMode_RBV") {
+    field(DESC, "Autorange mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(ARANGE?) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(TWVL, "2")
+    field(TWST, "ONCE")
+}
+
+
+record(mbbo, "$(P):AutozeroMode") {
+    field(DESC, "Autozero mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(AZERO, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(TWVL, "2")
+    field(TWST, "ONCE")
+#    field(FLNK, "$(P):AutozeroMode_RBV")
+}
+
+record(mbbi, "$(P):AutozeroMode_RBV") {
+    field(DESC, "Autozero mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(AZERO?) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(TWVL, "2")
+    field(TWST, "ONCE")
+}
+
+
+record(mbbo, "$(P):DisplayMode") {
+    field(DESC, "Display mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(DISP, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(TWVL, "2")
+    field(TWST, "MSG")
+    field(THVL, "3")
+    field(THST, "CLR")
+#    field(FLNK, "$(P):DisplayMode_RBV")
+}
+
+record(mbbi, "$(P):DisplayMode_RBV") {
+    field(DESC, "Display mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(DISP?) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(TWVL, "2")
+    field(TWST, "MSG")
+    field(THVL, "3")
+    field(THST, "CLR")
+}
+
+
+#--- Math mode --------
+record(mbbo, "$(P):MathMode1") {
+    field(DESC, "Math mode 1")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setMathMode(MATH, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "CONT")
+    # Two state does not exist
+    field(THVL, "3")
+    field(THST, "CTHRM")
+    field(FRVL, "4")
+    field(FRST, "DB")
+    field(FVVL, "5")
+    field(FVST, "DBM")
+    field(SXVL, "6")
+    field(SXST, "FILTER")
+    # Seven state does not exist
+    field(EIVL, "8")
+    field(EIST, "FTHRM")
+#    field(FLNK, "$(P):MathMode1_RBV")
+}
+
+record(mbbo, "$(P):MathMode2") {
+    field(DESC, "Math mode 2")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "CONT")
+    # Two state does not exist
+    field(THVL, "3")
+    field(THST, "CTHRM")
+    field(FRVL, "4")
+    field(FRST, "DB")
+    field(FVVL, "5")
+    field(FVST, "DBM")
+    field(SXVL, "6")
+    field(SXST, "FILTER")
+    # Seven state does not exist
+    field(EIVL, "8")
+    field(EIST, "FTHRM")
+    field(FLNK, "$(P):MathMode1")
+}
+
+record(mbbi, "$(P):MathMode1_RBV") {
+    field(DESC, "Math mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getMathMode(MATH?, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "CONT")
+    # Two state does not exist
+    field(THVL, "3")
+    field(THST, "CTHRM")
+    field(FRVL, "4")
+    field(FRST, "DB")
+    field(FVVL, "5")
+    field(FVST, "DBM")
+    field(SXVL, "6")
+    field(SXST, "FILTER")
+    # Seven state does not exist
+    field(EIVL, "8")
+    field(EIST, "FTHRM")
+}
+
+record(mbbi, "$(P):MathMode2_RBV") {
+    field(DESC, "Math mode")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "CONT")
+    # Two state does not exist
+    field(THVL, "3")
+    field(THST, "CTHRM")
+    field(FRVL, "4")
+    field(FRST, "DB")
+    field(FVVL, "5")
+    field(FVST, "DBM")
+    field(SXVL, "6")
+    field(SXST, "FILTER")
+    # Seven state does not exist
+    field(EIVL, "8")
+    field(EIST, "FTHRM")
+}
+#--- End Math mode --------
+
+
+record(bo, "$(P):KeyboardLock") {
+    field(DESC, "Keyboard lock")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(LOCK, $(P)) $(PORT) $(ADDR)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+#    field(FLNK, "$(P):KeyboardLock_RBV")
+}
+
+record(bi, "$(P):KeyboardLock_RBV") {
+    field(DESC, "Keyboard lock")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(LOCK?) $(PORT) $(ADDR)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+
+record(ao, "$(P):Timer") {
+    field(DESC, "Timer sample interval")
+    field(DTYP, "stream")
+    field(LOPR, "0")
+    field(HOPR, "6000")
+    field(DRVL, "0")
+    field(DRVH, "6000")
+    field(EGU,  "s")
+    field(PREC, "6")
+    field(OUT,  "@$(PROTOFILE) setFloat(TIMER, $(P)) $(PORT) $(ADDR)")
+#    field(FLNK, "$(P):Timer_RBV")
+}
+
+record(ai, "$(P):Timer_RBV") {
+    field(DESC, "Timer sample interval")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getFloat(TIMER?) $(PORT) $(ADDR)")
+    field(EGU,  "s")
+    field(PREC, "6")
+}
+
+
+record(mbbo, "$(P):MemMode") {
+    field(DESC, "Mem mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(MEM, $(P)) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "LIFO")
+    field(TWVL, "2")
+    field(TWST, "FIFO")
+    field(THVL, "3")
+    field(THST, "CONT")
+#    field(FLNK, "$(P):MemMode_RBV")
+}
+
+record(mbbi, "$(P):MemMode_RBV") {
+    field(DESC, "Mem mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(MEM?) $(PORT) $(ADDR)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "LIFO")
+    field(TWVL, "2")
+    field(TWST, "FIFO")
+    field(THVL, "3")
+    field(THST, "CONT")
+}
+
+
+record(mbbo, "$(P):MemFormat") {
+    field(DESC, "Mem mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(MFORMAT, $(P)) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "ASCII")
+    field(TWVL, "2")
+    field(TWST, "SINT")
+    field(THVL, "3")
+    field(THST, "DINT")
+    field(FRVL, "4")
+    field(FRST, "SREAL")
+    field(FVVL, "5")
+    field(FVST, "DREAL")
+#    field(FLNK, "$(P):MemFormat_RBV")
+}
+
+record(mbbi, "$(P):MemFormat_RBV") {
+    field(DESC, "Mem mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(MFORMAT?) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "ASCII")
+    field(TWVL, "2")
+    field(TWST, "SINT")
+    field(THVL, "3")
+    field(THST, "DINT")
+    field(FRVL, "4")
+    field(FRST, "SREAL")
+    field(FVVL, "5")
+    field(FVST, "DREAL")
+}
+
+
+record(mbbo, "$(P):TrigArmMode") {
+    field(DESC, "Mem mode")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(TARM, $(P)) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "AUTO")
+    field(TWVL, "2")
+    field(TWST, "EXT")
+    field(THVL, "3")
+    field(THST, "SGL")
+    field(FRVL, "4")
+    field(FRST, "HOLD")
+    field(FVVL, "5")
+    field(FVST, "SYN")
+#    field(FLNK, "$(P):TrigArmModeWait")
+}
+
+record(seq, "$(P):TrigArmModeWait") {
+    field(DESC, "")
+    field(DLY1, "5.0")
+    field(LNK1, "$(P):TrigArmMode_RBV.PROC")
+}
+
+record(mbbi, "$(P):TrigArmMode_RBV") {
+    field(DESC, "Mem mode")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(TARM?) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "AUTO")
+    field(TWVL, "2")
+    field(TWST, "EXT")
+    field(THVL, "3")
+    field(THST, "SGL")
+    field(FRVL, "4")
+    field(FRST, "HOLD")
+    field(FVVL, "5")
+    field(FVST, "SYN")
+}
+
+
+#--- Num readings (NRDGS) --------
+record(longout, "$(P):NumReadings") {
+    field(DESC, "Number of readings")
+    field(LOPR, "1")
+    field(HOPR, "16777215")
+    field(DRVL, "1")
+    field(DRVH, "16777215")
+    field(FLNK, "$(P):NumReadingsMode")
+}
+
+record(longin, "$(P):NumReadings_RBV") {
+    field(DESC, "Number of readings")
+}
+
+record(mbbo, "$(P):NumReadingsMode") {
+    field(DESC, "Number of readings")
+    field(DTYP, "stream")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "AUTO")
+    field(TWVL, "2")
+    field(TWST, "EXTSYN")
+    # Three state does not exist
+    # Four state does not exist
+    field(FVVL, "5")
+    field(FVST, "SYN")
+    field(SXVL, "6")
+    field(SXST, "TIMER")
+    field(SVVL, "7")
+    field(SVST, "LEVEL")
+    field(EIVL, "8")
+    field(EIST, "LINE")
+    field(OUT,  "@$(PROTOFILE) setNumReadings(NRDGS, $(P)) $(PORT) $(ADDR)")
+#    field(FLNK, "$(P):NumReadingsMode_RBV")
+}
+
+record(mbbi, "$(P):NumReadingsMode_RBV") {
+    field(DESC, "Number of readings")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getNumReadings(NRDGS?, $(P)) $(PORT) $(ADDR)")
+    # Zero state does not exist
+    field(ONVL, "1")
+    field(ONST, "AUTO")
+    field(TWVL, "2")
+    field(TWST, "EXTSYN")
+    # Three state does not exist
+    # Four state does not exist
+    field(FVVL, "5")
+    field(FVST, "SYN")
+    field(SXVL, "6")
+    field(SXST, "TIMER")
+    field(SVVL, "7")
+    field(SVST, "LEVEL")
+    field(EIVL, "8")
+    field(EIST, "LINE")
+}
+#--- End Num readings (NRDGS) --------
+
+record(bo, "$(P):InputBuffer") {
+    field(DESC, "Keyboard lock")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) setInt(INBUF, $(P)) $(PORT) $(ADDR)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+#    field(FLNK, "$(P):InputBuffer_RBV")
+}
+
+record(bi, "$(P):InputBuffer_RBV") {
+    field(DESC, "Keyboard lock")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(INBUF?) $(PORT) $(ADDR)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+
+record(longin, "$(P):ReadingCount_RBV") {
+    field(DESC, "Stored reading count")
+    field(DTYP, "stream")
+    field(INP,  "@$(PROTOFILE) getInt(MCOUNT?) $(PORT) $(ADDR)")
+}
+
+
+record(longout, "$(P):MemRecall") {
+    field(DESC, "Recall memory")
+    field(DTYP, "stream")
+    field(OUT,  "@$(PROTOFILE) getMem($(P):Mem_RBV) $(PORT) $(ADDR)")
+}
+
+
+record(waveform, "$(P):Mem_RBV") {
+    field(DESC, "Memory contents")
+    field(FTVL, "DOUBLE")
+    field(NELM, "1000")
+}
+
+record(compress, "$(P):MemAveComp") {
+    field(DESC, "Memory contents average")
+    field(INP,  "$(P):Mem_RBV")
+    field(ALG,  "Average")
+    field(FLNK, "$(P):MemAve")
+}
+
+record(ai, "$(P):MemAve") {
+    field(DESC, "Memory contents average")
+    field(INP,  "$(P):MemAveComp")
+    field(PREC, "6")
+}
+
+
+#--- High-level sequences -------------------------
+record(seq, "$(P):Initialize") {
+    field(DESC, "Initialize")
+    field(DLY1, "0.0")
+    field(LNK1, "$(P):Preset.PROC")
+    field(DLY2, "$(DLY1=0.25)")
+    field(LNK2, "$(P):LineFreq.PROC")
+}
+
+record(seq, "$(P):MeasModeResistance") {
+    field(DESC, "Set meas to: OHMS,auto,0.001%")
+    field(DLY1, "0.0")
+    field(DO1,  "4")
+    field(LNK1, "$(P):MeasMode PP")
+    field(DLY2, "$(DLY1=0.25)")
+    field(DO2,  "-1")
+    field(LNK2, "$(P):MeasRange PP")
+    field(DLY3, "$(DLY1=0.25)")
+    field(DO3,  "0.001")
+    field(LNK3, "$(P):MeasRes PP")
+    field(DLY4, "$(DLY1=0.25)")
+    field(LNK4, "$(P):MeasSet.PROC")
+}
+
+record(seq, "$(P):MeasModeDCV") {
+    field(DESC, "Set meas to: DCV,10.0,auto")
+    field(DLY1, "0.0")
+    field(DO1,  "1")
+    field(LNK1, "$(P):MeasMode PP")
+    field(DLY2, "$(DLY1=0.25)")
+    field(DO2,  "10.0")
+    field(LNK2, "$(P):MeasRange PP")
+    field(DLY3, "$(DLY1=0.25)")
+    field(DO3,  "-1")
+    field(LNK3, "$(P):MeasRes PP")
+    field(DLY4, "$(DLY1=0.25)")
+    field(LNK4, "$(P):MeasSet.PROC")
+}
+
+record(seq, "$(P):GetVoltage") {
+    field(DESC, "Get voltage")
+#    field(DLY1, "0.0")
+#    field(LNK1, "$(P):Preset.PROC")
+    field(DLY2, "$(DLYG=1.0)")
+    field(DO2,  "10")
+    field(LNK2, "$(P):IntTime PP")
+    field(DLY3, "$(DLYG=1.0)")
+    field(DO3,  "1")
+    field(LNK3, "$(P):MeasMode PP")
+    field(DLY4, "$(DLYR=1.0)")
+    field(LNK4, "$(P):MeasSet.PROC")
+    field(DLY5, "$(DLYG=1.0)")
+    field(DO5,  "3")
+    field(LNK5, "$(P):TrigData PP")
+}
+
+record(seq, "$(P):GetResistance") {
+    field(DESC, "Get resistance")
+#    field(DLY1, "0.0")
+#    field(LNK1, "$(P):Preset.PROC")
+    field(DLY2, "$(DLYR=1.0)")
+    field(DO2,  "10")
+    field(LNK2, "$(P):IntTime PP")
+    field(DLY3, "$(DLYR=1.0)")
+    field(LNK3, "$(P):MeasModeResistance.PROC")
+    field(DLY4, "$(DLYR=1.0)")
+    field(DO4,  "3")
+    field(LNK4, "$(P):TrigData PP")
+}
+
+
+record(seq, "$(P):SetUpTimedVMeas1") {
+    field(DESC, "Set up timed voltage meas.")
+    # Preset the HP3458
+    # Scott A. says this is not needed
+#    field(DLY1, "0.0")
+#    field(LNK1, "$(P):Preset.PROC")
+    # Turn off autorange
+    field(DLY2, "$(DLYSV=0.5)")
+    field(DO2,  "0")
+    field(LNK2, "$(P):AutorangeMode PP")
+    # Turn off the autozero
+    field(DLY3, "$(DLYSV=0.5)")
+    field(DO3,  "0")
+    field(LNK3, "$(P):AutozeroMode PP")
+    # Turn off the display
+    field(DLY4, "$(DLYSV=0.5)")
+    field(DO4,  "0")
+    field(LNK4, "$(P):DisplayMode PP")
+    # Turn off math functions
+    field(DLY5, "$(DLYSV=0.5)")
+    field(DO5,  "0")
+    field(LNK5, "$(P):MathMode1 PP")
+    field(DLY6, "$(DLYSV=0.5)")
+    field(DO6,  "0")
+    field(LNK6, "$(P):MathMode2 PP")
+    # Turn on the keyboard lock
+    field(DLY7, "$(DLYSV=0.5)")
+    field(DO7,  "1")
+    field(LNK7, "$(P):KeyboardLock PP")
+    # Set the output format to ASCII
+    field(DLY8, "$(DLYSV=0.5)")
+    field(DO8,  "1")
+    field(LNK8, "$(P):OutFormat PP")
+    # Set the reference frequency (power line) 
+    field(DLY9, "$(DLYSV=0.5)")
+    field(DO9,  "1")
+    field(LNK9, "$(P):LineFreq PP")
+    # Set trig to HOLD 
+    field(DLYA, "$(DLYSV=0.5)")
+    field(DOA,  "4")
+    field(LNKA, "$(P):TrigMode PP")
+    field(FLNK, "$(P):SetUpTimedVMeas2")
+}
+
+record(seq, "$(P):SetUpTimedVMeas2") {
+    field(DESC, "Set up timed voltage meas.")
+    # Set measurement mode
+    field(DLY1, "0.5")
+    field(LNK1, "$(P):MeasModeDCV.PROC")
+    # Set the A/D integration time (in units of NPLC)
+    field(DLY2, "1.0")
+    field(DO2,  "2")
+    field(LNK2, "$(P):IntTime PP")
+    # Set the timer
+    field(DLY3, "$(DLYSV=0.5)")
+    field(DO3,  "3.3380E-2")
+    field(LNK3, "$(P):Timer PP")
+    # Enable memory and set mode to FIFO
+    field(DLY4, "$(DLYSV=0.5)")
+    field(DO4,  "2")
+    field(LNK4, "$(P):MemMode PP")
+    # Clear memory and set format to DINT
+    field(DLY5, "$(DLYSV=0.5)")
+    field(DO5,  "3")
+    field(LNK5, "$(P):MemFormat PP")
+    # Set up the trigger 
+    field(DLY6, "$(DLYSV=0.5)")
+    field(DO6,  "1")
+    field(LNK6, "$(P):TrigArmMode PP")
+    # Set number of readings
+    field(DLY7, "$(DLYSV=0.5)")
+    field(DO7,  "719")
+    field(LNK7, "$(P):NumReadings PP")
+    # Set num readings mode to TIMER
+    field(DLY8, "$(DLYSV=0.5)")
+    field(DO8,  "6")
+    field(LNK8, "$(P):NumReadingsMode PP")
+}
+
+record(seq, "$(P):TriggerTimedVMeas") {
+    field(DESC, "Trigger timed voltage meas.")
+    # Turn on the input buffer
+    field(DLY1, "0.0")
+    field(DO1,  "1")
+    field(LNK1, "$(P):InputBuffer PP")
+    # Trigger the readings
+    field(DLY2, "1.0")
+    field(DO2,  "3")
+    field(LNK2, "$(P):TrigMode PP")
+    # Check for errors
+    field(DLY3, "1.0")
+    field(LNK3, "$(P):Error.PROC")
+    # Check status
+    field(DLY4, "0.5")
+    field(LNK4, "$(P):Status.PROC")
+}
+
+record(seq, "$(P):CollectTimedVMeas") {
+    field(DESC, "Collect timed voltage meas.")
+    # Check the number of readings in memory
+    field(DLY1, "0.0")
+    field(LNK1, "$(P):ReadingCount_RBV.PROC")
+    # Put all the readings in the HP3458 output buffer
+    field(DLY2, "1.0")
+    field(DOL2, "$(P):ReadingCount_RBV")
+    field(LNK2, "$(P):MemRecall PP")
+    # Check for errors
+    field(DLY3, "1.0")
+    field(LNK3, "$(P):Error.PROC")
+    # Check status
+    field(DLY4, "0.5")
+    field(LNK4, "$(P):Status.PROC")
+}
+#--- End High-level sequences -------------------------
+
+
+#--- Record processing sequences -------------------------
+record(seq, "$(P):SeqInit1") {
+    field(DLY1, "1.0")
+    field(LNK1, "$(P):ID.PROC")
+    field(DLY2, "$(DLY1=0.25)")
+    field(LNK2, "$(P):Error.PROC")
+    field(DLY3, "$(DLY1=0.25)")
+    field(LNK3, "$(P):IntTime_RBV.PROC")
+    field(DLY4, "$(DLY1=0.25)")
+    field(LNK4, "$(P):OutFormat_RBV.PROC")
+    field(DLY5, "$(DLY1=0.25)")
+    field(LNK5, "$(P):LineFreq_RBV.PROC")
+    field(DLY6, "$(DLY1=0.25)")
+    field(LNK6, "$(P):TrigMode_RBV.PROC")
+    field(DLY7, "$(DLY1=0.25)")
+    field(LNK7, "$(P):IntegerScale_RBV.PROC")
+    field(DLY8, "$(DLY1=0.25)")
+    field(LNK8, "$(P):MeasMode_RBV.PROC")
+    field(DLY9, "$(DLY1=0.25)")
+    field(LNK9, "$(P):AutorangeMode_RBV.PROC")
+    field(DLYA, "$(DLY1=0.25)")
+    field(LNKA, "$(P):AutozeroMode_RBV.PROC")
+    field(PINI, "1")
+    field(FLNK, "$(P):SeqInit2")
+}
+
+record(seq, "$(P):SeqInit2") {
+    field(DLY1, "$(DLY1=0.25)")
+    field(LNK1, "$(P):DisplayMode_RBV.PROC")
+    field(DLY2, "$(DLY1=0.25)")
+    field(LNK2, "$(P):MathMode1_RBV.PROC")
+    field(DLY3, "$(DLY1=0.25)")
+    field(LNK3, "$(P):KeyboardLock_RBV.PROC")
+    field(DLY4, "$(DLY1=0.25)")
+    field(LNK4, "$(P):Timer_RBV.PROC")
+    field(DLY5, "$(DLY1=0.25)")
+    field(LNK5, "$(P):MemMode_RBV.PROC")
+    field(DLY6, "$(DLY1=0.25)")
+    field(LNK6, "$(P):MemFormat_RBV.PROC")
+    field(DLY7, "$(DLY1=0.25)")
+    field(LNK7, "$(P):TrigArmMode_RBV.PROC")
+    field(DLY8, "$(DLY1=0.25)")
+    field(LNK8, "$(P):NumReadingsMode_RBV.PROC")
+    field(DLY9, "$(DLY1=0.25)")
+    field(LNK9, "$(P):InputBuffer_RBV.PROC")
+    field(DLYA, "$(DLY1=0.25)")
+    field(LNKA, "$(P):ReadingCount_RBV.PROC")
+    field(FLNK, "$(P):SeqInit3")
+}
+
+record(seq, "$(P):SeqInit3") {
+    field(DLY1, "$(DLY1=0.25)")
+    field(LNK1, "$(P):Status.PROC")
+}
+
+record(seq, "$(P):SeqSlow1") {
+    field(DLY1, "0.0")
+    field(LNK1, "$(P):SeqInit1.PROC")
+#    field(SCAN, "10 second")
+}
+
+record(seq, "$(P):SeqFast1") {
+    field(DLY1, "0.0")
+    field(LNK1, "$(P):Error.PROC")
+    field(DLY2, "$(DLY1=0.25)")
+    field(LNK2, "$(P):ReadingCount_RBV.PROC")
+    field(DLY3, "$(DLY1=0.25)")
+    field(LNK3, "$(P):Status.PROC")
+#    field(SCAN, "5 second")
+}
+#--- End Record processing sequences -------------------------
+
+
+

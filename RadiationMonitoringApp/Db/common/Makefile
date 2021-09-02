@@ -25,9 +25,9 @@ include $(TOP)/configure/CONFIG
 #DB_OPT = YES
 
 #----------------------------------------------------
-# Create and install (or just install)
-# databases, templates, substitutions like this
-#
+# Create and install (or just install) databases, templates, substitutions
+DB_INSTALLS += $(ASYN)/db/asynRecord.db
+
 DB += slow_hist_pattern.db
 DB += radfet_history_ch.db
 DB += dosfet.db
@@ -43,7 +43,9 @@ DB += ecogamma.template
 DB += radm_info.template
 DB += ams-printer.template
 DB += eco-os-6.template
-DB_INSTALLS += $(ASYN)/db/asynRecord.db
+DB += agilent_3458a.db
+DB += agilent_34970a.db
+
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

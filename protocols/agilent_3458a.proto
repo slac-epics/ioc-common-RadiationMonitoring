@@ -1,0 +1,110 @@
+# agilent_3458a.proto
+# 20210527 mdunning
+#
+# This device is really slow, so the timeouts below are actually needed.
+# Fetching data is especially slow, and can take ~60 seconds or longer.
+
+InTerminator = CR;
+OutTerminator = CR LF;
+
+ReadTimeout = 5000;
+WriteTimeout = 60000;
+ReplyTimeout = 5000;
+LockTimeout = 5000;
+
+getString {
+    out "\$1";
+    in "%#s";
+}
+
+setString {
+    out "\$1";
+    @mismatch {
+        in "";
+    }
+}
+
+getInt {
+    out "\$1";
+    in "%d";
+    @mismatch {
+        in "";
+    }
+}
+
+setInt {
+    out "\$1 %d";
+    @mismatch {
+        in "";
+    }
+}
+
+getFloat {
+    out "\$1";
+    in "%f";
+}
+
+setFloat {
+    out "\$1 %f";
+    @mismatch {
+        in "";
+    }
+}
+
+getMeasMode {
+    out "\$1";
+    in "%d,%(\$2:MeasRange_RBV)f";
+}
+
+setMeasMode {
+    out "\$1 %(\$2:MeasMode)d,%(\$2:MeasRange)f,%(\$2:MeasRes)f";
+    @mismatch {
+        in "";
+    }
+}
+
+getMathMode {
+    out "\$1";
+    in "%d,%(\$2:MathMode2_RBV)d";
+}
+
+setMathMode {
+    out "\$1 %(\$2:MathMode1)d,%(\$2:MathMode2)d";
+    @mismatch {
+        in "";
+    }
+}
+
+getNumReadings {
+    out "\$1";
+    in "%(\$2:NumReadings_RBV)d,%d";
+}
+
+setNumReadings {
+    out "\$1 %(\$2:NumReadings)d,%d";
+    @mismatch {
+        in "";
+    }
+}
+
+getMem {
+    out "RMEM 1,%d";
+    separator = ",";
+    in "%(\$1)f";
+}
+
+setTrig {
+    out "\$1 %d";
+    @mismatch {
+        in "%(\$2:ValStr)s";
+    }
+}
+
+setTrigGetData {
+    out "\$1 %d";
+    in "%(\$2:MeasValue)f";
+    @mismatch {
+        in "%(\$2:ValStr)s";
+    }
+}
+
