@@ -40,11 +40,11 @@ asynSetTraceIOMask("$(PORT)", "$(34970A_ADDR)", 0x2)
 #asynSetTraceMask("$(PORT)", "$(34970A_ADDR)", 0x9)
 
 # Load record instances
-dbLoadRecords("db/agilent_3458a.db", "P=$(P):1,PORT=$(PORT),ADDR=$(3458A_ADDR),PROTOFILE=agilent_3458a.proto")
-dbLoadRecords("db/asynRecord.db", "P=$(P):1:,R=Asyn,PORT=$(PORT),ADDR=$(3458A_ADDR),OMAX=0,IMAX=0")
+dbLoadRecords("db/agilent_3458a.db", "P=$(P):DVM,PORT=$(PORT),ADDR=$(3458A_ADDR),PROTOFILE=agilent_3458a.proto")
+dbLoadRecords("db/asynRecord.db", "P=$(P):DVM:,R=Asyn,PORT=$(PORT),ADDR=$(3458A_ADDR),OMAX=0,IMAX=0")
 #
-dbLoadRecords("db/agilent_34970a.db", "P=$(P):2,PORT=$(PORT),ADDR=$(34970A_ADDR),PROTOFILE=agilent_34970a.proto")
-dbLoadRecords("db/asynRecord.db", "P=$(P):2:,R=Asyn,PORT=$(PORT),ADDR=$(34970A_ADDR),OMAX=0,IMAX=0")
+dbLoadRecords("db/agilent_34970a.db", "P=$(P):DAQ,PORT=$(PORT),ADDR=$(34970A_ADDR),PROTOFILE=agilent_34970a.proto")
+dbLoadRecords("db/asynRecord.db", "P=$(P):DAQ:,R=Asyn,PORT=$(PORT),ADDR=$(34970A_ADDR),OMAX=0,IMAX=0")
 
 # Configure autosave
 < $(TOP)/iocBoot/common/init_restore.cmd.soft
