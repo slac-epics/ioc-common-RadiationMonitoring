@@ -10,9 +10,9 @@ file monitor.tpl-arch
 {
 pattern
     {                 PVNAME}
-    { RADM:UND0:3150:1:Error}
-    {RADM:UND0:3150:1:Status}
-    {RADM:UND0:3150:2:Status}
+    { RADM:UND0:3150:DVM:Error}
+    {RADM:UND0:3150:DVM:Status}
+    {RADM:UND0:3150:DAQ:Status}
 }
 
 # End of file
