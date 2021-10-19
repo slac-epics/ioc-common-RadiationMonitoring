@@ -1,24 +1,25 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
 #==============================================================
 #
 #  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
 #
 #  Name: st.cmd
 #
-#  Facility:  LCLS 
+#  Facility:  LCLS Radiation Monitoring Controls
 #
-#  Auth: 21-Jul-2017, M. Dunning      (MDUNNING)
-#  Rev:  dd-mmm-yyyy, Reviewer's Name (USERNAME)
+#  Auth: 21-Jul-2017, M. Dunning          (MDUNNING)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name     (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
-#        dd-mmm-yyyy, Name       (USERNAME):
-#           comment
+#        19-Oct-2021, K. Luchini          (luchini):
+#         add caPutLogInit after iocInit
+#         add env var LOCATION
 #
 #==============================================================
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "M. Dunning")
+epicsEnvSet("LOCATION", "lcls-daemon1")
 epicsEnvSet("IOC_NAME", "SIOC:BSYH:RM01")
 
 # Load common piece of startup script
@@ -53,6 +54,9 @@ dbLoadRecords("db/asynRecord.db","P=$(IOC_NAME):,R=Asyn, PORT=RADM_BSYH_843, ADD
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit()
+
+# Initialize caPutLog
+caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 
 # Start autosave
 < ../common/start_restore.cmd.soft
