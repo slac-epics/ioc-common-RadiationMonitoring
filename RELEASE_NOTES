@@ -8,6 +8,12 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.7  19-Oct-2021, K. Luchini (luchini):
+    add caPutLogInit to all prod ioc st.cmd files
+    move STARTUP env var to iocBoot/common/st.cmd.soft
+    load st.cmd.soft in dev iocs that were not loading iocAdmin: 
+      sioc-b24-rm01,sioc-b24-rm01,sioc-b34-rm01
+
 R1.1.6 2-Sep-2021 M. Dunning (mdunning):
     Add support for undulator magnetic measurements for long-term radiation damage
         New iocs: sioc-b34-rm02, sioc-und0-rm01, sioc-und0-rm02
