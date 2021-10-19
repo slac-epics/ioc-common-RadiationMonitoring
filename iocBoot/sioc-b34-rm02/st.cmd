@@ -1,13 +1,19 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
 #==============================================================
+#
 #  Abs:  Startup Script for RadiationMonitoring IOC
 #
 #  Name: st.cmd
 #
-#  Facility:  LCLS 
+#  Facility: Development Radiation Monitoring Controls
 #
-#  Auth: 25-Jun-2021, M. Dunning (mdunning)
+#  Auth: 25-Jun-2021, M. Dunning         (mdunning)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        dd-mm-yyyy, First Lastname      (USERNAME):
+#         comment
+#
 #==============================================================
 
 # Set environment variables
