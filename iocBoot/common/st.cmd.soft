@@ -28,7 +28,7 @@
 
 # Enviroment variables for iocAdmin
 epicsEnvSet("IOC_BOOT", "${TOP}/iocBoot/${IOC}")
-epicsEnvSet("STARTUP" , "${EPICS_IOC_APP}")
+epicsEnvSet("STARTUP" , "${EPICS_IOCS}/${IOC}")
 epicsEnvSet("ST_CMD",   "startup.cmd")
 
 # Set path for stream device proto files
