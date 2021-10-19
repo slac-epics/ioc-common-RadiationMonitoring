@@ -2,14 +2,14 @@
 #
 #  Abs: Common Archive templates
 #
-#  Facility: EED Beam Containment System Controls
+#  Facility: EED Radiation Monitoring Controls
 #
-#  Auth: 06-Mar-2019, Kristi Luchini  (USERNAME)
+#  Auth: 06-Mar-2019, Kristi Luchini  (LUCHINI)
 #  Rev:  dd-mmm-yyyy, Reviewers Name  (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
-#        dd-mmm-yyyy, First Lastname  (USERNAME):
-#          comment
+#        19-Oct-2021, K. Luchini      (LUCHINI):
+#         chg facility
 #
 #============================================================== 
 #
