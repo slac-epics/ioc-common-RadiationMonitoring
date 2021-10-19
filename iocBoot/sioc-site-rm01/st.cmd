@@ -1,17 +1,28 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
+#==============================================================
+#
+#  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
+#
+#  Name: st.cmd
+#
+#  Facility:  SLAC Site Radiation Monitoring Controls
+#
+#  Auth: 07-Jul-2021, Mike Dunning       (mdunning)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        19-Oct-2021, K. Luchini         (luchini):
+#         load st.cmd.soft
+#
+#==============================================================
+# 
 # Setup environment variables
-< envPaths
-epicsEnvSet("ENGINEER","Jacob DeFilippis")
-epicsEnvSet("LOCATION","SLAC Perimeter")
-epicsEnvSet("STREAM_PROTOCOL_PATH",".:${TOP}/protocols")
+epicsEnvSet("ENGINEER" ,"Jacob DeFilippis")
+epicsEnvSet("IOC_NAME" , sioc-site-rm01")
+epicsEnvSet("LOCATION" ,"SLAC Perimeter")
 
-cd ${TOP}
-
-
-## Register all support components
-dbLoadDatabase "dbd/RadiationMonitoring.dbd"
-RadiationMonitoring_registerRecordDeviceDriver pdbbase
+# Load common piece of startup script
+< ../common/st.cmd.soft
 
 ## Setup asyn connections PM01-PM08
 #drvAsynIPPortConfigure("PM1-GAMMA","wb-site-rm01:5000")
@@ -50,14 +61,6 @@ drvAsynIPPortConfigure("PM9-GAMMA","moxa-test:5000")
 drvAsynIPPortConfigure("PM9-TS","moxa-test:5001")
 drvFHTConfigure("PM9-FHT6020", "PM9-TS", 1, 1.5)
 
-
-## Load record instances
-# =====================================================================
-# Load iocAdmin
-# =====================================================================
-dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SITE:RM01")
-dbLoadRecords("db/iocRelease.db","IOC=SIOC:SITE:RM01")
-
 #Stations PM01-PM8
 dbLoadRecords("db/peripheral-station.db","UNIT=01,GPORT=PM1-GAMMA,NPORT=PM1-FHT6020")
 #dbLoadRecords("db/peripheral-station.db","UNIT=02,GPORT=PM2-GAMMA,NPORT=PM2-FHT6020")
@@ -78,7 +81,7 @@ dbLoadRecords("db/asynRecord.db","P=RADM:SITE:09:,R=GASYN,PORT=PM9-GAMMA,ADDR=0,
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:07,LOC=07")
 dbLoadRecords("db/radm_info.template","P=RADM:SITE:09,LOC=09")
 
-
 cd ${TOP}/iocBoot/${IOC}
 iocInit
 
+# End of file
