@@ -18,7 +18,8 @@
 #  Rev:  dd-mmm-yyyy, Reviewer's Name (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
-#        dd-mmm-yyyy, Name (USERNAME)
+#        19-Oct-2021, K. Luchini      (LUCHINI):
+#         add env var STARTUP
 #
 #==============================================================
 
@@ -27,6 +28,7 @@
 
 # Enviroment variables for iocAdmin
 epicsEnvSet("IOC_BOOT", "${TOP}/iocBoot/${IOC}")
+epicsEnvSet("STARTUP" , "${EPICS_IOC_APP}")
 epicsEnvSet("ST_CMD",   "startup.cmd")
 
 # Set path for stream device proto files
@@ -43,7 +45,7 @@ scanOnceSetQueueSize(0x100000)
 
 # Load iocAdmin Databses
 dbLoadRecords("db/iocAdminSoft.db", "IOC=${IOC_NAME}")
-dbLoadRecords("db/iocRelease.db", "IOC=${IOC_NAME}")
+dbLoadRecords("db/iocRelease.db"  , "IOC=${IOC_NAME}")
 
 # Load Channel Access Security if configuration file exists
 < ${ACF_INIT}
