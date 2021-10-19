@@ -1,30 +1,29 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
 #==============================================================
 #
 #  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
 #
 #  Name: st.cmd
 #
-#  Facility:  LCLS2
+#  Facility:  LCLS2 Radiation Monitoring Controls
 #
 #  Auth: 17-Jul-2018, M. Dunning      (MDUNNING)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
-#        dd-mmm-yyyy, Name       (USERNAME):
-#           comment
+#        19-Oct-2021, K. Luchini         (luchini):
+#         add caPutLogInit after iocInit
+#         add env var LOCATION
 #
 #==============================================================
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "G. Brown")
+epicsEnvSet("LOCATION", "lcls-daemon1")
 epicsEnvSet("IOC_NAME", "SIOC:UNDS:RM01")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
-
-epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
 # Set this to enable LOTS of stream module diagnostics
 #var streamDebug 1
@@ -52,8 +51,6 @@ asynSetTraceIOMask( "$(DEV1)", 0, 0x2)
 ########################################################################
 # BEGIN: Load the record databases
 #######################################################################
-
-
 dbLoadRecords("db/sioc-unds-rm01.db","PORT=$(DEV1)" )
 dbLoadRecords("db/asynRecord.db","P=RADM:UNDS:RM01,R=:ASYN,PORT=$(DEV1),ADDR=0,OMAX=0,IMAX=108")
 
@@ -62,6 +59,9 @@ dbLoadRecords("db/asynRecord.db","P=RADM:UNDS:RM01,R=:ASYN,PORT=$(DEV1),ADDR=0,O
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit()
+
+# Initialize caPutLog
+caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 
 # Start autosave
 < ../common/start_restore.cmd.soft
