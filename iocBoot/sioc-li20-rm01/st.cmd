@@ -1,9 +1,25 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
+#==============================================================
+#
+#  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
+#
+#  Name: st.cmd
+#
+#  Facility:  FACET-II Radiation Monitoring Controls
+#
+#  Auth: 07-Jul-2021, Mike Dunning       (mdunning)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        19-Oct-2021, K. Luchini         (luchini):
+#         add caPutLogInit after iocInit
+#
+#==============================================================
+# 
 # Set environment variables
-epicsEnvSet("ENGINEER",    "M. Dunning")
-epicsEnvSet("IOC_NAME",    "SIOC:LI20:RM01")
-epicsEnvSet("STARTUP",     "${EPICS_SITE_TOP}/iocCommon/${IOC}")
+epicsEnvSet("ENGINEER", "M. Dunning")
+epicsEnvSet("LOCATION", "facet-daemon1")
+epicsEnvSet("IOC_NAME", "SIOC:LI20:RM01")
 #
 epicsEnvSet("FHT1_P",      "RADM:LI20:1")
 epicsEnvSet("FHT1_LOC",    "FACET_LI20")
@@ -26,6 +42,9 @@ dbLoadRecords("db/asynRecord.db","P=$(FHT1_P):,R=Asyn,PORT=$(FHT1_PORT),ADDR=0,I
 < $(TOP)/iocBoot/common/init_restore.cmd.soft
 
 iocInit()
+
+# Initialize caPutLog
+caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 
 # Start autosave
 < $(TOP)/iocBoot/common/start_restore.cmd.soft
