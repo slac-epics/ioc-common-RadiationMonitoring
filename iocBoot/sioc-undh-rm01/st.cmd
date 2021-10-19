@@ -1,35 +1,31 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
 #==============================================================
 #
 #  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
 #
 #  Name: st.cmd
 #
-#  Facility:  LCLS2
+#  Facility:  LCLS2 Radiation Monitoring Controls
 #
 #  Auth: 17-Jul-2018, M. Dunning      (MDUNNING)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
-#        dd-mmm-yyyy, Name       (USERNAME):
-#           comment
+#        19-Oct-2021, K. Luchini         (luchini):
+#         add caPutLogInit after iocInit
 #
 #==============================================================
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "G. Brown")
+epicsEnvSet("LOCATION" ,"UNDH")
 epicsEnvSet("IOC_NAME", "SIOC:UNDH:RM01")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
 
-epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
-
 # Load record instances
 dbLoadRecords("db/sioc-undh-rm01.db")
-
-epicsEnvSet("LOCATION" ,"UNDH")
 
 epicsEnvSet("DEV",  "RADM:UNDH:RM01" )
 epicsEnvSet("NODE", "radm-undh-rm01" )
@@ -68,12 +64,14 @@ epicsEnvSet("NODE", "radm-undh-rm09" )
 epicsEnvSet("LOC", "Top of rack under HXU46" )
 < iocBoot/common/init_dosfet.cmd
 
-
 # Configure autosave
 < iocBoot/common/init_restore.cmd.soft
 
 cd ${TOP}/iocBoot/${IOC}
 iocInit()
+
+# Initialize caPutLog
+caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 
 # Start autosave
 < ../common/start_restore.cmd.soft
