@@ -1,13 +1,19 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
 #==============================================================
+#
 #  Abs:  Startup Script for RadiationMonitoring IOC
 #
 #  Name: st.cmd
 #
-#  Facility:  LCLS 
+#  Facility:  LCLS Radiation Monitoring Controls
 #
-#  Auth: 2-Sep-2021, M. Dunning (mdunning)
+#  Auth: 02-Sep-2021, M. Dunning         (mdunning)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        19-Oct-2021, K. Luchini         (luchini):
+#         add caPutLogInit after iocInit
+#
 #==============================================================
 
 # Set environment variables
@@ -50,6 +56,9 @@ dbLoadRecords("db/asynRecord.db", "P=$(P):DAQ:,R=Asyn,PORT=$(PORT),ADDR=$(34970A
 < $(TOP)/iocBoot/common/init_restore.cmd.soft
 
 iocInit()
+
+# Initialize caPutLog
+caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 
 # Streamdevice options
 #var streamError 1
