@@ -1,9 +1,25 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
+#==============================================================
+#
+#  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
+#
+#  Name: st.cmd
+#
+#  Facility: Development Radiation Monitoring Controls
+#
+#  Auth: 20-Aug-2021, Mike Dunning       (mdunning)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        19-Oct-2021, K. Luchini         (luchini):
+#         move STARTUP to iocBoot/common/st.cmd.soft
+#
+#==============================================================
 
 # Set environment variables
 epicsEnvSet("ENGINEER",    "M. Dunning")
+epicsEnvSet("LOCATION",    "lcls-dev1")
 epicsEnvSet("IOC_NAME",    "SIOC:B34:RM03")
-epicsEnvSet("STARTUP",     "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 #
 epicsEnvSet("FHT1_P",      "RADM:B34:301")
 epicsEnvSet("FHT1_LOC",    "B34")
