@@ -1,6 +1,6 @@
 TOP = ../..
 include $(TOP)/configure/CONFIG
 DIRS += common
-DIRS += lcls
+DIRS += lcls facet
 include $(TOP)/configure/RULES_DIRS
 
