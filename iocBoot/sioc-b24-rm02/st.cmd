@@ -1,17 +1,30 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
-
+#==============================================================
+#
+#  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
+#
+#  Name: st.cmd
+#
+#  Facility: Development Radiation Monitoring Controls
+#
+#  Auth: 18-Mar-2018, Jacob DeFilippi    (jpdef)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        19-Oct-2021, K. Luchini         (luchin):
+#         add header
+#         load st.cmd.soft
+#         add env var IOC_NAME
+#
+#==============================================================
+# 
 # Setup environment variables
-< envPaths
-epicsEnvSet("ENGINEER","Jacob DeFilippis")
-epicsEnvSet("LOCATION","SLAC Perimeter")
-epicsEnvSet("STREAM_PROTOCOL_PATH",".:${TOP}/protocols")
+epicsEnvSet("ENGINEER", "Jacob DeFilippis")
+epicsEnvSet("LOCATION", "lcls-dev1")
+epicsEnvSet("IOC_NAME", "SIOC:B24:RM02")
 
-cd ${TOP}
-
-
-## Register all support components
-dbLoadDatabase "dbd/RadiationMonitoring.dbd"
-RadiationMonitoring_registerRecordDeviceDriver pdbbase
+# Load common piece of startup script
+< ../common/st.cmd.soft
 
 ## Setup asyn connections 
 drvAsynIPPortConfigure("TS-B024","ts-b024-pp01:2001")
@@ -26,6 +39,9 @@ drvAsynIPPortConfigure("TS-B024","ts-b024-pp01:2001")
 dbLoadRecords("db/eco-os-6.template","P=RADM:AMS:B24,PORT=TS-B024")
 dbLoadRecords("db/asynRecord.db","P=RADM:AMS:B24:,R=ASYN,PORT=TS-B024,ADDR=1,IMAX=100,OMAX=100")
 
+# start EPICS
 cd ${TOP}/iocBoot/${IOC}
 iocInit
+
+# End of file
 
