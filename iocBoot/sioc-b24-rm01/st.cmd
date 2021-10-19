@@ -1,17 +1,30 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
+#==============================================================
+#
+#  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
+#
+#  Name: st.cmd
+#
+#  Facility: Development Radiation Monitoring Controls
+#
+#  Auth: 18-Mar-2018, Jacob DeFilippi    (jpdef)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        19-Oct-2021, K. Luchini         (luchin):
+#         add header
+#         load st.cmd.soft
+#         add env var IOC_NAME
+#
+#=============================================================
 
 # Setup environment variables
-< envPaths
 epicsEnvSet("ENGINEER","Jacob DeFilippis")
+epicsEnvSet("IOC_NAME","SIOC:B24:RM01")
 epicsEnvSet("LOCATION","SLAC Perimeter")
-epicsEnvSet("STREAM_PROTOCOL_PATH",".:${TOP}/protocols")
 
-cd ${TOP}
-
-
-## Register all support components
-dbLoadDatabase "dbd/RadiationMonitoring.dbd"
-RadiationMonitoring_registerRecordDeviceDriver pdbbase
+# Load common piece of startup script
+< ../common/st.cmd.soft
 
 ## Setup asyn connections PM01-PM08
 drvAsynIPPortConfigure("B24-GAMMA","wb-site-rm08:5000")
@@ -26,7 +39,6 @@ drvAsynIPPortConfigure("B24-TS","wb-site-rm08:5001")
 # *----------------------------------------------------------------------------*/
 drvFHTConfigure("B24_FHT", "B24-TS", 1, 1.5)
 
-
 ## Load record instances
 #General
 
@@ -36,3 +48,4 @@ dbLoadRecords("db/peripheral-station.db","UNIT=B24,GPORT=B24-GAMMA,NPORT=B24-FHT
 cd ${TOP}/iocBoot/${IOC}
 iocInit
 
+# End of file
