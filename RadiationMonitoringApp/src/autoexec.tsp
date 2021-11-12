@@ -216,36 +216,37 @@ function EndReadCycle(base)
 	ShowErrors()
 end
 
-function LoadSettings()
-	paramFile, paramError = io.open("/usb1/TestParams", "r")
-	if paramError == nil then
-		SamplingI, BiasV, HoldS = paramFile:read("*n", "*n", "*n")
-		io.close(paramFile)
-	else
-		print(paramError)
-	end
-	ShowErrors()
-	print("Sampling current: " .. SamplingI)
-	print("Bias voltage: " .. BiasV)
-	print("Sampling hold time: " .. HoldS)
-end
+-- -- TODO: Find out why these functions always return an error when they try to open the file
+-- function LoadSettings()
+-- 	paramFile, paramError = io.open("/usb1/TestParams", "r")
+-- 	if paramError == nil then
+-- 		SamplingI, BiasV, HoldS = paramFile:read("*n", "*n", "*n")
+-- 		io.close(paramFile)
+-- 	else
+-- 		print(paramError)
+-- 	end
+-- 	ShowErrors()
+-- 	print("Sampling current: " .. SamplingI)
+-- 	print("Bias voltage: " .. BiasV)
+-- 	print("Sampling hold time: " .. HoldS)
+-- end
 
-function SaveSettings()
-	-- format.asciiprecision = 8 ineffective
-	paramFile, paramError = io.open("/usb1/TestParams", "w")
-	if paramError == nil then
-		--paramFile:write(string.format("%f %f %f", SamplingI, BiasV, HoldS))
-		paramFile:write(SamplingI, ' ', BiasV, ' ', HoldS)
-		io.close(paramFile)
-	else
-		print(paramError)
-	end
-	ShowErrors()
-end
+-- function SaveSettings()
+-- 	-- format.asciiprecision = 8 ineffective
+-- 	paramFile, paramError = io.open("/usb1/TestParams", "w")
+-- 	if paramError == nil then
+-- 		--paramFile:write(string.format("%f %f %f", SamplingI, BiasV, HoldS))
+-- 		paramFile:write(SamplingI, ' ', BiasV, ' ', HoldS)
+-- 		io.close(paramFile)
+-- 	else
+-- 		print(paramError)
+-- 	end
+-- 	ShowErrors()
+-- end
 
 function SetSampleI(NewI)
 	SamplingI = NewI
-	SaveSettings()
+--	SaveSettings()
 end
 
 function GetSampleI()
@@ -254,11 +255,20 @@ end
 
 function SetBias(NewV)
 	BiasV = NewV
-	SaveSettings()
+--	SaveSettings()
 end
 
 function GetBias()
 	print("Bias: " .. BiasV)
+end
+
+function SetDelay(NewD)
+	HoldS = NewD
+--	SaveSettings()
+end
+
+function GetDelay()
+	print("Delay: " .. HoldS)
 end
 
 function BiasChannel(i)
@@ -283,15 +293,6 @@ function UnbiasChannel(i)
 	node[2].channel.open(tostring(ChBases[i] + BiasGND_Ds))
 	-- print("node[2].channel.open " .. ChBases[i] + BiasGND_Ds)
 	ShowErrors()
-end
-
-function SetDelay(NewD)
-	HoldS = NewD
-	SaveSettings()
-end
-
-function GetDelay()
-	print("Delay: " .. HoldS)
 end
 
 function FindActiveChannels()
