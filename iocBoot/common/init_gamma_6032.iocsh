@@ -1,0 +1,37 @@
+#==============================================================
+#
+#  Abs:  EPICS startup script for 6032 gamma BSOIC device(s)
+#
+#  Name: init_gamma_6032.iocsh
+#
+#  Facility: Development Radiation Monitoring Controls
+#  Macros:
+#    P - PV prefix, e.g. BSOIC:NEH1:121:
+#    TS - terminal server network host name, e.g. ts-lclsdev01
+#    TSPORT - terminal server TCP port number, e.g. 4016
+#    SYS - e.g. BSOIC:B34:ALL
+#    IOC - Should be defined in st.cmd,
+#
+#  This file should be executed from the ioc shell like so:
+#   iocshLoad(filename, macros)
+#   For example:
+#    iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOIC:NEH1:121:,TS=ts-lclsdev01,TSPORT=4016,SYS=BSOIC:B34:ALL,IOC=${IOC}")
+#
+#  Auth:  3-Nov-2021, Garth Brown        (gwbrown)
+#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#--------------------------------------------------------------
+#  Mod:
+#        dd-mmm-yyyy, Reviewer's Name    (USERNAME)
+#
+#==============================================================
+
+epicsEnvSet("PORT",   "${P}PORT")
+
+###--- 6032 BSOIC ---------------------------------------------------------
+drvAsynIPPortConfigure ("$(PORT)","$(TS):$(TSPORT)",0,0,0)
+asynSetOption("$(PORT)", 0, "disconnectOnReadTimeout", "Y")
+dbLoadRecords("db/gamma6032mon.db", "BL=$(P),PORT=$(PORT),IOC=$(IOC)")
+dbLoadRecords("db/alarmClock.db", "sys=$(SYS)")
+dbLoadRecords("db/dbSubTime.db", "IOC=$(IOC)")
+###-------------------------------------------------------------------------
+
