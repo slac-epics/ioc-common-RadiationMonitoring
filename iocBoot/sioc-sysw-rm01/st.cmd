@@ -21,6 +21,7 @@ epicsEnvSet("IOC_NAME",    "SIOC:SYSM:RM01")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
+
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:GUNB:03:,TS=ts-li00-nw05,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:GUNB:04N,TS=ts-li00-nw05,TSPORT=2004,LOC=Outside InjW Chicane")
 # (P02-05) RDMLNW01 ts-li02-nw02:2001

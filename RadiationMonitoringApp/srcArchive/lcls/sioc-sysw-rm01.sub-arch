@@ -1,0 +1,51 @@
+# Archive template file for sioc-clts-rm01
+
+file fht_6020_common.tpl-arch
+{
+pattern
+    {            P}
+    {RADM:LI02:1}
+    {RADM:LI07:2}
+}
+
+file fht_6020_chan.tpl-arch
+{
+pattern
+    {            P,  N}
+    {RADM:LI02:1, 01}
+    {RADM:LI02:1, 02}
+    {RADM:LI07:2, 01}
+    {RADM:LI07:2, 02}
+}
+
+file gamma6032.tpl-arch
+{
+pattern { dev          }
+        { BSOC:GUNB:03 }
+        { BSOC:LI02:05 }
+        { BSOC:LI04:07 }
+        { BSOC:LI04:06 }
+        { BSOC:LI05:08 }
+        { BSOC:LI07:09 }
+        { BSOC:LI07:10 }
+        { BSOC:LI10:12 }
+        { BSOC:IN10:03 }
+}
+
+file hpi6012.tpl-arch
+{
+pattern { P             }
+        { BSOC:GUNB:04N }
+        { BSOC:LI04:14N }
+        { BSOC:LI05:15N }
+        { BSOC:LI07:11N }
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:SYSW:RM01 }
+}
+
+# End of file
+

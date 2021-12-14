@@ -1,0 +1,13 @@
+
+# Archive List for HPI 6012 BSOIC
+#
+# Signal Name                   Period (sec)    Type
+$(P):$(R=Neutron)DoseRate       1               monitor
+$(P):$(R=Neutron)DoseRateRaw    1               monitor
+$(P):StatusRaw                  1               monitor
+$(P):Alarm1                     1               monitor
+$(P):Alarm2                     1               monitor
+$(P):DetectorStatus             1               monitor
+$(P):ReadStatus                 1               monitor
+$(P):Debug                      1               monitor
+

@@ -1,0 +1,6 @@
+# BSOIC Archive List for HPI 6032
+#
+# Signal Name			Period (sec)	Type
+$(dev):GAMMAACT              	1      		scan
+$(dev):GAMMATOTALDOSE        	1		scan
+$(dev):GAMMADAILYDOSE		1		scan
