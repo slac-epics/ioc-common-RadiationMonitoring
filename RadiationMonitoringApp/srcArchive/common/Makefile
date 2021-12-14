@@ -25,6 +25,8 @@ ARCHIVE += dosfet.tpl-arch
 ARCHIVE += dosfet-chan.tpl-arch
 ARCHIVE += fht_6020_common.tpl-arch
 ARCHIVE += fht_6020_chan.tpl-arch
+ARCHIVE += gamma6032.tpl-arch
+ARCHIVE += hpi6012.tpl-arch
 ARCHIVE += monitor.tpl-arch
 ARCHIVE += scan.tpl-arch
 
