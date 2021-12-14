@@ -8,6 +8,10 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.8  14-Dec-2021, G. Brown (gwbrown):
+    Add SYSW (Li0-LI10ADIT) BSOICs and RDMs.
+    Add generic startup files for BSOICS, gamma and neutron
+
 R1.1.7  19-Oct-2021, K. Luchini (luchini):
     add caPutLogInit to all prod ioc st.cmd files
     move STARTUP env var to iocBoot/common/st.cmd.soft
