@@ -22,8 +22,8 @@ epicsEnvSet("IOC_NAME",    "SIOC:SYSM:RM01")
 # Load common piece of startup script
 < ../common/st.cmd.soft
 
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:GUNB:03:,TS=ts-li00-nw05,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:GUNB:04N,TS=ts-li00-nw05,TSPORT=2004,LOC=Outside InjW Chicane")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:GUNB:03:COM:,TS=ts-li00-nw05,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:GUNB:04N:COM,TS=ts-li00-nw05,TSPORT=2004,LOC=Outside InjW Chicane")
 # (P02-05) RDMLNW01 ts-li02-nw02:2001
 #
 epicsEnvSet("FHT1_P",      "RADM:LI02:1")
@@ -37,13 +37,13 @@ iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT1_PORT),TS=$(FHT1_T
 # Load record instances
 dbLoadRecords("db/fht.db", "P=$(FHT1_P),PORT=$(FHT1_PORT),LOC=$(FHT1_LOC)")
 
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI02:05:,TS=ts-li02-nw02,TSPORT=2002,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI04:07:,TS=ts-li04-nw02,TSPORT=2001,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI04:14N,TS=ts-li04-nw02,TSPORT=2002,LOC=S4 Helium Penetration")
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI04:06:,TS=ts-li04-nw02,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI05:08:,TS=ts-li04-nw02,TSPORT=2004,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI05:15N,TS=ts-li04-nw02,TSPORT=2005,LOC=S5 Helium Penetration")
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI07:09:,TS=ts-li07-nw02,TSPORT=2001,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI02:05:COM:,TS=ts-li02-nw02,TSPORT=2002,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI04:07:COM:,TS=ts-li04-nw02,TSPORT=2001,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI04:14N:COM,TS=ts-li04-nw02,TSPORT=2002,LOC=S4 Helium Penetration")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI04:06:COM:,TS=ts-li04-nw02,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI05:08:COM:,TS=ts-li04-nw02,TSPORT=2004,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI05:15N:COM,TS=ts-li04-nw02,TSPORT=2005,LOC=S5 Helium Penetration")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI07:09:COM:,TS=ts-li07-nw02,TSPORT=2001,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 
 # RDMLNW02  (P07-11) ts-li07-nw02:2002
 #
@@ -58,10 +58,10 @@ iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT2_PORT),TS=$(FHT2_T
 # Load record instances
 dbLoadRecords("db/fht.db", "P=$(FHT2_P),PORT=$(FHT2_PORT),LOC=$(FHT2_LOC)")
 
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI07:10:,TS=ts-li07-nw02,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI07:11N,TS=ts-li07-nw02,TSPORT=2004,LOC=Penetration 7-12")
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI10:12:,TS=ts-li10-nw02,TSPORT=2004,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:IN10:03:,TS=ts-li10-nw02,TSPORT=2005,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI07:10:COM:,TS=ts-li07-nw02,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI07:11N:COM,TS=ts-li07-nw02,TSPORT=2004,LOC=Penetration 7-12")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI10:12:COM:,TS=ts-li10-nw02,TSPORT=2004,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:IN10:03:COM:,TS=ts-li10-nw02,TSPORT=2005,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 
 # Configure autosave
 < $(TOP)/iocBoot/common/init_restore.cmd.soft
