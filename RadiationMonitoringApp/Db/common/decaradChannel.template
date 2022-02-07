@@ -1,0 +1,21 @@
+#
+# Janice Nelson 24 Sept 2021
+#
+# Support for individual decarad channels
+#
+
+# readout of the rad value
+record(ai,"$(P):$(UNIT):GAMMA_DOSE_RATE") {
+    field(DTYP,"stream")
+    field(DESC,"Dose Rate Readout")
+    field(INP,"@decarad.proto $(CMD) $(PORT)")
+    field(EGU,"mR/hr")
+    field(PREC,"1")
+}
+
+record(stringout,"$(P):$(UNIT):POSN") {
+    field(DTYP,"Soft Channel")
+    field(DESC,"Position of decarad head")
+    field(PINI, "YES")
+    info(autosaveFields, "VAL")
+}

@@ -29,6 +29,7 @@ ARCHIVE += sioc-clts-rm01.archive
 ARCHIVE += sioc-und0-rm01.archive
 ARCHIVE += sioc-und0-rm02.archive
 ARCHIVE += sioc-sysw-rm01.archive
+ARCHIVE += sioc-sys0-rm01.archive
 
 include $(TOP)/configure/RULES
 #----------------------------------------

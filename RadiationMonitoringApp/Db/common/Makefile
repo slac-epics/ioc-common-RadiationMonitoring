@@ -44,6 +44,8 @@ DB += hpi_6012.template
 DB += gamma6032mon.db
 DB += alarmClock.db
 DB += dbSubTime.db
+DB += decarad.db
+DB_INSTALLS += $(ASYN)/db/asynRecord.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

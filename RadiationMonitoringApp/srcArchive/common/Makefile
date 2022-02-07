@@ -21,6 +21,8 @@ include $(TOP)/configure/CONFIG
 ARCHIVE += $(IOCADMIN)/archive/archive_iocAdmin.archive
 
 # Install archive list into $TOP/archive
+ARCHIVE += decaradCommon.tpl-arch
+ARCHIVE += decaradChannel.tpl-arch
 ARCHIVE += dosfet.tpl-arch
 ARCHIVE += dosfet-chan.tpl-arch
 ARCHIVE += fht_6020_common.tpl-arch
