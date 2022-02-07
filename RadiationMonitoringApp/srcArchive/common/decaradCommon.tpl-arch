@@ -1,0 +1,10 @@
+
+# Archive list for decarad central box PVs
+#
+# Signal Name                   Period (sec)    Type
+$(P):HEARTBEAT             10               monitor
+$(P):HVSTATUS              10               monitor
+$(P):HVMON		             10               monitor
+$(P):HVSETPT               10               monitor
+$(P):CHAS_TEMP             10               monitor
+

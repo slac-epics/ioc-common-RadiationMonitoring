@@ -1,0 +1,33 @@
+#
+# Janice Nelson 24 Sept 2021
+#
+# Support for decarad radiation monitoring hardware
+#
+file radm_info.template {
+    pattern
+    { P,            ,LOC ,TYPE}
+    { RADM:SYS0:$(U),"Tunnel",4}
+}
+
+file decaradCommon.template {
+    pattern
+    { P }
+    { RADM:SYS0:$(U)}
+}
+
+file decaradChannel.template {
+    pattern 
+    { P, UNIT, CMD}
+    { RADM:SYS0:$(U), 01, de_in11}
+    { RADM:SYS0:$(U), 02, de_in12}
+    { RADM:SYS0:$(U), 03, de_in13}
+    { RADM:SYS0:$(U), 04, de_in14}
+    { RADM:SYS0:$(U), 05, de_in15}
+    { RADM:SYS0:$(U), 06, de_in16}
+    { RADM:SYS0:$(U), 07, de_in17}
+    { RADM:SYS0:$(U), 08, de_in18}
+    { RADM:SYS0:$(U), 09, de_in19}
+    { RADM:SYS0:$(U), 10, de_in20}
+}
+
+

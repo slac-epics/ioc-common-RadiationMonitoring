@@ -1,0 +1,44 @@
+# Decarad System Archive List
+
+file decaradChannel.tpl-arch
+{
+pattern
+    {            P,UNIT}
+    {RADM:SYS0:100,01}
+    {RADM:SYS0:100,02}
+    {RADM:SYS0:100,03}
+    {RADM:SYS0:100,04}
+    {RADM:SYS0:100,05}
+    {RADM:SYS0:100,06}
+    {RADM:SYS0:100,07}
+    {RADM:SYS0:100,08}
+    {RADM:SYS0:100,09}
+    {RADM:SYS0:100,10}
+    {RADM:SYS0:200,01}
+    {RADM:SYS0:200,02}
+    {RADM:SYS0:200,03}
+    {RADM:SYS0:200,04}
+    {RADM:SYS0:200,05}
+    {RADM:SYS0:200,06}
+    {RADM:SYS0:200,07}
+    {RADM:SYS0:200,08}
+    {RADM:SYS0:200,09}
+    {RADM:SYS0:200,10}
+}
+
+file decaradCommon.tpl-arch
+{
+pattern
+    {            P}
+    {RADM:SYS0:100}
+    {RADM:SYS0:200}
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:SYS0:RM01 }
+}
+
+# End of file
+

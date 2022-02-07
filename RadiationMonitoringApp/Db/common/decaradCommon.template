@@ -1,0 +1,112 @@
+#
+# Janice Nelson 22 Sep 2021
+#
+# Decarad database for signals from central chassis & per system
+#
+# ask jlab how quickly update and let that inform your archiver settings
+
+record(ai,"$(P):DEV_FW") {
+    field(DESC,"Firmware number")
+    field(DTYP,"stream")
+    field(INP,"@decarad.proto de_in1 $(PORT)")
+}
+
+record(longin,"$(P):HEARTBEAT") {
+    field(DESC,"Heartbeat")
+    field(DTYP,"stream")
+    field(INP,"@decarad.proto de_in2 $(PORT)")
+}
+
+#Janice look this up
+record(bi,"$(P):HVSTATUS") {
+    field(DTYP,"stream")
+    field(INP,"@decarad.proto de_in3 $(PORT)")
+    field(ZNAM,"bad")
+    field(ONAM,"maybe better")
+}
+
+#Janice double check eguf egul aoff eslo etc
+record(ai,"$(P):CHAS_TEMP") {
+    field(DTYP,"stream")
+    field(DESC,"Temperature of decarad")
+    field(INP,"@decarad.proto de_in4 $(PORT)")
+    field(PREC,"2")
+    field(LINR,"LINEAR")
+#    field(EGUF,"500")
+#    field(EGUL,"0")
+    field(AOFF,"0")
+    field(ASLO,"0.1221")
+}
+
+record(ai,"$(P):HVMON") {
+    field(DTYP,"stream")
+    field(DESC,"Readback of HV")
+    field(INP,"@decarad.proto de_in5 $(PORT)")
+    field(PREC,"2")
+    field(LINR,"LINEAR")
+    field(EGUF,"5000")
+    field(EGUL,"0")
+    field(AOFF,"0")
+    field(ESLO,"1.221")
+}
+
+record(ao,"$(P):HVSETPT") {
+    field(DTYP,"stream")
+    field(DESC,"Desired Volts")
+    field(OUT,"@decarad.proto de_out3 $(PORT)")
+    field(PINI, "YES")
+    info(autosaveFields, "VAL")
+}
+
+#
+# Sequence to trigger PV processing
+#
+record(seq,"$(P):SEQ") {
+    field(DESC,"Sequence to trigger PV processing")
+    field(DLY0, "0.06")
+    field(DLY1, "0.06")
+    field(DLY2, "0.06")
+    field(DLY3, "0.06")
+    field(DLY4, "0.06")
+    field(DLY5, "0.06")
+    field(DLY6, "0.06")
+    field(DLY7, "0.06")
+    field(DLY8, "0.06")
+    field(DLY9, "0.06")
+    field(DLYA, "0.06")
+    field(DLYB, "0.06")
+    field(DLYC, "0.06")
+    field(DLYD, "0.06")
+    field(DLYE, "0.06")
+    field(DOL0, "1")
+    field(DOL1, "1")
+    field(DOL2, "1")
+    field(DOL3, "1")
+    field(DOL4, "1")
+    field(DOL5, "1")
+    field(DOL6, "1")
+    field(DOL7, "1")
+    field(DOL8, "1")
+    field(DOL9, "1")
+    field(DOLA, "1")
+    field(DOLB, "1")
+    field(DOLC, "1")
+    field(DOLD, "1")
+    field(DOLE, "1")
+    field(LNK0,"$(P):01:GAMMA_DOSE_RATE.PROC")
+    field(LNK1,"$(P):02:GAMMA_DOSE_RATE.PROC")
+    field(LNK2,"$(P):03:GAMMA_DOSE_RATE.PROC")
+    field(LNK3,"$(P):04:GAMMA_DOSE_RATE.PROC")
+    field(LNK4,"$(P):05:GAMMA_DOSE_RATE.PROC")
+    field(LNK5,"$(P):06:GAMMA_DOSE_RATE.PROC")
+    field(LNK6,"$(P):07:GAMMA_DOSE_RATE.PROC")
+    field(LNK7,"$(P):08:GAMMA_DOSE_RATE.PROC")
+    field(LNK8,"$(P):09:GAMMA_DOSE_RATE.PROC")
+    field(LNK9,"$(P):10:GAMMA_DOSE_RATE.PROC")
+    field(LNKA,"$(P):DEV_FW.PROC")
+    field(LNKB,"$(P):HEARTBEAT.PROC")
+    field(LNKC,"$(P):CHAS_TEMP.PROC")
+    field(LNKD,"$(P):HVMON.PROC")
+    field(LNKE,"$(P):HVSTATUS.PROC")
+    field(SCAN,"1 second")
+}

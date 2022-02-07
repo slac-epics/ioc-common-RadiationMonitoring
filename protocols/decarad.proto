@@ -1,0 +1,45 @@
+#
+#  DeCaRad protocol definitions
+#
+OutTerminator = CR;
+InTerminator = CR;
+replytimeout = 500;
+readtimeout = 500; # milliseconds
+writetimeout = 500;
+
+# 10 write channels
+de_out1 { out "W 00 %4X"; }
+de_out2 { out "W 01 %4X"; }
+de_out3 { out "W 02 %4X"; }
+de_out4 { out "W 03 %4X"; }
+de_out5 { out "W 04 %4X"; }
+de_out6 { out "W 05 %4X"; }
+de_out7 { out "W 06 %4X"; }
+de_out8 { out "W 07 %4X"; }
+de_out9 { out "W 08 %4X"; }
+de_out10 { out "W 09 %4X"; }
+
+# 10 Read back channels
+de_in1  { out "R 00"; wait 10; in "%x"; }
+de_in2  { out "R 01"; wait 10; in "%x"; }
+de_in3  { out "R 02"; wait 10; in "%x"; }
+de_in4  { out "R 03"; wait 10; in "%x"; }
+de_in5  { out "R 04"; wait 10; in "%x"; }
+de_in6  { out "R 05"; wait 10; in "%x"; }
+de_in7  { out "R 06"; wait 10; in "%x"; }
+de_in8  { out "R 07"; wait 10; in "%x"; }
+de_in9  { out "R 08"; wait 10; in "%x"; }
+de_in10 { out "R 09"; wait 10; in "%x"; }
+
+# 10 Signal channels readback
+de_in11  { out "R 0A"; wait 10; in "%x"; }
+de_in12  { out "R 0B"; wait 10; in "%x"; }
+de_in13  { out "R 0C"; wait 10; in "%x"; }
+de_in14  { out "R 0D"; wait 10; in "%x"; }
+de_in15  { out "R 0E"; wait 10; in "%x"; }
+de_in16  { out "R 0F"; wait 10; in "%x"; }
+de_in17  { out "R 10"; wait 10; in "%x"; }
+de_in18  { out "R 11"; wait 10; in "%x"; }
+de_in19  { out "R 12"; wait 10; in "%x"; }
+de_in20  { out "R 13"; wait 10; in "%x"; }
+

@@ -1,0 +1,6 @@
+
+# Archive list for decarad channels
+#
+# Signal Name                   Period (sec)    Type
+$(P):$(UNIT):GAMMA_DOSE_RATE    1               monitor
+
