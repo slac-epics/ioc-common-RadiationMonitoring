@@ -13,6 +13,7 @@
 
 # Configure communication port
 drvAsynIPPortConfigure("$(PORT)_IP", "$(TS):$(TSPORT)", 0,0,0)
+asynSetOption("$(PORT)_IP", 0, "disconnectOnReadTimeout", "Y")
 
 # Initialize asyn driver
 # drvFHTConfigure(port, octetPort, addr, timeout) {

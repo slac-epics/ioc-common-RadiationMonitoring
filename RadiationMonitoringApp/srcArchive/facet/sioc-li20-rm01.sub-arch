@@ -1,38 +1,54 @@
 # Archive template file for sioc-li20-rm01
 
-file fht_6020_common.tpl-arch
-{
+file fht_6020_common.tpl-arch {
 pattern
     {          P}
     {RADM:LI20:1}
+    {RADM:LI20:2}
 }
 
-file fht_6020_chan.tpl-arch
-{
+file fht_6020_chan.tpl-arch {
 pattern
-    { P           ,  N }
-    { RADM:LI20:1 , 01 }
-    { RADM:LI10:1 , 02 }
-    { RADM:LI10:1 , 03 }
-    { RADM:LI10:1 , 04 }
-    { RADM:LI10:1 , 05 }
-    { RADM:LI10:1 , 06 }
-    { RADM:LI10:1 , 07 }
-    { RADM:LI10:1 , 08 }
-    { RADM:LI10:1 , 09 }
-    { RADM:LI10:1 , 10 }
-    { RADM:LI10:1 , 11 }
-    { RADM:LI10:1 , 12 }
-    { RADM:LI10:1 , 13 }
-    { RADM:LI10:1 , 14 }
-    { RADM:LI10:1 , 15 }
-    { RADM:LI10:1 , 16 }
+    {          P,  N}
+    {RADM:LI20:1, 01}
+    {RADM:LI20:1, 02}
+    {RADM:LI20:1, 03}
+    {RADM:LI20:1, 04}
+    {RADM:LI20:1, 05}
+    {RADM:LI20:1, 06}
+    {RADM:LI20:1, 07}
+    {RADM:LI20:1, 08}
+    {RADM:LI20:1, 09}
+    {RADM:LI20:1, 10}
+    {RADM:LI20:1, 11}
+    {RADM:LI20:1, 12}
+    {RADM:LI20:1, 13}
+    {RADM:LI20:1, 14}
+    {RADM:LI20:1, 15}
+    {RADM:LI20:1, 16}
+#
+    {RADM:LI20:2, 01}
+    {RADM:LI20:2, 02}
+    {RADM:LI20:2, 03}
+    {RADM:LI20:2, 04}
+    {RADM:LI20:2, 05}
+    {RADM:LI20:2, 06}
+    {RADM:LI20:2, 07}
+    {RADM:LI20:2, 08}
+    {RADM:LI20:2, 09}
+    {RADM:LI20:2, 10}
+    {RADM:LI20:2, 11}
+    {RADM:LI20:2, 12}
+    {RADM:LI20:2, 13}
+    {RADM:LI20:2, 14}
+    {RADM:LI20:2, 15}
+    {RADM:LI20:2, 16}
 }
 
-file archive_iocAdmin.archive
-{
-pattern { IOC            }
-	{ SIOC:LI20:RM01 }
+file archive_iocAdmin.archive {
+pattern 
+    {           IOC}
+	{SIOC:LI20:RM01}
 }
 
 # End of file

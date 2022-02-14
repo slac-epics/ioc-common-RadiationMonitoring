@@ -8,6 +8,10 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.10  14-Feb-2022 M. Dunning (mdunning):
+    FACET: Add second FHT to sioc-li20-rm01
+    sioc-sys0-rm01: Remove unneeded env var
+
 R1.1.9 7-Feb-2022, J. Nelson (jnelson):
     Add decarad support
     Add sioc-sys0-rm01 ioc
