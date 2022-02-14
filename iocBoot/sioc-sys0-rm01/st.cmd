@@ -1,10 +1,8 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
 
 # Set environment variables
-epicsEnvSet("ENGINEER",    "J. Nelson")
-epicsEnvSet("IOC_NAME",    "SIOC:SYS0:RM01")
-epicsEnvSet("STARTUP",     "${EPICS_SITE_TOP}/iocCommon/${IOC}")
-#
+epicsEnvSet("ENGINEER", "J. Nelson")
+epicsEnvSet("IOC_NAME", "SIOC:SYS0:RM01")
 
 # Load common piece of startup script, this include STREAM_PROTOCOL_PATH
 < ../common/st.cmd.soft
