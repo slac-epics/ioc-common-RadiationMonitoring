@@ -51,8 +51,8 @@ epicsEnvSet("DEV"      ,"RADF:GUNB:201" )
 epicsEnvSet("NODE"     ,"radm-gunb-rm01")
 epicsEnvSet("LOC"      ,"GUNB")
 < iocBoot/common/init_dosfet.cmd
-dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:GUNB:201,SENSOR=A,USER_P=RADF:GUNB:201:")
-dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:GUNB:201,SENSOR=B,USER_P=RADF:GUNB:621:")
+dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:GUNB:201,SENSOR=A,USER_P=RADF:GUNB:622:")
+dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:GUNB:201,SENSOR=B,USER_P=RADF:GUNB:753:")
 
 # Configure autosave
 < iocBoot/common/init_restore.cmd.soft
