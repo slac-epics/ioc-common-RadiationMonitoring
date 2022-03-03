@@ -1,3 +1,4 @@
+
 #!../../bin/rhel6-x86_64/RadiationMonitoring
 #==============================================================
 #
@@ -23,7 +24,7 @@ epicsEnvSet("IOC_NAME",    "SIOC:SYSM:RM01")
 < ../common/st.cmd.soft
 
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:GUNB:03:COM:,TS=ts-li00-nw05,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:GUNB:04N:COM,TS=ts-li00-nw05,TSPORT=2004,LOC=Outside InjW Chicane")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:GUNB:04N:COM,TS=ts-li00-nw05,TSPORT=2004,LOC=Outside InjW Chicane,DESC=BSOLNW04N")
 # (P02-05) RDMLNW01 ts-li02-nw02:2001
 #
 epicsEnvSet("FHT1_P",      "RADM:LI02:1")
@@ -39,10 +40,10 @@ dbLoadRecords("db/fht.db", "P=$(FHT1_P),PORT=$(FHT1_PORT),LOC=$(FHT1_LOC)")
 
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI02:05:COM:,TS=ts-li02-nw02,TSPORT=2002,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI04:07:COM:,TS=ts-li04-nw02,TSPORT=2001,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI04:14N:COM,TS=ts-li04-nw02,TSPORT=2002,LOC=S4 Helium Penetration")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI04:14N:COM,TS=ts-li04-nw02,TSPORT=2002,LOC=S4 Helium Penetration,DESC=BSOLNW14N")
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI04:06:COM:,TS=ts-li04-nw02,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI05:08:COM:,TS=ts-li04-nw02,TSPORT=2004,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI05:15N:COM,TS=ts-li04-nw02,TSPORT=2005,LOC=S5 Helium Penetration")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI05:15N:COM,TS=ts-li04-nw02,TSPORT=2005,LOC=S5 Helium Penetration,DESC=BSOLNW15N")
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI07:09:COM:,TS=ts-li07-nw02,TSPORT=2001,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 
 # RDMLNW02  (P07-11) ts-li07-nw02:2002
