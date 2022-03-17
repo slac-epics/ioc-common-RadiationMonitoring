@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.12 17-Mar-2022, J. Nelson (jnelson):
+    Change HVSETPT to a bo HVCTRL and change 0/1 names for HVSTAT
+
 R1.1.11  7-Mar-2022, G. Brown (gwbrown):
     Add SC related BSY BSOICs and RDMs.
 

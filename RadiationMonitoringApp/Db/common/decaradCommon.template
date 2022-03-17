@@ -21,8 +21,8 @@ record(longin,"$(P):HEARTBEAT") {
 record(bi,"$(P):HVSTATUS") {
     field(DTYP,"stream")
     field(INP,"@decarad.proto de_in3 $(PORT)")
-    field(ZNAM,"bad")
-    field(ONAM,"maybe better")
+    field(ZNAM,"ON")
+    field(ONAM,"OFF")
 }
 
 #Janice double check eguf egul aoff eslo etc
@@ -50,10 +50,12 @@ record(ai,"$(P):HVMON") {
     field(ESLO,"1.221")
 }
 
-record(ao,"$(P):HVSETPT") {
+record(bo,"$(P):HVCTRL") {
     field(DTYP,"stream")
-    field(DESC,"Desired Volts")
+    field(DESC,"0 on 1 off")
     field(OUT,"@decarad.proto de_out3 $(PORT)")
+    field(ZNAM, "On")
+    field(ONAM, "Off")
     field(PINI, "YES")
     info(autosaveFields, "VAL")
 }
