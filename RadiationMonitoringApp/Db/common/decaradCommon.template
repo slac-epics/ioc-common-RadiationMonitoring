@@ -36,6 +36,7 @@ record(ai,"$(P):CHAS_TEMP") {
 #    field(EGUL,"0")
     field(AOFF,"0")
     field(ASLO,"0.1221")
+    field(EGU,"degC")
 }
 
 record(ai,"$(P):HVMON") {
@@ -48,6 +49,11 @@ record(ai,"$(P):HVMON") {
     field(EGUL,"0")
     field(AOFF,"0")
     field(ESLO,"1.221")
+    field(HIGH,"650")
+    field(HIHI,"651")
+    field(LOW,"380")
+    field(LOLO,"379")
+    field(EGU,"V")
 }
 
 record(bo,"$(P):HVCTRL") {

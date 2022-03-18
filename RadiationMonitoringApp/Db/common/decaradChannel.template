@@ -11,6 +11,8 @@ record(ai,"$(P):$(UNIT):GAMMA_DOSE_RATE") {
     field(INP,"@decarad.proto $(CMD) $(PORT)")
     field(EGU,"mR/hr")
     field(PREC,"1")
+    field(HIGH,"50")
+    field(HIHI,"300")
 }
 
 record(stringout,"$(P):$(UNIT):POSN") {
