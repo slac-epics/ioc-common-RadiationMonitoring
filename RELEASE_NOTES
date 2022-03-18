@@ -10,7 +10,7 @@
 
 R1.1.12 17-Mar-2022, J. Nelson (jnelson):
     Change HVSETPT to a bo HVCTRL, change 0/1 names for HVSTAT
-    Add EGU and alarm limits where appropriate
+    Add EGU and alarm limits and save/restore where appropriate
 
 R1.1.11  7-Mar-2022, G. Brown (gwbrown):
     Add SC related BSY BSOICs and RDMs.
