@@ -13,6 +13,7 @@ record(ai,"$(P):$(UNIT):GAMMA_DOSE_RATE") {
     field(PREC,"1")
     field(HIGH,"50")
     field(HIHI,"300")
+    field(FLNK, "$(P):$(UNIT):GAMMAHST")
     info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
 }
 
@@ -28,6 +29,7 @@ record(compress,"$(P):$(UNIT):GAMMAHST") {
     field(PREC, "1")
     field(HIGH, "50")
     field(HIHI, "300")
+    field(FLNK, "$(P):$(UNIT):GAMMAAVE")
     info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
 }
 

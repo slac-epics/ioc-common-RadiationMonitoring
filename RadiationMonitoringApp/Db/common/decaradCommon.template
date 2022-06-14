@@ -16,7 +16,7 @@ record(ai, "$(P):POSN") {
     field(LOW, "0")
     field(LOLO, "-1")
     field(EGU, "CM#")
-    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST VAL")
 }
 
 record(ai,"$(P):DEV_FW") {
