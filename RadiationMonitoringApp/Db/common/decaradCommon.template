@@ -7,7 +7,6 @@
 
 record(ai, "$(P):POSN") {
     field(DESC,"Numeric value of rack position")
-    field(DTYP,"Soft")
     field(PREC,"0")
     field(HOPR,"40")
     field(LOPR,"0")
