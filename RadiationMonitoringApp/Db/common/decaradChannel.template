@@ -27,8 +27,6 @@ record(compress,"$(P):$(UNIT):GAMMAHST") {
     field(LOPR, "0")
     field(EGU, "mR/hr")
     field(PREC, "1")
-    field(HIGH, "50")
-    field(HIHI, "300")
     field(FLNK, "$(P):$(UNIT):GAMMAAVE")
     info(autosaveFields, "HOPR LOPR")
 }
@@ -45,8 +43,6 @@ record(compress, "$(P):$(UNIT):GAMMAAVE") {
     field(LOPR, "0")
     field(EGU, "mR/hr")
     field(PREC, "1")
-    field(HIGH, "50")
-    field(HIHI, "300")
     info(autosaveFields, "HOPR LOPR")
 }
 
