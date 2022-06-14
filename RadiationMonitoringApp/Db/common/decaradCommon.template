@@ -5,6 +5,20 @@
 #
 # ask jlab how quickly update and let that inform your archiver settings
 
+record(ai, "$(P):POSN") {
+    field(DESC,"Numeric value of rack position")
+    field(DTYP,"Soft")
+    field(PREC,"0")
+    field(HOPR,"40")
+    field(LOPR,"0")
+    field(HIGH, "40")
+    field(HIHI, "41")
+    field(LOW, "0")
+    field(LOLO, "-1")
+    field(EGU, "CM#")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+}
+
 record(ai,"$(P):DEV_FW") {
     field(DESC,"Firmware number")
     field(DTYP,"stream")

@@ -16,6 +16,38 @@ record(ai,"$(P):$(UNIT):GAMMA_DOSE_RATE") {
     info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
 }
 
+# record to grab the last n samples of the dose rate in a circ buffer
+record(compress,"$(P):$(UNIT):GAMMAHST") {
+    field(DESC, "circular buffer for gamma")
+    field(INP, "$(P):$(UNIT):GAMMA_DOSE_RATE")
+    field(ALG, "Circular Buffer")
+    field(NSAM, "10")
+    field(HOPR, "50")
+    field(LOPR, "0")
+    field(EGU, "mR/hr")
+    field(PREC, "1")
+    field(HIGH, "50")
+    field(HIHI, "300")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+}
+
+# record to average the values in the circ buffer
+record(compress, "$(P):$(UNIT):GAMMAAVE") {
+    field(DESC, "ave of gamma circ buffer")
+    field(INP, "$(P):$(UNIT):GAMMAHST")
+    field(ALG, "N to 1 Average")
+    field(NSAM, "1")
+# this should equal the NSAM of the circ buffer
+    field(N, "10") # this should equal the NSAM of the circ buffer
+    field(HOPR, "50")
+    field(LOPR, "0")
+    field(EGU, "mR/hr")
+    field(PREC, "1")
+    field(HIGH, "50")
+    field(HIHI, "300")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+}
+
 record(stringout,"$(P):$(UNIT):POSN") {
     field(DTYP,"Soft Channel")
     field(DESC,"Position of decarad head")

@@ -8,7 +8,7 @@ epicsEnvSet("IOC_NAME", "SIOC:SYS0:RM01")
 < ../common/st.cmd.soft
 
 # Configure communication port
-drvAsynIPPortConfigure("decarad1","ts-sys0-nw01:2101",0,0,0)
+drvAsynIPPortConfigure("decarad1","ts-sys0-nw01:2102",0,0,0)
 drvAsynIPPortConfigure("decarad2","ts-sys0-nw02:2101",0,0,0)
 
 # Load record instances

@@ -7,4 +7,4 @@ $(P):HVSTATUS              10               monitor
 $(P):HVMON		             10               monitor
 $(P):HVSETPT               10               monitor
 $(P):CHAS_TEMP             10               monitor
-
+$(P):POSN                  10               monitor

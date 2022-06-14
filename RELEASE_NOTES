@@ -8,6 +8,11 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.13 13-Jun-2022, J. Nelson (jnelson):
+    Change sioc-sys0-rm01/st.cmd to use port 2 for decarad1
+    Add records to decaradChannel to make a circular buffer and aver
+    Add ai record to decaradCommon for position of decarads
+
 R1.1.12 17-Mar-2022, J. Nelson (jnelson):
     Change HVSETPT to a bo HVCTRL, change 0/1 names for HVSTAT
     Add EGU and alarm limits and save/restore where appropriate
