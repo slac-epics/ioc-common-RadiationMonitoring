@@ -14,7 +14,7 @@ record(ai,"$(P):$(UNIT):GAMMA_DOSE_RATE") {
     field(HIGH,"50")
     field(HIHI,"300")
     field(FLNK, "$(P):$(UNIT):GAMMAHST")
-    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST HOPR LOPR")
 }
 
 # record to grab the last n samples of the dose rate in a circ buffer
@@ -30,7 +30,7 @@ record(compress,"$(P):$(UNIT):GAMMAHST") {
     field(HIGH, "50")
     field(HIHI, "300")
     field(FLNK, "$(P):$(UNIT):GAMMAAVE")
-    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST HOPR LOPR")
 }
 
 # record to average the values in the circ buffer
@@ -47,7 +47,7 @@ record(compress, "$(P):$(UNIT):GAMMAAVE") {
     field(PREC, "1")
     field(HIGH, "50")
     field(HIHI, "300")
-    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST")
+    info(autosaveFields, "LOLO LOW HIGH HIHI LLSV LSV HSV HHSV HYST HOPR LOPR")
 }
 
 record(stringout,"$(P):$(UNIT):POSN") {
