@@ -15,7 +15,7 @@
 #         add caPutLogInit after iocInit
 #
 #==============================================================
- 
+
 # Set environment variables
 epicsEnvSet("ENGINEER", "M. Dunning")
 epicsEnvSet("LOCATION", "facet-daemon1")
@@ -45,6 +45,17 @@ dbLoadRecords("db/fht.db", "P=$(FHT1_P),PORT=$(FHT1_PORT),LOC=$(FHT1_LOC)")
 dbLoadRecords("db/asynRecord.db","P=$(FHT1_P):,R=Asyn,PORT=$(FHT1_PORT),ADDR=0,IMAX=0,OMAX=0")
 dbLoadRecords("db/fht.db", "P=$(FHT2_P),PORT=$(FHT2_PORT),LOC=$(FHT2_LOC)")
 dbLoadRecords("db/asynRecord.db","P=$(FHT2_P):,R=Asyn,PORT=$(FHT2_PORT),ADDR=0,IMAX=0,OMAX=0")
+###--------------------------------------------------------------------------
+
+### DOSFET dosimeters -------------------------------------------------------
+epicsEnvSet("DEV"      ,"RADF:LI20:1" )
+epicsEnvSet("NODE"     ,"radm-li20-rm01")
+epicsEnvSet("LOC"      ,"LI20")
+< iocBoot/common/init_dosfet.cmd
+dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=A,USER_P=RADF:LI20:1:")
+dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=B,USER_P=RADF:LI20:2:")
+dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=C,USER_P=RADF:LI20:3:")
+dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=D,USER_P=RADF:LI20:4:")
 ###--------------------------------------------------------------------------
 
 # Configure autosave
