@@ -9,8 +9,8 @@ pattern { DEV            , RATE  }
 file  dosfet-chan.tpl-arch
 {
 pattern { DEV            , RATE  }
-		{ RADF:GUNB:201:    , 600   }
-		{ RADF:GUNB:621:    , 600   }
+		{ RADF:GUNB:622:    , 600   }
+		{ RADF:GUNB:753:    , 600   }
 		{ RADF:GUNB:201:C    , 600   }
 		{ RADF:GUNB:201:D    , 600   }
 }
