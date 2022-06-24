@@ -1,7 +1,7 @@
 #!../../bin/rhel6-x86_64/RadiationMonitoring
 #==============================================================
 #
-#  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
+#  Abs:  Startup Script for Keithley RadFET device(s)
 #
 #  Name: st.cmd
 #

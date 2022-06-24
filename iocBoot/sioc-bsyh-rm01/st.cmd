@@ -2,6 +2,7 @@
 #==============================================================
 #
 #  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
+#        BTH/UND (RDMBTH01)  BTH
 #
 #  Name: st.cmd
 #

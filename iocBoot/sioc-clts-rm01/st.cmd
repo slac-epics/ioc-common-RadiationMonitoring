@@ -2,6 +2,7 @@
 #==============================================================
 #
 #  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
+#        BSY (RDMBSY03)  BSY near STP-CLTS
 #
 #  Name: st.cmd
 #
