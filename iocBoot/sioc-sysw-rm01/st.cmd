@@ -18,7 +18,7 @@
 # Set environment variables
 epicsEnvSet("ENGINEER",    "Garth Brown")
 epicsEnvSet("LOCATION",    "lcls-srv01")
-epicsEnvSet("IOC_NAME",    "SIOC:SYSM:RM01")
+epicsEnvSet("IOC_NAME",    "SIOC:SYSW:RM01")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
