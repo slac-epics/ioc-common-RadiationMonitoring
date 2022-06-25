@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.14  24-Jun-2022, G. Brown (gwbrown):
+    Add DOSFET to FACET LI20.
+
 R1.1.13 13-Jun-2022, J. Nelson (jnelson):
     Change sioc-sys0-rm01/st.cmd to use port 2 for decarad1
     Add records to decaradChannel to make a circular buffer and aver
