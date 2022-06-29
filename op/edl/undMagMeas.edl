@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 95
-y 147
+x 98
+y 176
 w 460
 h 200
 font "helvetica-medium-r-12.0"
@@ -47,7 +47,7 @@ displayFileName {
   0 "agilent_3458a.edl"
 }
 symbols {
-  0 "P=RADM:B34:273:1"
+  0 "P=RADM:B34:273:DVM"
 }
 replaceSymbols {
   0 1
@@ -129,7 +129,7 @@ displayFileName {
   0 "agilent_34970a.edl"
 }
 symbols {
-  0 "P=RADM:B34:273:2"
+  0 "P=RADM:B34:273:DAQ"
 }
 replaceSymbols {
   0 1

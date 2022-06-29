@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.15  29-Jun-2022  M. Dunning (mdunning):
+    LCLS: Update undulator radiation damage measurement code
+
 R1.1.14  24-Jun-2022, G. Brown (gwbrown):
     Add DOSFET to FACET LI20.
 

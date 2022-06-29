@@ -1,8 +1,7 @@
 # agilent_3458a.db
 # 20210527 md
 #
-# Since this device is so slow, "automatic" readbacks (FLNKs to RBV records) are disabled.
-# Periodic scanning of records is also disabled.
+# Since this device is so slow, periodic scanning of records is not implemented.
 
 record(stringin, "$(P):ID") {
     field(DESC, "Device ID")
@@ -56,7 +55,7 @@ record(bo, "$(P):LineFreq") {
     field(OUT,  "@$(PROTOFILE) setString(LFREQ LINE) $(PORT) $(ADDR)")
     field(ZNAM, "Standby")
     field(ONAM, "Set")
-#    field(FLNK, "$(P):LineFreq_RBV")
+    field(FLNK, "$(P):LineFreq_RBV")
 }
 
 record(ai, "$(P):LineFreq_RBV") {
@@ -78,7 +77,9 @@ record(ao, "$(P):IntTime") {
     field(EGU,  "NPLC")
     field(PREC, "6")
     field(OUT,  "@$(PROTOFILE) setFloat(NPLC, $(P)) $(PORT) $(ADDR)")
-#    field(FLNK, "$(P):IntTime_RBV")
+    field(FLNK, "$(P):IntTime_RBV")
+    field(PINI, "1")
+    info(autosaveFields, "VAL LOPR HOPR DRVL DRVH")
 }
 
 record(ai, "$(P):IntTime_RBV") {
@@ -106,7 +107,7 @@ record(mbbo, "$(P):OutFormat") {
     field(FRST, "SREAL")
     field(FVVL, "5")
     field(FVST, "DREAL")
-#    field(FLNK, "$(P):OutFormat_RBV")
+    field(FLNK, "$(P):OutFormat_RBV")
 }
 
 record(mbbi, "$(P):OutFormat_RBV") {
@@ -147,7 +148,7 @@ record(mbbo, "$(P):TrigMode") {
     field(SVST, "Level")
     field(EIVL, "8")
     field(EIST, "Line")
-#    field(FLNK, "$(P):TrigMode_RBV")
+    field(FLNK, "$(P):TrigMode_RBV")
 }
 
 record(mbbi, "$(P):TrigMode_RBV") {
@@ -301,7 +302,7 @@ record(bo, "$(P):MeasSet") {
     field(OUT,  "@$(PROTOFILE) setMeasMode(FUNC, $(P)) $(PORT) $(ADDR)")
     field(ZNAM, "Standby")
     field(ONAM, "Set")
-#    field(FLNK, "$(P):MeasMode_RBV")
+    field(FLNK, "$(P):MeasMode_RBV")
 }
 #--- End Measurement mode --------
 
@@ -315,7 +316,7 @@ record(mbbo, "$(P):AutorangeMode") {
     field(ONST, "ON")
     field(TWVL, "2")
     field(TWST, "ONCE")
-#    field(FLNK, "$(P):AutorangeMode_RBV")
+    field(FLNK, "$(P):AutorangeMode_RBV")
 }
 
 record(mbbi, "$(P):AutorangeMode_RBV") {
@@ -341,7 +342,7 @@ record(mbbo, "$(P):AutozeroMode") {
     field(ONST, "ON")
     field(TWVL, "2")
     field(TWST, "ONCE")
-#    field(FLNK, "$(P):AutozeroMode_RBV")
+    field(FLNK, "$(P):AutozeroMode_RBV")
 }
 
 record(mbbi, "$(P):AutozeroMode_RBV") {
@@ -369,7 +370,7 @@ record(mbbo, "$(P):DisplayMode") {
     field(TWST, "MSG")
     field(THVL, "3")
     field(THST, "CLR")
-#    field(FLNK, "$(P):DisplayMode_RBV")
+    field(FLNK, "$(P):DisplayMode_RBV")
 }
 
 record(mbbi, "$(P):DisplayMode_RBV") {
@@ -408,7 +409,7 @@ record(mbbo, "$(P):MathMode1") {
     # Seven state does not exist
     field(EIVL, "8")
     field(EIST, "FTHRM")
-#    field(FLNK, "$(P):MathMode1_RBV")
+    field(FLNK, "$(P):MathMode1_RBV")
 }
 
 record(mbbo, "$(P):MathMode2") {
@@ -482,7 +483,7 @@ record(bo, "$(P):KeyboardLock") {
     field(OUT,  "@$(PROTOFILE) setInt(LOCK, $(P)) $(PORT) $(ADDR)")
     field(ZNAM, "OFF")
     field(ONAM, "ON")
-#    field(FLNK, "$(P):KeyboardLock_RBV")
+    field(FLNK, "$(P):KeyboardLock_RBV")
 }
 
 record(bi, "$(P):KeyboardLock_RBV") {
@@ -504,7 +505,9 @@ record(ao, "$(P):Timer") {
     field(EGU,  "s")
     field(PREC, "6")
     field(OUT,  "@$(PROTOFILE) setFloat(TIMER, $(P)) $(PORT) $(ADDR)")
-#    field(FLNK, "$(P):Timer_RBV")
+    field(FLNK, "$(P):Timer_RBV")
+    field(PINI, "1")
+    info(autosaveFields, "VAL LOPR HOPR DRVL DRVH")
 }
 
 record(ai, "$(P):Timer_RBV") {
@@ -528,7 +531,7 @@ record(mbbo, "$(P):MemMode") {
     field(TWST, "FIFO")
     field(THVL, "3")
     field(THST, "CONT")
-#    field(FLNK, "$(P):MemMode_RBV")
+    field(FLNK, "$(P):MemMode_RBV")
 }
 
 record(mbbi, "$(P):MemMode_RBV") {
@@ -561,7 +564,7 @@ record(mbbo, "$(P):MemFormat") {
     field(FRST, "SREAL")
     field(FVVL, "5")
     field(FVST, "DREAL")
-#    field(FLNK, "$(P):MemFormat_RBV")
+    field(FLNK, "$(P):MemFormat_RBV")
 }
 
 record(mbbi, "$(P):MemFormat_RBV") {
@@ -597,7 +600,7 @@ record(mbbo, "$(P):TrigArmMode") {
     field(FRST, "HOLD")
     field(FVVL, "5")
     field(FVST, "SYN")
-#    field(FLNK, "$(P):TrigArmModeWait")
+    field(FLNK, "$(P):TrigArmModeWait")
 }
 
 record(seq, "$(P):TrigArmModeWait") {
@@ -632,6 +635,8 @@ record(longout, "$(P):NumReadings") {
     field(DRVL, "1")
     field(DRVH, "16777215")
     field(FLNK, "$(P):NumReadingsMode")
+    field(PINI, "1")
+    info(autosaveFields, "VAL LOPR HOPR DRVL DRVH")
 }
 
 record(longin, "$(P):NumReadings_RBV") {
@@ -657,7 +662,7 @@ record(mbbo, "$(P):NumReadingsMode") {
     field(EIVL, "8")
     field(EIST, "LINE")
     field(OUT,  "@$(PROTOFILE) setNumReadings(NRDGS, $(P)) $(PORT) $(ADDR)")
-#    field(FLNK, "$(P):NumReadingsMode_RBV")
+    field(FLNK, "$(P):NumReadingsMode_RBV")
 }
 
 record(mbbi, "$(P):NumReadingsMode_RBV") {
@@ -688,7 +693,7 @@ record(bo, "$(P):InputBuffer") {
     field(OUT,  "@$(PROTOFILE) setInt(INBUF, $(P)) $(PORT) $(ADDR)")
     field(ZNAM, "OFF")
     field(ONAM, "ON")
-#    field(FLNK, "$(P):InputBuffer_RBV")
+    field(FLNK, "$(P):InputBuffer_RBV")
 }
 
 record(bi, "$(P):InputBuffer_RBV") {
@@ -804,46 +809,59 @@ record(seq, "$(P):GetResistance") {
     field(LNK4, "$(P):TrigData PP")
 }
 
+record(mbbo, "$(P):StatusMsg") {
+    field(DESC, "Status message")
+    field(ZRVL, "0")
+    field(ZRST, "Ready")
+    field(ONVL, "1")
+    field(ONST, "Busy...")
+    field(ONSV, "MINOR")
+    field(VAL,  "0")
+    field(PINI, "1")
+}
 
 record(seq, "$(P):SetUpTimedVMeas1") {
     field(DESC, "Set up timed voltage meas.")
+    field(DLY0, "0")
+    field(DO0,  "1")
+    field(LNK0, "$(P):StatusMsg PP")
     # Preset the HP3458
     # Scott A. says this is not needed
 #    field(DLY1, "0.0")
 #    field(LNK1, "$(P):Preset.PROC")
     # Turn off autorange
-    field(DLY2, "$(DLYSV=0.5)")
+    field(DLY2, "$(DLYSV=0.1)")
     field(DO2,  "0")
     field(LNK2, "$(P):AutorangeMode PP")
     # Turn off the autozero
-    field(DLY3, "$(DLYSV=0.5)")
+    field(DLY3, "$(DLYSV=0.1)")
     field(DO3,  "0")
     field(LNK3, "$(P):AutozeroMode PP")
     # Turn off the display
-    field(DLY4, "$(DLYSV=0.5)")
+    field(DLY4, "$(DLYSV=0.1)")
     field(DO4,  "0")
     field(LNK4, "$(P):DisplayMode PP")
     # Turn off math functions
-    field(DLY5, "$(DLYSV=0.5)")
+    field(DLY5, "$(DLYSV=0.1)")
     field(DO5,  "0")
     field(LNK5, "$(P):MathMode1 PP")
-    field(DLY6, "$(DLYSV=0.5)")
+    field(DLY6, "$(DLYSV=0.1)")
     field(DO6,  "0")
     field(LNK6, "$(P):MathMode2 PP")
     # Turn on the keyboard lock
-    field(DLY7, "$(DLYSV=0.5)")
+    field(DLY7, "$(DLYSV=0.1)")
     field(DO7,  "1")
     field(LNK7, "$(P):KeyboardLock PP")
     # Set the output format to ASCII
-    field(DLY8, "$(DLYSV=0.5)")
+    field(DLY8, "$(DLYSV=0.1)")
     field(DO8,  "1")
     field(LNK8, "$(P):OutFormat PP")
     # Set the reference frequency (power line) 
-    field(DLY9, "$(DLYSV=0.5)")
+    field(DLY9, "$(DLYSV=0.1)")
     field(DO9,  "1")
     field(LNK9, "$(P):LineFreq PP")
     # Set trig to HOLD 
-    field(DLYA, "$(DLYSV=0.5)")
+    field(DLYA, "$(DLYSV=0.1)")
     field(DOA,  "4")
     field(LNKA, "$(P):TrigMode PP")
     field(FLNK, "$(P):SetUpTimedVMeas2")
@@ -854,56 +872,89 @@ record(seq, "$(P):SetUpTimedVMeas2") {
     # Set measurement mode
     field(DLY1, "0.5")
     field(LNK1, "$(P):MeasModeDCV.PROC")
-    # Set the A/D integration time (in units of NPLC)
-    field(DLY2, "1.0")
-    field(DO2,  "2")
-    field(LNK2, "$(P):IntTime PP")
-    # Set the timer
-    field(DLY3, "$(DLYSV=0.5)")
-    field(DO3,  "3.3380E-2")
-    field(LNK3, "$(P):Timer PP")
+# A/D integration time and timer will be set manually
+#    # Set the A/D integration time (in units of NPLC)
+#    field(DLY2, "1.0")
+#    field(DO2,  "2")
+#    field(LNK2, "$(P):IntTime PP")
+#    # Set the timer
+#    field(DLY3, "$(DLYSV=0.1)")
+#    field(DO3,  "3.3380E-2")
+#    field(LNK3, "$(P):Timer PP")
     # Enable memory and set mode to FIFO
-    field(DLY4, "$(DLYSV=0.5)")
+    field(DLY4, "$(DLYSV=0.1)")
     field(DO4,  "2")
     field(LNK4, "$(P):MemMode PP")
     # Clear memory and set format to DINT
-    field(DLY5, "$(DLYSV=0.5)")
+    field(DLY5, "$(DLYSV=0.1)")
     field(DO5,  "3")
     field(LNK5, "$(P):MemFormat PP")
     # Set up the trigger 
-    field(DLY6, "$(DLYSV=0.5)")
+    field(DLY6, "$(DLYSV=0.1)")
     field(DO6,  "1")
     field(LNK6, "$(P):TrigArmMode PP")
-    # Set number of readings
-    field(DLY7, "$(DLYSV=0.5)")
-    field(DO7,  "719")
-    field(LNK7, "$(P):NumReadings PP")
+# Number of readings will be set manually
+#    # Set number of readings
+#    field(DLY7, "$(DLYSV=0.1)")
+#    field(DO7,  "719")
+#    field(LNK7, "$(P):NumReadings PP")
     # Set num readings mode to TIMER
-    field(DLY8, "$(DLYSV=0.5)")
+    field(DLY8, "$(DLYSV=0.1)")
     field(DO8,  "6")
     field(LNK8, "$(P):NumReadingsMode PP")
+    # Set TriggerTimedVMeas update delay
+    field(DLY9, "0.1")
+    field(DO9,  "1")
+    field(LNK9, "$(P):TriggerTimedVMeasDCalc.PROC")
+    field(DLYA, "0")
+    field(DOA,  "0")
+    field(LNKA, "$(P):StatusMsg PP")
+}
+
+record(calcout, "$(P):TriggerTimedVMeasDCalc") {
+    field(DESC, "Update delay")
+    field(INPA, "$(P):Timer")
+    field(INPB, "$(P):NumReadings")
+# Scott says to remove the extra delay
+#    field(CALC, "A*B + 2.0")
+    field(CALC, "A*B")
+#    field(OUT,  "$(P):TriggerTimedVMeas.DLY4")
 }
 
 record(seq, "$(P):TriggerTimedVMeas") {
     field(DESC, "Trigger timed voltage meas.")
+# Not needed...
+#    field(DLY0, "0")
+#    field(DO0,  "1")
+#    field(LNK0, "$(P):StatusMsg PP")
     # Turn on the input buffer
     field(DLY1, "0.0")
     field(DO1,  "1")
     field(LNK1, "$(P):InputBuffer PP")
     # Trigger the readings
-    field(DLY2, "1.0")
+# Delay removed per Scott
+#    field(DLY2, "1.0")
+    field(DLY2, "0")
     field(DO2,  "3")
     field(LNK2, "$(P):TrigMode PP")
-    # Check for errors
-    field(DLY3, "1.0")
-    field(LNK3, "$(P):Error.PROC")
-    # Check status
-    field(DLY4, "0.5")
-    field(LNK4, "$(P):Status.PROC")
+# Scott doesn't need any waiting or checking
+#    # Check for errors
+#    field(DLY3, "1.0")
+#    field(LNK3, "$(P):Error.PROC")
+# 
+#    # Wait for triggering to finish, and check status
+# DLY4 is set by $(P):TriggerTimedVMeasDCalc
+#    field(LNK4, "$(P):Status.PROC")
+#    field(DLY5, "0")
+#    field(DO5,  "0")
+#    field(LNK5, "$(P):StatusMsg PP")
 }
 
 record(seq, "$(P):CollectTimedVMeas") {
     field(DESC, "Collect timed voltage meas.")
+    field(DLY0, "0")
+    field(DO0,  "1")
+    field(LNK0, "$(P):StatusMsg PP")
     # Check the number of readings in memory
     field(DLY1, "0.0")
     field(LNK1, "$(P):ReadingCount_RBV.PROC")
@@ -915,8 +966,11 @@ record(seq, "$(P):CollectTimedVMeas") {
     field(DLY3, "1.0")
     field(LNK3, "$(P):Error.PROC")
     # Check status
-    field(DLY4, "0.5")
+    field(DLY4, "2")
     field(LNK4, "$(P):Status.PROC")
+    field(DLY5, "0")
+    field(DO5,  "0")
+    field(LNK5, "$(P):StatusMsg PP")
 }
 #--- End High-level sequences -------------------------
 

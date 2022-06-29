@@ -8,12 +8,6 @@
 #  Facility:  LCLS Radiation Monitoring Controls
 #
 #  Auth: 02-Sep-2021, M. Dunning         (mdunning)
-#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
-#--------------------------------------------------------------
-#  Mod:
-#        19-Oct-2021, K. Luchini         (luchini):
-#         add caPutLogInit after iocInit
-#
 #==============================================================
 
 # Set environment variables
