@@ -45,6 +45,21 @@ pattern
     {RADM:LI20:2, 16}
 }
 
+file  dosfet.tpl-arch
+{
+pattern { DEV            , RATE  }
+        { RADF:LI20:1:   , 600   }
+}
+
+file  dosfet-chan.tpl-arch
+{
+pattern { DEV            , RATE  }
+        { RADF:LI20:1:   , 600   }
+        { RADF:LI20:2:   , 600   }
+        { RADF:LI20:3:   , 600   }
+        { RADF:LI20:4:   , 600   }
+}
+
 file archive_iocAdmin.archive {
 pattern 
     {           IOC}
