@@ -894,9 +894,11 @@ record(seq, "$(P):SeqProcCommon2") {
     field(DLY6, "$(DLY1=0.1)")
     field(LNK6, "$(P):DeviceTime.PROC")
     field(DLY7, "$(DLY1=0.1)")
-    field(LNK7, "$(P):ChanStatus_RBV.PROC")
+    field(LNK7, "$(P):ChanOpen_RBV.PROC")
     field(DLY8, "$(DLY1=0.1)")
-    field(LNK8, "$(P):ChanOpsDone_RBV.PROC")
+    field(LNK8, "$(P):ChanClose_RBV.PROC")
+    field(DLY9, "$(DLY1=0.1)")
+    field(LNK9, "$(P):ChanOpsDone_RBV.PROC")
     field(FLNK, "$(P):SeqProcVars")
 }
 
@@ -1051,12 +1053,12 @@ record(seq, "$(P):SeqProcPer1") {
     field(LNK2, "$(P):PeriodAperture_RBV.PROC")
 }
 
-record(seq, "$(P):SeqSlow1") {
-    field(DESC, "Slow sequence")
-    field(DLY1, "0.0")
-    field(LNK1, "$(P):SeqInit1.PROC")
-#    field(SCAN, "10 second")
-}
+#record(seq, "$(P):SeqSlow1") {
+#    field(DESC, "Slow sequence")
+#    field(DLY1, "0.0")
+#    field(LNK1, "$(P):SeqInit1.PROC")
+##    field(SCAN, "10 second")
+#}
 
 record(seq, "$(P):SeqFast1") {
     field(DESC, "Fast sequence")
