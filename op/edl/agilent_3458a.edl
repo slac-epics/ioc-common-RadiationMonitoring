@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 29
-y 112
+x 530
+y 131
 w 1188
 h 1016
 font "helvetica-medium-r-12.0"
@@ -1813,8 +1813,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 724
-y 360
+x 720
+y 348
 w 136
 h 24
 fgColor index 13
@@ -1837,8 +1837,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 724
-y 392
+x 720
+y 416
 w 136
 h 24
 fgColor index 13
@@ -1861,8 +1861,8 @@ beginObjectProperties
 major 4
 minor 7
 release 0
-x 1004
-y 408
+x 1000
+y 432
 w 148
 h 24
 controlPv "$(P):MeasValue"
@@ -1886,8 +1886,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 724
-y 420
+x 720
+y 444
 w 136
 h 24
 fgColor index 13
@@ -1910,8 +1910,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 924
-y 408
+x 920
+y 432
 w 72
 h 24
 font "helvetica-medium-r-12.0"
@@ -2366,8 +2366,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 824
-y 476
+x 720
+y 488
 w 216
 h 28
 fgColor index 13
@@ -2390,8 +2390,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 824
-y 512
+x 720
+y 524
 w 216
 h 28
 fgColor index 13
@@ -2414,8 +2414,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 824
-y 548
+x 720
+y 560
 w 216
 h 28
 fgColor index 13
@@ -2589,8 +2589,8 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 892
-y 408
+x 888
+y 432
 w 28
 h 24
 font "helvetica-bold-r-14.0"
@@ -2609,8 +2609,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 864
-y 392
+x 860
+y 416
 w 24
 h 52
 lineColor index 13
@@ -2623,8 +2623,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 864
-y 388
+x 860
+y 412
 w 4
 h 60
 lineColor index 3
@@ -2680,5 +2680,45 @@ useHexPrefix
 newPos
 objType "controls"
 noExecuteClipMask
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 872
+y 380
+w 148
+h 24
+fgColor index 13
+bgColor index 2
+inconsistentColor index 3
+topShadowColor index 1
+botShadowColor index 13
+controlPv "$(P):TrigData"
+indicatorPv "$(P):TrigData"
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 716
+y 380
+w 148
+h 24
+font "helvetica-bold-r-12.0"
+fontAlign "right"
+fgColor index 13
+bgColor index 2
+useDisplayBg
+value {
+  "Set trigger and get data"
+}
 endObjectProperties
 
