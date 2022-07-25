@@ -1,0 +1,38 @@
+# LCLS-II Injector Beam Containment (BCS) Archive List
+
+file fht_6020_common.tpl-arch
+{
+pattern
+    {            P}
+    {RADM:LI29:01}
+}
+
+file fht_6020_chan.tpl-arch
+{
+pattern
+    {            P,  N}
+    {RADM:LI29:01, 01}
+    {RADM:LI29:01, 02}
+}
+
+file gamma6032.tpl-arch
+{
+pattern { dev          }
+        { BSOC:SPS:06:COM }
+        { BSOC:BSY0:01:COM }
+}
+
+file hpi6012.tpl-arch
+{
+pattern { P             }
+        { BSOC:BSY0:02N:COM }
+}
+
+file archive_iocAdmin.archive
+{
+pattern { IOC            }
+		{ SIOC:BSY0:RM01 }
+}
+
+# End of file
+
