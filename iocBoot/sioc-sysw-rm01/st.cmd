@@ -60,7 +60,7 @@ iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT2_PORT),TS=$(FHT2_T
 dbLoadRecords("db/fht.db", "P=$(FHT2_P),PORT=$(FHT2_PORT),LOC=$(FHT2_LOC)")
 
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI07:10:COM:,TS=ts-li07-nw02,TSPORT=2003,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
-iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI07:11N:COM,TS=ts-li07-nw02,TSPORT=2004,LOC=Penetration 7-12")
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LI07:11N:COM,TS=ts-li07-nw02,TSPORT=2004,LOC=Penetration 7-12,DESC=BSOLNW11N")
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LI10:12:COM:,TS=ts-li10-nw02,TSPORT=2004,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:IN10:03:COM:,TS=ts-li10-nw02,TSPORT=2005,SYS=BSOIC:SYSM:ALL,IOC=${IOC}")
 
