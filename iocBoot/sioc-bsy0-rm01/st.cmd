@@ -52,7 +52,6 @@ iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:BSY0:01:COM:,TS
 iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:BSY0:02N:COM,TS=ts-b136-nw06,TSPORT=2010,LOC=B136 north of penetration 3,DESC=BSOBSY02n")
 
 # HX2 (RDMHX201) Inside HX-2 housing
- ts-b969-nw01                2001
 epicsEnvSet("FHT_P",      "RADM:B969:01")
 epicsEnvSet("FHT_LOC",    "Inside HX-2 housing")
 epicsEnvSet("FHT_TS",     "ts-b969-nw01")
@@ -67,6 +66,15 @@ dbLoadRecords("db/fht.db", "P=$(FHT_P),PORT=$(FHT_PORT),LOC=$(FHT_LOC)")
 # BSY (RDMBSY02)  BSY near BSYDUMP
 # EBD/FEE (RDMEBD01)  EBD near BYD/BYDB
 # EBD/FEE (RDMEBD02)  EBD near EBD dumps
+epicsEnvSet("FHT_P",      "RADM:DMP0:01")
+epicsEnvSet("FHT_LOC",    "EBD near BYD/BYDB and dumps")
+epicsEnvSet("FHT_TS",     "ts-neh1-pp01")
+epicsEnvSet("FHT_TSPORT", "2009")
+epicsEnvSet("FHT_PORT",   "RDMEBD01-2_FHT")
+### Thermo FHT Radmon -------------------------------------------------------
+iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT_PORT),TS=$(FHT_TS),TSPORT=$(FHT_TSPORT)")
+# Load record instances
+dbLoadRecords("db/fht.db", "P=$(FHT_P),PORT=$(FHT_PORT),LOC=$(FHT_LOC)")
 
 # Configure autosave
 < $(TOP)/iocBoot/common/init_restore.cmd.soft
