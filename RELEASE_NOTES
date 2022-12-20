@@ -8,7 +8,10 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
-R1.1.20  21-Octp-2022, G. Brown (gwbrown):
+R1.1.21  20-Dec-2022, G. Brown (gwbrown):
+    LCLS: Synchronize DESC field on main screen with the one set in config screen.
+
+R1.1.20  21-Oct-2022, G. Brown (gwbrown):
     LCLS: Add RDMEBD01/2
 
 R1.1.19  14-Sep-2022, G. Brown (gwbrown):
