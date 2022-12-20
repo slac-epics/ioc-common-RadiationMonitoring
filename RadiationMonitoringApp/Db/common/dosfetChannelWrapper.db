@@ -30,8 +30,16 @@ record( stringin, "$(USER_P)1:ZERO_TOD")
 record( ai, "$(USER_P)1:DELTA_VOLTS")
 {
 	field( PREC, 3)
-	field( PREC, 3)
 	field( INP, "$(P):$(SENSOR):1:DELTA_VOLTS CP")
+}
+
+record( stringout, "$(USER_P)1:SynchDesc")
+{
+	field( OMSL, "closed_loop")
+	field( DOL, "$(P):$(SENSOR):1:DOSE.DESC")
+	field( OUT, "$(USER_P)1:DOSE.DESC")
+	field( SCAN, "10 second")
+	field( PINI, "YES")
 }
 
 record( ai, "$(USER_P)1:DOSE")
@@ -81,6 +89,15 @@ record( ai, "$(USER_P)2:DELTA_VOLTS")
 {
 	field( PREC, 3)
 	field( INP, "$(P):$(SENSOR):2:DELTA_VOLTS CP")
+}
+
+record( stringout, "$(USER_P)2:SynchDesc")
+{
+	field( OMSL, "closed_loop")
+	field( DOL, "$(P):$(SENSOR):2:DOSE.DESC")
+	field( OUT, "$(USER_P)2:DOSE.DESC")
+	field( SCAN, "10 second")
+	field( PINI, "YES")
 }
 
 record( ai, "$(USER_P)2:DOSE")
