@@ -68,8 +68,8 @@ dbLoadRecords("db/fht.db", "P=$(FHT_P),PORT=$(FHT_PORT),LOC=$(FHT_LOC)")
 # EBD/FEE (RDMEBD02)  EBD near EBD dumps
 epicsEnvSet("FHT_P",      "RADM:DMP0:01")
 epicsEnvSet("FHT_LOC",    "EBD near BYD/BYDB and dumps")
-epicsEnvSet("FHT_TS",     "ts-neh1-pp01")
-epicsEnvSet("FHT_TSPORT", "2009")
+epicsEnvSet("FHT_TS",     "ts-b940-pp02")
+epicsEnvSet("FHT_TSPORT", "2001")
 epicsEnvSet("FHT_PORT",   "RDMEBD01-2_FHT")
 ### Thermo FHT Radmon -------------------------------------------------------
 iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT_PORT),TS=$(FHT_TS),TSPORT=$(FHT_TSPORT)")
