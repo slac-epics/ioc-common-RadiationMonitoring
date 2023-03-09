@@ -8,6 +8,12 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+
+R1.1.22  07-Feb-2023, K. Luchini (luchini):
+    COMMON: Remove variables from configure/CONFIG_SITE
+            that are not used, LINUXRT_BUILDROOT_VERSION 
+            and LINUX_KERNEL_MODULES 
+
 R1.1.21  20-Dec-2022, G. Brown (gwbrown):
     LCLS: Synchronize DESC field on main screen with the one set in config screen.
 
