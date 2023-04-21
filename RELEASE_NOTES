@@ -8,6 +8,8 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.23  20-Apr-2023, G. Brown (gwbrown):
+    LCLS: Add BSOBTH02,BSOBTH03,BSOBTH04,BSOBTW06,BSOBTH09,BSOBTH10n,BSOUND02n
 
 R1.1.22  07-Feb-2023, K. Luchini (luchini):
     COMMON: Remove variables from configure/CONFIG_SITE
