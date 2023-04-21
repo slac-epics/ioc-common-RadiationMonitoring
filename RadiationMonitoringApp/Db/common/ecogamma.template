@@ -35,13 +35,13 @@ record (longin, "RADM:$(LOCA):$(UNIT):GAMMA_DEVSTATUS")
   field (DTYP, "stream")
   field (INP, "@EcoGamma.proto DevStatus $(PORT)")
   field (PINI, "YES")
-  field (FLNK, "RADM:$(LOCA):$(UNIT):STATUS1")
+  field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_STATUS1")
   field (SCAN, "5 second")
 }
 
 #Status of device
 
-record (mbbiDirect, "RADM:$(LOCA):$(UNIT):GAMMA_GAMMA_STATUS1")
+record (mbbiDirect, "RADM:$(LOCA):$(UNIT):GAMMA_STATUS1")
 {
   field (DESC, "First 16 status bits")
   field (INP, "RADM:$(LOCA):$(UNIT):GAMMA_DEVSTATUS")
@@ -64,6 +64,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_PI")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_HI")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_HI")
@@ -74,6 +75,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_HI")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LS")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LS")
@@ -84,6 +86,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LS")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LT")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LT")
@@ -94,6 +97,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LT")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LI")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LI")
@@ -104,6 +108,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LI")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_CAL")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_CAL")
@@ -114,6 +119,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_CAL")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_SYS")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_SYS")
@@ -124,6 +130,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_SYS")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_BAT")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_BAT")
@@ -134,6 +141,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_BAT")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_GMV")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_GMV")
@@ -144,6 +152,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_GMV")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LVPS")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LVPS")
@@ -151,9 +160,10 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_FAULT_LVPS")
   field(OMSL,"closed_loop")
   field (DESC, "LVPS Voltage Fault")
   field (DOL, "RADM:$(LOCA):$(UNIT):GAMMA_STATUS1.B9")
-  field (FLNK, "RADM:$(LOCA):$(UNIT):INIT")
+  field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_INIT")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_INIT")
@@ -164,6 +174,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_INIT")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_HIGM")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_HIGM")
@@ -171,9 +182,10 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_HIGM")
   field(OMSL,"closed_loop")
   field (DESC, "High GM Tube Active")
   field (DOL, "RADM:$(LOCA):$(UNIT):GAMMA_STATUS1.BB")
-  field (FLNK, "RADM:$(LOCA):$(UNIT):SYSFAULT")
+  field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_SYSFAULT")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (mbbi, "RADM:$(LOCA):$(UNIT):GAMMA_SYSFAULT")
@@ -181,7 +193,7 @@ record (mbbi, "RADM:$(LOCA):$(UNIT):GAMMA_SYSFAULT")
   field (DESC, "System Fault Description")
   field (INP, "RADM:$(LOCA):$(UNIT):GAMMA_DEVSTATUS")
   field (SHFT, "12")
-  field (FLNK, "RADM:$(LOCA):$(UNIT):ACTIVECAL")
+  field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_ACTIVECAL")
   field (ZRST, "K_RET_INVALIDPROGRAMSTATE")
   field (ONST, "K_RETM_RESOURCE_FAULT")
   field (TWST, "K_RETM_INVALIDTABLE")
@@ -200,6 +212,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_ACTIVECAL")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_NOLOG")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_NOLOG")
@@ -210,6 +223,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_NOLOG")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_DATATRANS")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_DATATRANS")
@@ -220,6 +234,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_DATATRANS")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_REBOOT")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_REBOOT")
@@ -230,6 +245,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_REBOOT")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_BUSY")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_BUSY")
@@ -240,6 +256,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_BUSY")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_TRANSBUSY")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_TRANSBUSY")
@@ -250,6 +267,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_TRANSBUSY")
   field (FLNK, "RADM:$(LOCA):$(UNIT):GAMMA_DIAGMODE")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_DIAGMODE")
@@ -259,6 +277,7 @@ record (bo, "RADM:$(LOCA):$(UNIT):GAMMA_DIAGMODE")
   field (DOL, "RADM:$(LOCA):$(UNIT):GAMMA_STATUS2.B7")
   field( ZNAM, "OK")
   field( ONAM, "Not OK")
+  field( OSV, "MAJOR")
 }
 
 
