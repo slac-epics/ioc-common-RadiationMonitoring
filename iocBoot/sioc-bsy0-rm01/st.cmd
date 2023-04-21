@@ -51,6 +51,28 @@ iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:BSY0:01:COM:,TS
 #BSOC:BSY0:02N "BSOBSY02N"
 iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:BSY0:02N:COM,TS=ts-b136-nw06,TSPORT=2010,LOC=B136 north of penetration 3,DESC=BSOBSY02n")
 
+#BSOC:BSY0:06:COM "BSOBTW06" "B913"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:BSY0:06:COM:,TS=ts-b911-nw07,TSPORT=2001,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+
+#BSOC:LTU0:09:COM "BSOBTH09" "RSY on South side of fence near B913"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:09:COM:,TS=ts-b911-nw07,TSPORT=2002,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+
+#BSOC:LTU0:2:COM "BSOBTH02" "North Headhouse"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:2:COM:,TS=ts-b911-nw07,TSPORT=2003,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+
+#BSOC:LTU0:10N "BSOBTH10n"
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LTU0:10N:COM,TS=tts-b911-nw07,TSPORT=2004,LOC=North BTH Fence,DESC=BSOBTH10n")
+
+#BSOC:LTU0:3:COM "BSOBTH03" "South Headhouse"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:3:COM:,TS=ts-b911-nw07,TSPORT=2005,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+
+#BSOC:LTU0:04:COM "BSOBTH04" "Middle B911"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:04:COM:,TS=ts-b911-nw07,TSPORT=2006,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+
+#BSOC:UND0:02N "BSOUND02N"
+iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:UND0:02N:COM,TS=ts-b921-nw04,TSPORT=2004,LOC=Inside B921,DESC=BSOUND02n")
+
+
 # HX2 (RDMHX201) Inside HX-2 housing
 epicsEnvSet("FHT_P",      "RADM:B969:01")
 epicsEnvSet("FHT_LOC",    "Inside HX-2 housing")

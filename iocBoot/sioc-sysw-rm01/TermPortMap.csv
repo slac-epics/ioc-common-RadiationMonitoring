@@ -17,13 +17,16 @@
 "BSOLNE06"	"BSOC:SPS:06:COM"	"ts-li29-nw06"	2010	"P29-08"
 "BSOBSY01"	"BSOC:BSY0:01:COM"	"ts-b136-nw06"	2009	"In B136 north of penetration 3, near the floor."
 "BSOBSY02n"	"BSOC:BSY0:02N:COM"	"ts-b136-nw06"	2010	"In B136 north of penetration 3, with probe near the floor"
-"BSOBTW06"	"BSOC:BSYx:06:COM"	"ts-????-????"	"20nn"	"B913"
+"BSOBTH02"	"BSOC:LTU0:2:COM"	"ts-b911-nw07"	2003
+"BSOBTH03"	"BSOC:LTU0:3:COM"	"ts-b911-nw07"	2005
+"BSOBTH04"	"BSOC:LTU0:04:COM"	"ts-b911-nw07"	2006
+"BSOBTW06"	"BSOC:BSY0:06:COM"	"ts-b911-nw07"	"2001"	"B913"
 "BSOBTH07"	"BSOC:BSYx:07:COM"	"ts-????-????"	"20nn"	"RSY on North side of BTHE maze"
-"BSOBTH09"	"BSOC:BSYx:09:COM"	"ts-????-????"	"20nn"	"RSY on South side of fence near B913"
-"BSOBTH10n"	"BSOC:BSYx:10n:COM"	"ts-????-????"	"20nn"	"RSY on North side of fence between B911 and B912"
+"BSOBTH09"	"BSOC:LTU0:09:COM"	"ts-b911-nw07"	"2002"	"RSY on South side of fence near B913"
+"BSOBTH10n"	"BSOC:LTU0:10n:COM"	"ts-b911-nw07"	"2004"	"RSY on North side of fence between B911 and B912"
 "BSOBTH11"	"BSOC:BSYx:11:COM"	"ts-????-????"	"20nn"	"RSY on South side of fence near B211"
 "BSOUND01"	"BSOC:BSYx:01:COM"	"ts-????-????"	"20nn"	"B921 South side near penetration "
-"BSOUND02n"	"BSOC:BSYx:02n:COM"	"ts-????-????"	"20nn"	"B921 North side near penetration "
+"BSOUND02n"	"BSOC:UND0:02n:COM"	"ts-b921-nw04"	"2004"	"B921 North side near penetration "
 "RDMLNW01"	"RADM:LI02:1"	"TS-LI02-NW02"	2001	"P02-05"
 "RDMLNW02"	"RADM:LI07:2"	"ts-li07-nw02"	2002	"P07-11"
 "RDMLNE01"	"RADM:LI29:01"	"ts-li29-nw06"	2009	"P28-11, LI29, in area of SXR/HXR kickers/septa"
