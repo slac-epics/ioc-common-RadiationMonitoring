@@ -8,6 +8,10 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.24  25-Apr-2023, G. Brown (gwbrown):
+    LCLS: Add temporary EcoGamma monitoring in HTR
+    LCLS: Add BSOBTH06, BSOBTH07, BSOBTH11, BSOUND01
+
 R1.1.23  20-Apr-2023, G. Brown (gwbrown):
     LCLS: Add BSOBTH02,BSOBTH03,BSOBTH04,BSOBTW06,BSOBTH09,BSOBTH10n,BSOUND02n
 
