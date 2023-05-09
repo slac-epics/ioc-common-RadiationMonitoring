@@ -22,7 +22,7 @@ epicsEnvSet("IOC_NAME",    "SIOC:HTR:RM01")
 # Load common piece of startup script
 < ../common/st.cmd.soft
 
-drvAsynIPPortConfigure("EG1","RADM-HTR-MP01:5000")
+drvAsynIPPortConfigure("EG1","RADM-HTR-MP01:16387")
 
 # Load record instances
 dbLoadRecords("db/asynRecord.db","P=RADM:HTR:1:,R=Asyn, PORT=EG1, ADDR=0, IMAX=0, OMAX=0")
