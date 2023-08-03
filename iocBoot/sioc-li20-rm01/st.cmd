@@ -52,10 +52,16 @@ epicsEnvSet("DEV"      ,"RADF:LI20:1" )
 epicsEnvSet("NODE"     ,"radm-li20-rm01")
 epicsEnvSet("LOC"      ,"LI20")
 < iocBoot/common/init_dosfet.cmd
-dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=A,USER_P=RADF:LI20:1:")
-dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=B,USER_P=RADF:LI20:2:")
-dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=C,USER_P=RADF:LI20:3:")
-dbLoadRecords("db/dosfetChannelWrapper.db", "P=RADF:LI20:1,SENSOR=D,USER_P=RADF:LI20:4:")
+
+epicsEnvSet("DEV"      ,"RADF:LI20:2" )
+epicsEnvSet("NODE"     ,"radm-li20-rm02")
+epicsEnvSet("LOC"      ,"LI20")
+< iocBoot/common/init_dosfet.cmd
+
+epicsEnvSet("DEV"      ,"RADF:LI20:3" )
+epicsEnvSet("NODE"     ,"radm-li20-rm03")
+epicsEnvSet("LOC"      ,"LI20")
+< iocBoot/common/init_dosfet.cmd
 ###--------------------------------------------------------------------------
 
 # Configure autosave
