@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R1.1.25   2-Aug-2023, G. Brown (gwbrown):
+    FACET: Add 2 more dosfets to LI20.
+
 R1.1.24  25-Apr-2023, G. Brown (gwbrown):
     LCLS: Add temporary EcoGamma monitoring in HTR
     LCLS: Add BSOBTH06, BSOBTH07, BSOBTH11, BSOUND01
