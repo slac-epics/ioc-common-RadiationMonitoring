@@ -32,9 +32,7 @@ DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
 DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 IOCRELEASE_DB += iocRelease.db
 
-# For Thermo FHT Rad. Mons.
 DB += sioc-bsyh-rm01.db
-DB += sioc-gunb-rm01.db
 DB += sioc-ltu0-rm01.db
 DB += sioc-clts-rm01.db
 
