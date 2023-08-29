@@ -9,6 +9,7 @@
 #==============================================================
 
 R1.1.26  25-Aug-2023  M. Dunning (mdunning):
+    ALL: bump asyn, stream, caputlog
     LCLS: sioc-gunb-rm01: remove FHT which has been decommissioned; rhel6 -> rhel7
 
 R1.1.25   2-Aug-2023, G. Brown (gwbrown):
