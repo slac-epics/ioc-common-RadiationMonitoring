@@ -49,15 +49,25 @@ file  dosfet.tpl-arch
 {
 pattern { DEV            , RATE  }
         { RADF:LI20:1:   , 600   }
+        { RADF:LI20:2:   , 600   }
+        { RADF:LI20:3:   , 600   }
 }
 
 file  dosfet-chan.tpl-arch
 {
 pattern { DEV            , RATE  }
-        { RADF:LI20:1:   , 600   }
-        { RADF:LI20:2:   , 600   }
-        { RADF:LI20:3:   , 600   }
-        { RADF:LI20:4:   , 600   }
+        { RADF:LI20:1:A:   , 600   }
+        { RADF:LI20:1:B:   , 600   }
+        { RADF:LI20:1:C:   , 600   }
+        { RADF:LI20:1:D:   , 600   }
+        { RADF:LI20:2:A:   , 600   }
+        { RADF:LI20:2:B:   , 600   }
+        { RADF:LI20:2:C:   , 600   }
+        { RADF:LI20:2:D:   , 600   }
+        { RADF:LI20:3:A:   , 600   }
+        { RADF:LI20:3:B:   , 600   }
+        { RADF:LI20:3:C:   , 600   }
+        { RADF:LI20:3:D:   , 600   }
 }
 
 file archive_iocAdmin.archive {
