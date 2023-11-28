@@ -1,0 +1,49 @@
+record(ai, "STAT:$(STATION):TIMEOUT_THRESH"){
+      field(DESC, "Timeout Threshold Seconds")
+      field(VAL, 3600)
+}
+
+record(calc, "STAT:$(STATION):TIMEOUT_CNT") {
+  field(DESC, "Counts number of timeouts from station")
+  field(SCAN, "1 second")
+  field(INPA, "RADM:SITE:$(STATION):CH01:MEAS.SEVR")
+  field(INPB, "RADM:SITE:$(STATION):CH02:MEAS.SEVR")
+  #if invalid increment count otherwise let it be
+  field(CALC, "(A=3||B=3) ? VAL + 1 : VAL ")
+  field(HIGH, 6)
+  field(HIHI, 3600)
+  field(HSV,MINOR)
+  field(HHSV,MAJOR)
+  field(VAL, 0)
+}
+
+record(calcout, "STAT:$(STATION):TIMER"){
+  field(DESC, "Timer for timeout counter")
+  field(SCAN, "1 second")
+  field(INPA, "STAT:$(STATION):TIMEOUT_THRESH")
+  field(VAL,   0)
+  field(CALC, "(VAL + 1) % A")
+  field(OOPT, "Transition To Zero")
+  field(OUT , "STAT:$(STATION):TIMEOUT_CNT")
+}
+
+record(calcout, "STAT:$(STATION):CALC_SUM") {
+  field(DESC, "Calc's overall station status")
+  field(SCAN, "1 second")
+  field(CALC, "A ||  B  || (C && D) || E")
+  field(INPA, "RADM:SITE:$(STATION):CH01:STATUS MS")
+  field(INPB, "RADM:SITE:$(STATION):CH02:STATUS MS")
+  field(INPC, "RADM:SITE:$(STATION):CH01:MEAS.SEVR MS")
+  field(INPD, "RADM:SITE:$(STATION):CH02:MEAS.SEVR MS")
+  field(INPE, "RADM:SITE:$(STATION):SYSTEM_SUMMARY MS")
+  field(OUT, "STAT:$(STATION):SUMMARY PP MS")
+  field(IVOA, "Set output to IVOV")
+  field(IVOV, "1")
+}
+
+record(bo, "STAT:$(STATION):SUMMARY") {
+  field(ZNAM, "Okay")
+  field(ONAM, "Not Okay")
+  field(OSV,  "MAJOR")
+}
+

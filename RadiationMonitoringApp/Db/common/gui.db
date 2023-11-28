@@ -1,0 +1,21 @@
+record(bi, "RADM:GUI:SEL_PMS") {
+    field(DESC, "Select PMS Stations")
+    field(ZNAM, "PMS Off")
+    field(ONAM, "PMS On")
+    field(VAL, "1")
+}
+
+record(bi, "RADM:GUI:SEL_AMS") {
+    field(DESC, "Select AMS Stations")
+    field(ZNAM, "AMS Off")
+    field(ONAM, "AMS On")
+    field(VAL, "1")
+}
+
+record(bi, "RADM:GUI:SEL_MOB") {
+    field(DESC, "Select Mobile Stations")
+    field(ZNAM, "Mob Off")
+    field(ONAM, "Mob On")
+    field(VAL, "1")
+}
+

@@ -1,0 +1,6 @@
+file ams-printer.template
+{
+     pattern { P,                PORT     }
+             { AMS:SITE:$(UNIT), $(APORT) }
+}
+

@@ -1,0 +1,86 @@
+record(stringin, "STAT:AMS$(STATION):WD2_PV")
+{
+  field(VAL, "AMS:SITE:$(STATION):RADCOUNT")
+}
+
+record(ai, "STAT:AMS$(STATION):WD2_TIMEOUT")
+{
+  field(VAL, "125")
+}
+
+
+record(aSub, "STAT:AMS$(STATION):WD2") 
+{
+  field(SCAN, "1 second")
+  field(SNAM, "time_diff")
+  field(INPA, "STAT:AMS$(STATION):WD2_PV")
+  field(INPB, "STAT:AMS$(STATION):WD2_TIMEOUT")
+  field(FTA, "STRING")
+  field(FTB, "DOUBLE")
+}
+
+record(stringin, "STAT:AMS$(STATION):WD1_PV")
+{
+  field(VAL, "AMS:SITE:$(STATION):OZONE")
+}
+
+record(ai, "STAT:AMS$(STATION):WD1_TIMEOUT")
+{
+  field(VAL, "15")
+}
+
+
+record(aSub, "STAT:AMS$(STATION):WD1")
+{
+  field(SCAN, "1 second")
+  field(SNAM, "time_diff")
+  field(INPA, "STAT:AMS$(STATION):WD1_PV")
+  field(INPB, "STAT:AMS$(STATION):WD1_TIMEOUT")
+  field(FTA, "STRING")
+  field(FTB, "DOUBLE")
+}
+
+record(ai, "STAT:AMS$(STATION):TIMEOUT_THRESH"){
+      field(DESC, "Timeout Threshold Seconds")
+      field(VAL, 3600)
+}
+
+record(calc, "STAT:AMS$(STATION):TIMEOUT_CNT") {
+  field(DESC, "Counts number of timeouts from station")
+  field(SCAN, "1 second")
+  field(INPA, "STAT:AMS$(STATION):WD1.SEVR")
+  field(INPB, "STAT:AMS:$(STATION):WD2.SEVR")
+  #if invalid increment count otherwise let it be
+  field(CALC, "(A=3||B=3) ? VAL + 1 : VAL ")
+  field(HIGH, 6)
+  field(HIHI, 3600)
+  field(HSV,MINOR)
+  field(HHSV,MAJOR)
+  field(VAL, 0)
+}
+
+record(calcout, "STAT:AMS$(STATION):TIMER"){
+  field(DESC, "Timer for timeout counter")
+  field(SCAN, "1 second")
+  field(INPA, "STAT:AMS$(STATION):TIMEOUT_THRESH")
+  field(VAL,   0)
+  field(CALC, "(VAL + 1) % A")
+  field(OOPT, "Transition To Zero")
+  field(OUT , "STAT:AMS$(STATION):TIMEOUT_CNT")
+}
+
+#record(calcout, "STAT:AMS$(STATION):CALC_SUM") {
+#  field(DESC, "Calc's overall station status")
+#  field(SCAN, "1 second")
+#  field(CALC, "A")
+#  field(INPA, "AMS:SITE:$(STATION):STATUS MS")
+#  field(OUT, "STAT:AMS$(STATION):SUMMARY PP MS")
+#  field(IVOA, "Set output to IVOV")
+#  field(IVOV, "1")
+#}
+
+record(bo, "STAT:AMS$(STATION):SUMMARY") {
+  field(ZNAM, "Okay")
+  field(ONAM, "Not Okay")
+  field(OSV,  "MAJOR")
+}

@@ -45,6 +45,16 @@ DB += gamma6032mon.db
 DB += alarmClock.db
 DB += dbSubTime.db
 DB += decarad.db
+
+DB += fht6020-channel-status.template
+DB += fht6020-system-status.template
+DB += pms_stat.template
+DB += pms-station.db
+DB += mfht-station.db
+DB += ams-station.db
+DB += mams-station.db
+#DB += gui.db
+
 DB_INSTALLS += $(ASYN)/db/asynRecord.db
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add

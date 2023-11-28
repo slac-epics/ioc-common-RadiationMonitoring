@@ -1,0 +1,18 @@
+file ams-printer.template
+{
+     pattern { P,                PORT     }
+             { AMS:SITE:$(UNIT), $(APORT) }
+}
+
+file eco-os-6.template
+{
+     pattern { P,                PORT}
+             { AMS:SITE:$(UNIT), $(EPORT) }
+}
+
+file ams_stat.template
+{
+     pattern { STATION     }
+             { $(UNIT)     }
+
+}

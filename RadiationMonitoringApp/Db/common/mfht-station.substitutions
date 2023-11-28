@@ -1,0 +1,18 @@
+file fht6020-system-status.template
+{
+     pattern { P,                  PORT,      ADDRESS    }
+             { RADM:SITE:$(UNIT),  $(FPORT),  01         }
+}
+
+file fht6020-channel-status.template
+{
+      pattern { P,                  PORT,      ADDRESS,   CHANNEL    }
+              { RADM:SITE:$(UNIT),  $(FPORT),  01,        01         }
+              { RADM:SITE:$(UNIT),  $(FPORT),  01,        02         }
+}
+
+file mfht_stat.template 
+{
+      pattern { STATION     }
+              { $(UNIT) }
+}

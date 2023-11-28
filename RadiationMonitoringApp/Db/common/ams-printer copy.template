@@ -1,0 +1,47 @@
+record (stringin, "$(P):DATE")
+{
+  field (DESC, "Instrument date")
+  field (PINI, "YES")
+  field (DTYP, "stream")
+  field (INP, "@ThermoAM4_printer.proto Read_Date $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+record (stringin, "$(P):TIME")
+{
+  field (DESC, "Instrument time")
+  field (PINI, "YES")
+  field (DTYP, "stream")
+  field (INP, "@ThermoAM4_printer.proto Read_Time $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+record (ai, "$(P):RADCOUNT")
+{
+  field (DESC, "Radiation reading")
+  field (PINI, "YES")
+  field (LINR, "SLOPE")
+  field (ASLO, "1.0")
+  field (AOFF, "0")
+  field (EGU, "Bq/cm^3")
+  field (PREC, 4)
+  field (DTYP, "stream")
+  field (INP, "@ThermoAM4_printer.proto Read_Rad $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+record (ai, "$(P):FLOWRATE")
+{
+  field (DESC, "Flow rate")
+  field (PINI, "YES")
+  field (EGU, "cm^3")
+  field (PREC, 4)
+  field (DTYP, "stream")
+  field (INP, "@ThermoAM4_printer.proto Read_Flow $(PORT)")
+  field (SCAN, "I/O Intr")
+}
+record (stringin, "$(P):STATUS")
+{
+  field (DESC, "Debug")
+  field (PINI, "YES")
+  field (DTYP, "stream")
+  field (INP, "@ThermoAM4_printer.proto Read_Status $(PORT)")
+  field (SCAN, "I/O Intr")
+}

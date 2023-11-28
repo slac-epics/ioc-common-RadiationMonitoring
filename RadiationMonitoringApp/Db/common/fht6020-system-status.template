@@ -1,0 +1,125 @@
+record(stringin, "$(P):GENERIC_COMMAND") {
+  field(DESC, "Generic Command interface")
+  field(DTYP, "stream")
+  field(INP, "@FHT6020.proto genericCommand($(ADDRESS)) $(FPORT)")
+}
+
+record(mbbiDirect, "$(P):SYSTEM_STATUS") {
+  field(DESC, "Device System Status")
+  field(FLNK, "$(P):RESET_STATUS")
+}
+
+record(bi, "$(P):RESET_STATUS") {
+  field(DESC, "System Reset Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.B0")
+  field(ZNAM, "OK")
+  field(ONAM, "Reset occured")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):PROM_STATUS")
+}
+
+record(bi, "$(P):PROM_STATUS") {
+  field(DESC, "PROM Error Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.B1")
+  field(ZNAM, "OK")
+  field(ONAM, "PROM Error")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):RAM_STATUS")
+}
+
+record(bi, "$(P):RAM_STATUS") {
+  field(DESC, "RAM Error Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.B2")
+  field(ZNAM, "OK")
+  field(ONAM, "RAM Error")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CONFIG_STATUS")
+}
+
+record(bi, "$(P):CONFIG_STATUS") {
+  field(DESC, "Configuration Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.B3")
+  field(ZNAM, "OK")
+  field(ONAM, "Configuration Error")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):HIST_CLEAR_STATUS")
+}
+
+record(bi, "$(P):HIST_CLEAR_STATUS") {
+  field(DESC, "History Clear Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.B4")
+  field(ZNAM, "OK")
+  field(ONAM, "History Cleared")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):BATTERY_STATUS")
+}
+
+record(bi, "$(P):BATTERY_STATUS") {
+  field(DESC, "Battery Voltage Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.B5")
+  field(ZNAM, "OK")
+  field(ONAM, "Low Battery")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):ALARM2_STATUS")
+}
+
+record(bi, "$(P):ALARM2_STATUS") {
+  field(DESC, "Alarm 2 Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.BC")
+  field(ZNAM, "OK")
+  field(ONAM, "Alarm 2 occured")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):ALARM1_STATUS")
+}
+
+record(bi, "$(P):ALARM1_STATUS") {
+  field(DESC, "Alarm 1 Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.BD")
+  field(ZNAM, "OK")
+  field(ONAM, "Alarm 1 occured")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):ERROR_STATUS")
+}
+
+record(bi, "$(P):ERROR_STATUS") {
+  field(DESC, "System Error Status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):SYSTEM_STATUS.BF")
+  field(ZNAM, "OK")
+  field(ONAM, "Error occured")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):SYSTEM_ERRORCNT")
+}
+
+record(calcout, "$(P):SYSTEM_ERRORCNT") {
+  field(DESC, "Total num of system errors")
+  field(INPA, "$(P):RESET_STATUS")
+  field(INPB, "$(P):PROM_STATUS")
+  field(INPC, "$(P):RAM_STATUS")
+  field(INPD, "$(P):CONFIG_STATUS")
+  field(INPE, "$(P):HIST_CLEAR_STATUS")
+  field(INPF, "$(P):BATTERY_STATUS")
+  field(INPG, "$(P):ALARM2_STATUS")
+  field(INPH, "$(P):ALARM1_STATUS")
+  field(INPI, "$(P):ERROR_STATUS")
+  field(CALC, "A+B+C+D+E+F+G+H+I")
+  field(OCAL, "A+B+C+D+E+F+G+H+I > 0 ? 1 : 0")
+  field(OUT,  "$(P):SYSTEM_SUMMARY")
+  field(FLNK, "$(P):SYSTEM_SUMMARY")
+}
+
+record(bi, "$(P):SYSTEM_SUMMARY") {
+  field(DESC, "Summary of system error status")
+  field(ZNAM, "No errors")
+  field(ONAM, "System error")
+  field(OSV,  "MAJOR")
+}
+

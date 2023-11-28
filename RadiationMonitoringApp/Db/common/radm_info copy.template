@@ -1,0 +1,21 @@
+#--- Device info ------------------------
+record(stringout, "$(P):LOCATION") {
+    field(DESC, "Device location")
+    field(VAL,  "$(LOC)")
+    field(PINI, "1")
+}
+
+#record(mbbo, "$(P):TYPE") {
+#    field(DESC, "Device type")
+#    field(ZRVL, "0")
+#    field(ZRST, "Thermo FHT")
+#    field(ONVL, "1")
+#    field(ONST, "RadFET")
+#    field(TWVL, "2")
+#    field(TWST, "Air Monitoring System")
+#    field(THVL, "3")
+#    field(THST, "Periphal Monitoring System")
+#    field(VAL,  "$(TYPE)")
+#    field(PINI, "1")
+#}
+

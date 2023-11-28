@@ -1,0 +1,106 @@
+record(ai, "$(P):CH$(CHANNEL):MEAS") {
+  field(DESC, "Channel $(CHANNEL) Measured Value")
+  field(EGU,  "mrem/h")
+  field(LINR, "SLOPE")
+  field(ASLO, "1.00")
+  field(AOFF, "0")
+  field(DTYP, "stream")
+  field(INP,  "@FHT6020.proto getValue($(ADDRESS),$(CHANNEL),$(P):CH$(CHANNEL)) $(FPORT)")
+  field(SCAN, "1 second")
+  field(PINI, "YES")
+  field(PREC, "5")
+}
+
+record(mbbiDirect, "$(P):CH$(CHANNEL):STATUS") {
+  field(DESC, "Channel $(CHANNEL) System Status")
+  field(FLNK, "$(P):CH$(CHANNEL):EEPROM")
+}
+
+record(bi, "$(P):CH$(CHANNEL):EEPROM") {
+  field(DESC, "Probe EEPROM status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):CH$(CHANNEL):STATUS.B8")
+  field(ZNAM, "OK")
+  field(ONAM, "EEPROM error")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CH$(CHANNEL):SIGNAL")
+}
+
+record(bi, "$(P):CH$(CHANNEL):SIGNAL") {
+  field(DESC, "Probe signal status")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):CH$(CHANNEL):STATUS.B9")
+  field(ZNAM, "OK")
+  field(ONAM, "Below failure threshold")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CH$(CHANNEL):LOW")
+}
+
+record(bi, "$(P):CH$(CHANNEL):LOW") {
+  field(DESC, "Probe out of range")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):CH$(CHANNEL):STATUS.BA")
+  field(ZNAM, "OK")
+  field(ONAM, "Below measuring range")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CH$(CHANNEL):HIGH")
+}
+
+record(bi, "$(P):CH$(CHANNEL):HIGH") {
+  field(DESC, "Probe out of range")
+  field(DTYP, "Soft Channel")
+  field(INP,  "$(P):CH$(CHANNEL):STATUS.BB")
+  field(ZNAM, "OK")
+  field(ONAM, "Above measuring range")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CH$(CHANNEL):CONNECTED")
+}
+
+record(bi, "$(P):CH$(CHANNEL):CONNECTED") {
+  field(DESC, "Probe connection status")
+  field(DTYP, "Soft Channel")
+  field(INP, "$(P):CH$(CHANNEL):STATUS.BE")
+  field(ZNAM, "OK")
+  field(ONAM, "Transfer error")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CH$(CHANNEL):NBR")
+}
+
+record(bi, "$(P):CH$(CHANNEL):NBR"){ 
+  field(DESC, "Background radiation alarm")
+  field(DTYP, "Soft Channel")
+  field(INP, "$(P):CH$(CHANNEL):STATUS.BF")
+  field(ZNAM, "OK")
+  field(ONAM, "Artificial radiation")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P):CH$(CHANNEL):ERRORCNT")
+}
+
+record(calcout, "$(P):CH$(CHANNEL):ERRORCNT") {
+  field(DESC, "Total num of channel $(CHANNEL) errors")
+  field(INPA, "$(P):CH$(CHANNEL):EEPROM")
+  field(INPB, "$(P):CH$(CHANNEL):SIGNAL")
+  field(INPC, "$(P):CH$(CHANNEL):LOW")
+  field(INPD, "$(P):CH$(CHANNEL):HIGH")
+  field(INPE, "$(P):CH$(CHANNEL):CONNECTED")
+  field(INPF, "$(P):CH$(CHANNEL):NBR")
+  field(CALC, "A+B+C+D+E+F")
+  field(OCAL, "A+B+C+D+E+F > 0 ? 1 : 0")
+  field(OUT,  "$(P):CH$(CHANNEL):SUMMARY")
+  field(FLNK, "$(P):CH$(CHANNEL):SUMMARY")
+}
+
+record(bi, "$(P):CH$(CHANNEL):SUMMARY") {
+  field(DESC, "Summary of channel $(CHANNEL) error status")
+  field(ZNAM, "No errors")
+  field(ONAM, "Channel $(CHANNEL) error")
+  field(OSV,  "MAJOR")
+}
+
+record(mbboDirect, "$(P):CH$(CHANNEL):LED") {
+  field(DESC, "Channel $(CHANNEL) System/LED Status")
+  field(DTYP, "Soft Channel")
+  field(OUT,  "$(P):SYSTEM_STATUS")
+  field(FLNK, "$(P):SYSTEM_STATUS")
+}
+
