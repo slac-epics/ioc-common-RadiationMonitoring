@@ -1,0 +1,20 @@
+file ecogamma.template{
+     pattern {  LOCA,  UNIT   ,  PORT     }
+             {  SITE,  $(UNIT),  $(GPORT) }
+}
+
+file fhtChan.template{
+     pattern {  P                ,  PORT    ,   N,  M }
+             {  RADM:SITE:$(UNIT),  $(NPORT),  01,  1 }
+}
+
+file fhtCommon.template{
+     pattern {  P                ,  PORT     }
+             {  RADM:SITE:$(UNIT),  $(NPORT) }
+}
+
+file fhtChanDisplay.template{
+     pattern {  P                ,  PORT    ,   N,  M }
+             {  RADM:SITE:$(UNIT),  $(NPORT),  01,  1 }
+}
+

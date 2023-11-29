@@ -32,9 +32,6 @@ DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
 DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 IOCRELEASE_DB += iocRelease.db
 
-# For PM box.
-DB += peripheral-station.db
-
 #----------------------------------------------------
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

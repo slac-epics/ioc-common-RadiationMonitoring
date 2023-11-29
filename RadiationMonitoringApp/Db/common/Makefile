@@ -35,6 +35,7 @@ DB += fhtCommon.template
 DB += fht.db
 DB += station.template
 DB += ecogamma.template
+DB += ecogamma_site.template
 DB += radm_info.template
 DB += ams-printer.template
 DB += eco-os-6.template
@@ -45,6 +46,9 @@ DB += gamma6032mon.db
 DB += alarmClock.db
 DB += dbSubTime.db
 DB += decarad.db
+
+# For PM box.
+DB += peripheral-station.db
 
 DB += fht6020-channel-status.template
 DB += fht6020-system-status.template

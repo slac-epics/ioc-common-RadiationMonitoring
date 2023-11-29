@@ -16,3 +16,10 @@ file mfht_stat.template
       pattern { STATION     }
               { $(UNIT) }
 }
+
+file radm_info.template 
+{
+    pattern
+    { P,               , LOC     ,TYPE}
+    { RADM:SITE:$(UNIT), "Site"  , 2  }
+}

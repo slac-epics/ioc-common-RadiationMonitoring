@@ -7,7 +7,7 @@
 #
 #  Facility: Development Radiation Monitoring Controls
 #
-#  Auth: 20-Aug-2021, Mike Dunning       (mdunning)
+#  Auth: 29-Nov-2023, Ziyu Huang       (zyuang)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
@@ -20,15 +20,12 @@
 
 # Set environment variables
 epicsEnvSet("ENGINEER",    "Z. Huang")
-epicsEnvSet("LOCATION",    "Test Fac Server")
+epicsEnvSet("LOCATION",    "testfac-daemon1")
 epicsEnvSet("IOC_NAME",    "SIOC:SITE:MFHT04")
 
 # Load common piece of startup script, this include STREAM_PROTOCOL_PATH
 < ../common/st.cmd.soft
 
-## Register all support components
-dbLoadDatabase "dbd/RPMonitoring.dbd"
-RPMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM1
 drvAsynIPPortConfigure("MFHT4-TS","wb-site-mfht04:5000")
@@ -46,7 +43,14 @@ dbLoadRecords("db/mfht-station.db","UNIT=MFHT04,FPORT=MFHT4-TS")
 #Asyn Debugging Records
 dbLoadRecords("db/asynRecord.db","P=RADM:SITE:MFHT04:,R=NASYN,PORT=MFHT4-TS,ADDR=0,IMAX=100,OMAX=100")
 
+# Configure autosave
+< $(TOP)/iocBoot/common/init_restore.cmd.soft
 
-cd ${TOP}/iocBoot/${IOC}
-iocInit
+iocInit()
+
+# Start autosave
+< $(TOP)/iocBoot/common/start_restore.cmd.soft
+
+# End of file
+
 

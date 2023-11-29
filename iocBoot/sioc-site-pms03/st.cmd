@@ -7,7 +7,7 @@
 #
 #  Facility: Development Radiation Monitoring Controls
 #
-#  Auth: 20-Aug-2021, Mike Dunning       (mdunning)
+#  Auth: 29-Nov-2023, Ziyu Huang       (zyuang)
 #  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
 #--------------------------------------------------------------
 #  Mod:
@@ -20,15 +20,12 @@
 
 # Set environment variables
 epicsEnvSet("ENGINEER",    "Z. Huang")
-epicsEnvSet("LOCATION",    "Test Fac Server")
+epicsEnvSet("LOCATION",    "testfac-daemon1")
 epicsEnvSet("IOC_NAME",    "SIOC:SITE:PMS03")
 
 # Load common piece of startup script, this include STREAM_PROTOCOL_PATH
 < ../common/st.cmd.soft
 
-## Register all support components
-dbLoadDatabase "dbd/RPMonitoring.dbd"
-RPMonitoring_registerRecordDeviceDriver pdbbase
 
 ## Setup asyn connections PM1
 drvAsynIPPortConfigure("PM3-GAMMA","wb-site-rm03:5000")
@@ -48,7 +45,14 @@ dbLoadRecords("db/pms-station.db","UNIT=03,GPORT=PM3-GAMMA,FPORT=PM3-TS")
 dbLoadRecords("db/asynRecord.db","P=RADM:SITE:03:,R=NASYN,PORT=PM3-TS,ADDR=0,IMAX=100,OMAX=100")
 dbLoadRecords("db/asynRecord.db","P=RADM:SITE:03:,R=GASYN,PORT=PM3-GAMMA,ADDR=0,IMAX=100,OMAX=100")
 
+# Configure autosave
+< $(TOP)/iocBoot/common/init_restore.cmd.soft
 
-cd ${TOP}/iocBoot/${IOC}
-iocInit
+iocInit()
+
+# Start autosave
+< $(TOP)/iocBoot/common/start_restore.cmd.soft
+
+# End of file
+
 
