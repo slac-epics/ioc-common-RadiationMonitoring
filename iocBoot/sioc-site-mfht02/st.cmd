@@ -16,7 +16,7 @@
 epicsEnvSet("ENGINEER",    "Z. Huang")
 epicsEnvSet("LOCATION",    "testfac-daemon1")
 epicsEnvSet("IOC_NAME",    "SIOC:SITE:MFHT02")
-epicsEnvSet("EPICS_CA_SERVER_PORT", "5500")
+#epicsEnvSet("EPICS_CA_SERVER_PORT", "5500")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft

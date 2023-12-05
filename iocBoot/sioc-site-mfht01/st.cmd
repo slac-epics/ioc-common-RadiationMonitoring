@@ -16,7 +16,7 @@
 epicsEnvSet("ENGINEER",    "Z. Huang")
 epicsEnvSet("LOCATION",    "testfac-daemon1")
 epicsEnvSet("IOC_NAME",    "SIOC:SITE:MFHT01")
-epicsEnvSet("EPICS_CA_SERVER_PORT", "5501")
+#epicsEnvSet("EPICS_CA_SERVER_PORT", "5501")
 
 # Load common piece of startup script, this include STREAM_PROTOCOL_PATH
 < ../common/st.cmd.soft
