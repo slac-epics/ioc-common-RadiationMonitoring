@@ -1,4 +1,5 @@
 #!../../bin/rhel7-x86_64/RadiationMonitoring
+
 #==============================================================
 #
 #  Abs:  EPICS startup script for Moveable FHT Rad Mon device(s)
@@ -8,13 +9,6 @@
 #  Facility: Development Radiation Monitoring Controls
 #
 #  Auth: 29-Nov-2023, Ziyu Huang       (zyuang)
-#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
-#--------------------------------------------------------------
-#  Mod:
-#        28-Nov-2022, Z. Huang         (zyhuang):
-#           migrate ioc to LCLS repo
-#        19-Oct-2021, K. Luchini         (luchini):
-#         move STARTUP to iocBoot/common/st.cmd.soft
 #
 #==============================================================
 
@@ -24,24 +18,14 @@ epicsEnvSet("LOCATION",    "testfac-daemon1")
 epicsEnvSet("IOC_NAME",    "SIOC:SITE:MFHT02")
 epicsEnvSet("EPICS_CA_SERVER_PORT", "5500")
 
-# Load common piece of startup script, this include STREAM_PROTOCOL_PATH
+# Load common piece of startup script
 < ../common/st.cmd.soft
 
-
-## Setup asyn connections PM1
+## Set up asyn connections
 drvAsynIPPortConfigure("MFHT2-TS","wb-site-mfht02:5000")
 
 ## Load record instances
-# =====================================================================
-# Load iocAdmin
-# =====================================================================
-dbLoadRecords("db/iocAdminSoft.db","IOC=SIOC:SITE:MFHT02")
-dbLoadRecords("db/iocRelease.db","IOC=SIOC:SITE:MFHT02")
-
-#Stations MFHT2
 dbLoadRecords("db/mfht-station.db","UNIT=MFHT02,FPORT=MFHT2-TS")
-
-#Asyn Debugging Records
 dbLoadRecords("db/asynRecord.db","P=RADM:SITE:MFHT02:,R=NASYN,PORT=MFHT2-TS,ADDR=0,IMAX=100,OMAX=100")
 
 # Configure autosave
@@ -53,5 +37,4 @@ iocInit()
 < $(TOP)/iocBoot/common/start_restore.cmd.soft
 
 # End of file
-
 

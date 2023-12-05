@@ -1,3 +1,10 @@
+
+file radm_info.template {
+    pattern
+    { P,               , LOC     ,TYPE}
+    { AMS:SITE:$(UNIT), "Site"   , 2  }
+}
+
 file ams-printer.template
 {
      pattern { P,                PORT     }
@@ -16,3 +23,4 @@ file ams_stat.template
              { $(UNIT)     }
 
 }
+
