@@ -7,6 +7,8 @@
 #
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
+R1.2.0  06-Dec-2023  Z. Huang (zyhuang):
+    Testfac: move this repo from radmon server to testfac-srv01, change sioc-site-rm* to sioc-site-pms*, modify st.cmd files
 
 R1.1.26  25-Aug-2023  M. Dunning (mdunning):
     ALL: bump asyn, stream, caputlog
