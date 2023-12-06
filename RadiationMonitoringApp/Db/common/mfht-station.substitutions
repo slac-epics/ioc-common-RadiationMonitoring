@@ -1,3 +1,11 @@
+
+file radm_info.template 
+{
+    pattern
+    { P,               , LOC     ,TYPE}
+    { RADM:SITE:$(UNIT), "Site"  , 5  }
+}
+
 file fht6020-system-status.template
 {
      pattern { P,                  PORT,      ADDRESS    }
@@ -17,9 +25,3 @@ file mfht_stat.template
               { $(UNIT) }
 }
 
-file radm_info.template 
-{
-    pattern
-    { P,               , LOC     ,TYPE}
-    { RADM:SITE:$(UNIT), "Site"  , 2  }
-}

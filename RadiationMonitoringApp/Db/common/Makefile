@@ -50,18 +50,11 @@ DB += decarad.db
 # For PM box.
 DB += peripheral-station.db
 
-DB += fht6020-channel-status.template
-DB += fht6020-system-status.template
-DB += pms_stat.template
 DB += pms-station.db
 DB += mfht-station.db
 DB += ams-station.db
 DB += mams-station.db
-#DB += gui.db
-
-DB_INSTALLS += $(ASYN)/db/asynRecord.db
-#----------------------------------------------------
-# If <anyname>.db template is not named <anyname>*.template add
-# <anyname>_TEMPLATE = <templatename>
+DB += radm_site_gui.db
 
 include $(TOP)/configure/RULES
+

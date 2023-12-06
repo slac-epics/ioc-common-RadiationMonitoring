@@ -1,8 +1,3 @@
-file ecogamma_site.template
-{
-     pattern {  UNIT   ,  PORT     }
-             {  $(UNIT),  $(GPORT) }
-}
 
 file radm_info.template {
     pattern
@@ -10,6 +5,11 @@ file radm_info.template {
     { RADM:SITE:$(UNIT), "Site"  , 3  }
 }
 
+file ecogamma_site.template
+{
+     pattern {  UNIT   ,  PORT     }
+             {  $(UNIT),  $(GPORT) }
+}
 
 file fht6020-system-status.template
 {
@@ -28,3 +28,4 @@ file pms_stat.template
       pattern { STATION }
               { $(UNIT) }
 } 
+
