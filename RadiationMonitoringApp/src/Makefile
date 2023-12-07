@@ -55,6 +55,7 @@ $(PROD_NAME)_DBD += history.dbd
 $(PROD_NAME)_DBD += caPutLog.dbd
 $(PROD_NAME)_DBD += iocAdmin.dbd
 $(PROD_NAME)_DBD += dbSubTime.dbd
+$(PROD_NAME)_DBD += time_diff.dbd
 
 # Add libraries
 $(PROD_NAME)_LIBS += devIocStats
@@ -68,6 +69,7 @@ $(PROD_NAME)_LIBS += caPutLog
 $(PROD_NAME)_SRCS += $(PROD_NAME)_registerRecordDeviceDriver.cpp
 $(PROD_NAME)_SRCS += drvFHT.cpp
 $(PROD_NAME)_SRCS += dbSubTime.c
+$(PROD_NAME)_SRCS += time_diff.c
 $(PROD_NAME)_SRCS_DEFAULT += $(PROD_NAME)Main.cpp
 
 $(PROD_NAME)_LIBS += $(EPICS_BASE_IOC_LIBS)
