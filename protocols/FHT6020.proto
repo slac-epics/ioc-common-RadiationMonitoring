@@ -1,0 +1,178 @@
+Terminator = ETX;
+ReplyTimeout = 5000;
+#############################################
+#
+# Generic Commands
+#
+#############################################
+
+# General format of commands:
+#  Each line begins with the BEL character (\a or \007)
+#  Each line ends with the ETX character (\003)
+#
+#  First two characters are device address (01-99)
+#
+#  Next two character are command name, followed by any arguments
+#
+#  Last two characters are a upper-case hex checksum of
+#  all precedings ASCII characters (including the BEL), mod 0x100
+#
+#  Ex: \00701RM239\003 is treated as <BEL>01RM239<ETX>
+#  and executes command RM with option 2, sent to device #01, checksum 0x39
+
+
+# Enter any command and store output
+genericCommand {
+  out "\a\$1%s%0<sum>";
+  in "\a\$1%#s";
+}
+
+#############################################
+#
+# Read Current Values Commands
+#
+#############################################
+
+# Command RD (read values, status) no response
+
+# Commands RM1-16 (read value, status)
+# $1: device address 01-99
+# $2: channel to read
+# $3: base PV name for system and LED statuses
+getValue {
+  out  "\a\$1RM\$2%0<sum>";
+  in "\a\$1RM %E %(\$3:STATUS)x %(\$3:LED)x %0<sum>";
+}
+
+# Command MR1-2 (read mean, status, time)
+# $1: device address 01-99
+# $2: 2=gamma,1=neutron
+# $3: base PV name for status and time
+getMean {
+  out "\a\$1MR\$2%0<sum>";
+  in "\a\$1MR %E %(\$3:STATUS)x %(\$3:TIME)E %0<sum>";
+}
+
+# Command ## (Read system status)
+# $1: device address 01-99
+getSystemStatus {
+  out "\a\$1\#\#%0<sum>";
+  in "\a\$1\#\#%x %0<sum>";
+}
+
+#############################################
+#
+# History Commands
+#
+#############################################
+
+# Commands HR and HW (get/set history channel info)
+#   0 = no history, 1 = ext. channel 1 only,
+#   2 = ext. channel 2 only, 3 = both channels
+# $1: device address 01-99
+getHistChannels {
+  out "\a\$1HR%0<sum>";
+  in "\a\$1HR %2d%0<sum>";
+}
+
+setHistChannels {
+  InTerminator = ACK;
+  out "\a\$1HW%d%0<sum>";
+  wait 1000;
+  in;
+}
+
+# Commands YR and YW (get/set history interval in seconds)
+# $1: device address 01-99
+getHistInterval {
+  out "\a\$1YR%0<sum>";
+  in "\a\$1YR%4x %0<sum>";
+}
+
+setHistInterval {
+  InTerminator = ACK;
+  out "\a\$1YW%d%0<sum>";
+  in;
+}
+
+# Command HM (read current history bin)
+# $1: device address 01-99
+# $2: base PV name
+getHist {
+  out "\a\$1HM%0<sum>";
+  in "\a\$1HM%d %(\$2:HIST_VALUE)E %(\$2:HIST_STATUS)x %*c %*d %*E %*x %*c %*d %*d %*d %*d %*d %*d %*d %0<sum>";
+}
+
+#############################################
+#
+# Configuration Commands
+#
+#############################################
+
+# Command cR (Read configuration)
+# $1: device address 01-99
+# $2: channel to read
+# $3: base PV name for statuses
+getConfig {
+  out "\a\$1cR\$2%0<sum>";
+  in "\a\$1cR %x %(\$3:STATUS2)x %(\$3:STATUS3)x %(\$3:STATUS4)x %0<sum>";
+}
+
+#############################################
+#
+# General Config Commands
+#
+#############################################
+
+# Command VR (Read firmware version)
+# $1: device address 01-99
+getVersion {
+  out "\a\$1VR%0<sum>";
+  in "\a\$1VR%6c%0<sum>";
+}
+
+# Command DP (Read device type)
+# $1: device address 01-99
+getDeviceType {
+  out "\a\$1DP%0<sum>";
+  in "\a\$1DP0:%7c%0<sum>";
+}
+
+# Command jR (Read units)
+# $1: device address 01-99
+# $2: value to read 1-20
+getUnits {
+  out "\a\$1jR\$2%0<sum>";
+  in "\a\$1jR%#s";
+}
+
+#############################################
+#
+# Initialize Dose Commands
+#
+#############################################
+
+#############################################
+#
+# Configure I/O, LEDs, Beeper
+#
+#############################################
+
+#############################################
+#
+# Configure Dose values/shift
+#
+#############################################
+
+#############################################
+#
+# Managing Alarm store
+#
+#############################################
+
+#############################################
+#
+# Calibration of External Probes
+#
+#############################################
+
