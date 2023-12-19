@@ -15,7 +15,7 @@
 # Set environment variables
 epicsEnvSet("ENGINEER",    "Z. Huang")
 epicsEnvSet("LOCATION",    "testfac-daemon1")
-epicsEnvSet("IOC_NAME",    "SIOC:SITE:PMS051")
+epicsEnvSet("IOC_NAME",    "SIOC:SITE:PMS05")
 
 # Load common piece of startup script
 < ../common/st.cmd.soft
