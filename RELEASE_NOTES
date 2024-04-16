@@ -7,6 +7,10 @@
 #
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
+
+R1.2.1  16-Apr-2024, G. Brown (gwbrown):
+    LCLS: Fix names for naming convention: BSOIC -> BSOC
+    
 R1.2.0  06-Dec-2023  Z. Huang (zyhuang):
     Testfac: move this repo from radmon server to testfac-srv01, change sioc-site-rm* to sioc-site-pms*, modify st.cmd files
 
