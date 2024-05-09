@@ -1,4 +1,4 @@
-#!../../bin/rhel6-x86_64/RadiationMonitoring
+#!../../bin/rhel7-x86_64/RadiationMonitoring
 #==============================================================
 #
 #  Abs:  Startup Script for Keithley RadFET device(s)

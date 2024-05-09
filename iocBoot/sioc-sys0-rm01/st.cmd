@@ -1,4 +1,4 @@
-#!../../bin/rhel6-x86_64/RadiationMonitoring
+#!../../bin/rhel7-x86_64/RadiationMonitoring
 
 # Set environment variables
 epicsEnvSet("ENGINEER", "J. Nelson")
