@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R2.0.1  24-Sep-2024, G. Brown (gwbrown):
+    LCLS: BSOBTH06, 07, 11 now connected to a working terminal server.
+
 R2.0.0  5-May-2024, J. Mock (jmock):
     ALL: Upgrade all IOCs to rhel7
 
