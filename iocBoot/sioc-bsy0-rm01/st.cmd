@@ -70,13 +70,13 @@ iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:3:COM:,TS=
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:04:COM:,TS=ts-b911-nw07,TSPORT=2006,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 #BSOC:LTU0:6:COM "BSOBTH06" "Middle B913"
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:6:COM:,TS=ts-b913-nw02,TSPORT=2011,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:6:COM:,TS=ts-b913--nw12,TSPORT=2001,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 #BSOC:LTU0:07:COM "BSOBTH07" "North BTHE Maze"
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:07:COM:,TS=ts-b913-nw02,TSPORT=2012,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:07:COM:,TS=ts-b913-nw12,TSPORT=2002,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 #BSOC:LTU0:11:COM "BSOBTH11" "B211 on fence"
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:11:COM:,TS=ts-b913-nw02,TSPORT=2013,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:11:COM:,TS=ts-b913-nw12,TSPORT=2003,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 #BSOC:UND0:02N "BSOUND02N"
 iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:UND0:02N:COM,TS=ts-b921-nw04,TSPORT=2004,LOC=Inside B921,DESC=BSOUND02n")

@@ -20,15 +20,19 @@ pattern
 
 file gamma6032.tpl-arch
 {
-pattern { dev          }
-        { BSOC:SPH:04:COM }
-        { BSOC:SPS:06:COM }
+pattern { dev              }
+        { BSOC:SPH:04:COM  }
+        { BSOC:SPS:06:COM  }
         { BSOC:BSY0:01:COM }
         { BSOC:BSY0:06:COM }
         { BSOC:LTU0:09:COM }
         { BSOC:LTU0:2:COM  }
         { BSOC:LTU0:3:COM  }
         { BSOC:LTU0:04:COM }
+        { BSOC:LTU0:6:COM  }
+        { BSOC:LTU0:07:COM }
+        { BSOC:LTU0:11:COM }
+        { BSOC:UND0:01:COM }
 
 }
 
