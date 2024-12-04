@@ -27,7 +27,7 @@
 "BSOBTH07"	"BSOC:LTU0:07:COM"	"ts-b913-nw02"	2012	"RSY on North side of BTHE maze"
 "BSOBTH11"	"BSOC:LTU0:11:COM"	"ts-b913-nw02"	2013	"RSY on South side of fence near B211"
 "BSOUND02n"	"BSOC:UND0:02n:COM"	"ts-b921-nw04"	2004	"B921 North side near penetration "
-"BSOUND01"	"BSOC:UND0:01:COM"	"ts-b921-nw04"	2005	"B921 South side near penetration "
+"BSOUND01"	"BSOC:UND0:01:COM"	"ts-b921-nw13"	2001	"B921 South side near penetration "
 "RDMLNW01"	"RADM:LI02:1"	"TS-LI02-NW02"	2001	"P02-05"
 "RDMLNW02"	"RADM:LI07:2"	"ts-li07-nw02"	2002	"P07-11"
 "RDMLNE01"	"RADM:LI29:01"	"ts-li29-nw06"	2009	"P28-11, LI29, in area of SXR/HXR kickers/septa"

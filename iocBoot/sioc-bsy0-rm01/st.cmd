@@ -82,7 +82,7 @@ iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:11:COM:,TS
 iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:UND0:02N:COM,TS=ts-b921-nw04,TSPORT=2004,LOC=Inside B921,DESC=BSOUND02n")
 
 #BSOC:UND0:01:COM "BSOUND01" "Inside B921"
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:UND0:01:COM:,TS=ts-b921-nw04,TSPORT=2005,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:UND0:01:COM:,TS=ts-b921-nw13,TSPORT=2001,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 
 # HX2 (RDMHX201) Inside HX-2 housing
