@@ -19,6 +19,7 @@ record(calcout, "$(BL)GAMMAACT") {
   field(EGU,  "mR/hr")
   field(PREC, "2")
   field(FLNK, "$(BL)GAMMAFANOUT")
+  info(autosaveFields, "HIHI HIGH LOW LOLO HHSV HSV LSV LLSV")
 }
 
 record(fanout, "$(BL)GAMMAFANOUT") {
