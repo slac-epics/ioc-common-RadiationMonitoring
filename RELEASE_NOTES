@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R2.0.2  3-Feb-2025, G. Brown (gwbrown):
+    LCLS: Add autosave to alarm limits and severities for gamma-6032. They will be used for ACR audible warnings.
+
 R2.0.1  24-Sep-2024, G. Brown (gwbrown):
     LCLS: BSOBTH06, 07, 11 now connected to a working terminal server.
 
@@ -16,7 +19,7 @@ R2.0.0  5-May-2024, J. Mock (jmock):
 
 R1.2.1  16-Apr-2024, G. Brown (gwbrown):
     LCLS: Fix names for naming convention: BSOIC -> BSOC
-    
+
 R1.2.0  06-Dec-2023  Z. Huang (zyhuang):
     Testfac: move this repo from radmon server to testfac-srv01, change sioc-site-rm* to sioc-site-pms*, modify st.cmd files
 
@@ -36,8 +39,8 @@ R1.1.23  20-Apr-2023, G. Brown (gwbrown):
 
 R1.1.22  07-Feb-2023, K. Luchini (luchini):
     COMMON: Remove variables from configure/CONFIG_SITE
-            that are not used, LINUXRT_BUILDROOT_VERSION 
-            and LINUX_KERNEL_MODULES 
+            that are not used, LINUXRT_BUILDROOT_VERSION
+            and LINUX_KERNEL_MODULES
 
 R1.1.21  20-Dec-2022, G. Brown (gwbrown):
     LCLS: Synchronize DESC field on main screen with the one set in config screen.
