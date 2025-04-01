@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R2.0.3  1-Apr-2025, G. Brown (gwbrown):
+    LCLS: New DOSFET at SXR undulators 22-23
+
 R2.0.2  3-Feb-2025, G. Brown (gwbrown):
     LCLS: Add autosave to alarm limits and severities for gamma-6032. They will be used for ACR audible warnings.
 
