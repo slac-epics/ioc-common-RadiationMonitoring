@@ -11,6 +11,9 @@ R2.0.4  18-Apr-2025, G. Brown (gwbrown):
     LCLS: Fix BSOBTH02/3 vs BSOBTH12/3 serial config mixup.
     CATERs 176426, 176428, 176485, 176486,176487
 
+R2.0.4  02-Apr-2025  M. Dunning (mdunning):
+    TestFac: Add new radmon (site monitoring) ioc sioc-site-mfht05 for new station
+
 R2.0.3  1-Apr-2025, G. Brown (gwbrown):
     LCLS: New DOSFET at SXR undulators 22-23
 
