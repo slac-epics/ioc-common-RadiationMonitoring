@@ -57,14 +57,14 @@ iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:BSY0:06:COM:,TS
 #BSOC:LTU0:09:COM "BSOBTH09" "RSY on South side of fence near B913"
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:09:COM:,TS=ts-b911-nw07,TSPORT=2002,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
-#BSOC:LTU0:2:COM "BSOBTH02" "North Headhouse"
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:2:COM:,TS=ts-b911-nw07,TSPORT=2003,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+#BSOC:LTU0:2:COM "BSOBTH12" "North Headhouse"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:12:COM:,TS=ts-b911-nw07,TSPORT=2003,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 #BSOC:LTU0:10N "BSOBTH10n"
 iocshLoad("$(TOP)/iocBoot/common/init_hpi_6012.iocsh", "P=BSOC:LTU0:10N:COM,TS=ts-b911-nw07,TSPORT=2004,LOC=North BTH Fence,DESC=BSOBTH10n")
 
-#BSOC:LTU0:3:COM "BSOBTH03" "South Headhouse"
-iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:3:COM:,TS=ts-b911-nw07,TSPORT=2005,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+#BSOC:LTU0:3:COM "BSOBTH13" "South Headhouse"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:13:COM:,TS=ts-b911-nw07,TSPORT=2005,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
 #BSOC:LTU0:04:COM "BSOBTH04" "Middle B911"
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:04:COM:,TS=ts-b911-nw07,TSPORT=2006,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")

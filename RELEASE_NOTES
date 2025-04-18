@@ -7,6 +7,9 @@
 #
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
+R2.0.4  18-Apr-2025, G. Brown (gwbrown):
+    LCLS: Fix BSOBTH02/3 vs BSOBTH12/3 serial config mixup.
+    CATERs 176426, 176428, 176485, 176486,176487
 
 R2.0.3  1-Apr-2025, G. Brown (gwbrown):
     LCLS: New DOSFET at SXR undulators 22-23
