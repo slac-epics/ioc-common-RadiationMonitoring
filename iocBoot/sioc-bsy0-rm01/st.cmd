@@ -69,6 +69,9 @@ iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:13:COM:,TS
 #BSOC:LTU0:04:COM "BSOBTH04" "Middle B911"
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:04:COM:,TS=ts-b911-nw07,TSPORT=2006,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
+#BSOC:BSY0:4:COM "BSOBSY04" "RS2 Roof"
+iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:BSY0:4:COM:,TS=ts-b911-nw07,TSPORT=2007,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
+
 #BSOC:LTU0:6:COM "BSOBTH06" "Middle B913"
 iocshLoad("$(TOP)/iocBoot/common/init_gamma_6032.iocsh", "P=BSOC:LTU0:6:COM:,TS=ts-b913-nw12,TSPORT=2001,SYS=BSOIC:BSY0:ALL,IOC=${IOC}")
 
