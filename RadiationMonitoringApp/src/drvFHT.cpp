@@ -750,7 +750,7 @@ asynStatus drvFHT::_readCal(const char *cmd, int addr) {
         if (forceCallback_) setDoubleParam(addr, dynRange40G, dr);
         pch = strtok(NULL, " ");
         if (pch) st = strtod(pch, NULL);
-        if (forceCallback_) setDoubleParam(addr, swThresh40G, dt);
+        if (forceCallback_) setDoubleParam(addr, swThresh40G, st);
         pch = strtok(NULL, " ");
         if (pch) strcpy(date, pch);
         if (forceCallback_) setStringParam(addr, calDate40G, date);
