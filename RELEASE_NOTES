@@ -8,6 +8,11 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R2.0.7  25-Jun-2025  M. Dunning (mdunning)
+    All: Bump modules to support rhel9 build
+         Add tirpc lib, needed for rhel9
+         Minor fixes to FHT driver
+
 R2.0.6  12-May-2025, G. Brown (gwbrown):
     LCLS: CATER 176297, add BSOBSY04
 
