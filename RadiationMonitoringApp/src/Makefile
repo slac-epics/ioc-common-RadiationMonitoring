@@ -29,12 +29,16 @@ USR_INCLUDES += -I$(PCRE_INCLUDE)
 # PATH TO "NON EPICS" EXTERNAL PACKAGES: USER LIBRARIES
 # ======================================================
 pcre_DIR = $(PCRE_LIB)
+tirpc_DIR = $(TIRPC_LIB)
 # ======================================================
 
 # ======================================================
 # LINK "NON EPICS" EXTERNAL PACKAGE LIBRARIES STATICALLY
 # =======================================================
 USR_LIBS_Linux += pcre
+ifeq ($(NEEDS_TIRPC),YES)
+USR_LIBS_Linux += tirpc
+endif
 # =======================================================
 
 # Build the ioc application
