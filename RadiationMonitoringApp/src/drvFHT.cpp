@@ -783,7 +783,7 @@ asynStatus drvFHT::_write(const char *buffer) {
     size_t nbytesTransfered;
     unsigned char checksum;
     char tmpStr[128];
-    char cmdBuffer[128];
+    char cmdBuffer[256];
 
     /* Construct command string with start character, address, command, checksum, 
         and terminator */
@@ -833,7 +833,7 @@ asynStatus drvFHT::_writeRead(const char *buffer) {
     int eomReason;
     unsigned char checksum;
     char tmpStr[128];
-    char cmdBuffer[128];
+    char cmdBuffer[256];
 
     /* Construct command string with start character, address, command, checksum, 
         and terminator */
