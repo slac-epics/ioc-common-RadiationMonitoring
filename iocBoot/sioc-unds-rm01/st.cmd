@@ -54,10 +54,14 @@ asynSetTraceIOMask( "$(DEV1)", 0, 0x2)
 dbLoadRecords("db/sioc-unds-rm01.db","PORT=$(DEV1)" )
 dbLoadRecords("db/asynRecord.db","P=RADM:UNDS:RM01,R=:ASYN,PORT=$(DEV1),ADDR=0,OMAX=0,IMAX=108")
 
-# One DOSFET box on the SXR side
+# DOSFET boxes on the SXR side
 epicsEnvSet("DEV",  "RADM:UNDS:RM03" )
 epicsEnvSet("NODE", "radm-unds-rm03" )
 epicsEnvSet("LOC", "SXU22" )
+< iocBoot/common/init_dosfet.cmd
+epicsEnvSet("DEV",  "RADM:UNDS:RM04" )
+epicsEnvSet("NODE", "radm-unds-rm04" )
+epicsEnvSet("LOC", "SXU18" )
 < iocBoot/common/init_dosfet.cmd
 
 # Configure autosave

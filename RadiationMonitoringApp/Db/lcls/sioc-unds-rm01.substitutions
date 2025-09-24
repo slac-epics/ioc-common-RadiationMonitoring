@@ -194,8 +194,12 @@ pattern {   P            }
 file dosfetChannelWrapper.db
 {
 pattern { P,              SENSOR, USER_P          }
-        { RADM:UNDS:RM03, A,      RADM:UNDH:2177: }
-        { RADM:UNDS:RM03, B,      RADM:UNDH:2277: }
-        { RADM:UNDS:RM03, C,      RADM:UNDH:2377: }
-        { RADM:UNDS:RM03, D,      RADM:UNDH:2477: }
+        { RADM:UNDS:RM03, A,      RADM:UNDS:2177: }
+        { RADM:UNDS:RM03, B,      RADM:UNDS:2277: }
+        { RADM:UNDS:RM03, C,      RADM:UNDS:2377: }
+        { RADM:UNDS:RM03, D,      RADM:UNDS:2477: }
+        { RADM:UNDS:RM04, A,      RADM:UNDS:1777: }
+        { RADM:UNDS:RM04, B,      RADM:UNDS:1877: }
+        { RADM:UNDS:RM04, C,      RADM:UNDS:1977: }
+        { RADM:UNDS:RM04, D,      RADM:UNDS:2077: }
 }
