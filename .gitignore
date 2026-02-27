@@ -11,6 +11,7 @@ envPaths
 *~
 pvlist.txt
 *.swp
+*.swo
 RELEASE_SITE
 archive
 
