@@ -1,0 +1,193 @@
+# LB 115 Tranfer Pattern:
+# TDV FDV PRC MBR TYP ITM (MSK Data) *CSM*CR
+# where:
+#   * TDV --> logical address of data logger (0001-9999)
+#   * FDV --> logical address of host computer (9001-9008)
+#   * PRC --> process (00-03)
+#   * MBR --> member (00-08)
+#   * TYP --> type (00-03)
+#   * ITM --> item (00-30)
+#   * MSK --> mask on data (000000-FFFFFF) (not used)
+#   * Data --> data (variable length)
+#   * CSM --> checksum (empty if no checksum)
+#   * CR --> carriage return
+
+# Notes:
+# 1) The asterisks "*" must always be included, even if CSM is empty
+# 2) The LB 115 send the frame header with inverted TDV, FDV
+# 3) The LB 115 does not respond to requests if:
+#    - TDV does not match ID number
+#    - FDV is not between 9001 and 9008
+#    - The transfer pattern is not correct
+#    - The checksum is not correct
+
+
+Terminator = CR;
+ExtraInput = Ignore;
+ReplyTimeout = 2000;
+TDV = 0001;
+FDV = 9001
+
+getCurrentFifoDet1Alpha { PRC = 01;
+                          MBR = 01;
+                          TYP = 01;
+                          ITM = 00;
+                          out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                        }
+getOldestFifoDet1Alpha { PRC = 01;
+                         MBR = 01;
+                         TYP = 01;
+                         ITM = 01;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                       }
+getMeasStatusDet1Alpha { PRC = 01;
+                         MBR = 01;
+                         TYP = 01;
+                         ITM = 07;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                       }
+getCurrentMeasuredDet1Alpha { PRC = 01;
+                              MBR = 01;
+                              TYP = 01;
+                              ITM = 09;
+                              out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                            }
+getCurrentFifoDet1Beta { PRC = 01;
+                         MBR = 02;
+                         TYP = 01;
+                         ITM = 00;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**i;
+                       }
+getOldestFifoDet1Beta { PRC = 01;
+                        MBR = 02;
+                        TYP = 01;
+                        ITM = 01;
+                        out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                      }
+getMeasStatusDet1Beta { PRC = 01;
+                        MBR = 02;
+                        TYP = 01;
+                        ITM = 07;
+                        out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                      }
+getCurrentMeasuredDet1Beta { PRC = 01;
+                             MBR = 02;
+                             TYP = 01;
+                             ITM = 09;
+                             out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                           }
+getCurrentFifoDet2Alpha { PRC = 01;
+                          MBR = 03;
+                          TYP = 01;
+                          ITM = 00;
+                          out *$TDV$FDV$PRC$MBR$TYP$ITM**i;
+                        }
+getOldestFifoDet2Alpha { PRC = 01;
+                         MBR = 03;
+                         TYP = 01;
+                         ITM = 01;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                       }
+getMeasStatusDet2Alpha { PRC = 01;
+                         MBR = 03;
+                         TYP = 01;
+                         ITM = 07;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                       }
+getCurrentMeasuredDet2Alpha { PRC = 01;
+                              MBR = 03;
+                              TYP = 01;
+                              ITM = 09;
+                              out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                            }
+getCurrentFifoDet2Beta { PRC = 01;
+                         MBR = 04;
+                         TYP = 01;
+                         ITM = 00;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**i;
+                       }
+getOldestFifoDet2Beta { PRC = 01;
+                        MBR = 04;
+                        TYP = 01;
+                        ITM = 01;
+                        out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                      }
+getMeasStatusDet2Beta {  PRC = 01;
+                         MBR = 04;
+                         TYP = 01;
+                         ITM = 07;
+                         out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                       }
+getCurrentMeasuredDet2Beta {  PRC = 01;
+                              MBR = 04;
+                              TYP = 01;
+                              ITM = 09;
+                              out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                            }
+getProgramVersion {  PRC = 03;
+                     MBR = 01;
+                     TYP = 01;
+                     ITM = 00;
+                     out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                  }
+getKernelVersion {  PRC = 03;
+                    MBR = 01;
+                    TYP = 01;
+                    ITM = 01;
+                    out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                 }
+getMacAddress {  PRC = 03;
+                 MBR = 01;
+                 TYP = 01;
+                 ITM = 02;
+                 out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+              }
+getIpAddress {  PRC = 03;
+                MBR = 01;
+                TYP = 01;
+                ITM = 03;
+                out "*$TDV$FDV$PRC$MBR$TYP$ITM**";
+                in "*%*[^ ]%*[^ ]%*[^ ]%*[^ ]%*[^ ]%*[^ ]%f*";
+             }
+getSerialNumber {  PRC = 03;
+                   MBR = 01;
+                   TYP = 01;
+                   ITM = 04;
+                   out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                }
+getDhcpStatus {  PRC = 03;
+                 MBR = 01;
+                 TYP = 01;
+                 ITM = 05;
+                 out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+              }
+getPortNumber {  PRC = 03;
+                 MBR = 01;
+                 TYP = 01;
+                 ITM = 06;
+                 out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+              }
+getSubnetMask {  PRC = 03;
+                 MBR = 01;
+                 TYP = 01;
+                 ITM = 07;
+                 out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+              }
+getDefaultGateway {  PRC = 03;
+                     MBR = 01;
+                     TYP = 01;
+                     ITM = 08;
+                     out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                   }
+getDeviceStatus {  PRC = 03;
+                   MBR = 01;
+                   TYP = 01;
+                   ITM = 09;
+                   out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+                 }
+getDeviceName {  PRC = 03;
+                 MBR = 01;
+                 TYP = 01;
+                 ITM = 10;
+                 out *$TDV$FDV$PRC$MBR$TYP$ITM**;
+               }
