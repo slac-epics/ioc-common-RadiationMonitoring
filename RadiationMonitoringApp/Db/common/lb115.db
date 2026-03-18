@@ -1,0 +1,31 @@
+#record(ai, "$(PREFIX):BUFFERCH$(CHAN)"){
+#    field(DESC, "Read latest buffer measurement")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getCurrentFifoDet1Alpha() $(PORT)")
+#    field(SCAN, "1 second")
+#}
+#record(ai, "$(PREFIX):BUFFEROLDCH$(CHAN)"){
+#    field(DESC, "Read oldest buffer measurement")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getOldestFifoDet1Alpha() $(PORT)")
+#    field(SCAN, "1 second")
+#}
+#record(ai, "$(PREFIX):STATUSCH$(CHAN)"){
+#    field(DESC, "Read measurement status")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getMeasStatusDet1Alpha() $(PORT)")
+#    field(SCAN, "1 second")
+#}
+#record(ai, "$(PREFIX):CURRMEASCH$(CHAN)"){
+#    field(DESC, "Read current measurement")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getCurrentMeasuredDet1Alpha() $(PORT)")
+#    field(SCAN, "1 second")
+#}
+
+record(ai, "$(PREFIX):IP"){
+    field(DESC, "IP Address")
+    field(DTYP, "stream")
+    field(INP,  "@lb115.proto getIpAddress LB115_PORT")
+    field(SCAN, "1 second")
+}
