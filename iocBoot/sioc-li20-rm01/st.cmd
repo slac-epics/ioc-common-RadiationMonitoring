@@ -24,7 +24,7 @@ epicsEnvSet("IOC_NAME", "SIOC:LI20:RM01")
 epicsEnvSet("FHT1_P",      "RADM:LI20:1")
 epicsEnvSet("FHT1_LOC",    "FACET_LI20_1")
 epicsEnvSet("FHT1_TS",     "ts-li20-nw03")
-epicsEnvSet("FHT1_TSPORT", "2109")
+epicsEnvSet("FHT1_TSPORT", "2104")
 epicsEnvSet("FHT1_PORT",   "FHT1")
 #
 epicsEnvSet("FHT2_P",      "RADM:LI20:2")
