@@ -1,17 +1,22 @@
-
 # Eco sensors OS-6 Protocol
-
-InTerminator = " \r \n";
+#
+# Different HW versions may have slight differences in response format.
+# Earlier versions seem to have this format:
+# 0, 23, 35 \r \n
+# Later versions seem to have this format:
+# 0, 2302, 3514\r\n
+#
+# Below should work for either.
 
 Read_ozone {
-    in "\_%f\_,\_%*f\_,\_%*f";
+    in "\_%f\_,\_%*f\_,\_%*f\_\r\_\n";
 }
 
 Read_temp {
-    in "\_%*f\_,\_%f\_,\_%*f";
+    in "\_%*f\_,\_%f\_,\_%*f\_\r\_\n";
 }
 
 Read_humidity {
-    in "\_%*f\_,\_%*f\_,\_%f";
+    in "\_%*f\_,\_%*f\_,\_%f\_\r\_\n";
 }
 

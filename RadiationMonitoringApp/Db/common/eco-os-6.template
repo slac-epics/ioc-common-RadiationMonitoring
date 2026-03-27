@@ -1,37 +1,30 @@
-record (ai, "$(P):OZONE")
-{
-  field (DESC, "Ozone reading")
-  field (PINI, "YES")
-  field (EGU, "ppb")
-  field (DTYP, "stream")
-  field (INP, "@Eco_OS-6.proto Read_ozone $(PORT)")
-  field (SCAN, "I/O Intr")
+
+record (ai, "$(P):OZONE") {
+    field(DESC, "Ozone")
+    field(DTYP, "stream")
+    field(INP,  "@Eco_OS-6.proto Read_ozone $(PORT)")
+    field(EGU,  "ppb")
+    field(PREC, "0")
+    field(SCAN, "I/O Intr")
 }
-record (ai, "$(P):TEMP")
-{
-  field (DESC, "Temperature reading")
-  field (PINI, "YES")
-  field (EGU, "C")
-  field (DTYP, "stream")
-  field (INP, "@Eco_OS-6.proto Read_temp $(PORT)")
-  field (SCAN, "I/O Intr")
+
+record (ai, "$(P):TEMP") {
+    field(DESC, "Temperature")
+    field(DTYP, "stream")
+    field(INP,  "@Eco_OS-6.proto Read_temp $(PORT)")
+    field(ASLO, "0.01")
+    field(EGU,  "C")
+    field(PREC, "1")
+    field(SCAN, "I/O Intr")
 }
-record (ai, "$(P):HUMIDITY")
-{
-  field (DESC, "Humidity reading")
-  field (PINI, "YES")
-  field (EGU, "%")
-  field (DTYP, "stream")
-  field (INP, "@Eco_OS-6.proto Read_humidity $(PORT)")
-  field (SCAN, "I/O Intr")
+
+record (ai, "$(P):HUMIDITY") {
+    field(DESC, "Humidity")
+    field(DTYP, "stream")
+    field(INP,  "@Eco_OS-6.proto Read_humidity $(PORT)")
+    field(ASLO, "0.01")
+    field(EGU,  "%")
+    field(PREC, "1")
+    field(SCAN, "I/O Intr")
 }
-#record (waveform, "$(P):ARRAY")
-#{
-#  field (DESC, "Ozone reading")
-#  field (PINI, "YES")
-#  field (NELM, 3)
-#  field (FTVL, "FLOAT")
-#  field (DTYP, "stream")
-#  field (INP, "@Eco_OS-6.proto Read_array $(PORT)")
-#  field (SCAN, "I/O Intr")
-#}
+

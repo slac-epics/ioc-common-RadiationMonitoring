@@ -5,20 +5,17 @@ file radm_info.template {
     { AMS:SITE:$(UNIT), "Site"   , 2  }
 }
 
-file ams-printer.template
-{
+file ams-printer.template {
      pattern { P,                PORT     }
              { AMS:SITE:$(UNIT), $(APORT) }
 }
 
-file eco-os-6.template
-{
+file eco-os-6.template {
      pattern { P,                PORT}
              { AMS:SITE:$(UNIT), $(EPORT) }
 }
 
-file ams_stat.template
-{
+file ams_stat.template {
      pattern { STATION     }
              { $(UNIT)     }
 
