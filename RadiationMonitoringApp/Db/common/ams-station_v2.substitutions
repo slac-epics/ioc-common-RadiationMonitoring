@@ -10,7 +10,7 @@ file ams-printer.template {
              { AMS:SITE:$(UNIT), $(APORT) }
 }
 
-file eco-os-6.template {
+file eco-os-6_v2.template {
      pattern { P,                PORT}
              { AMS:SITE:$(UNIT), $(EPORT) }
 }

@@ -20,14 +20,8 @@ epicsEnvSet("IOC_NAME",    "SIOC:SITE:AMS03")
 # Load common piece of startup script
 < ../common/st.cmd.soft
 
-## Set up asyn connections
-drvAsynIPPortConfigure("AMS3-TS-AMS4","wb-site-ams03:5000")
-drvAsynIPPortConfigure("AMS3-TS-ECO","wb-site-ams03:5001")
-
-## Load record instances
-dbLoadRecords("db/ams-station.db","UNIT=03,APORT=AMS3-TS-AMS4,EPORT=AMS3-TS-ECO")
-dbLoadRecords("db/asynRecord.db","P=AMS:SITE:03:,R=AASYN,PORT=AMS3-TS-AMS4,ADDR=0,IMAX=100,OMAX=100")
-dbLoadRecords("db/asynRecord.db","P=AMS:SITE:03:,R=EASYN,PORT=AMS3-TS-ECO,ADDR=0,IMAX=100,OMAX=100")
+# AMS Station
+iocshLoad("$(TOP)/iocBoot/common/init_eco_os6_v2.iocsh", "UNIT=03")
 
 # Configure autosave
 < $(TOP)/iocBoot/common/init_restore.cmd.soft

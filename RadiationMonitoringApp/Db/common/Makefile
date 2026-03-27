@@ -38,7 +38,6 @@ DB += ecogamma.template
 DB += ecogamma_site.template
 DB += radm_info.template
 DB += ams-printer.template
-DB += eco-os-6.template
 DB += agilent_3458a.db
 DB += agilent_34970a.db
 DB += hpi_6012.template
@@ -52,7 +51,8 @@ DB += peripheral-station.db
 
 DB += pms-station.db
 DB += mfht-station.db
-DB += ams-station.db
+DB += ams-station_v1.db
+DB += ams-station_v2.db
 DB += mams-station.db
 DB += radm_site_gui.db
 

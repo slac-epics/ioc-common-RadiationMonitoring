@@ -2,7 +2,7 @@
 record (ai, "$(P):OZONE") {
     field(DESC, "Ozone")
     field(DTYP, "stream")
-    field(INP,  "@Eco_OS-6.proto Read_ozone $(PORT)")
+    field(INP,  "@Eco_OS-6_v2.proto Read_ozone $(PORT)")
     field(EGU,  "ppb")
     field(PREC, "0")
     field(SCAN, "I/O Intr")
@@ -11,7 +11,7 @@ record (ai, "$(P):OZONE") {
 record (ai, "$(P):TEMP") {
     field(DESC, "Temperature")
     field(DTYP, "stream")
-    field(INP,  "@Eco_OS-6.proto Read_temp $(PORT)")
+    field(INP,  "@Eco_OS-6_v2.proto Read_temp $(PORT)")
     field(ASLO, "0.01")
     field(EGU,  "C")
     field(PREC, "1")
@@ -21,7 +21,7 @@ record (ai, "$(P):TEMP") {
 record (ai, "$(P):HUMIDITY") {
     field(DESC, "Humidity")
     field(DTYP, "stream")
-    field(INP,  "@Eco_OS-6.proto Read_humidity $(PORT)")
+    field(INP,  "@Eco_OS-6_v2.proto Read_humidity $(PORT)")
     field(ASLO, "0.01")
     field(EGU,  "%")
     field(PREC, "1")

@@ -36,7 +36,7 @@ drvAsynIPPortConfigure("TS-B024","ts-b024-pp01:2001")
 #dbLoadRecords("db/ams-printer.template","P=RADM:AMS:B24,PORT=TS-B024")
 #dbLoadRecords("db/asynRecord.db","P=RADM:AMS:B24:,R=ASYN,PORT=TS-B024,ADDR=1,IMAX=100,OMAX=100")
 
-dbLoadRecords("db/eco-os-6.template","P=RADM:AMS:B24,PORT=TS-B024")
+dbLoadRecords("db/eco-os-6_v1.template","P=RADM:AMS:B24,PORT=TS-B024")
 dbLoadRecords("db/asynRecord.db","P=RADM:AMS:B24:,R=ASYN,PORT=TS-B024,ADDR=1,IMAX=100,OMAX=100")
 
 # start EPICS

@@ -9,7 +9,8 @@
 #==============================================================
 
 R2.0.12  27-Mar-2026  M. Dunning (mdunning)
-    Radmon: Fix proto for new version of ozone sensor
+    Radmon: Add support for new ozone sensor
+    Radmon: Use iocsh script in ams iocs
 
 R2.0.11  10-Mar-2026  M. Dunning (mdunning)
     Radmon: rhel7 -> rhel9

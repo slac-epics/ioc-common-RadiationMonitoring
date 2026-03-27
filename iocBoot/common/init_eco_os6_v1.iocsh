@@ -1,0 +1,25 @@
+#==============================================================
+#  Abs:  EPICS startup script for Eco OS-6 ozone sensor
+#
+#  Name: init_eco_os6_v1.iocsh
+#
+#  Facility: Radiation Monitoring Controls
+#  Macros:
+#    UNIT - Station number, e.g. 01, 02, ...
+#
+#  This file should be executed from the ioc shell like so:
+#   iocshLoad(filename, macros)
+#   For example:
+#   iocshLoad("$(TOP)/iocBoot/common/init_eco_os6_v1.iocsh", "UNIT=01")
+#
+#  Auth:  27-Mar-2026, M. Dunning (mdunning)
+#==============================================================
+
+drvAsynIPPortConfigure("BETA1","wb-site-ams$(UNIT):$(TCPPORT1=5000)")
+drvAsynIPPortConfigure("OZONE1","wb-site-ams$(UNIT):$(TCPPORT2=5001)")
+
+# Load record instances
+dbLoadRecords("db/ams-station_v1.db", "UNIT=$(UNIT),APORT=BETA1,EPORT=OZONE1")
+dbLoadRecords("db/asynRecord.db","P=AMS:SITE:$(UNIT):,R=AASYN,PORT=BETA1,ADDR=0,IMAX=100,OMAX=100")
+dbLoadRecords("db/asynRecord.db","P=AMS:SITE:$(UNIT):,R=EASYN,PORT=OZONE1,ADDR=0,IMAX=100,OMAX=100")
+

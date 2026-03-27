@@ -1,0 +1,23 @@
+
+file radm_info.template {
+    pattern
+    { P,               , LOC     ,TYPE}
+    { AMS:SITE:$(UNIT), "Site"   , 2  }
+}
+
+file ams-printer.template {
+     pattern { P,                PORT     }
+             { AMS:SITE:$(UNIT), $(APORT) }
+}
+
+file eco-os-6_v1.template {
+     pattern { P,                PORT}
+             { AMS:SITE:$(UNIT), $(EPORT) }
+}
+
+file ams_stat.template {
+     pattern { STATION     }
+             { $(UNIT)     }
+
+}
+

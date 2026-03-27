@@ -1,0 +1,17 @@
+# Eco sensors OS-6 Protocol
+# New response format (circa 2026)
+
+InTerminator = "\r\n";
+
+Read_ozone {
+    in "\_%f\_,\_%*f\_,\_%*f";
+}
+
+Read_temp {
+    in "\_%*f\_,\_%f\_,\_%*f";
+}
+
+Read_humidity {
+    in "\_%*f\_,\_%*f\_,\_%f";
+}
+
