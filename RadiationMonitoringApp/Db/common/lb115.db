@@ -1,31 +1,76 @@
-#record(ai, "$(PREFIX):BUFFERCH$(CHAN)"){
-#    field(DESC, "Read latest buffer measurement")
+#record(stringin, "$(PREFIX):PROGRAMVERSION"){
+#    field(DESC, "Program Version")
 #    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getCurrentFifoDet1Alpha() $(PORT)")
-#    field(SCAN, "1 second")
+#    field(INP,  "@lb115.proto getProgramVersion $(PORT)")
+#    field(SCAN, "5 second")
 #}
-#record(ai, "$(PREFIX):BUFFEROLDCH$(CHAN)"){
-#    field(DESC, "Read oldest buffer measurement")
+#
+#record(stringin, "$(PREFIX):KERNELVERSION"){
+#    field(DESC, "Kernel Version")
 #    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getOldestFifoDet1Alpha() $(PORT)")
-#    field(SCAN, "1 second")
+#    field(INP,  "@lb115.proto getKernelVersion $(PORT)")
+#    field(SCAN, "5 second")
 #}
-#record(ai, "$(PREFIX):STATUSCH$(CHAN)"){
-#    field(DESC, "Read measurement status")
+#
+#record(stringin, "$(PREFIX):MACADDR"){
+#    field(DESC, "MAC Address")
 #    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getMeasStatusDet1Alpha() $(PORT)")
-#    field(SCAN, "1 second")
+#    field(INP,  "@lb115.proto getMacAddress $(PORT)")
+#    field(SCAN, "5 second")
 #}
-#record(ai, "$(PREFIX):CURRMEASCH$(CHAN)"){
-#    field(DESC, "Read current measurement")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getCurrentMeasuredDet1Alpha() $(PORT)")
-#    field(SCAN, "1 second")
-#}
-
-record(ai, "$(PREFIX):IP"){
-    field(DESC, "IP Address")
+#
+record(stringin, "$(PREFIX):IP"){
+    field(DESC, "Port Number")
     field(DTYP, "stream")
-    field(INP,  "@lb115.proto getIpAddress LB115_PORT")
-    field(SCAN, "1 second")
+    field(INP,  "@test.proto getIpAddress $(PORT)")
+    field(SCAN, "5 second")
 }
+#
+#record(stringin, "$(PREFIX):SERIAL"){
+#    field(DESC, "Serial Number")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getSerialNumber $(PORT)")
+#    field(SCAN, "5 second")
+#}
+#
+#record(stringin, "$(PREFIX):DHCPSTATUS"){
+#    field(DESC, "DHCP Enable/Disable")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getDhcpStatus $(PORT)")
+#    field(SCAN, "5 second")
+#}
+#
+record(ai, "$(PREFIX):PORT"){
+    field(DESC, "Port Number")
+    field(DTYP, "stream")
+    field(INP,  "@test.proto getPortNumber $(PORT)")
+    field(SCAN, "5 second")
+}
+#
+#record(stringin, "$(PREFIX):SUBNET"){
+#    field(DESC, "Subnet Mask")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getSubnetMask $(PORT)")
+#    field(SCAN, "5 second")
+#}
+#
+#record(stringin, "$(PREFIX):DEFAULTGATEWAY"){
+#    field(DESC, "Default Gateway")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getDefaultGateway $(PORT)")
+#    field(SCAN, "5 second")
+#}
+#
+#record(stringin, "$(PREFIX):STATUS"){
+#    field(DESC, "Device Status")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getDeviceStatus $(PORT)")
+#    field(SCAN, "5 second")
+#}
+#
+#record(stringin, "$(PREFIX):DEVNAME"){
+#    field(DESC, "Device Name")
+#    field(DTYP, "stream")
+#    field(INP,  "@lb115.proto getDeviceName $(PORT)")
+#    field(SCAN, "5 second")
+#}
