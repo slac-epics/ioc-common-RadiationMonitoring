@@ -68,7 +68,7 @@ void LB115Driver::getData() {
     size_t nBytesOut, nBytesIn;
     int eomReason;
     const char* buffer = "*0001900101010109**";
-    test = pasynOctetSyncIO->writeRead(pasynUser, buffer, strlen(buffer), cmdBuffer, 256, TIMEOUT, &nBytesOut, &nBytesIn, &eomReason);
+    test = pasynOctetSyncIO->writeRead(pasynUser, buffer, strlen(buffer), cmdBuffer, MAX_MSG, TIMEOUT, &nBytesOut, &nBytesIn, &eomReason);
 
     printf("\n\nBytes out %ld, bytes in %ld", nBytesOut, nBytesIn);
     printf("\n\neomReason %d", eomReason);
@@ -85,41 +85,39 @@ extern "C" {
         LB115Driver::getInstance(portName, ipPort);
         return 0;
     }
-    static const iocshArg LB115ConfigureArg0 = {"portName", iocshArgString};
-    static const iocshArg LB115ConfigureArg1 = {"ipPort", iocshArgString};
-    static const iocshArg * const LB115ConfigureArgs[] = {&LB115ConfigureArg0, &LB115ConfigureArg1};
-    static const iocshFuncDef LB115Configure_FuncDef = {"LB115Configure", 2, LB115ConfigureArgs};
+    static const iocshArg arg0 = {"portName", iocshArgString};
+    static const iocshArg arg1 = {"ipPort", iocshArgString};
+    static const iocshArg * args[] = {&arg0, &arg1};
+    static const iocshFuncDef funcDef = {"LB115Configure", 2, args};
 
-    static void LB115Configure_CallFunc(const iocshArgBuf *args){
+    static void funcCall(const iocshArgBuf *args) {
         LB115Configure(args[0].sval, args[1].sval);
     }
 
     void LB115ConfigureRegister(void) {
-        iocshRegister(&LB115Configure_FuncDef, LB115Configure_CallFunc);
+        iocshRegister(&funcDef, funcCall);
     }
 
     epicsExportRegistrar(LB115ConfigureRegister);
 }
 
-/*
 int LB115GetData() {
     printf("Trying to get data from the LB115 Driver");
     LB115Driver::getInstance().getData();
 }
 
 // Initializing ioc shell command arguments
-static const iocshFuncDef LB115GetData_FuncDef = {"LB115GetData", 0, NULL};
+static const iocshFuncDef getData_funcDef = {"LB115GetData", 0, NULL};
 
 // Initializing ioc shell command function
-static void LB115GetData_CallFunc(const iocshArgBuf *args) {
+static void getData_funcCall(const iocshArgBuf *args) {
     LB115GetData();
 }
 
 void LB115GetDataRegister(void) {
-    iocshRegister(&LB115GetData_FuncDef, LB115GetData_CallFunc);
+    iocshRegister(&getData_funcDef, getData_funcCall);
 }
 
 extern "C" {
     epicsExportRegistrar(LB115GetDataRegister);
 }
-*/

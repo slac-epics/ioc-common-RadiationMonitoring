@@ -1,3 +1,4 @@
 registrar(LB115ConfigureRegister)
+registrar(LB115GetDataRegister)
 
 

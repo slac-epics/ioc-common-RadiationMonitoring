@@ -18,7 +18,7 @@
 #include <asynOctetSyncIO.h>
 
 #define MAX_MSG 1024
-#define TIMEOUT 3.0
+#define TIMEOUT 1.0
 
 class LB115Driver : public asynPortDriver {
     public:
