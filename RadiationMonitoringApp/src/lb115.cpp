@@ -1,6 +1,7 @@
 #include "lb115.h"
 
 static std::mutex mtx;
+LB115Driver* LB115Driver::_instance = nullptr;
 
 LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
     asynPortDriver(portName,
@@ -14,6 +15,7 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
                    0) 
 {
     
+    pasynUser = nullptr;
     asynStatus driverStatus = pasynOctetSyncIO->connect(ipPort, 0, &pasynUser, NULL);
     pasynOctetSyncIO->setInputEos(pasynUser, "\r\n", 2);
     pasynOctetSyncIO->setOutputEos(pasynUser, "\r\n", 2);
@@ -44,7 +46,7 @@ LB115Driver& LB115Driver::getInstance(const char* portName,
 
 LB115Driver& LB115Driver::getInstance() {
     if (!_instance) {
-        printf("LB115Driver not initialized");
+        throw std::runtime_error("LB115Driver not initialized.");
     }
     return *_instance;
 }
@@ -79,13 +81,9 @@ void LB115Driver::getData() {
 
 extern "C" {
     int LB115Configure(const char* portName, const char* ipPort) {
-        printf("Trying to connect to LB115 Device.");
-        try{
-            LB115Driver::getInstance(portName, ipPort);
-        }
-        catch(...) {
-            printf("Failed to configure LB115Driver.");
-        }
+        printf("Trying to connect to LB115 Device.\n");
+        LB115Driver::getInstance(portName, ipPort);
+        return 0;
     }
     static const iocshArg LB115ConfigureArg0 = {"portName", iocshArgString};
     static const iocshArg LB115ConfigureArg1 = {"ipPort", iocshArgString};
