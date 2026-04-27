@@ -6,36 +6,85 @@ LB115Driver* LB115Driver::_instance = nullptr;
 LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
     asynPortDriver(portName,
                    1,
-                   10,
+                   6,
                    asynFloat64Mask | asynInt32Mask | asynOctetMask,
                    asynFloat64Mask | asynInt32Mask | asynOctetMask,
                    0,
                    1,
                    0,
-                   0) 
+                   0), 
+    _ipPort(ipPort)
 {
     
+    // Initializing Asyn Parameters:
+    // TODO: Move to channel specific parameter initializer
+    createParam("READ_INDEX",       asynOctet, &P_read_index);
+    createParam("DETECTOR_NAME",    asynOctet, &P_detector_name);
+    createParam("DETECTOR_TAG",     asynOctet, &P_detector_tag);
+    createParam("MEAS_ID",          asynOctet, &P_meas_id);
+    createParam("MEAS_ID_NAME",     asynOctet, &P_meas_id_name);
+    createParam("MEAS_DATE",        asynOctet, &P_meas_date);
+    createParam("MEMORY_INDEX",     asynInt32, &P_memory_index);
+    createParam("DOSE_TIME",        asynInt32, &P_dose_time);        // seconds
+    createParam("MEAS_TIME",        asynInt32, &P_meas_time);        // seconds
+    createParam("BKG_MEAS_TIME",    asynInt32, &P_bkg_meas_time);    // seconds
+    createParam("MEAS_STATUS",      asynInt32, &P_meas_status);
+    createParam("STATUS",           asynInt32, &P_status);
+    createParam("MEAS_VAL",         asynFloat64, &P_meas_val);       // mrem/h
+    createParam("MAX_MEAS_VAL",     asynFloat64, &P_max_meas_val);
+    createParam("DOSE_VAL",         asynFloat64, &P_dose_val);       // mrem
+    createParam("GROSS_VAL",        asynFloat64, &P_gross_val);
+    createParam("NET_VAL",          asynFloat64, &P_net_val);
+    createParam("BKG_VAL",          asynFloat64, &P_bkg_val);
+    createParam("UNCERTAINTY_ABS",  asynFloat64, &P_unc_abs);
+    createParam("UNCERTAINTY_REL",  asynFloat64, &P_unc_rel);
+    createParam("DETECTION_LIMIT",  asynFloat64, &P_detection_limit);
+    createParam("DECISION_THRES",   asynFloat64, &P_decision_thres);
+    createParam("BEST_EST",         asynFloat64, &P_best_est);
+    createParam("UNC_BEST_EST",     asynFloat64, &P_unc_best_est);
+    createParam("LOWER_LIMIT_CONF", asynFloat64, &P_lower_conf);
+    createParam("UPPER_LIMIT_CONF", asynFloat64, &P_upper_conf);
+    createParam("CALIB_FACTOR",     asynFloat64, &P_calib_factor);
+    createParam("DELTA_SCINT",      asynFloat64, &P_delta_scint);
+    createParam("ALARM_LIM1",       asynFloat64, &P_alarm1);
+    createParam("ALARM_LIM2",       asynFloat64, &P_alarm2);
+    createParam("ALARM_LIM3",       asynFloat64, &P_alarm3);
+    createParam("ALARM_LIM4",       asynFloat64, &P_alarm4);
+    createParam("UNIT_MEAS_VAL",    asynOctet, &P_unit_meas);
+    createParam("UNIT_DOSE_VAL",    asynOctet, &P_unit_dose);
+
     pasynUser = nullptr;
     asynStatus driverStatus = pasynOctetSyncIO->connect(ipPort, 0, &pasynUser, NULL);
-    pasynOctetSyncIO->setInputEos(pasynUser, "\r\n", 2);
+    pasynOctetSyncIO->setInputEos(pasynUser, "*", 1);
     pasynOctetSyncIO->setOutputEos(pasynUser, "\r\n", 2);
 
-    if (driverStatus != asynSuccess) {
+    printf("CONNECT status=%d pasynUser=%p ipPort %s\n", driverStatus, pasynUser, ipPort);
+
+    if (driverStatus != asynSuccess || !pasynUser) {
+        printf("Initial connection failed\n");
         printf("\nFailed to connect to port %s", ipPort);
+        pasynUser = nullptr;
+
+        return;
+        
+    } else {
+        printf("Connected successfully\n");
     }
-}
-    //
-    /*pollerId = epicsThreadCreate("LB115Poller",
+
+    running = true;
+    pollerId = epicsThreadCreate("LB115Poller",
                                  epicsThreadPriorityMedium,
                                  epicsThreadGetStackSize(epicsThreadStackMedium),
                                  [](void *p){((LB115Driver*)p)->pollerThread();},
-                                 this)
-                                 */
+                                 this);
+}
 
 LB115Driver& LB115Driver::getInstance(const char* portName,
                                       const char* ipPort) {
     
     std::lock_guard<std::mutex> lock(mtx);
+
+    printf("getInstance called with %s %s\n", portName, ipPort);
 
     if (!_instance) {
         _instance = new LB115Driver(portName, ipPort);
@@ -51,6 +100,67 @@ LB115Driver& LB115Driver::getInstance() {
     return *_instance;
 }
 
+void LB115Driver::pollerThread() {
+    const double pollDelay = 1.0; // seconds
+
+    printf("Poller started\n");
+
+    while(running.load()) {
+        try {
+            if (!pasynUser) {
+                printf("Poller: not connected, retrying...\n");
+
+                asynStatus status = pasynOctetSyncIO->connect(_ipPort.c_str(), 0, &pasynUser, NULL);
+
+                if (status != asynSuccess || !pasynUser) {
+                    printf("Reconnect failed \n");
+                    pasynUser = nullptr;
+                    epicsThreadSleep(2.0);
+                    continue;
+                }
+
+                printf("Reconnect successful\n");
+
+                //pasynOctetSyncIO->setInputEos(pasynUser, "", 0);
+                //pasynOctetSyncIO->setOutputEos(pasynUser, "", 0);
+                pasynOctetSyncIO->setInputEos(pasynUser, "*", 1);
+                //pasynOctetSyncIO->setInputEos(pasynUser, "\r\n", 2);
+                pasynOctetSyncIO->setOutputEos(pasynUser, "\r\n", 2);
+            }
+
+            char response[MAX_MSG] = {0};
+            size_t nRead = 0;
+            
+            const char* msg = "*0001900101010109**";
+
+            printf("Poller TX: %s\n", msg);
+
+            asynStatus status = sendAndReceive(msg, response, nRead);
+
+            if (status != asynSuccess) {
+                printf("Poller: communication error\n");
+
+                pasynOctetSyncIO->disconnect(pasynUser);
+                pasynUser = nullptr;
+
+                epicsThreadSleep(2.0);
+                continue;
+            }
+
+            if (nRead > 0) {
+                printf("Poller RX (%zu): %s\n", nRead, response);
+
+            }
+            
+        } catch (...) {
+            printf("Poller: caught expection (prevented crash)\n");
+        }
+
+        epicsThreadSleep(pollDelay);
+
+    }
+    printf("Poller thread exiting\n");
+}
 /*
 asynStatus LB115Driver::connect(const char *ipPort) {
     asynStatus driverStatus = pasynOctetSyncIO->connect(ipPort, 0, &pasynUser, NULL);
@@ -62,6 +172,115 @@ asynStatus LB115Driver::connect(const char *ipPort) {
     }
     return driverStatus;
 } */
+
+asynStatus LB115Driver::sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead) {
+
+    size_t nWritten = 0;
+    int eomReason = 0;
+
+    if (!pasynUser || !pasynOctetSyncIO) {
+        printf("pasynUser is null - not connected\n");
+        return asynError;
+    }
+    asynStatus status = pasynOctetSyncIO->writeRead(
+            pasynUser,
+            outMsg,
+            strlen(outMsg),
+            inBuf,
+            MAX_MSG-1,
+            TIMEOUT,
+            &nWritten,
+            &nRead,
+            &eomReason
+            );
+
+    if (status != asynSuccess) {
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "writeRead failed: %d\n", status);
+        return status;
+    }
+    
+    //inBuf[nRead] = '\0';
+    if (nRead >= MAX_MSG){
+        nRead = MAX_MSG -1;
+    }
+    inBuf[nRead] = '\0';
+
+    //asynPrint(pasynUser, ASYN_TRACEIO_DRIVER,
+    //          "TS: %s\nRX: %s\n", outMsg, inBuf);
+    std::string resp(inBuf, nRead);
+    processResponse(resp);
+    
+    return asynSuccess;
+}
+
+std::map<std::string, std::string> LB115Driver::parseData(const std::string& data) {
+    std::map<std::string, std::string> result;
+    std::stringstream ss(data);
+    std::string item;
+    
+    while (std::getline(ss, item, '|')) {
+        auto pos = item.find(':');
+        if (pos != std::string::npos) {
+            result[item.substr(0, pos)] = item.substr(pos + 1);
+        }
+    }
+
+    return result;
+}
+
+double LB115Driver::parseDoubleSafe(const std::string& val) {
+    if (val == "Tmout" || val.empty()) {
+        return NAN;
+    }
+    return atof(val.c_str());
+}
+
+int LB115Driver::parseHexSafe(const std::string& val) {
+    return strtol(val.c_str(), NULL, 16);
+}
+
+void LB115Driver::processResponse(const std::string& resp) {
+    size_t start = resp.find('*');
+    size_t end = resp.rfind('*');
+
+    if (start == std::string::npos || end == std::string::npos || end <= start)
+        return;
+
+    std::string body = resp.substr(start + 1, end - start - 1);
+    
+    size_t headerEnd = body.find_first_not_of("0123456789");
+    std::string payload = body.substr(headerEnd);
+    
+    auto kv = parseData(payload);
+    
+
+    printf("Memory Index: %d\n", parseHexSafe(kv["memory_index"]));
+    printf("Detector Name: %i\n", kv["detector_name"]);
+    printf("Measured Val: %f\n", parseDoubleSafe(kv["meas_val"]));
+    printf("Alarm Limit 1: %f\n", parseDoubleSafe(kv["alarm_limit_1"]));
+    printf("Alarm Limit 2: %f\n", parseDoubleSafe(kv["alarm_limit_2"]));
+    printf("Alarm Limit 3: %f\n", parseDoubleSafe(kv["alarm_limit_3"]));
+    printf("Alarm Limit 4: %f\n", parseDoubleSafe(kv["alarm_limit_4"]));
+    printf("Status: %d\n", parseHexSafe(kv["status"]));
+}
+/*
+void LB115Driver::getData() {
+    char response[MAX_MSG];
+    size_t nRead = 0;
+
+    const char* msg = "*0001900101010109**";
+
+    asynStatus status = sendAndReceive(msg, response, nRead);
+
+    if (status != asynSuccess) {
+        printf("Communication failed\n");
+        return;
+    }
+
+    printf("Received (%zu bytes): %s\n", nRead, response);
+}
+*/
 
 void LB115Driver::getData() {
     asynStatus test;
