@@ -40,7 +40,23 @@ class LB115Driver : public asynPortDriver {
         void pollerThread();
 
     protected:
-        
+        // General Parameters:
+        std::string P_program_version;
+        std::string P_kernel_version;
+        std::string P_mac_address;
+        std::string P_ip_address;
+        std::string P_serial_number;
+        std::string P_dhcp_status;
+        std::string P_port_number;
+        std::string P_subnet_mask;
+        std::string P_default_gateway;
+        std::string P_device_status;
+        std::string P_device_name;
+
+        // Channel Parameters:
+        float P_curr_meas;
+        float P_oldest_meas;
+        int P_fifo_meas_status;
         std::string P_read_index;
         std::string P_detector_name;
         std::string P_detector_tag;
