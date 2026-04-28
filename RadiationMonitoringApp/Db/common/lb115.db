@@ -1,76 +1,76 @@
-#record(stringin, "$(PREFIX):PROGRAMVERSION"){
-#    field(DESC, "Program Version")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getProgramVersion $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-#record(stringin, "$(PREFIX):KERNELVERSION"){
-#    field(DESC, "Kernel Version")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getKernelVersion $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-#record(stringin, "$(PREFIX):MACADDR"){
-#    field(DESC, "MAC Address")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getMacAddress $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
+record(stringin, "$(PREFIX):PROGRAMVERSION"){
+    field(DESC, "Program Version")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)PROGRAM_VER")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):KERNELVERSION"){
+    field(DESC, "Kernel Version")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)KERNEL_VER")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):MACADDR"){
+    field(DESC, "MAC Address")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)MAC_ADDR")
+    field(SCAN, "I/O Intr")
+}
+
 record(stringin, "$(PREFIX):IP"){
     field(DESC, "Port Number")
-    field(DTYP, "stream")
-    field(INP,  "@test.proto getIpAddress $(PORT)")
-    field(SCAN, "5 second")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)IP_ADDR")
+    field(SCAN, "I/O Intr")
 }
-#
-#record(stringin, "$(PREFIX):SERIAL"){
-#    field(DESC, "Serial Number")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getSerialNumber $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-#record(stringin, "$(PREFIX):DHCPSTATUS"){
-#    field(DESC, "DHCP Enable/Disable")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getDhcpStatus $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-record(ai, "$(PREFIX):PORT"){
+
+record(stringin, "$(PREFIX):SERIAL"){
+    field(DESC, "Serial Number")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)SERIAL_NUM")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):DHCPSTATUS"){
+    field(DESC, "DHCP Enable/Disable")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)DHCP_STATUS")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):PORT"){
     field(DESC, "Port Number")
-    field(DTYP, "stream")
-    field(INP,  "@test.proto getPortNumber $(PORT)")
-    field(SCAN, "5 second")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)PORT_NUM")
+    field(SCAN, "I/O Intr")
 }
-#
-#record(stringin, "$(PREFIX):SUBNET"){
-#    field(DESC, "Subnet Mask")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getSubnetMask $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-#record(stringin, "$(PREFIX):DEFAULTGATEWAY"){
-#    field(DESC, "Default Gateway")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getDefaultGateway $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-#record(stringin, "$(PREFIX):STATUS"){
-#    field(DESC, "Device Status")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getDeviceStatus $(PORT)")
-#    field(SCAN, "5 second")
-#}
-#
-#record(stringin, "$(PREFIX):DEVNAME"){
-#    field(DESC, "Device Name")
-#    field(DTYP, "stream")
-#    field(INP,  "@lb115.proto getDeviceName $(PORT)")
-#    field(SCAN, "5 second")
-#}
+
+record(stringin, "$(PREFIX):SUBNET"){
+    field(DESC, "Subnet Mask")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)SUBNET")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):DEFAULTGATEWAY"){
+    field(DESC, "Default Gateway")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)DEFAULT_GATEWAY")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):DEVSTATUS"){
+    field(DESC, "Device Status")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)DEVICE_STATUS")
+    field(SCAN, "I/O Intr")
+}
+
+record(stringin, "$(PREFIX):DEVNAME"){
+    field(DESC, "Device Name")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)DEVICE_NAME")
+    field(SCAN, "I/O Intr")
+}
