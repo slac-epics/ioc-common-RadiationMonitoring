@@ -17,7 +17,7 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
 {
     
     // Initializing Asyn Parameters:
-    initChannelParameters();
+    initGeneralParameters();
 
     pasynUser = nullptr;
     asynStatus driverStatus = pasynOctetSyncIO->connect(ipPort, 0, &pasynUser, NULL);
@@ -38,10 +38,10 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
     }
 
     running = true;
-    pollerId = epicsThreadCreate("LB115Poller",
+    pollerId = epicsThreadCreate("LB115GeneralPoller",
                                  epicsThreadPriorityMedium,
                                  epicsThreadGetStackSize(epicsThreadStackMedium),
-                                 [](void *p){((LB115Driver*)p)->pollerThread();},
+                                 [](void *p){((LB115Driver*)p)->generalPollerThread();},
                                  this);
 }
 
@@ -122,7 +122,7 @@ void LB115Driver::initChannelParameters() {
     createParam("UNIT_DOSE_VAL",    asynParamOctet, &P_unit_dose);
 }
 
-void LB115Driver::pollerThread() {
+void LB115Driver::generalPollerThread() {
     const double pollDelay = 1.0; // seconds
 
     printf("Poller started\n");
