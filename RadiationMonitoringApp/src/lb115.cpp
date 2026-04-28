@@ -68,58 +68,58 @@ LB115Driver& LB115Driver::getInstance() {
 
 void LB115Driver::initGeneralParameters() {
 
-    createParam("PROGRAM_VER",     asynOctet, &P_program_version);
-    createParam("KERNEL_VER",      asynOctet, &P_kernel_version);
-    createParam("MAC_ADDR",        asynOctet, &P_mac_address);
-    createParam("IP_ADDR",         asynOctet, &P_ip_address);
-    createParam("SERIAL_NUM",      asynOctet, &P_serial_number);
-    createParam("DHCP_STATUS",     asynOctet, &P_dhcp_status);
-    createParam("PORT_NUM",        asynOctet, &P_port_number);
-    createParam("SUBNET",          asynOctet, &P_subnet_mask);
-    createParam("DEFAULT_GATEWAY", asynOctet, &P_default_gateway);
-    createParam("DEVICE_STATUS",   asynOctet, &P_device_status);
-    createParam("DEVICE_NAME",     asynOctet, &P_device_name);
+    createParam("PROGRAM_VER",     asynParamOctet, &P_program_version);
+    createParam("KERNEL_VER",      asynParamOctet, &P_kernel_version);
+    createParam("MAC_ADDR",        asynParamOctet, &P_mac_address);
+    createParam("IP_ADDR",         asynParamOctet, &P_ip_address);
+    createParam("SERIAL_NUM",      asynParamOctet, &P_serial_number);
+    createParam("DHCP_STATUS",     asynParamOctet, &P_dhcp_status);
+    createParam("PORT_NUM",        asynParamOctet, &P_port_number);
+    createParam("SUBNET",          asynParamOctet, &P_subnet_mask);
+    createParam("DEFAULT_GATEWAY", asynParamOctet, &P_default_gateway);
+    createParam("DEVICE_STATUS",   asynParamOctet, &P_device_status);
+    createParam("DEVICE_NAME",     asynParamOctet, &P_device_name);
 }
 
 void LB115Driver::initChannelParameters() {
     
-    createParam("CURR_MEAS",        asynFloat64, &P_curr_meas);
-    createParam("OLDEST_MEAS",      asynFloat64, &P_oldest_meas);
-    createParam("FIFO_MEAS_STATUS", asynInt32, &P_fifo_meas_status);
-    createParam("READ_INDEX",       asynOctet, &P_read_index);
-    createParam("DETECTOR_NAME",    asynOctet, &P_detector_name);
-    createParam("DETECTOR_TAG",     asynOctet, &P_detector_tag);
-    createParam("MEAS_ID",          asynOctet, &P_meas_id);
-    createParam("MEAS_ID_NAME",     asynOctet, &P_meas_id_name);
-    createParam("MEAS_DATE",        asynOctet, &P_meas_date);
-    createParam("MEMORY_INDEX",     asynInt32, &P_memory_index);
-    createParam("DOSE_TIME",        asynInt32, &P_dose_time);        // seconds
-    createParam("MEAS_TIME",        asynInt32, &P_meas_time);        // seconds
-    createParam("BKG_MEAS_TIME",    asynInt32, &P_bkg_meas_time);    // seconds
-    createParam("MEAS_STATUS",      asynInt32, &P_meas_status);
-    createParam("STATUS",           asynInt32, &P_status);
-    createParam("MEAS_VAL",         asynFloat64, &P_meas_val);       // mrem/h
-    createParam("MAX_MEAS_VAL",     asynFloat64, &P_max_meas_val);
-    createParam("DOSE_VAL",         asynFloat64, &P_dose_val);       // mrem
-    createParam("GROSS_VAL",        asynFloat64, &P_gross_val);
-    createParam("NET_VAL",          asynFloat64, &P_net_val);
-    createParam("BKG_VAL",          asynFloat64, &P_bkg_val);
-    createParam("UNCERTAINTY_ABS",  asynFloat64, &P_unc_abs);
-    createParam("UNCERTAINTY_REL",  asynFloat64, &P_unc_rel);
-    createParam("DETECTION_LIMIT",  asynFloat64, &P_detection_limit);
-    createParam("DECISION_THRES",   asynFloat64, &P_decision_thres);
-    createParam("BEST_EST",         asynFloat64, &P_best_est);
-    createParam("UNC_BEST_EST",     asynFloat64, &P_unc_best_est);
-    createParam("LOWER_LIMIT_CONF", asynFloat64, &P_lower_conf);
-    createParam("UPPER_LIMIT_CONF", asynFloat64, &P_upper_conf);
-    createParam("CALIB_FACTOR",     asynFloat64, &P_calib_factor);
-    createParam("DELTA_SCINT",      asynFloat64, &P_delta_scint);
-    createParam("ALARM_LIM1",       asynFloat64, &P_alarm1);
-    createParam("ALARM_LIM2",       asynFloat64, &P_alarm2);
-    createParam("ALARM_LIM3",       asynFloat64, &P_alarm3);
-    createParam("ALARM_LIM4",       asynFloat64, &P_alarm4);
-    createParam("UNIT_MEAS_VAL",    asynOctet, &P_unit_meas);
-    createParam("UNIT_DOSE_VAL",    asynOctet, &P_unit_dose);
+    createParam("CURR_MEAS",        asynParamFloat64, &P_curr_meas);
+    createParam("OLDEST_MEAS",      asynParamFloat64, &P_oldest_meas);
+    createParam("FIFO_MEAS_STATUS", asynParamInt32, &P_fifo_meas_status);
+    createParam("READ_INDEX",       asynParamOctet, &P_read_index);
+    createParam("DETECTOR_NAME",    asynParamOctet, &P_detector_name);
+    createParam("DETECTOR_TAG",     asynParamOctet, &P_detector_tag);
+    createParam("MEAS_ID",          asynParamOctet, &P_meas_id);
+    createParam("MEAS_ID_NAME",     asynParamOctet, &P_meas_id_name);
+    createParam("MEAS_DATE",        asynParamOctet, &P_meas_date);
+    createParam("MEMORY_INDEX",     asynParamInt32, &P_memory_index);
+    createParam("DOSE_TIME",        asynParamInt32, &P_dose_time);        // seconds
+    createParam("MEAS_TIME",        asynParamInt32, &P_meas_time);        // seconds
+    createParam("BKG_MEAS_TIME",    asynParamInt32, &P_bkg_meas_time);    // seconds
+    createParam("MEAS_STATUS",      asynParamInt32, &P_meas_status);
+    createParam("STATUS",           asynParamInt32, &P_status);
+    createParam("MEAS_VAL",         asynParamFloat64, &P_meas_val);       // mrem/h
+    createParam("MAX_MEAS_VAL",     asynParamFloat64, &P_max_meas_val);
+    createParam("DOSE_VAL",         asynParamFloat64, &P_dose_val);       // mrem
+    createParam("GROSS_VAL",        asynParamFloat64, &P_gross_val);
+    createParam("NET_VAL",          asynParamFloat64, &P_net_val);
+    createParam("BKG_VAL",          asynParamFloat64, &P_bkg_val);
+    createParam("UNCERTAINTY_ABS",  asynParamFloat64, &P_unc_abs);
+    createParam("UNCERTAINTY_REL",  asynParamFloat64, &P_unc_rel);
+    createParam("DETECTION_LIMIT",  asynParamFloat64, &P_detection_limit);
+    createParam("DECISION_THRES",   asynParamFloat64, &P_decision_thres);
+    createParam("BEST_EST",         asynParamFloat64, &P_best_est);
+    createParam("UNC_BEST_EST",     asynParamFloat64, &P_unc_best_est);
+    createParam("LOWER_LIMIT_CONF", asynParamFloat64, &P_lower_conf);
+    createParam("UPPER_LIMIT_CONF", asynParamFloat64, &P_upper_conf);
+    createParam("CALIB_FACTOR",     asynParamFloat64, &P_calib_factor);
+    createParam("DELTA_SCINT",      asynParamFloat64, &P_delta_scint);
+    createParam("ALARM_LIM1",       asynParamFloat64, &P_alarm1);
+    createParam("ALARM_LIM2",       asynParamFloat64, &P_alarm2);
+    createParam("ALARM_LIM3",       asynParamFloat64, &P_alarm3);
+    createParam("ALARM_LIM4",       asynParamFloat64, &P_alarm4);
+    createParam("UNIT_MEAS_VAL",    asynParamOctet, &P_unit_meas);
+    createParam("UNIT_DOSE_VAL",    asynParamOctet, &P_unit_dose);
 }
 
 void LB115Driver::pollerThread() {

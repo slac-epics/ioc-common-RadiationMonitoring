@@ -29,6 +29,9 @@ class LB115Driver : public asynPortDriver {
         static LB115Driver& getInstance(const char* portName,
                                         const char* ipPort);
         static LB115Driver& getInstance();
+
+        void initGeneralParameters();
+        void initChannelParameters();
         asynStatus connect(const char* ipPort);
         asynStatus sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead);
         void getData();
@@ -41,56 +44,56 @@ class LB115Driver : public asynPortDriver {
 
     protected:
         // General Parameters:
-        std::string P_program_version;
-        std::string P_kernel_version;
-        std::string P_mac_address;
-        std::string P_ip_address;
-        std::string P_serial_number;
-        std::string P_dhcp_status;
-        std::string P_port_number;
-        std::string P_subnet_mask;
-        std::string P_default_gateway;
-        std::string P_device_status;
-        std::string P_device_name;
+        int P_program_version;
+        int P_kernel_version;
+        int P_mac_address;
+        int P_ip_address;
+        int P_serial_number;
+        int P_dhcp_status;
+        int P_port_number;
+        int P_subnet_mask;
+        int P_default_gateway;
+        int P_device_status;
+        int P_device_name;
 
         // Channel Parameters:
-        float P_curr_meas;
-        float P_oldest_meas;
+        int P_curr_meas;
+        int P_oldest_meas;
         int P_fifo_meas_status;
-        std::string P_read_index;
-        std::string P_detector_name;
-        std::string P_detector_tag;
-        std::string P_meas_id;
-        std::string P_meas_id_name;
-        std::string P_meas_date;
+        int P_read_index;
+        int P_detector_name;
+        int P_detector_tag;
+        int P_meas_id;
+        int P_meas_id_name;
+        int P_meas_date;
         int P_memory_index;
         int P_dose_time;
         int P_meas_time;
         int P_bkg_meas_time;
         int P_meas_status;
         int P_status;
-        float P_meas_val;
-        float P_max_meas_val;
-        float P_dose_val;
-        float P_gross_val;
-        float P_net_val;
-        float P_bkg_val;
-        float P_unc_abs;
-        float P_unc_rel;
-        float P_detection_limit;
-        float P_decision_thres;
-        float P_best_est;
-        float P_unc_best_est;
-        float P_lower_conf;
-        float P_upper_conf;
-        float P_calib_factor;
-        float P_delta_scint;
-        float P_alarm1;
-        float P_alarm2;
-        float P_alarm3;
-        float P_alarm4;
-        std::string P_unit_meas;
-        std::string P_unit_dose;
+        int P_meas_val;
+        int P_max_meas_val;
+        int P_dose_val;
+        int P_gross_val;
+        int P_net_val;
+        int P_bkg_val;
+        int P_unc_abs;
+        int P_unc_rel;
+        int P_detection_limit;
+        int P_decision_thres;
+        int P_best_est;
+        int P_unc_best_est;
+        int P_lower_conf;
+        int P_upper_conf;
+        int P_calib_factor;
+        int P_delta_scint;
+        int P_alarm1;
+        int P_alarm2;
+        int P_alarm3;
+        int P_alarm4;
+        int P_unit_meas;
+        int P_unit_dose;
 
     private:
 
