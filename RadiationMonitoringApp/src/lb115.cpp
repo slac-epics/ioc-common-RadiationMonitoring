@@ -6,8 +6,8 @@ LB115Driver* LB115Driver::_instance = nullptr;
 LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
     asynPortDriver(portName,
                    1,
-                   6,
-                   asynFloat64Mask | asynInt32Mask | asynOctetMask,
+                   100,
+                   asynFloat64Mask | asynInt32Mask | asynOctetMask | asynDrvUserMask,
                    asynFloat64Mask | asynInt32Mask | asynOctetMask,
                    0,
                    1,
@@ -17,11 +17,12 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
 {
     
     // Initializing Asyn Parameters:
-    initGeneralParameters();
+    //initGeneralParameters();
+    initChannelParameters();
 
     pasynUser = nullptr;
     asynStatus driverStatus = pasynOctetSyncIO->connect(ipPort, 0, &pasynUser, NULL);
-    pasynOctetSyncIO->setInputEos(pasynUser, "*", 1);
+    pasynOctetSyncIO->setInputEos(pasynUser, "\r", 1);
     pasynOctetSyncIO->setOutputEos(pasynUser, "\r\n", 2);
 
     printf("CONNECT status=%d pasynUser=%p ipPort %s\n", driverStatus, pasynUser, ipPort);
@@ -123,7 +124,7 @@ void LB115Driver::initChannelParameters() {
 }
 
 void LB115Driver::generalPollerThread() {
-    const double pollDelay = 1.0; // seconds
+    const double pollDelay = 10.0; // seconds
 
     printf("Poller started\n");
 
@@ -143,10 +144,7 @@ void LB115Driver::generalPollerThread() {
 
                 printf("Reconnect successful\n");
 
-                //pasynOctetSyncIO->setInputEos(pasynUser, "", 0);
-                //pasynOctetSyncIO->setOutputEos(pasynUser, "", 0);
-                pasynOctetSyncIO->setInputEos(pasynUser, "*", 1);
-                //pasynOctetSyncIO->setInputEos(pasynUser, "\r\n", 2);
+                pasynOctetSyncIO->setInputEos(pasynUser, "\r", 1);
                 pasynOctetSyncIO->setOutputEos(pasynUser, "\r\n", 2);
             }
 
@@ -222,14 +220,13 @@ asynStatus LB115Driver::sendAndReceive(const char* outMsg, char* inBuf, size_t& 
         return status;
     }
     
-    //inBuf[nRead] = '\0';
     if (nRead >= MAX_MSG){
         nRead = MAX_MSG -1;
     }
     inBuf[nRead] = '\0';
 
-    //asynPrint(pasynUser, ASYN_TRACEIO_DRIVER,
-    //          "TS: %s\nRX: %s\n", outMsg, inBuf);
+    asynPrint(pasynUser, ASYN_TRACEIO_DRIVER,
+              "TS: %s\nRX: %s\n", outMsg, inBuf);
     std::string resp(inBuf, nRead);
     processResponse(resp);
     
@@ -275,17 +272,47 @@ void LB115Driver::processResponse(const std::string& resp) {
     std::string payload = body.substr(headerEnd);
     
     auto kv = parseData(payload);
-    
 
-    printf("Memory Index: %d\n", parseHexSafe(kv["memory_index"]));
-    printf("Detector Name: %i\n", kv["detector_name"]);
-    printf("Measured Val: %f\n", parseDoubleSafe(kv["meas_val"]));
-    printf("Alarm Limit 1: %f\n", parseDoubleSafe(kv["alarm_limit_1"]));
-    printf("Alarm Limit 2: %f\n", parseDoubleSafe(kv["alarm_limit_2"]));
-    printf("Alarm Limit 3: %f\n", parseDoubleSafe(kv["alarm_limit_3"]));
-    printf("Alarm Limit 4: %f\n", parseDoubleSafe(kv["alarm_limit_4"]));
-    printf("Status: %d\n", parseHexSafe(kv["status"]));
+    printf("Measured Val: %f\n", parseDoubleSafe(kv["meas_time"]));
+    //setDoubleParam(P_meas_val, 0.1);
+    setStringParam(P_read_index, kv["read_index"]);
+    setStringParam(P_detector_name, kv["detector_name"]);
+    setStringParam(P_detector_tag, kv["detector_tag"]);
+    setStringParam(P_meas_id, kv["meas_id"]);
+    setStringParam(P_meas_id_name, kv["meas_id_name"]);
+    setStringParam(P_meas_date, kv["meas_date"]);
+    setIntegerParam(P_memory_index, parseDoubleSafe(kv["memory_index"]));
+    setIntegerParam(P_dose_time, parseDoubleSafe(kv["dose_time"]));
+    setIntegerParam(P_meas_time, parseDoubleSafe(kv["meas_time"]));
+    setIntegerParam(P_bkg_meas_time, parseDoubleSafe(kv["bkg_meas_time"]));
+    setIntegerParam(P_meas_status, parseHexSafe(kv["meas_status"]));
+    setIntegerParam(P_status, parseHexSafe(kv["status"]));
+    setDoubleParam(P_meas_val, parseDoubleSafe(kv["meas_val"]));
+    setDoubleParam(P_max_meas_val, parseDoubleSafe(kv["max_meas_val"]));
+    setDoubleParam(P_dose_val, parseDoubleSafe(kv["dose_val"]));
+    setDoubleParam(P_gross_val, parseDoubleSafe(kv["gross_val"]));
+    setDoubleParam(P_net_val, parseDoubleSafe(kv["net_val"]));
+    setDoubleParam(P_bkg_val, parseDoubleSafe(kv["bkg_val"]));
+    setDoubleParam(P_unc_abs, parseDoubleSafe(kv["uncertainty_abs"]));
+    setDoubleParam(P_unc_rel, parseDoubleSafe(kv["uncertainty_rel"]));
+    setDoubleParam(P_detection_limit, parseDoubleSafe(kv["detection_limit"]));
+    setDoubleParam(P_decision_thres, parseDoubleSafe(kv["decision_thres"]));
+    setDoubleParam(P_best_est, parseDoubleSafe(kv["best_est"]));
+    setDoubleParam(P_unc_best_est, parseDoubleSafe(kv["unc_best_est"]));
+    setDoubleParam(P_lower_conf, parseDoubleSafe(kv["lower_limit_conf"]));
+    setDoubleParam(P_upper_conf, parseDoubleSafe(kv["upper_limit_conf"]));
+    setDoubleParam(P_calib_factor, parseDoubleSafe(kv["calib_factor"]));
+    setDoubleParam(P_delta_scint, parseDoubleSafe(kv["delta_scint_factor"]));
+    setDoubleParam(P_alarm1, parseDoubleSafe(kv["alarm_limit1"]));
+    setDoubleParam(P_alarm2, parseDoubleSafe(kv["alarm_limit2"]));
+    setDoubleParam(P_alarm3, parseDoubleSafe(kv["alarm_limit3"]));
+    setDoubleParam(P_alarm4, parseDoubleSafe(kv["alarm_limit4"]));
+    setStringParam(P_unit_meas, kv["unit_meas_val"]);
+    setStringParam(P_unit_dose, kv["unit_dose_val"]);
+
+    callParamCallbacks();
 }
+
 /*
 void LB115Driver::getData() {
     char response[MAX_MSG];
