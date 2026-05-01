@@ -2,7 +2,8 @@ record(ai, "$(P):CURR_MEAS") {
     field(DESC, "FIFO Current Meas")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)CURR_MEAS")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(PREC, "3")
     field(EGU,  "mrem/h")
     field(VAL,  "-1") # Uninitialized
@@ -12,7 +13,8 @@ record(ai, "$(P):OLDEST_MEAS") {
     field(DESC, "FIFO Oldest Meas")
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)OLDEST_MEAS")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(PREC, "3")
     field(EGU,  "mrem/h")
     field(VAL,  "-1") # Uninitialized
@@ -23,77 +25,95 @@ record(stringout, "$(PREFIX):RESET_DET"){
     field(DTYP, "stream")
     field(OUT,  "@lb115_channels.proto resetFifoDetAlpha('$(CHAN)') $(PORT)")
     field(SCAN, "Passive")
+    field(PINI, "YES")
 }
 
 record(longin, "$(P):FIFO_MEAS_STATUS") {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)FIFO_MEAS_STATUS")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(stringin, "$(P):READ_INDEX") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)READ_INDEX")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(stringin, "$(P):DETECTOR_NAME") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)DETECTOR_NAME")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(stringin, "$(P):DETECTOR_TAG") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)DETECTOR_TAG")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(stringin, "$(P):MEAS_ID") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)MEAS_ID")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(stringin, "$(P):MEAS_ID_NAME") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)MEAS_ID_NAME")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(stringin, "$(P):MEAS_DATE") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)MEAS_DATE")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(ai, "$(P):MEMORY_INDEX") {
-    field(DTYP, "asynFloat64")
+    field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)MEMORY_INDEX")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):DOSE_TIME") {
-    field(DTYP, "asynFloat64")
+    field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)DOSE_TIME")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(EGU,  "s")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):MEAS_TIME") {
-    field(DTYP, "asynFloat64")
+    field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)MEAS_TIME")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(EGU,  "s")
     field(VAL,  "-1") # Uninitialized
 }
 record(ai, "$(P):BKG_MEAS_TIME") {
-    field(DTYP, "asynFloat64")
+    field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)BKG_MEAS_TIME")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(EGU,  "s")
     field(VAL,  "-1") # Uninitialized
 }
@@ -101,21 +121,24 @@ record(ai, "$(P):BKG_MEAS_TIME") {
 record(longin, "$(P):MEAS_STATUS") {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)MEAS_STATUS")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(longin, "$(P):STATUS") {
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)STATUS")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):MEAS_VAL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)MEAS_VAL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(PREC, "3")
     field(EGU,  "mrem/h")
     field(VAL,  "-1") # Uninitialized
@@ -124,7 +147,8 @@ record(ai, "$(P):MEAS_VAL") {
 record(ai, "$(P):MAX_MEAS_VAL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)MAX_MEAS_VAL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(PREC, "3")
     field(EGU,  "mrem/h")
     field(VAL,  "-1") # Uninitialized
@@ -133,7 +157,8 @@ record(ai, "$(P):MAX_MEAS_VAL") {
 record(ai, "$(P):DOSE_VAL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)DOSE_VAL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(PREC, "3")
     field(EGU,  "mrem")
     field(VAL,  "-1") # Uninitialized
@@ -142,126 +167,151 @@ record(ai, "$(P):DOSE_VAL") {
 record(ai, "$(P):GROSS_VAL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)GROSS_VAL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):NET_VAL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)NET_VAL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):BKG_VAL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)BKG_VAL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):UNCERTAINTY_ABS") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)UNCERTAINTY_ABS")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):UNCERTAINTY_REL") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)UNCERTAINTY_REL")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):DETECTION_LIMIT") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)DETECTION_LIMIT")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):DECISION_THRES") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)DECISION_THRES")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):BEST_EST") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)BEST_EST")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):UNC_BEST_EST") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)UNC_BEST_EST")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):LOWER_LIMIT_CONF") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)LOWER_LIMIT_CONF")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):UPPER_LIMIT_CONF") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)UPPER_LIMIT_CONF")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):CALIB_FACTOR") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)CALIB_FACTOR")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):DELTA_SCINT") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)DELTA_SCINT")
-    field(SCAN, "I/O Intr")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):ALARM1") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)ALARM_LIM1")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):ALARM2") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)ALARM_LIM2")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):ALARM3") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)ALARM_LIM3")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(ai, "$(P):ALARM4") {
     field(DTYP, "asynFloat64")
     field(INP,  "@asyn($(PORT),0)ALARM_LIM4")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "-1") # Uninitialized
 }
 
 record(stringin, "$(P):UNIT_MEAS_VAL") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)UNIT_MEAS_VAL")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
 
 record(stringin, "$(P):UNIT_DOSE_VAL") {
     field(DTYP, "asynOctetRead")
     field(INP,  "@asyn($(PORT),0)UNIT_DOSE_VAL")
+    field(SCAN, "Passive")
+    field(PINI, "YES")
     field(VAL,  "Uninitialized")
 }
