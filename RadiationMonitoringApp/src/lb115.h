@@ -40,7 +40,7 @@ class LB115Driver : public asynPortDriver {
         int parseHexSafe(const std::string& val);
 
         void processResponse(const std::string& val);
-        void pollerThread();
+        void generalPollerThread();
 
     protected:
         // General Parameters:
