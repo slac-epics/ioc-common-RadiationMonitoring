@@ -20,6 +20,7 @@
 #include <asynPortDriver.h>
 #include <asynOctetSyncIO.h>
 
+#define MAX_CH 4
 #define MAX_MSG 1024
 #define TIMEOUT 1.0
 
@@ -33,14 +34,17 @@ class LB115Driver : public asynPortDriver {
         void initGeneralParameters();
         void initChannelParameters();
         asynStatus connect(const char* ipPort);
-        asynStatus sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead);
+        asynStatus sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead, int channel);
         void getData();
         std::map<std::string, std::string> parseData(const std::string& data);
         double parseDoubleSafe(const std::string& val);
         int parseHexSafe(const std::string& val);
 
-        void processResponse(const std::string& val);
+        void processResponse(const std::string& val, int channel);
         void generalPollerThread();
+
+        std::string buildCommand(int channel, int reg);
+
 
     protected:
         // General Parameters:
@@ -57,43 +61,43 @@ class LB115Driver : public asynPortDriver {
         int P_device_name;
 
         // Channel Parameters:
-        int P_curr_meas;
-        int P_oldest_meas;
-        int P_fifo_meas_status;
-        int P_read_index;
-        int P_detector_name;
-        int P_detector_tag;
-        int P_meas_id;
-        int P_meas_id_name;
-        int P_meas_date;
-        int P_memory_index;
-        int P_dose_time;
-        int P_meas_time;
-        int P_bkg_meas_time;
-        int P_meas_status;
-        int P_status;
-        int P_meas_val;
-        int P_max_meas_val;
-        int P_dose_val;
-        int P_gross_val;
-        int P_net_val;
-        int P_bkg_val;
-        int P_unc_abs;
-        int P_unc_rel;
-        int P_detection_limit;
-        int P_decision_thres;
-        int P_best_est;
-        int P_unc_best_est;
-        int P_lower_conf;
-        int P_upper_conf;
-        int P_calib_factor;
-        int P_delta_scint;
-        int P_alarm1;
-        int P_alarm2;
-        int P_alarm3;
-        int P_alarm4;
-        int P_unit_meas;
-        int P_unit_dose;
+        int P_curr_meas[MAX_CH];
+        int P_oldest_meas[MAX_CH];
+        int P_fifo_meas_status[MAX_CH];
+        int P_read_index[MAX_CH];
+        int P_detector_name[MAX_CH];
+        int P_detector_tag[MAX_CH];
+        int P_meas_id[MAX_CH];
+        int P_meas_id_name[MAX_CH];
+        int P_meas_date[MAX_CH];
+        int P_memory_index[MAX_CH];
+        int P_dose_time[MAX_CH];
+        int P_meas_time[MAX_CH];
+        int P_bkg_meas_time[MAX_CH];
+        int P_meas_status[MAX_CH];
+        int P_status[MAX_CH];
+        int P_meas_val[MAX_CH];
+        int P_max_meas_val[MAX_CH];
+        int P_dose_val[MAX_CH];
+        int P_gross_val[MAX_CH];
+        int P_net_val[MAX_CH];
+        int P_bkg_val[MAX_CH];
+        int P_unc_abs[MAX_CH];
+        int P_unc_rel[MAX_CH];
+        int P_detection_limit[MAX_CH];
+        int P_decision_thres[MAX_CH];
+        int P_best_est[MAX_CH];
+        int P_unc_best_est[MAX_CH];
+        int P_lower_conf[MAX_CH];
+        int P_upper_conf[MAX_CH];
+        int P_calib_factor[MAX_CH];
+        int P_delta_scint[MAX_CH];
+        int P_alarm1[MAX_CH];
+        int P_alarm2[MAX_CH];
+        int P_alarm3[MAX_CH];
+        int P_alarm4[MAX_CH];
+        int P_unit_meas[MAX_CH];
+        int P_unit_dose[MAX_CH];
 
     private:
 
