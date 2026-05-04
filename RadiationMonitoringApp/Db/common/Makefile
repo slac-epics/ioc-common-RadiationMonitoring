@@ -47,7 +47,7 @@ DB += alarmClock.db
 DB += dbSubTime.db
 DB += decarad.db
 DB += lb115.db
-DB += lb115_channels.db
+DB += lb115_channels.template
 
 # For PM box.
 DB += peripheral-station.db
