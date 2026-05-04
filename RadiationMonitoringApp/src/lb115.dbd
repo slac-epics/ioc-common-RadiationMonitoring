@@ -1,4 +1,4 @@
 registrar(LB115ConfigureRegister)
-registrar(LB115GetDataRegister)
+registrar(LB115EnableChannelRegister)
 
 

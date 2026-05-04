@@ -21,6 +21,7 @@
 #include <asynOctetSyncIO.h>
 
 #define MAX_CH 4
+#define NUM_REG 1
 #define MAX_MSG 1024
 #define TIMEOUT 1.0
 
@@ -34,16 +35,19 @@ class LB115Driver : public asynPortDriver {
         void initGeneralParameters();
         void initChannelParameters();
         asynStatus connect(const char* ipPort);
-        asynStatus sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead, int channel);
+        asynStatus sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead);
         void getData();
         std::map<std::string, std::string> parseData(const std::string& data);
         double parseDoubleSafe(const std::string& val);
         int parseHexSafe(const std::string& val);
 
         void processResponse(const std::string& val, int channel);
-        void generalPollerThread();
+
+        void pollerThread();
 
         std::string buildCommand(int channel, int reg);
+
+        void enableChannel(int ch);
 
 
     protected:
@@ -116,4 +120,25 @@ class LB115Driver : public asynPortDriver {
         asynUser *pasynUser;
         char cmdBuffer[MAX_MSG];
         char sendBuffer[MAX_MSG];
+
+        /*
+        enum channelRegisters {
+            REG_0 = 0,
+            REG_1 = 1,
+            REG_7 = 7,
+            REG_9 = 9
+        };
+        */
+        enum channelRegisters {
+            REG_9 = 9
+        };
+
+        struct ChannelState {
+            bool enabled = false;
+            int regIndex = 0;
+        };
+
+        static const int REG_LIST[1];
+
+        ChannelState chState[MAX_CH];
 };
