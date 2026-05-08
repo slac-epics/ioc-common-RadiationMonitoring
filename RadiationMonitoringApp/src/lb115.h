@@ -34,9 +34,14 @@ class LB115Driver : public asynPortDriver {
 
         void initGeneralParameters();
         void initChannelParameters();
-        asynStatus connect(const char* ipPort);
-        asynStatus sendAndReceive(const char* outMsg, char* inBuf, size_t& nRead);
-        void getData();
+
+        void pollerThread();
+
+        std::string buildGeneralCommand(int reg);
+        std::string buildChannelCommand(int channel, int reg);
+
+        asynStatus sendAndReceive(const char* outCmd, char* inBuf, size_t& nRead);
+
         std::map<std::string, std::string> parseData(const std::string& data);
         double parseDoubleSafe(const std::string& val);
         int parseHexSafe(const std::string& val);
@@ -44,16 +49,9 @@ class LB115Driver : public asynPortDriver {
         void processGeneralResponse(const std::string& val, int reg);
         void processChannelResponse(const std::string& val, int channel, int reg);
 
-        void pollerThread();
-
-        std::string buildGeneralCommand(int reg);
-        std::string buildChannelCommand(int channel, int reg);
+        std::string parsePayload(const std::string& resp);
 
         void enableChannel(int ch);
-
-        std::string simpleParse(const std::string& resp);
-        std::string dictParse(const std::string& resp);
-
 
     protected:
         // General Parameters:
@@ -123,8 +121,6 @@ class LB115Driver : public asynPortDriver {
         std::atomic<bool> running;
 
         asynUser *pasynUser;
-        char cmdBuffer[MAX_MSG];
-        char sendBuffer[MAX_MSG];
 
         enum channelRegisters {
             CH_REG_0 = 0,
