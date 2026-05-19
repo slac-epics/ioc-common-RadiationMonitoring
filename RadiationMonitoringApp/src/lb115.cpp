@@ -6,7 +6,6 @@ LB115Driver* LB115Driver::_instance = nullptr;
 LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
     asynPortDriver(portName,
                    1,
-                   300,
                    asynFloat64Mask | asynInt32Mask | asynOctetMask | asynDrvUserMask,
                    asynFloat64Mask | asynInt32Mask | asynOctetMask,
                    0,
@@ -252,7 +251,7 @@ void LB115Driver::pollerThread() {
     }
 }
 
-const int LB115Driver::CH_REG_LIST[4] = {0, 1, 7, 9};
+const int LB115Driver::CH_REG_LIST[MAX_CH] = {NUM_REG};
 
 /*
  * LB 115 Tranfer Pattern:
