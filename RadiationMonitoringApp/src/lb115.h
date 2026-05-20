@@ -28,9 +28,8 @@
 class LB115Driver : public asynPortDriver {
     public:
 
-        static LB115Driver& getInstance(const char* portName,
-                                        const char* ipPort);
-        static LB115Driver& getInstance();
+        LB115Driver(const char *portName,
+                    const char *ipPort);
 
         void initGeneralParameters();
         void initChannelParameters();
@@ -108,14 +107,7 @@ class LB115Driver : public asynPortDriver {
 
     private:
 
-        LB115Driver(const char *portName,
-                    const char *ipPort);
-
-        LB115Driver(const LB115Driver&) = delete;
-        LB115Driver& operator=(const LB115Driver&) = delete;
-
         std::string _ipPort;
-        static LB115Driver* _instance;
         
         epicsThreadId pollerId;
         std::atomic<bool> running;

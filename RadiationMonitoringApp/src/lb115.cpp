@@ -1,8 +1,5 @@
 #include "lb115.h"
 
-static std::mutex mtx;
-LB115Driver* LB115Driver::_instance = nullptr;
-
 LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
     asynPortDriver(portName,
                    1,
@@ -41,34 +38,6 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
                                  epicsThreadGetStackSize(epicsThreadStackMedium),
                                  [](void *p){((LB115Driver*)p)->pollerThread();},
                                  this);
-}
-
-/**
- * @brief Instantiates driver singleton if no other instance, returns instance if exists.
- *
- * @param portName - asyn port driver name
- * @param ipPort   - device <IP>:<PORT>
- */
-LB115Driver& LB115Driver::getInstance(const char* portName,
-                                      const char* ipPort) {
-    
-    //std::lock_guard<std::mutex> lock(mtx);
-
-    if (!_instance) {
-        _instance = new LB115Driver(portName, ipPort);
-    }
-    
-    return *_instance;
-}
-
-/**
- * @brief Returns driver singleton instance if exists.
- */
-LB115Driver& LB115Driver::getInstance() {
-    if (!_instance) {
-        throw std::runtime_error("LB115Driver not initialized.");
-    }
-    return *_instance;
 }
 
 /**
@@ -251,7 +220,7 @@ void LB115Driver::pollerThread() {
     }
 }
 
-const int LB115Driver::CH_REG_LIST[MAX_CH] = {NUM_REG};
+const int LB115Driver::CH_REG_LIST[NUM_REG] = {0,1,7,9};
 
 /*
  * LB 115 Tranfer Pattern:
@@ -544,7 +513,7 @@ void LB115Driver::enableChannel(int channel) {
 extern "C" {
     int LB115Configure(const char* portName, const char* ipPort) {
         printf("Trying to connect to LB115 Device.\n");
-        LB115Driver::getInstance(portName, ipPort);
+        new LB115Driver(portName, ipPort);
         return 0;
     }
     static const iocshArg arg0 = {"portName", iocshArgString};
@@ -564,17 +533,29 @@ extern "C" {
 }
 
 extern "C" {
-    int LB115EnableChannel(int channel) {
+    int LB115EnableChannel(const char* portName, int channel) {
         printf("Enabling Channel: %0d\n", channel);
-        LB115Driver::getInstance().enableChannel(channel);
+
+        LB115Driver *driver = NULL;
+        driver = (LB115Driver*) findAsynPortDriver(portName);
+        //pC = (asynMotorController*) findAsynPortDriver(portName);
+        
+        if (!driver) {
+            printf("No LB115 port named %s\n", portName);
+            return -1;
+        }
+
+        driver->enableChannel(channel);
+
         return 0;
     }
-    static const iocshArg enableArg0 = {"channelNum", iocshArgInt};
-    static const iocshArg * enableArgs[] = {&enableArg0};
-    static const iocshFuncDef enable_funcDef = {"lb115EnableChannel", 1, enableArgs};
+    static const iocshArg enableArg0 = {"portName", iocshArgString};
+    static const iocshArg enableArg1 = {"channelNum", iocshArgInt};
+    static const iocshArg * enableArgs[] = {&enableArg0, &enableArg1};
+    static const iocshFuncDef enable_funcDef = {"lb115EnableChannel", 2, enableArgs};
 
     static void enable_funcCall(const iocshArgBuf *enableArgs) {
-        LB115EnableChannel(enableArgs[0].ival);
+        LB115EnableChannel(enableArgs[0].sval, enableArgs[1].ival);
     }
 
     void LB115EnableChannelRegister(void) {
