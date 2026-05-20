@@ -164,8 +164,10 @@ void LB115Driver::pollerThread() {
 
             char response[MAX_MSG] = {0};
             size_t nRead = 0;
-
+            
+            lock();
             asynStatus status = sendAndReceive(cmd.c_str(), response, nRead);
+            unlock();
 
             if (status != asynSuccess) {
                 printf("Poller not connected, retrying...\n");
@@ -197,8 +199,10 @@ void LB115Driver::pollerThread() {
             std::string cmd = buildChannelCommand(ch, chReg);
             char response[MAX_MSG] = {0};
             size_t nRead = 0;
-
+            
+            lock();
             asynStatus status = sendAndReceive(cmd.c_str(), response, nRead);
+            unlock();
 
             if (status != asynSuccess) {
                 printf("Poller not connected, retrying...\n");
