@@ -31,24 +31,7 @@ class LB115Driver : public asynPortDriver {
         LB115Driver(const char *portName,
                     const char *ipPort);
 
-        void initGeneralParameters();
-        void initChannelParameters();
-
-        void pollerThread();
-
-        std::string buildGeneralCommand(int reg);
-        std::string buildChannelCommand(int channel, int reg);
-
-        asynStatus sendAndReceive(const char* outCmd, char* inBuf, size_t& nRead);
-
-        std::map<std::string, std::string> parseData(const std::string& data);
-        double parseDoubleSafe(const std::string& val);
-        int parseHexSafe(const std::string& val);
-
-        void processGeneralResponse(const std::string& val, int reg);
-        void processChannelResponse(const std::string& val, int channel, int reg);
-
-        std::string parsePayload(const std::string& resp);
+        virtual void pollerThread();
 
         void enableChannel(int ch);
 
@@ -106,6 +89,23 @@ class LB115Driver : public asynPortDriver {
         int P_unit_dose[MAX_CH];
 
     private:
+
+        void initGeneralParameters();
+        void initChannelParameters();
+
+        std::string buildGeneralCommand(int reg);
+        std::string buildChannelCommand(int channel, int reg);
+
+        asynStatus sendAndReceive(const char* outCmd, char* inBuf, size_t& nRead);
+
+        std::map<std::string, std::string> parseData(const std::string& data);
+        double parseDoubleSafe(const std::string& val);
+        int parseHexSafe(const std::string& val);
+
+        void processGeneralResponse(const std::string& val, int reg);
+        void processChannelResponse(const std::string& val, int channel, int reg);
+
+        std::string parsePayload(const std::string& resp);
 
         std::string _ipPort;
         
