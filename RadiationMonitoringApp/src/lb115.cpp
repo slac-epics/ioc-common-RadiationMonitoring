@@ -161,12 +161,18 @@ void LB115Driver::pollerThread() {
         // General registers are always being polled if the thread is active.
         for (int genReg = 0; genReg < NUM_GEN_REG; genReg++) {
 
+            lock();
             std::string cmd = buildGeneralCommand(genReg);
 
             char response[MAX_MSG] = {0};
             size_t nRead = 0;
             
             asynStatus status = sendAndReceive(cmd.c_str(), response, nRead);
+
+            if (nRead > 0) {
+                processGeneralResponse(response, genReg);
+            }
+            unlock();
 
             if (status != asynSuccess) {
                 // We have enabled autoConnect in the instantiation
@@ -189,9 +195,6 @@ void LB115Driver::pollerThread() {
                 break; //restart outer loop
             }
 
-            if (nRead > 0) {
-                processGeneralResponse(response, genReg);
-            }
         }
             
         
@@ -203,6 +206,7 @@ void LB115Driver::pollerThread() {
                 continue;
             }
 
+            lock();
             int ch = channel + 1;
             int chReg = CH_REG_LIST[chState[channel].regIndex];
             std::string cmd = buildChannelCommand(ch, chReg);
@@ -216,6 +220,7 @@ void LB115Driver::pollerThread() {
             }
             // advance state machine
             chState[channel].regIndex = (chState[channel].regIndex + 1) % NUM_CH_REG;
+            unlock();
         }
         epicsThreadSleep(loopDelay);
     }
