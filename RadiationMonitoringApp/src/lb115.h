@@ -21,7 +21,8 @@
 #include <asynOctetSyncIO.h>
 
 #define MAX_CH 4
-#define NUM_REG 4
+#define NUM_CH_REG 4
+#define NUM_GEN_REG 11
 #define MAX_MSG 1024
 #define TIMEOUT 1.0
 

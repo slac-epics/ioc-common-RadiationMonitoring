@@ -159,7 +159,7 @@ void LB115Driver::pollerThread() {
     
     while(running.load()) {
         // General registers are always being polled if the thread is active.
-        for (int genReg = 0; genReg < 11; genReg++) {
+        for (int genReg = 0; genReg < NUM_GEN_REG; genReg++) {
 
             std::string cmd = buildGeneralCommand(genReg);
 
@@ -215,13 +215,13 @@ void LB115Driver::pollerThread() {
                 processChannelResponse(response, ch, chReg);
             }
             // advance state machine
-            chState[channel].regIndex = (chState[channel].regIndex + 1) % NUM_REG;
+            chState[channel].regIndex = (chState[channel].regIndex + 1) % NUM_CH_REG;
         }
         epicsThreadSleep(loopDelay);
     }
 }
 
-const int LB115Driver::CH_REG_LIST[NUM_REG] = {0,1,7,9};
+const int LB115Driver::CH_REG_LIST[NUM_CH_REG] = {0,1,7,9};
 
 /*
  * LB 115 Tranfer Pattern:
