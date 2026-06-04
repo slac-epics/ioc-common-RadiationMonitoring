@@ -85,3 +85,11 @@ record(stringin, "$(P):DEVNAME"){
     field(SCAN, "I/O Intr")
     field(VAL,  "Uninitialized")
 }
+
+record(ai, "$(P):TIMEOUTS"){
+    field(DESC, "Timeout Count")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)TIMEOUT_COUNT")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
