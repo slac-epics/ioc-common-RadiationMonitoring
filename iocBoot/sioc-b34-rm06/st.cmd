@@ -31,6 +31,7 @@ epicsEnvSet("P",           "RADM:B34:253")
 < ../common/st.cmd.soft
 
 drvAsynIPPortConfigure("LB115_IP", "$(LB115_IP):$(LB115_PORT)")
+asynSetOption("LB115_IP", 0, "disconnectOnReadTimeout", "Y")
 lb115Configure("$(PORT)", "LB115_IP")
 
 # Load record instances
