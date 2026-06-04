@@ -44,17 +44,18 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
  * @brief Creates asyn params for device general registers.
  */
 void LB115Driver::initGeneralParameters() {
-    createParam("PROGRAM_VER",     asynParamOctet, &P_program_version);
-    createParam("KERNEL_VER",      asynParamOctet, &P_kernel_version);
-    createParam("MAC_ADDR",        asynParamOctet, &P_mac_address);
-    createParam("IP_ADDR",         asynParamOctet, &P_ip_address);
-    createParam("SERIAL_NUM",      asynParamInt32, &P_serial_number);
-    createParam("DHCP_STATUS",     asynParamInt32, &P_dhcp_status);
-    createParam("PORT_NUM",        asynParamInt32, &P_port_number);
-    createParam("SUBNET",          asynParamOctet, &P_subnet_mask);
-    createParam("DEFAULT_GATEWAY", asynParamOctet, &P_default_gateway);
-    createParam("DEVICE_STATUS",   asynParamInt32, &P_device_status);
-    createParam("DEVICE_NAME",     asynParamOctet, &P_device_name);
+    createParam("PROGRAM_VER",         asynParamOctet, &P_program_version);
+    createParam("KERNEL_VER",          asynParamOctet, &P_kernel_version);
+    createParam("MAC_ADDR",            asynParamOctet, &P_mac_address);
+    createParam("IP_ADDR",             asynParamOctet, &P_ip_address);
+    createParam("SERIAL_NUM",          asynParamInt32, &P_serial_number);
+    createParam("DHCP_STATUS",         asynParamInt32, &P_dhcp_status);
+    createParam("PORT_NUM",            asynParamInt32, &P_port_number);
+    createParam("SUBNET",              asynParamOctet, &P_subnet_mask);
+    createParam("DEFAULT_GATEWAY",     asynParamOctet, &P_default_gateway);
+    createParam("DEVICE_STATUS",       asynParamInt32, &P_device_status);
+    createParam("DEVICE_NAME",         asynParamOctet, &P_device_name);
+    createParam("TIMEOUT_COUNT",       asynParamInt32, &P_timeout_count);
 }
 
 /**
@@ -165,15 +166,24 @@ void LB115Driver::pollerThread() {
             char response[MAX_MSG] = {0};
             size_t nRead = 0;
             
-            lock();
             asynStatus status = sendAndReceive(cmd.c_str(), response, nRead);
-            unlock();
 
             if (status != asynSuccess) {
-                printf("Poller not connected, retrying...\n");
+                // We have enabled autoConnect in the instantiation
+                // of the asynPortDriver, so we do not need to handle
+                // that ourselves here:
+                asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                          "Poller not connected, automatically retrying...\n");
 
-                pasynOctetSyncIO->disconnect(pasynUser);
-                pasynUser = nullptr;
+                // If we lost connection to the general parameters, we
+                // likely lost connection to the device as a whole and 
+                // we only need to increment the timeoutCount here:
+                timeoutCount++;
+
+                lock();
+                setIntegerParam(P_timeout_count, timeoutCount);
+                callParamCallbacks();
+                unlock();
 
                 epicsThreadSleep(2.0);
                 break; //restart outer loop
@@ -181,7 +191,6 @@ void LB115Driver::pollerThread() {
 
             if (nRead > 0) {
                 processGeneralResponse(response, genReg);
-                //printf("Poller REG %d RX (%zu): %s\n", genReg, nRead, response);
             }
         }
             
@@ -200,19 +209,7 @@ void LB115Driver::pollerThread() {
             char response[MAX_MSG] = {0};
             size_t nRead = 0;
             
-            lock();
             asynStatus status = sendAndReceive(cmd.c_str(), response, nRead);
-            unlock();
-
-            if (status != asynSuccess) {
-                printf("Poller not connected, retrying...\n");
-
-                pasynOctetSyncIO->disconnect(pasynUser);
-                pasynUser = nullptr;
-
-                epicsThreadSleep(2.0);
-                break; //restart outer loop
-            }
 
             if (nRead > 0) {
                 processChannelResponse(response, ch, chReg);
@@ -287,9 +284,11 @@ asynStatus LB115Driver::sendAndReceive(const char* outCmd, char* inBuf, size_t& 
     int eomReason = 0;
 
     if (!pasynUser || !pasynOctetSyncIO) {
-        printf("pasynUser is null - not connected\n");
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "pasynUser is null - not connected\n");
         return asynError;
     }
+
     asynStatus status = pasynOctetSyncIO->writeRead(
             pasynUser,
             outCmd,
@@ -308,12 +307,6 @@ asynStatus LB115Driver::sendAndReceive(const char* outCmd, char* inBuf, size_t& 
         return status;
     }
     
-    // NOTE: why do I need this
-    //if (nRead >= MAX_MSG){
-    //    nRead = MAX_MSG -1;
-    //}
-    //inBuf[nRead] = '\0';
-
     asynPrint(pasynUser, ASYN_TRACEIO_DRIVER,
               "TS: %s\nRX: %s\n", outCmd, inBuf);
     std::string resp(inBuf, nRead);
