@@ -89,8 +89,9 @@ class LB115Driver : public asynPortDriver {
         int P_unit_meas[MAX_CH];
         int P_unit_dose[MAX_CH];
         
-        // Watcher PV:
+        // Watcher PVs:
         int P_timeout_count;
+        int P_connection_status;
 
     private:
 
@@ -135,4 +136,5 @@ class LB115Driver : public asynPortDriver {
         ChannelState chState[MAX_CH];
 
         int timeoutCount{0};
+        bool connectionStatus;
 };

@@ -29,7 +29,12 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
         pasynUser = nullptr;
         return;
     } else {
-        printf("Connected successfully\n");
+        printf("Connected to %s successfully\n", portName);
+        connectionStatus = 1;
+        lock();
+        setIntegerParam(P_connection_status, connectionStatus);
+        callParamCallbacks();
+        unlock();
     }
 
     running = true;
@@ -44,6 +49,7 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
  * @brief Creates asyn params for device general registers.
  */
 void LB115Driver::initGeneralParameters() {
+    // General Registers:
     createParam("PROGRAM_VER",         asynParamOctet, &P_program_version);
     createParam("KERNEL_VER",          asynParamOctet, &P_kernel_version);
     createParam("MAC_ADDR",            asynParamOctet, &P_mac_address);
@@ -55,7 +61,9 @@ void LB115Driver::initGeneralParameters() {
     createParam("DEFAULT_GATEWAY",     asynParamOctet, &P_default_gateway);
     createParam("DEVICE_STATUS",       asynParamInt32, &P_device_status);
     createParam("DEVICE_NAME",         asynParamOctet, &P_device_name);
+    // Watchdog PVs:
     createParam("TIMEOUT_COUNT",       asynParamInt32, &P_timeout_count);
+    createParam("CONNECTION_STATUS",   asynParamInt32, &P_connection_status);
 }
 
 /**
@@ -185,14 +193,27 @@ void LB115Driver::pollerThread() {
                 // likely lost connection to the device as a whole and 
                 // we only need to increment the timeoutCount here:
                 timeoutCount++;
+                connectionStatus = 0;
 
                 lock();
                 setIntegerParam(P_timeout_count, timeoutCount);
+                setIntegerParam(P_connection_status, connectionStatus);
                 callParamCallbacks();
                 unlock();
 
                 epicsThreadSleep(2.0);
                 break; //restart outer loop
+            }
+            else if (status == asynSuccess && connectionStatus == 0) {
+                asynPrint(pasynUser, ASYN_TRACEIO_DRIVER,
+                          "Poller Reconnection Successfully\n");
+
+                connectionStatus = 1;
+
+                lock();
+                setIntegerParam(P_connection_status, connectionStatus);
+                callParamCallbacks();
+                unlock();
             }
 
         }

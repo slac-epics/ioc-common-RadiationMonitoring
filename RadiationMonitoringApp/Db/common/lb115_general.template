@@ -1,3 +1,6 @@
+########################################
+###   Start of General Register PVs  ###
+########################################
 record(stringin, "$(P):PROGRAMVERSION"){
     field(DESC, "Program Version")
     field(DTYP, "asynOctetRead")
@@ -86,10 +89,25 @@ record(stringin, "$(P):DEVNAME"){
     field(VAL,  "Uninitialized")
 }
 
+########################################
+###       Start of Watchdog PVs      ###
+########################################
+
+record(bi, "$(P):CONNECTION_STATUS"){
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CONNECTION_STATUS")
+    field(SCAN, "I/O Intr")
+    field(ZNAM, "Disconnected")
+    field(ONAM, "Connected")
+    field(ZSV,  "MAJOR")
+    field(OSV,  "NO_ALARM")
+    field(VAL,  "0")
+}
+
 record(ai, "$(P):TIMEOUTS"){
     field(DESC, "Timeout Count")
     field(DTYP, "asynInt32")
     field(INP,  "@asyn($(PORT),0)TIMEOUT_COUNT")
     field(SCAN, "I/O Intr")
-    field(VAL,  "-1") # Uninitialized
+    field(VAL,  "0")
 }

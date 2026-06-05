@@ -31,6 +31,8 @@ epicsEnvSet("P",           "RADM:B34:253")
 < ../common/st.cmd.soft
 
 drvAsynIPPortConfigure("LB115_IP", "$(LB115_IP):$(LB115_PORT)")
+asynSetTraceIOMask("LB115_IP", "$(LB115_ADDR)", 0x0)
+asynSetTraceMask("LB115_IP", "$(LB115_ADDR)", 0x0)
 asynSetOption("LB115_IP", 0, "disconnectOnReadTimeout", "Y")
 lb115Configure("$(PORT)", "LB115_IP")
 
@@ -42,10 +44,6 @@ dbLoadRecords("db/asynRecord.db", "P=$(P),R=Asyn,PORT=LB115_IP,ADDR=$(LB115_ADDR
 < $(TOP)/iocBoot/common/init_restore.cmd.soft
 
 iocInit()
-
-# Streamdevice options
-#var streamError 1
-#var streamDebug 1
 
 # Start autosave
 < $(TOP)/iocBoot/common/start_restore.cmd.soft
