@@ -225,7 +225,7 @@ void LB115Driver::pollerThread() {
         // Reading the same register for all active channels before
         // moving onto the next register
         for (int channel = 0; channel < MAX_CH; channel++) {
-            if (!chState[channel].enabled) {
+            if (!chState[channel].active) {
                 epicsThreadSleep(0.05);
                 continue;
             }
@@ -533,7 +533,7 @@ void LB115Driver::enableChannel(int channel) {
     if (channel < 1 || channel > MAX_CH) {
          return;
     }
-    chState[channel-1].enabled = true;
+    chState[channel-1].active = true;
     
     setIntegerParam(P_channel_state[channel-1], 1);
 }

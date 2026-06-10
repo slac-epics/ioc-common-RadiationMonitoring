@@ -128,7 +128,7 @@ class LB115Driver : public asynPortDriver {
         };
         
         struct ChannelState {
-            bool enabled = false;
+            bool active = false;
             int regIndex = 0;
         };
 
