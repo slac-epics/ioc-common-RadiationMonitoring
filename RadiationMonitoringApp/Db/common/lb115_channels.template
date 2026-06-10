@@ -270,3 +270,14 @@ record(stringin, "$(P):CH$(CHAN)_UNIT_DOSE_VAL") {
     field(SCAN, "I/O Intr")
     field(VAL,  "Uninitialized")
 }
+
+record(bi, "$(P):CH$(CHAN)_STATE") {
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_STATE")
+    field(SCAN, "I/O Intr")
+    field(ZNAM, "Inactive")
+    field(ONAM, "Active")
+    field(ZSV,  "MAJOR")
+    field(OSV,  "NO_ALARM")
+    field(VAL,  "0")
+}

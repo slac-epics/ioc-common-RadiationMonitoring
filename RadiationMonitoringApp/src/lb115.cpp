@@ -155,6 +155,9 @@ void LB115Driver::initChannelParameters() {
         createParam(name, asynParamOctet, &P_unit_meas[ch]);
         snprintf(name, sizeof(name), "CH%d_UNIT_DOSE_VAL", ch+1);
         createParam(name, asynParamOctet, &P_unit_dose[ch]);
+        // Channel Watcher PVs:
+        snprintf(name, sizeof(name), "CH%d_STATE", ch+1);
+        createParam(name, asynParamInt32, &P_channel_state[ch]);
     }
 }
 
@@ -531,6 +534,8 @@ void LB115Driver::enableChannel(int channel) {
          return;
     }
     chState[channel-1].enabled = true;
+    
+    setIntegerParam(P_channel_state[channel-1], 1);
 }
 
 extern "C" {
