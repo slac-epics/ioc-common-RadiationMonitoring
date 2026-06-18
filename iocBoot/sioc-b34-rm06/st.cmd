@@ -31,10 +31,10 @@ epicsEnvSet("P",           "RADM:B34:253")
 < ../common/st.cmd.soft
 
 drvAsynIPPortConfigure("LB115_IP", "$(LB115_IP):$(LB115_PORT)")
-asynSetTraceIOMask("LB115_IP", "$(LB115_ADDR)", 0x0)
-asynSetTraceMask("LB115_IP", "$(LB115_ADDR)", 0x0)
+#asynSetTraceIOMask("LB115_IP", "$(LB115_ADDR)", 0x2)
+asynSetTraceMask("LB115_IP", "$(LB115_ADDR)", ASYN_TRACE_ERROR)
 asynSetOption("LB115_IP", 0, "disconnectOnReadTimeout", "Y")
-lb115Configure("$(PORT)", "LB115_IP")
+lb115Configure("$(PORT)", "LB115_IP", 2)
 
 # Load record instances
 dbLoadRecords("db/lb115.db", "P=$(P), PORT=$(PORT)")

@@ -1,6 +1,6 @@
 #include "lb115.h"
 
-LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
+LB115Driver::LB115Driver(const char *portName, const char *ipPort, double loopDelay) :
     asynPortDriver(portName,
                    1,
                    asynFloat64Mask | asynInt32Mask | asynOctetMask | asynDrvUserMask,
@@ -8,8 +8,8 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort) :
                    0,
                    1,
                    0,
-                   0), 
-    _ipPort(ipPort)
+                   0),
+   loopDelay(loopDelay) 
 {
     
     // Initializing Asyn Parameters:
@@ -166,8 +166,6 @@ void LB115Driver::initChannelParameters() {
  */
 void LB115Driver::pollerThread() {
 
-    const double loopDelay = 0.25; //seconds
-    
     while(running.load()) {
         // General registers are always being polled if the thread is active.
         for (int genReg = 0; genReg < NUM_GEN_REG; genReg++) {
@@ -237,7 +235,7 @@ void LB115Driver::pollerThread() {
             char response[MAX_MSG] = {0};
             size_t nRead = 0;
             
-            asynStatus status = sendAndReceive(cmd.c_str(), response, nRead);
+            sendAndReceive(cmd.c_str(), response, nRead);
 
             if (nRead > 0) {
                 processChannelResponse(response, ch, chReg);
@@ -539,18 +537,19 @@ void LB115Driver::enableChannel(int channel) {
 }
 
 extern "C" {
-    int LB115Configure(const char* portName, const char* ipPort) {
+    int LB115Configure(const char* portName, const char* ipPort, double loopDelay) {
         printf("Trying to connect to LB115 Device.\n");
-        new LB115Driver(portName, ipPort);
+        new LB115Driver(portName, ipPort, loopDelay);
         return 0;
     }
     static const iocshArg arg0 = {"portName", iocshArgString};
     static const iocshArg arg1 = {"ipPort", iocshArgString};
-    static const iocshArg * args[] = {&arg0, &arg1};
-    static const iocshFuncDef funcDef = {"lb115Configure", 2, args};
+    static const iocshArg arg2 = {"loopDelay", iocshArgDouble};
+    static const iocshArg * args[] = {&arg0, &arg1, &arg2};
+    static const iocshFuncDef funcDef = {"lb115Configure", 3, args};
 
     static void funcCall(const iocshArgBuf *args) {
-        LB115Configure(args[0].sval, args[1].sval);
+        LB115Configure(args[0].sval, args[1].sval, args[2].dval);
     }
 
     void LB115ConfigureRegister(void) {

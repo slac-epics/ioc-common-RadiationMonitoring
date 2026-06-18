@@ -30,7 +30,8 @@ class LB115Driver : public asynPortDriver {
     public:
 
         LB115Driver(const char *portName,
-                    const char *ipPort);
+                    const char *ipPort,
+                    double loopDelay);
 
         virtual void pollerThread();
 
@@ -113,8 +114,6 @@ class LB115Driver : public asynPortDriver {
 
         std::string parsePayload(const std::string& resp);
 
-        std::string _ipPort;
-        
         epicsThreadId pollerId;
         std::atomic<bool> running;
 
@@ -138,4 +137,6 @@ class LB115Driver : public asynPortDriver {
 
         int timeoutCount{0};
         bool connectionStatus;
+
+        double loopDelay; // in seconds
 };
