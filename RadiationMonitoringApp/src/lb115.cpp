@@ -27,7 +27,6 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort, double loopDe
         printf("Initial connection failed\n");
         printf("\nFailed to connect to port %s", ipPort);
         pasynUser = nullptr;
-        return;
     } else {
         printf("Connected to %s successfully\n", portName);
         connectionStatus = 1;
