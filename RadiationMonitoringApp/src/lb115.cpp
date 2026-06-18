@@ -26,7 +26,11 @@ LB115Driver::LB115Driver(const char *portName, const char *ipPort, double loopDe
     if (driverStatus != asynSuccess || !pasynUser) {
         printf("Initial connection failed\n");
         printf("\nFailed to connect to port %s", ipPort);
-        pasynUser = nullptr;
+        connectionStatus = 0;
+        lock();
+        setIntegerParam(P_connection_status, connectionStatus);
+        callParamCallbacks();
+        unlock();
     } else {
         printf("Connected to %s successfully\n", portName);
         connectionStatus = 1;
