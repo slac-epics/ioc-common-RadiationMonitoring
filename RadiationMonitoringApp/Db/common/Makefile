@@ -45,6 +45,9 @@ DB += gamma6032mon.db
 DB += alarmClock.db
 DB += dbSubTime.db
 DB += decarad.db
+DB += lb115.db
+#DB += lb115_channels.template
+#DB += lb115_general.template
 
 # For PM box.
 DB += peripheral-station.db

@@ -1,0 +1,14 @@
+file lb115_general.template {
+    pattern
+    { PORT }
+    { $(PORT) }
+}
+
+file lb115_channels.template {
+    pattern
+    { CHAN }
+    {   1  }
+    {   2  }
+    {   3  }
+    {   4  }
+}

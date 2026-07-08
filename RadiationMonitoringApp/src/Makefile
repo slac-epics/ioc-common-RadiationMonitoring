@@ -54,6 +54,7 @@ $(PROD_NAME)_DBD += drvAsynIPPort.dbd
 $(PROD_NAME)_DBD += drvVxi11.dbd
 $(PROD_NAME)_DBD += asSupport.dbd
 $(PROD_NAME)_DBD += drvFHT.dbd
+$(PROD_NAME)_DBD += lb115.dbd
 $(PROD_NAME)_DBD += calcSupport.dbd
 $(PROD_NAME)_DBD += history.dbd
 $(PROD_NAME)_DBD += caPutLog.dbd
@@ -74,6 +75,7 @@ $(PROD_NAME)_SRCS += $(PROD_NAME)_registerRecordDeviceDriver.cpp
 $(PROD_NAME)_SRCS += drvFHT.cpp
 $(PROD_NAME)_SRCS += dbSubTime.c
 $(PROD_NAME)_SRCS += time_diff.c
+$(PROD_NAME)_SRCS += lb115.cpp
 $(PROD_NAME)_SRCS_DEFAULT += $(PROD_NAME)Main.cpp
 
 $(PROD_NAME)_LIBS += $(EPICS_BASE_IOC_LIBS)

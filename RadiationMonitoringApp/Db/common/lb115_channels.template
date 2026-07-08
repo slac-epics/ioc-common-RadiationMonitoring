@@ -1,0 +1,329 @@
+record(ai, "$(P):CH$(CHAN)_CURR_MEAS") {
+    field(DESC, "FIFO Current Meas")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_CURR_MEAS")
+    field(SCAN, "I/O Intr")
+    field(PREC, "3")
+    field(EGU,  "mrem/h")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_OLDEST_MEAS") {
+    field(DESC, "FIFO Oldest Meas")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_OLDEST_MEAS")
+    field(SCAN, "I/O Intr")
+    field(PREC, "3")
+    field(EGU,  "mrem/h")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(longin, "$(P):CH$(CHAN)_FIFO_MEAS_STATUS") {
+    field(DESC, "FIFO Meas. status (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_FIFO_MEAS_STATUS")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(stringin, "$(P):CH$(CHAN)_READ_INDEX") {
+    field(DESC, "Channel Index (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_READ_INDEX")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(stringin, "$(P):CH$(CHAN)_DETECTOR_NAME") {
+    field(DESC, "Detector Name (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DETECTOR_NAME")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(stringin, "$(P):CH$(CHAN)_DETECTOR_TAG") {
+    field(DESC, "Detector Tag (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DETECTOR_TAG")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(stringin, "$(P):CH$(CHAN)_MEAS_ID") {
+    field(DESC, "Measurement ID (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEAS_ID")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(stringin, "$(P):CH$(CHAN)_MEAS_ID_NAME") {
+    field(DESC, "Measurement ID name (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEAS_ID_NAME")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(stringin, "$(P):CH$(CHAN)_MEAS_DATE") {
+    field(DESC, "Measurement Timestamp (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEAS_DATE")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(ai, "$(P):CH$(CHAN)_MEMORY_INDEX") {
+    field(DESC, "Memory index (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEMORY_INDEX")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_DOSE_TIME") {
+    field(DESC, "Dose time (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DOSE_TIME")
+    field(SCAN, "I/O Intr")
+    field(EGU,  "s")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_MEAS_TIME") {
+    field(DESC, "Measurement time (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEAS_TIME")
+    field(SCAN, "I/O Intr")
+    field(EGU,  "s")
+    field(VAL,  "-1") # Uninitialized
+}
+record(ai, "$(P):CH$(CHAN)_BKG_MEAS_TIME") {
+    field(DESC, "Background Measurement time (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_BKG_MEAS_TIME")
+    field(SCAN, "I/O Intr")
+    field(EGU,  "s")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(longin, "$(P):CH$(CHAN)_MEAS_STATUS") {
+    field(DESC, "Measurement status (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEAS_STATUS")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(longin, "$(P):CH$(CHAN)_STATUS") {
+    field(DESC, "Device Status (r/o)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_STATUS")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_MEAS_VAL") {
+    field(DESC, "Measurement Value")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MEAS_VAL")
+    field(SCAN, "I/O Intr")
+    field(PREC, "3")
+    field(EGU,  "mrem/h")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_MAX_MEAS_VAL") {
+    field(DESC, "Maximum measurement value (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_MAX_MEAS_VAL")
+    field(SCAN, "I/O Intr")
+    field(PREC, "3")
+    field(EGU,  "mrem/h")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_DOSE_VAL") {
+    field(DESC, "channel dose value (mrem)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DOSE_VAL")
+    field(SCAN, "I/O Intr")
+    field(PREC, "3")
+    field(EGU,  "mrem")
+    field(LOLO, "")     
+    field(LOW,  "")     
+    field(HIGH, "")     
+    field(HIHI, "")     
+    field(LLSV, "MAJOR")   
+    field(LSV,  "MINOR")
+    field(HSV,  "MINOR")
+    field(HHSV, "MAJOR")
+    field(VAL,  "-1") # Uninitialized
+    info(autosaveMon, "LOLO LOW HIGH HIHI")
+}
+
+record(ai, "$(P):CH$(CHAN)_GROSS_VAL") {
+    field(DESC, "Channel gross measurement value r/o")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_GROSS_VAL")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_NET_VAL") {
+    field(DESC, "Channel net value (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_NET_VAL")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_BKG_VAL") {
+    field(DESC, "Background measurement value (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_BKG_VAL")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_UNCERTAINTY_ABS") {
+    field(DESC, "Absolute uncertainty (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_UNCERTAINTY_ABS")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_UNCERTAINTY_REL") {
+    field(DESC, "Relative uncertainty")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_UNCERTAINTY_REL")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_DETECTION_LIMIT") {
+    field(DESC, "Detection limit (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DETECTION_LIMIT")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_DECISION_THRES") {
+    field(DESC, "Decision Threshold (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DECISION_THRES")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_BEST_EST") {
+    field(DESC, "Best estimator (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_BEST_EST")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_UNC_BEST_EST") {
+    field(DESC, "Uncertainty best estimator (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_UNC_BEST_EST")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_LOWER_LIMIT_CONF") {
+    field(DESC, "Lower lim. confidence (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_LOWER_LIMIT_CONF")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_UPPER_LIMIT_CONF") {
+    field(DESC, "Upper lim. confidence (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_UPPER_LIMIT_CONF")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_CALIB_FACTOR") {
+    field(DESC, "CH. Calibration Factor (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_CALIB_FACTOR")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_DELTA_SCINT") {
+    field(DESC, "Elapsed integration time (r/o")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_DELTA_SCINT")
+    field(SCAN, "I/O Intr")
+    field(EGU,  "s")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_ALARM1") {
+    field(DESC, "Alarm limit 1 (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_ALARM_LIM1")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_ALARM2") {
+    field(DESC, "Alarm limit 2 (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_ALARM_LIM2")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_ALARM3") {
+    field(DESC, "Alarm limit 3 (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_ALARM_LIM3")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(ai, "$(P):CH$(CHAN)_ALARM4") {
+    field(DESC, "Alarm limit 4 (r/o)")
+    field(DTYP, "asynFloat64")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_ALARM_LIM4")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "-1") # Uninitialized
+}
+
+record(stringin, "$(P):CH$(CHAN)_UNIT_MEAS_VAL") {
+    field(DESC, "Units of meas val (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_UNIT_MEAS_VAL")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(stringin, "$(P):CH$(CHAN)_UNIT_DOSE_VAL") {
+    field(DESC, "Units of dose val (r/o)")
+    field(DTYP, "asynOctetRead")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_UNIT_DOSE_VAL")
+    field(SCAN, "I/O Intr")
+    field(VAL,  "Uninitialized")
+}
+
+record(bi, "$(P):CH$(CHAN)_STATE") {
+    field(DESC, "Ch. state (active/inactive)")
+    field(DTYP, "asynInt32")
+    field(INP,  "@asyn($(PORT),0)CH$(CHAN)_STATE")
+    field(SCAN, "I/O Intr")
+    field(ZNAM, "Inactive")
+    field(ONAM, "Active")
+    field(ZSV,  "MAJOR")
+    field(OSV,  "NO_ALARM")
+    field(VAL,  "0")
+}
