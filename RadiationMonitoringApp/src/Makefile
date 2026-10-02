@@ -62,6 +62,12 @@ $(PROD_NAME)_DBD += iocAdmin.dbd
 $(PROD_NAME)_DBD += dbSubTime.dbd
 $(PROD_NAME)_DBD += time_diff.dbd
 
+# Link QSRV (pvAccess Server) if available 
+ifdef EPICS_QSRV_MAJOR_VERSION 
+   <xxxx>_DBD += PVAServerRegister.dbd 
+   <xxxx>_DBD += qsrv.dbd 
+endif
+
 # Add libraries
 $(PROD_NAME)_LIBS += devIocStats
 $(PROD_NAME)_LIBS += autosave
@@ -70,6 +76,12 @@ $(PROD_NAME)_LIBS += stream
 $(PROD_NAME)_LIBS += calc
 $(PROD_NAME)_LIBS += history
 $(PROD_NAME)_LIBS += caPutLog
+
+# Link QSRV (pvAccess Server) if available 
+ifdef EPICS_QSRV_MAJOR_VERSION 
+   <xxxx>_LIBS += qsrv 
+   <xxxx>_LIBS += $(EPICS_BASE_PVA_CORE_LIBS) 
+endif
 
 $(PROD_NAME)_SRCS += $(PROD_NAME)_registerRecordDeviceDriver.cpp
 $(PROD_NAME)_SRCS += drvFHT.cpp

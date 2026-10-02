@@ -8,6 +8,9 @@
 #  Auth: 21-Jul-2017, M. Dunning         (MDUNNING)
 #==============================================================
 
+R2.0.13  02-Oct-2026  M. Dunning (mdunning)
+    All: Add qsrv
+
 R2.0.12  27-Mar-2026  M. Dunning (mdunning)
     Radmon: Add support for new ozone sensor
     Radmon: Use iocsh script in ams iocs
