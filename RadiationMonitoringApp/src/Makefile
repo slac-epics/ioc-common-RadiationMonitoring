@@ -19,6 +19,10 @@ include $(TOP)/configure/CONFIG
 #  ADD MACRO DEFINITIONS AFTER THIS LINE
 #=============================
 
+# Type-safe entry tables
+USR_CFLAGS += -DUSE_TYPED_RSET -DUSE_TYPED_DSET -DUSE_TYPED_DRVET
+USR_CPPFLAGS += -DUSE_TYPED_RSET
+
 # =====================================================
 # Path to "NON EPICS" External PACKAGES: USER INCLUDES
 # =====================================================

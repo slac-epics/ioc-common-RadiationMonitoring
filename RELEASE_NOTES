@@ -10,6 +10,7 @@
 
 R2.0.13  02-Oct-2026  M. Dunning (mdunning)
     All: Add qsrv
+         Add flag for type-safe entry tables
 
 R2.0.12  27-Mar-2026  M. Dunning (mdunning)
     Radmon: Add support for new ozone sensor
