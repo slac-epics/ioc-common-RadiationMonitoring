@@ -68,8 +68,8 @@ $(PROD_NAME)_DBD += time_diff.dbd
 
 # Link QSRV (pvAccess Server) if available 
 ifdef EPICS_QSRV_MAJOR_VERSION 
-   <xxxx>_DBD += PVAServerRegister.dbd 
-   <xxxx>_DBD += qsrv.dbd 
+   $(PROD_NAME)_DBD += PVAServerRegister.dbd 
+   $(PROD_NAME)_DBD += qsrv.dbd 
 endif
 
 # Add libraries
@@ -83,8 +83,8 @@ $(PROD_NAME)_LIBS += caPutLog
 
 # Link QSRV (pvAccess Server) if available 
 ifdef EPICS_QSRV_MAJOR_VERSION 
-   <xxxx>_LIBS += qsrv 
-   <xxxx>_LIBS += $(EPICS_BASE_PVA_CORE_LIBS) 
+   $(PROD_NAME)_LIBS += qsrv 
+   $(PROD_NAME)_LIBS += $(EPICS_BASE_PVA_CORE_LIBS) 
 endif
 
 $(PROD_NAME)_SRCS += $(PROD_NAME)_registerRecordDeviceDriver.cpp
