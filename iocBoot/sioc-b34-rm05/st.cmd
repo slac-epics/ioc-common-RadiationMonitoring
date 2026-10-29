@@ -1,4 +1,4 @@
-#!../../bin/rhel7-x86_64/RadiationMonitoring
+#!../../bin/rhel9-x86_64/RadiationMonitoring
 #==============================================================
 #
 #  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
