@@ -1,14 +1,13 @@
 #!../../bin/rhel9-x86_64/RadiationMonitoring
+
 #==============================================================
-#
-#  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
+#  Abs:  Startup Script for Rad Mon device(s)
 #
 #  Name: st.cmd
 #
 #  Facility:  LCLS2 Radiation Monitoring Controls
 #
 #  Auth: 17-Jul-2018, M. Dunning        (MDUNNING)
-#
 #==============================================================
 
 # Set environment variables
@@ -40,6 +39,4 @@ caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 < ../common/start_restore.cmd.soft
 
 # End of file
-
-
 

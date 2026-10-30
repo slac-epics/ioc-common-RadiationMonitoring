@@ -1,6 +1,6 @@
 #!../../bin/rhel9-x86_64/RadiationMonitoring
+
 #==============================================================
-#
 #  Abs:  EPICS startup script for Thermo FHT Rad Mon device(s)
 #        BSY (RDMBSY03)  BSY near STP-CLTS
 #
@@ -9,13 +9,6 @@
 #  Facility:  LCLS Radiation Monitoring Controls
 #
 #  Auth: 04-Mar-2020, Mike Dunning       (mdunning)
-#  Rev:  dd-mmm-yyyy, Reviewer's Name    (USERNAME)
-#--------------------------------------------------------------
-#  Mod:
-#        19-Oct-2021, K. Luchini         (luchini):
-#         add caPutLogInit after iocInit
-#         add env var LOCATION
-#
 #==============================================================
 #
 # Set environment variables
@@ -28,27 +21,16 @@ epicsEnvSet("IOC_NAME", "SIOC:CLTS:RM01")
 
 epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
-# Configure communication port
-drvAsynIPPortConfigure("RADM_CLTS_585", "ts-bsy0-pp02:2001", 0,0,0)
-
-# Initialize asyn driver
-# drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
-#/*------------------------------------------------------------------------------
-# * EPICS iocsh callable function to call constructor for the drvFHT class.
-# *  port    The name of the asyn port driver to be created.
-# *  IOport  The communication port name.
-# *  addr    The hardware address.
-# *  timeout The timeout for I/O (optional, default = 1.0).
-# *----------------------------------------------------------------------------*/
-drvFHTConfigure("FHT_CLTS_585", "RADM_CLTS_585", 1, 1.5)
-
-# Asyn diagnostics
-#asynSetTraceMask("RADM_CLTS_585", -1, 0x9)
-#asynSetTraceIOMask("RADM_CLTS_585", -1, 0x5)
-
+### Thermo FHT Radmon -------------------------------------------------------
+epicsEnvSet("FHT_P",      "RADM:CLTS:585")
+epicsEnvSet("FHT_PORT",   "RADM_CLTS_585")
+epicsEnvSet("FHT_LOC",    "STP-CLTS")
+epicsEnvSet("FHT_TS",     "ts-bsy0-pp02")
+epicsEnvSet("FHT_TSPORT", "2001")
+iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT_PORT),TS=$(FHT_TS),TSPORT=$(FHT_TSPORT)")
 # Load record instances
-dbLoadRecords("db/sioc-clts-rm01.db", "P=RADM:CLTS:585, PORT=FHT_CLTS_585")
-dbLoadRecords("db/asynRecord.db","P=$(IOC_NAME):,R=Asyn, PORT=RADM_CLTS_585, ADDR=0, IMAX=0, OMAX=0")
+dbLoadRecords("db/fht.db", "P=$(FHT_P),PORT=$(FHT_PORT),LOC=$(FHT_LOC)")
+dbLoadRecords("db/asynRecord.db", "P=$(FHT_P):,R=Asyn,PORT=$(FHT_PORT),ADDR=0,IMAX=0,OMAX=0")
 
 # Configure autosave
 < iocBoot/common/init_restore.cmd.soft

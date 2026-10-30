@@ -32,10 +32,6 @@ DB_INSTALLS += $(IOCADMIN)/db/iocAdminSoft.db
 DB_INSTALLS += $(AUTOSAVE)/db/save_restoreStatus.db
 IOCRELEASE_DB += iocRelease.db
 
-DB += sioc-bsyh-rm01.db
-DB += sioc-ltu0-rm01.db
-DB += sioc-clts-rm01.db
-
 # RadFETs
 DB += sioc-undh-rm01.db
 DB += sioc-unds-rm01.db

@@ -11,6 +11,7 @@
 R2.0.14  30-Oct-2026  M. Dunning (mdunning)
     All: Clean up asub source files to get rid of compiler warnings
          st.cmd: rhel7 -> rhel9
+    LCLS: Use init_fht.iocsh script for iocs that weren't using it 
 
 R2.0.13  02-Oct-2026  M. Dunning (mdunning)
     All: Add qsrv

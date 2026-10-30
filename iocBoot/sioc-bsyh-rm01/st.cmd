@@ -1,6 +1,6 @@
 #!../../bin/rhel9-x86_64/RadiationMonitoring
+
 #==============================================================
-#
 #  Abs:  Startup Script for Thermo FHT Rad Mon device(s)
 #        BTH/UND (RDMBTH01)  BTH
 #
@@ -9,13 +9,6 @@
 #  Facility:  LCLS Radiation Monitoring Controls
 #
 #  Auth: 21-Jul-2017, M. Dunning          (MDUNNING)
-#  Rev:  dd-mmm-yyyy, Reviewer's Name     (USERNAME)
-#--------------------------------------------------------------
-#  Mod:
-#        19-Oct-2021, K. Luchini          (luchini):
-#         add caPutLogInit after iocInit
-#         add env var LOCATION
-#
 #==============================================================
 
 # Set environment variables
@@ -28,29 +21,18 @@ epicsEnvSet("IOC_NAME", "SIOC:BSYH:RM01")
 
 epicsEnvSet("STARTUP",  "${EPICS_SITE_TOP}/iocCommon/${IOC}")
 
-# Configure communication port
-drvAsynIPPortConfigure("RADM_BSYH_843", "ts-bsy0-pp01:2001", 0,0,0)
-
-# Initialize asyn driver
-# drvFHTConfigure(const char* port, const char* IOport, int addr, double timeout) {
-#/*------------------------------------------------------------------------------
-# * EPICS iocsh callable function to call constructor for the drvFHT class.
-# *  port    The name of the asyn port driver to be created.
-# *  IOport  The communication port name.
-# *  addr    The hardware address.
-# *  timeout The timeout for I/O (optional, default = 1.0).
-# *----------------------------------------------------------------------------*/
-drvFHTConfigure("FHT_BSYH_843", "RADM_BSYH_843", 1, 1.5)
-
-# Asyn diagnostics
-#asynSetTraceMask("RADM_BSYH_843", -1, 0x9)
-#asynSetTraceIOMask("RADM_BSYH_843", -1, 0x5)
-
+### Thermo FHT Radmon -------------------------------------------------------
+epicsEnvSet("FHT_P",      "RADM:BSYH:843")
+epicsEnvSet("FHT_PORT",   "RADM_BSYH_843")
+epicsEnvSet("FHT_LOC",    "BSYH D2")
+epicsEnvSet("FHT_TS",     "ts-bsy0-pp01")
+epicsEnvSet("FHT_TSPORT", "2001")
+iocshLoad("$(TOP)/iocBoot/common/init_fht.iocsh", "PORT=$(FHT_PORT),TS=$(FHT_TS),TSPORT=$(FHT_TSPORT)")
 # Load record instances
-dbLoadRecords("db/sioc-bsyh-rm01.db")
-dbLoadRecords("db/asynRecord.db","P=$(IOC_NAME):,R=Asyn, PORT=RADM_BSYH_843, ADDR=0, IMAX=0, OMAX=0")
+dbLoadRecords("db/fht.db", "P=$(FHT_P),PORT=$(FHT_PORT),LOC=$(FHT_LOC)")
+dbLoadRecords("db/asynRecord.db", "P=$(FHT_P):,R=Asyn,PORT=$(FHT_PORT),ADDR=0,IMAX=0,OMAX=0")
 
-# Restore PVs
+# Configure autosave
 < iocBoot/common/init_restore.cmd.soft
 
 cd ${TOP}/iocBoot/${IOC}
@@ -63,6 +45,4 @@ caPutLogInit("${EPICS_CA_PUT_LOG_ADDR}")
 < ../common/start_restore.cmd.soft
 
 # End of file
-
-
 
