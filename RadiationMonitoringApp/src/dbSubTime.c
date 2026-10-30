@@ -687,7 +687,6 @@ static long isDataMissing(aSubRecord *psub)
 {
 
     long  status = SUCCESS;
-    int   len = 0;
 
     if ( *(epicsInt16 *)psub->d ) 
         printf("Record %s called doseStatus(%p)\n", psub->name, (void*) psub);
@@ -706,7 +705,7 @@ static long isDataMissing(aSubRecord *psub)
     else if  (*(epicsInt16 *)psub->valb==0) {
        *(epicsInt16 *)psub->valb = 1;   /* flag data is missing */
        /* get date when data went missing */
-       len = epicsTimeToStrftime((char *)psub->valc,MAX_STRING_SIZE,TIME_FORMAT,&psub->time);
+       epicsTimeToStrftime((char *)psub->valc,MAX_STRING_SIZE,TIME_FORMAT,&psub->time);
        if ( *(epicsInt32 *)psub->c) 
          post_event(*(int *)psub->c);      /* process all pvs this event id   */
        if ( *(epicsInt16 *)psub->d ) 

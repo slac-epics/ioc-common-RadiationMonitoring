@@ -13,8 +13,6 @@ static int time_diff(aSubRecord *prec)
   DBLINK *a_name = prec->a;
   DBLINK *t_timeout = prec->b;
 
-  dbAddr *paddr;
-
   epicsTimeStamp now;
   epicsTimeGetCurrent(&now);
 
@@ -29,8 +27,8 @@ static int time_diff(aSubRecord *prec)
   long options = DBR_STATUS | DBR_TIME;
   long noel = 1;
 
-  dbNameToAddr(a_name, &dbEntry);
-  int ret = dbGetField(&dbEntry, DBR_DOUBLE, &buf, &options, &noel, NULL);
+  dbNameToAddr((const char *)a_name, &dbEntry);
+  dbGetField(&dbEntry, DBR_DOUBLE, &buf, &options, &noel, NULL);
 
   epicsFloat64 dt = epicsTimeDiffInSeconds(&now, &buf.time); 
 
